@@ -1,13 +1,23 @@
 import React from 'react';
-import Field from '../Field';
+import Field from 'src/components/Field';
 
-const LoginForm = () => (
+const LoginForm = ({ email, password, changeField }) => (
   <div>
-    <Field name="email" type="email" placeholder="Email" />
-    <Field name="password" type="password" placeholder="Password" />
-    <Field name="groupName" type="text" placeholder="Family name" />
-    <Field name="firstname" type="text" placeholder="Firstname" />
-    <button type="submit">Create group</button>
+    <Field
+      name="email"
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={changeField}
+    />
+    <Field
+      name="password"
+      type="password"
+      placeholder="Password"
+      value={password}
+      onChange={changeField}
+    />
+    <button type="submit">Connection</button>
   </div>
 );
 LoginForm.propTypes = {};

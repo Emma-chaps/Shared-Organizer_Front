@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import SignUpForm from 'src/components/SignUpForm';
-import LoginForm from 'src/components/LoginForm';
+import LoginForm from 'src/containers/LoginForm';
 
 const Home = () => {
-  const [selectedButton, setSelectedButton] = useState(true);
+  const [selectedButton, setSelectedButton] = useState(false);
 
   const changeFormToLoginForm = () => {
-    setSelectedButton(false);
+    setSelectedButton(true);
   };
 
   const changeFormToSignUpForm = () => {
-    setSelectedButton(true);
+    setSelectedButton(false);
   };
 
   return (
