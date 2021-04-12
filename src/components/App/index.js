@@ -1,6 +1,5 @@
 // == Import npm
 import React from 'react';
-import NotFound from 'src/components/NotFound';
 
 // == Import
 import './styles.scss';
@@ -9,7 +8,6 @@ import './styles.scss';
 const App = () => (
   <div className="app">
     <h1>Composant : App</h1>
-    < NotFound />
   </div>
 );
 
