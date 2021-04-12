@@ -1,25 +1,36 @@
-import { SET_USER_FIELD_VALUE } from 'src/actions/user';
+import {
+  SET_USER_FIELD_LOGIN_VALUE,
+  SET_USER_FIELD_SIGN_UP_VALUE,
+} from 'src/actions/user';
 
 const initialState = {
   login: {
-    email: 'TTT',
-    password: 'VVV',
+    email: '',
+    password: '',
   },
   signup: {
     email: '',
-    password: 'VVV',
-    familyName: 'Toto',
-    firstName: 'uhuh',
+    password: '',
+    groupName: '',
+    firstname: '',
   },
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_USER_FIELD_VALUE:
+    case SET_USER_FIELD_LOGIN_VALUE:
       return {
         ...state,
         login: {
           ...state.login,
+          [action.name]: action.value,
+        },
+      };
+    case SET_USER_FIELD_SIGN_UP_VALUE:
+      return {
+        ...state,
+        signup: {
+          ...state.signup,
           [action.name]: action.value,
         },
       };

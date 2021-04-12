@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import SignUpForm from 'src/components/SignUpForm';
+import SignUpForm from 'src/containers/SignUpForm';
 import LoginForm from 'src/containers/LoginForm';
 
 const Home = () => {
-  const [selectedButton, setSelectedButton] = useState(false);
+  //  changes the display of the form according to the selected button
+  const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
 
   const changeFormToLoginForm = () => {
-    setSelectedButton(true);
+    setSelectedButtonSignUp(true);
   };
 
   const changeFormToSignUpForm = () => {
-    setSelectedButton(false);
+    setSelectedButtonSignUp(false);
   };
 
   return (
@@ -19,7 +20,7 @@ const Home = () => {
         <h1>Family Organizer</h1>
         <h2>How it works ?</h2>
       </div>
-      <div>{selectedButton ? <SignUpForm /> : <LoginForm />}</div>
+      <div>{selectedButtonSignUp ? <SignUpForm /> : <LoginForm />}</div>
       <div>
         <div onClick={changeFormToLoginForm}>Sign up</div>
         <div onClick={changeFormToSignUpForm}>Login</div>

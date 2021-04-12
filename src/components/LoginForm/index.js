@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 
 const LoginForm = ({ email, password, changeField }) => (
@@ -20,6 +21,15 @@ const LoginForm = ({ email, password, changeField }) => (
     <button type="submit">Connection</button>
   </div>
 );
-LoginForm.propTypes = {};
+
+LoginForm.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeField: PropTypes.func,
+};
+
+LoginForm.defaultProps = {
+  changeField: () => {},
+};
 
 export default LoginForm;
