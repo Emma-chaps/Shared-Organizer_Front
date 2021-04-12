@@ -7,8 +7,8 @@ export default function() {
     <footer>
       <nav className="navbar">
         <ul>
-          <a href="#"><li className="navbar__list">Contact</li></a>
-          <a href="#"><li className="navbar__list">About Us</li></a>
+          <a className="navbar__list" href="#"><li>Contact</li></a>
+          <a className="navbar__list" href="#"><li>About Us</li></a>
         </ul>
       </nav>
     </footer>
