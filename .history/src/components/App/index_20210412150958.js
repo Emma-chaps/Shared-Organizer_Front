@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import NotFound from 'Not';
 
 // == Import
 import './styles.scss';
