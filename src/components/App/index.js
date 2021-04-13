@@ -21,7 +21,7 @@ const App = ({ rehydrate }) => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/dashboard">
+        <Route path="/dashboard" exact>
           <Dashboard />
         </Route>
         <Route>

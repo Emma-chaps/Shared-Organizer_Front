@@ -20,13 +20,19 @@ export const setUserFieldSignUpValue = (name, value) => ({
   value,
 });
 
+export const LOGIN = 'LOGIN';
+
+export const SUBMIT_SIGN_UP = 'SUBMIT_SIGN_UP';
+
+export const submitSignUp = () => ({
+  type: SUBMIT_SIGN_UP,
+});
+
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 
 export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
-
-export const LOGIN = 'LOGIN';
 
 export const login = (token) => ({
   type: LOGIN,
