@@ -7,10 +7,10 @@ const Home = () => {
   const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
 
   const changeFormToLoginForm = () => {
-    setSelectedButtonSignUp(true);
+    setSelectedButtonSignUp(false);
   };
   const changeFormToSignUpForm = () => {
-    setSelectedButtonSignUp(false);
+    setSelectedButtonSignUp(true);
   };
 
   return (
@@ -21,8 +21,8 @@ const Home = () => {
       </div>
       <div>{selectedButtonSignUp ? <SignUpForm /> : <LoginForm />}</div>
       <div>
-        <div onClick={changeFormToLoginForm}>Sign up</div>
-        <div onClick={changeFormToSignUpForm}>Login</div>
+        <div onClick={changeFormToSignUpForm}>Sign up</div>
+        <div onClick={changeFormToLoginForm}>Login</div>
       </div>
     </div>
   );

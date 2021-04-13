@@ -1,6 +1,11 @@
 import api from 'src/api';
 
-import { REHYDRATE, SUBMIT_LOGIN, login } from 'src/actions/user';
+import {
+  REHYDRATE,
+  SUBMIT_SIGN_UP,
+  SUBMIT_LOGIN,
+  login,
+} from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -9,6 +14,33 @@ export default (store) => (next) => (action) => {
       if (token) {
         store.dispatch(login(token));
       }
+      return next(action);
+    }
+    case SUBMIT_SIGN_UP: {
+      const {
+        email,
+        password,
+        firstname,
+        groupName,
+      } = store.getState().user.signup;
+      api
+        .post('/signup', {
+          email,
+          password,
+          firstname,
+          groupName,
+        })
+        .then((result) => result.data)
+        .then(({ created, token }) => {
+          if (created) {
+            store.dispatch(login(token));
+          } else {
+            //add errors messages
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       return next(action);
     }
     case SUBMIT_LOGIN: {

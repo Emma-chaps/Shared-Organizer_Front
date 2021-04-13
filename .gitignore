@@ -11,5 +11,5 @@ INSTALL.md
 .eslintignore
 .eslintrc
 .prettierrc
-
+.vscode
 .env
