@@ -1,3 +1,9 @@
+export const REHYDRATE = 'REHYDRATE';
+
+export const rehydrate = () => ({
+  type: REHYDRATE,
+});
+
 export const SET_USER_FIELD_LOGIN_VALUE = 'SET_USER_FIELD_LOGIN_VALUE';
 
 export const setUserFieldLoginValue = (name, value) => ({

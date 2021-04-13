@@ -1,23 +1,30 @@
 import api from 'src/api';
 
-import { SUBMIT_LOGIN, login } from 'src/actions/user';
+import { REHYDRATE, SUBMIT_LOGIN, login } from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    case REHYDRATE: {
+      const token = localStorage.getItem('jwtoken');
+      if (token) {
+        store.dispatch(login(token));
+      }
+      return next(action);
+    }
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().user.login;
-      console.log(email, password);
       api
         .post('/login', {
           email,
           password,
         })
         .then((result) => result.data)
-        .then(({ error, token }) => {
-          if (error.length < 1) {
+        .then(({ connected, token }) => {
+          if (connected) {
             localStorage.setItem(`jwtoken`, token);
-          } else {
             store.dispatch(login(token));
+          } else {
+            //add errors messages
           }
         })
         .catch((error) => {
