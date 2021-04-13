@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Import
-import Footer from './Footer';
+import Footer from '../Footer';
 import './styles.scss';
 
 // == Composant
