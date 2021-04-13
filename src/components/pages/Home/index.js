@@ -9,7 +9,6 @@ const Home = () => {
   const changeFormToLoginForm = () => {
     setSelectedButtonSignUp(true);
   };
-
   const changeFormToSignUpForm = () => {
     setSelectedButtonSignUp(false);
   };
