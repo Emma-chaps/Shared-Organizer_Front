@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SignUpForm from 'src/containers/SignUpForm';
-import LoginForm from 'src/containers/LoginForm';
+import SignUpForm from 'src/containers/forms/SignUpForm';
+import LoginForm from 'src/containers/forms/LoginForm';
 
 const Home = () => {
   //  changes the display of the form according to the selected button

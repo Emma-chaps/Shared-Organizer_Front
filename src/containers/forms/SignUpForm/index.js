@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LoginForm from 'src/components/SignUpForm';
+import LoginForm from 'src/components/forms/SignUpForm';
 import { setUserFieldSignUpValue } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
