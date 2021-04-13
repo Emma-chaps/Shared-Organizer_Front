@@ -13,3 +13,16 @@ export const setUserFieldSignUpValue = (name, value) => ({
   name,
   value,
 });
+
+export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
+
+export const submitLogin = () => ({
+  type: SUBMIT_LOGIN,
+});
+
+export const LOGIN = 'LOGIN';
+
+export const login = (token) => ({
+  type: LOGIN,
+  token,
+});
