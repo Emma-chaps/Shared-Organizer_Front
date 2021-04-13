@@ -3,9 +3,7 @@ import App from 'src/components/App';
 
 import { rehydrate } from 'src/actions/user';
 
-const mapStateToProps = (state) => ({
-  logged: state.user.login.logged,
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   rehydrate: () => dispatch(rehydrate()),

@@ -1,7 +1,11 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Home from 'src/components/pages/Home';
+import Home from 'src/containers/pages/Home';
+import Dashboard from 'src/components/pages/Dashboard';
+
+import NotFound from 'src/components/pages/NotFound';
+import { Switch, Route } from 'react-router-dom';
 
 // == Import
 import './styles.scss';
@@ -13,8 +17,17 @@ const App = ({ rehydrate }) => {
   }, []);
   return (
     <div className="app">
-      <h1>Composant : App</h1>
-      <Home />
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
     </div>
   );
 };
