@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
+import { Redirect } from 'react-router';
 
-const Home = () => {
+const Home = ({ logged }) => {
   //  changes the display of the form according to the selected button
   const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
+
+  if (logged) {
+    return <Redirect to="/dashboard" />;
+  }
 
   const changeFormToLoginForm = () => {
     setSelectedButtonSignUp(false);
