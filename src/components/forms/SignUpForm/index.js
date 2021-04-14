@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
+import './style.scss';
+
 const SignUpForm = ({
   email,
   password,
@@ -45,7 +47,7 @@ const SignUpForm = ({
           value={firstname}
           onChange={changeField}
         />
-        <button type="submit">Create group</button>
+        <button className="buttonSign" type="submit">Create group</button>
       </form>
     </div>
   );
