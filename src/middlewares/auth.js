@@ -1,16 +1,16 @@
-import api from 'src/api';
+import api from "src/api";
 
 import {
   REHYDRATE,
   SUBMIT_SIGN_UP,
   SUBMIT_LOGIN,
   login,
-} from 'src/actions/user';
+} from "src/actions/user";
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case REHYDRATE: {
-      const token = localStorage.getItem('jwtoken');
+      const token = localStorage.getItem("jwtoken");
       if (token) {
         store.dispatch(login(token));
       }
@@ -22,15 +22,21 @@ export default (store) => (next) => (action) => {
         password,
         firstname,
         groupName,
+        icon,
       } = store.getState().user.signup;
+      console.log(email, password, firstname, groupName, icon);
       api
-        .post('/signup', {
+        .post("/signup", {
           email,
           password,
           firstname,
           groupName,
+          icon,
         })
-        .then((result) => result.data)
+        .then((result) => {
+          console.log(result.data);
+          return result.data;
+        })
         .then(({ created, token }) => {
           if (created) {
             localStorage.setItem(`jwtoken`, token);
@@ -47,7 +53,7 @@ export default (store) => (next) => (action) => {
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().user.login;
       api
-        .post('/login', {
+        .post("/login", {
           email,
           password,
         })

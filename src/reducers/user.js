@@ -2,20 +2,22 @@ import {
   SET_USER_FIELD_LOGIN_VALUE,
   SET_USER_FIELD_SIGN_UP_VALUE,
   LOGIN,
-} from 'src/actions/user';
+  SELECT_ICON,
+} from "src/actions/user";
 
 const initialState = {
   login: {
-    email: '',
-    password: '',
-    token: '',
+    email: "",
+    password: "",
+    token: "",
     logged: false,
   },
   signup: {
-    email: '',
-    password: '',
-    groupName: '',
-    firstname: '',
+    email: "",
+    password: "",
+    groupName: "",
+    firstname: "",
+    icon: "",
   },
 };
 
@@ -44,6 +46,14 @@ export default (state = initialState, action = {}) => {
           ...state.login,
           token: action.token,
           logged: true,
+        },
+      };
+    case SELECT_ICON:
+      return {
+        ...state,
+        signup: {
+          ...state.signup,
+          icon: action.name,
         },
       };
     default:
