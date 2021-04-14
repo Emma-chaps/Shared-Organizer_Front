@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './style.scss'; 
+
 const Field = ({ type, name, placeholder, value, onChange }) => {
   const handleChange = (event) => {
     onChange(event.target.value, name);
@@ -9,6 +11,7 @@ const Field = ({ type, name, placeholder, value, onChange }) => {
     <div>
       <label htmlFor={name}>
         <input
+          className="field"
           id={name}
           type={type}
           name={name}
