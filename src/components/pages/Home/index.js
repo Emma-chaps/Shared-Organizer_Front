@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
-import { Redirect } from 'react-router';
+import './styles.scss';
 
 const Home = ({ logged }) => {
   //  changes the display of the form according to the selected button
@@ -31,6 +33,14 @@ const Home = ({ logged }) => {
       </div>
     </div>
   );
+};
+
+Home.propTypes = {
+  logged: PropTypes.bool,
+};
+
+Home.defaultProps = {
+  logged: false,
 };
 
 export default Home;
