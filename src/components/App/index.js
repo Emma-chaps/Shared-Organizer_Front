@@ -5,12 +5,11 @@ import Home from 'src/containers/pages/Home';
 import Header from 'src/components/pages/Header';
 import Dashboard from 'src/components/pages/Dashboard';
 import Footer from 'src/components/pages/Footer';
-
-
 import NotFound from 'src/components/pages/NotFound';
 import { Switch, Route } from 'react-router-dom';
 
-// == Import
+import Footer from '../Footer';
+
 import './styles.scss';
 
 // == Composant
