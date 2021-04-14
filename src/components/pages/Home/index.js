@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
-import './styles.scss';
 
 import './styles.scss';
+import Logo_FO from './Logo_FO.png'
 
 const Home = ({ logged }) => {
   //  changes the display of the form according to the selected button
@@ -25,7 +25,8 @@ const Home = ({ logged }) => {
   return (
     <div className='log'>
       <div >
-        <h1 className='title'>Family Organizer LOGO</h1>
+        <img src={Logo_FO} alt="Logo Family Orgenazer" />
+        <h1 className='title'>Family Organizer</h1>
         <h2 className="how">How it works ?</h2>
       </div>
       <div className='form'>
