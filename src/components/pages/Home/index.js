@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
-import './styles.scss';
 
 import './styles.scss';
 

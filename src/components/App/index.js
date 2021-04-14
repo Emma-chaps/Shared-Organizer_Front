@@ -32,7 +32,9 @@ const App = ({ rehydrate }) => {
           <NotFound />
         </Route>
       </Switch>
-      <Footer />
+
+      < Footer />
+
     </div>
   );
 };
