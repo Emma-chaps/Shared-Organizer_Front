@@ -32,7 +32,7 @@
         font-size:600;
     }
     .button {
-        font-size: 1.25em;
+        font-size: 1em;
         padding:0.75rem;
         background-color: rgba(0, 0, 0, 0.20);
         border: none;
@@ -40,10 +40,10 @@
         border-radius: 2rem;
         min-width:9rem;
         color:white;
+        font-family: 'Aquatico', sans-serif;
     }
     img {
         transform:translatey(+10%);
-
     }
 
     h1 {
