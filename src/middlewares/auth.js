@@ -33,6 +33,7 @@ export default (store) => (next) => (action) => {
         .then((result) => result.data)
         .then(({ created, token }) => {
           if (created) {
+            localStorage.setItem(`jwtoken`, token);
             store.dispatch(login(token));
           } else {
             //add errors messages
