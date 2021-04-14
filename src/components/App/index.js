@@ -8,8 +8,6 @@ import Footer from 'src/components/pages/Footer';
 import NotFound from 'src/components/pages/NotFound';
 import { Switch, Route } from 'react-router-dom';
 
-import Footer from '../Footer';
-
 import './styles.scss';
 
 // == Composant
@@ -31,9 +29,7 @@ const App = ({ rehydrate }) => {
           <NotFound />
         </Route>
       </Switch>
-
-      < Footer />
-
+      <Footer />
     </div>
   );
 };

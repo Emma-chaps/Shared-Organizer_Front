@@ -1,6 +1,7 @@
 @use 'reset';
 @use 'vars';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
+@import url('http://fonts.cdnfonts.com/css/aquatico');
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -10,6 +11,7 @@ body {
   background-position: center center;
   background-attachment: fixed;
   background-color: #464646;
+  overflow-y: hidden; 
 }
 
 /* 
