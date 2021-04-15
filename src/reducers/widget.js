@@ -1,23 +1,28 @@
+import { SET_WIDGET_FIELD_VALUE } from 'src/actions/widget';
+
 const initialState = {
   widgetCreation: {
-    title: 'XXX',
-    descritpion: 'XXX',
+    title: '',
+    description: '',
     familyMembers: [],
     label: '',
-    date:'',
+    date: '',
     listSyle: '',
     fields: [],
-  }
+  },
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case :
+    case SET_WIDGET_FIELD_VALUE:
       return {
         ...state,
-          ,
-      }
-    default: 
+        widgetCreation: {
+          ...state.widgetCreation,
+          [action.name]: action.value,
+        },
+      };
+    default:
       return state;
   }
 };

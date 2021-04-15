@@ -3,21 +3,21 @@ import {
   SET_USER_FIELD_SIGN_UP_VALUE,
   LOGIN,
   SELECT_ICON,
-} from "src/actions/user";
+} from 'src/actions/user';
 
 const initialState = {
   login: {
-    email: "",
-    password: "",
-    token: "",
+    email: '',
+    password: '',
+    token: '',
     logged: false,
   },
   signup: {
-    email: "",
-    password: "",
-    groupName: "",
-    firstname: "",
-    icon: "",
+    email: '',
+    password: '',
+    groupName: '',
+    firstname: '',
+    icon: '',
   },
 };
 

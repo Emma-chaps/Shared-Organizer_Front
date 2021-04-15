@@ -10,7 +10,7 @@ import Modal from 'src/components/Modal';
 import { Switch, Route } from 'react-router-dom';
 
 import './styles.scss';
-import WidgetCreationForm from '../forms/WidgetCreationForm';
+import WidgetCreationForm from '../../containers/forms/WidgetCreationForm';
 
 // == Composant
 const App = ({ rehydrate }) => {

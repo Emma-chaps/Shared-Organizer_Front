@@ -8,7 +8,12 @@ import { BsCheckBox, BsListUl } from 'react-icons/bs';
 import { GiKnifeFork, GiSoccerBall, GiHealthNormal } from 'react-icons/gi';
 import './styles.scss';
 
-const WidgetCreationForm = ({ widgetTitle, changeField, widgetListField }) => {
+const WidgetCreationForm = ({
+  widgetTitle,
+  changeField,
+  widgetListField,
+  widgetDescription,
+}) => {
   const [displayDateInput, setDisplayDateInput] = useState(false);
   const [displayFields, setDisplayFields] = useState(false);
   const [selectedButton, setSelectedButton] = useState(false);
@@ -58,16 +63,16 @@ const WidgetCreationForm = ({ widgetTitle, changeField, widgetListField }) => {
         placeholder="add a title"
         value={widgetTitle}
         onChange={changeField}
-        className="form__title"
+        className="form__widget form__widget-title"
       />
 
       <Field
         name="description"
         type="text"
         placeholder="optional: add a description"
-        value={widgetTitle}
+        value={widgetDescription}
         onChange={changeField}
-        className="form__description"
+        className="form__widget form__widget-description"
       />
 
       <div className="form__family">
@@ -108,7 +113,11 @@ const WidgetCreationForm = ({ widgetTitle, changeField, widgetListField }) => {
       </div>
 
       <div className="form__date">
-        <button className="form__date--button" onClick={handleDisplayDate}>
+        <button
+          type="button"
+          className="form__date--button"
+          onClick={handleDisplayDate}
+        >
           Assign a date?
         </button>
         <input
@@ -122,16 +131,18 @@ const WidgetCreationForm = ({ widgetTitle, changeField, widgetListField }) => {
 
       <div className="form__list">
         <h3 className="form__subtitle form__list__title">
-          If you wish a list, select the style
+          If you wish to add a list, select the list type
         </h3>
 
         <button
+          type="button"
           className="form__list-styles--button"
           onClick={handleDisplayFields}
         >
           <BsCheckBox />
         </button>
         <button
+          type="button"
           className="form__list-styles--button"
           onClick={handleDisplayFields}
         >
@@ -145,15 +156,26 @@ const WidgetCreationForm = ({ widgetTitle, changeField, widgetListField }) => {
             placeholder="Add a list field"
             value={widgetListField}
             onChange={changeField}
-            className="form__list--addField"
+            className="form__list--add-field"
           />
         </div>
       </div>
 
-      <button className="form__publish" onSubmit={handleSubmit}>
-        Publish
-      </button>
-      <button className="form--delete-list">Delete list</button>
+      <div className="form__submit">
+        <button
+          type="button"
+          className="form__submit__publish form__submit__button"
+          onSubmit={handleSubmit}
+        >
+          Publish
+        </button>
+        <button
+          type="button"
+          className="form__submit--delete-list form__submit__button"
+        >
+          Delete list
+        </button>
+      </div>
     </form>
   );
 };
@@ -163,6 +185,7 @@ WidgetCreationForm.propTypes = {
   changeField: PropTypes.func,
   familyMembers: PropTypes.array,
   widgetListField: PropTypes.string,
+  widgetDescription: PropTypes.string,
 };
 
 WidgetCreationForm.defaultProps = {
@@ -170,6 +193,7 @@ WidgetCreationForm.defaultProps = {
   changeField: () => {},
   familyMembers: [],
   widgetListField: '',
+  widgetDescription: '',
 };
 
 export default WidgetCreationForm;

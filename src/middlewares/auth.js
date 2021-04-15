@@ -1,16 +1,16 @@
-import api from "src/api";
+import api from 'src/api';
 
 import {
   REHYDRATE,
   SUBMIT_SIGN_UP,
   SUBMIT_LOGIN,
   login,
-} from "src/actions/user";
+} from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case REHYDRATE: {
-      const token = localStorage.getItem("jwtoken");
+      const token = localStorage.getItem('jwtoken');
       if (token) {
         store.dispatch(login(token));
       }
@@ -26,7 +26,7 @@ export default (store) => (next) => (action) => {
       } = store.getState().user.signup;
       console.log(email, password, firstname, groupName, icon);
       api
-        .post("/signup", {
+        .post('/signup', {
           email,
           password,
           firstname,
@@ -39,10 +39,10 @@ export default (store) => (next) => (action) => {
         })
         .then(({ created, token }) => {
           if (created) {
-            localStorage.setItem(`jwtoken`, token);
+            localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
           } else {
-            //add errors messages
+            // add errors messages
           }
         })
         .catch((error) => {
@@ -53,17 +53,17 @@ export default (store) => (next) => (action) => {
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().user.login;
       api
-        .post("/login", {
+        .post('/login', {
           email,
           password,
         })
         .then((result) => result.data)
         .then(({ connected, token }) => {
           if (connected) {
-            localStorage.setItem(`jwtoken`, token);
+            localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
           } else {
-            //add errors messages
+            // add errors messages
           }
         })
         .catch((error) => {
