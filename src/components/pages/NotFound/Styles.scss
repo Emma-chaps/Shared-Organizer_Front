@@ -1,0 +1,26 @@
+
+@import url('http://fonts.cdnfonts.com/css/aquatico');
+
+.error {
+
+    &__title {
+        color: white;
+        font-family: 'Aquatico', sans-serif;
+        font-size: 3em;
+        // position: relative;
+
+        // top: 140px; left: 40px;
+       transform:translatey(2500%);
+    }
+    &__image {
+      
+    background-image: url('./404.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: #464646;
+  overflow-y: hidden; 
+    }
+
+}
