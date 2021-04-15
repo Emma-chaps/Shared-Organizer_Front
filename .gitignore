@@ -12,4 +12,5 @@ INSTALL.md
 .eslintrc
 .prettierrc
 .vscode
+.history
 .env

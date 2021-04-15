@@ -1,14 +1,14 @@
 // == Import npm
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Home from 'src/containers/pages/Home';
-import Dashboard from 'src/components/pages/Dashboard';
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import Home from "src/containers/pages/Home";
+import Header from "src/components/Header";
+import Dashboard from "src/components/pages/Dashboard";
+import Footer from "src/components/Footer";
+import NotFound from "src/components/pages/NotFound";
+import { Switch, Route } from "react-router-dom";
 
-import NotFound from 'src/components/pages/NotFound';
-import { Switch, Route } from 'react-router-dom';
-
-// == Import
-import './styles.scss';
+import "./styles.scss";
 
 // == Composant
 const App = ({ rehydrate }) => {
@@ -22,12 +22,14 @@ const App = ({ rehydrate }) => {
           <Home />
         </Route>
         <Route path="/dashboard" exact>
+          <Header />
           <Dashboard />
         </Route>
         <Route>
           <NotFound />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 };

@@ -1,8 +1,17 @@
 @use 'reset';
 @use 'vars';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
+@import url('http://fonts.cdnfonts.com/css/aquatico');
 
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background-image: url("https://images.pexels.com/photos/1319572/pexels-photo-1319572.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: #464646;
+  overflow-y: hidden; 
 }
 
 /* 

@@ -1,6 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Field from 'src/components/forms/Field';
+import React from "react";
+import PropTypes from "prop-types";
+import Field from "src/components/forms/Field";
+import { FaUserAlt } from "react-icons/fa";
+
+import "./style.scss";
 
 const SignUpForm = ({
   email,
@@ -9,11 +12,19 @@ const SignUpForm = ({
   firstname,
   changeField,
   handleSignUp,
+  selectedIcon,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSignUp();
   };
+
+  const handleClick = (event) => {
+    const icon = event.target.dataset.icon;
+    console.log(icon);
+    selectedIcon(icon);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -45,7 +56,16 @@ const SignUpForm = ({
           value={firstname}
           onChange={changeField}
         />
-        <button type="submit">Create group</button>
+        <div>
+          <FaUserAlt
+            className="icon"
+            data-icon="FaUserAlt"
+            onClick={handleClick}
+          />
+        </div>
+        <button className="buttonSign" type="submit">
+          Create group
+        </button>
       </form>
     </div>
   );
@@ -58,11 +78,13 @@ SignUpForm.propTypes = {
   firstname: PropTypes.string.isRequired,
   changeField: PropTypes.func,
   handleSignUp: PropTypes.func,
+  selectedIcon: PropTypes.func,
 };
 
 SignUpForm.defaultProps = {
   changeField: () => {},
   handleSignUp: () => {},
+  selectedIcon: () => {},
 };
 
 export default SignUpForm;
