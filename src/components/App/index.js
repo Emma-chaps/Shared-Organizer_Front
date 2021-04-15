@@ -26,6 +26,7 @@ const App = ({ rehydrate }) => {
           <Dashboard />
         </Route>
         <Route>
+          <Header />
           <NotFound />
         </Route>
       </Switch>
