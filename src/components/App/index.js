@@ -30,6 +30,7 @@ const App = ({ rehydrate }) => {
           <FamilySettings />
         </Route>
         <Route>
+          <Header />
           <NotFound />
         </Route>
       </Switch>
