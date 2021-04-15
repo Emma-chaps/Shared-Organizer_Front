@@ -8,8 +8,7 @@ yarn-error.log
 
 INSTALL.md
 
-.eslintignore
-.eslintrc
+
 .prettierrc
 .vscode
 .history

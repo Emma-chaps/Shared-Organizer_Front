@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Redirect } from "react-router";
-import SignUpForm from "src/containers/forms/SignUpForm";
-import LoginForm from "src/containers/forms/LoginForm";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
+import SignUpForm from 'src/containers/forms/SignUpForm';
+import LoginForm from 'src/containers/forms/LoginForm';
 
-import "./styles.scss";
-import Logo_FO from "./Logo_FO.png";
+import './styles.scss';
+import Logo_FO from './Logo_FO.png';
 
 const Home = ({ logged }) => {
   //  changes the display of the form according to the selected button
