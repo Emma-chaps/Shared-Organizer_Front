@@ -6,7 +6,11 @@ import classNames from 'classnames';
 
 const Modal = ({ hideModal, children }) => {
   const classes = classNames('modal', { 'modal--hidden': hideModal });
-  return <div className={classes}>{children}</div>;
+  return (
+    <div className={classes}>
+      <div className="modal__content">{children}</div>
+    </div>
+  );
 };
 
 Modal.propTypes = {
