@@ -13,13 +13,6 @@ import { Switch, Route } from 'react-router-dom';
 import './styles.scss';
 import WidgetCreationForm from '../../containers/forms/WidgetCreationForm';
 
-import FamilySettings from 'src/components/pages/FamilySettings';
-
-
-
-
-
-
 // == Composant
 const App = ({ rehydrate }) => {
   useEffect(() => {
@@ -40,10 +33,9 @@ const App = ({ rehydrate }) => {
           <Modal hideModal={false}>
             <WidgetCreationForm />
           </Modal>
-</Route>
+        </Route>
         <Route path="/family-settings" exact>
           <FamilySettings />
-
         </Route>
         <Route>
           <Header />

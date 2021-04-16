@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Field = ({ type, name, placeholder, value, onChange, className }) => {
+const Field = ({ type, name, placeholder, value, onChange }) => {
   const handleChange = (event) => {
     onChange(event.target.value, name);
   };
@@ -17,7 +17,6 @@ const Field = ({ type, name, placeholder, value, onChange, className }) => {
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
-          className={className}
         />
       </label>
     </div>
@@ -30,12 +29,10 @@ Field.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
 };
 
 Field.defaultProps = {
   placeholder: '',
-  className: PropTypes.string,
 };
 
 export default Field;
