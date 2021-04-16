@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeField: (name, value) => dispatch(setUserFieldSignUpValue(name, value)),
+  changeField: (value, name) => dispatch(setUserFieldSignUpValue(name, value)),
   handleSignUp: () => dispatch(submitSignUp()),
   selectedIcon: (icon) => dispatch(selectedIcon(icon)),
 });

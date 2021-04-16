@@ -1,10 +1,10 @@
-export const REHYDRATE = "REHYDRATE";
+export const REHYDRATE = 'REHYDRATE';
 
 export const rehydrate = () => ({
   type: REHYDRATE,
 });
 
-export const SET_USER_FIELD_LOGIN_VALUE = "SET_USER_FIELD_LOGIN_VALUE";
+export const SET_USER_FIELD_LOGIN_VALUE = 'SET_USER_FIELD_LOGIN_VALUE';
 
 export const setUserFieldLoginValue = (name, value) => ({
   type: SET_USER_FIELD_LOGIN_VALUE,
@@ -12,7 +12,7 @@ export const setUserFieldLoginValue = (name, value) => ({
   value,
 });
 
-export const SET_USER_FIELD_SIGN_UP_VALUE = "SET_USER_FIELD_SIGN_UP_VALUE";
+export const SET_USER_FIELD_SIGN_UP_VALUE = 'SET_USER_FIELD_SIGN_UP_VALUE';
 
 export const setUserFieldSignUpValue = (name, value) => ({
   type: SET_USER_FIELD_SIGN_UP_VALUE,
@@ -20,15 +20,15 @@ export const setUserFieldSignUpValue = (name, value) => ({
   value,
 });
 
-export const LOGIN = "LOGIN";
+export const LOGIN = 'LOGIN';
 
-export const SUBMIT_SIGN_UP = "SUBMIT_SIGN_UP";
+export const SUBMIT_SIGN_UP = 'SUBMIT_SIGN_UP';
 
 export const submitSignUp = () => ({
   type: SUBMIT_SIGN_UP,
 });
 
-export const SUBMIT_LOGIN = "SUBMIT_LOGIN";
+export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 
 export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
@@ -39,9 +39,23 @@ export const login = (token) => ({
   token,
 });
 
-export const SELECT_ICON = "SELECT_ICON";
+export const SELECT_ICON = 'SELECT_ICON';
 
 export const selectedIcon = (name) => ({
   type: SELECT_ICON,
+  name,
+});
+
+export const FETCH_FAMILY_DATA = 'FETCH_FAMILY_DATA';
+
+export const fetchFamilyData = () => ({
+  type: FETCH_FAMILY_DATA,
+});
+
+export const SET_FAMILY_DATA = 'SET_FAMILY_DATA';
+
+export const setFamilyData = (members, name) => ({
+  type: SET_FAMILY_DATA,
+  members,
   name,
 });
