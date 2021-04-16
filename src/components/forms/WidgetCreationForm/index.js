@@ -4,28 +4,24 @@ import classNames from 'classnames';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt, FaHome } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
-import { BsCheckBox, BsListUl } from 'react-icons/bs';
+
 import { GiKnifeFork, GiSoccerBall, GiHealthNormal } from 'react-icons/gi';
 import './styles.scss';
+import ListSection from './ListSection';
 
 const WidgetCreationForm = ({
   widgetTitle,
   changeField,
+  changeTextarea,
   widgetListField,
   widgetDescription,
 }) => {
-  const [displayDateInput, setDisplayDateInput] = useState(false);
-  const [displayFields, setDisplayFields] = useState(false);
+  const [hideDateInput, setHideDateInput] = useState(true);
+  const [displayListEdit, setDisplayListEdit] = useState(false);
   const [selectedButton, setSelectedButton] = useState(false);
 
   const dateClasses = classNames('form__date--input', {
-    'form__date--input--hidden': displayDateInput,
-  });
-  const fieldsClasses = classNames('form__list--display', {
-    'form__list--display-none': displayFields,
-  });
-  const selectedButtonClasses = classNames('form__list-styles--button', {
-    'form__list-styles--button--selected': selectedButton,
+    'form__date--input--hidden': hideDateInput,
   });
 
   const handleSubmit = (event) => {
@@ -33,13 +29,11 @@ const WidgetCreationForm = ({
   };
 
   const handleDisplayDate = () => {
-    setDisplayDateInput(!displayDateInput);
+    setHideDateInput(!hideDateInput);
   };
 
-  const handleDisplayFields = (event) => {
-    setDisplayFields(!displayFields);
-    event.currentTarget.classList.toggle('selected');
-    console.log('event.target:', event.currentTarget.className);
+  const handledisplayListEdit = () => {
+    setDisplayListEdit(!displayListEdit);
   };
 
   const familyMembers = [
@@ -52,6 +46,12 @@ const WidgetCreationForm = ({
       firstname: 'Anne',
     },
   ];
+  console.log(widgetDescription);
+
+  const getTextareaValue = (event) => {
+    const { value } = event.target;
+    changeTextarea(value);
+  };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -66,12 +66,11 @@ const WidgetCreationForm = ({
         className="form__widget form__widget-title"
       />
 
-      <Field
-        name="description"
-        type="text"
+      <textarea
         placeholder="optional: add a description"
         value={widgetDescription}
-        onChange={changeField}
+        onChange={getTextareaValue}
+        name="description"
         className="form__widget form__widget-description"
       />
 
@@ -131,34 +130,17 @@ const WidgetCreationForm = ({
 
       <div className="form__list">
         <h3 className="form__subtitle form__list__title">
-          If you wish to add a list, select the list type
+          Would you like to add a list ?
         </h3>
-
-        <button
-          type="button"
-          className="form__list-styles--button"
-          onClick={handleDisplayFields}
-        >
-          <BsCheckBox />
+        <button type="button" onClick={handledisplayListEdit}>
+          Yes please!
         </button>
-        <button
-          type="button"
-          className="form__list-styles--button"
-          onClick={handleDisplayFields}
-        >
-          <BsListUl />
-        </button>
-
-        <div className={fieldsClasses}>
-          <Field
-            name="listField"
-            type="text"
-            placeholder="Add a list field"
-            value={widgetListField}
-            onChange={changeField}
-            className="form__list--add-field"
+        {displayListEdit && (
+          <ListSection
+            onChangeField={changeField}
+            widgetListField={widgetListField}
           />
-        </div>
+        )}
       </div>
 
       <div className="form__submit">

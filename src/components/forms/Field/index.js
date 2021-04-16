@@ -30,10 +30,12 @@ Field.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 Field.defaultProps = {
   placeholder: '',
+  className: PropTypes.string,
 };
 
 export default Field;
