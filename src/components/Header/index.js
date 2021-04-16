@@ -3,6 +3,7 @@ import { FaRocketchat, FaRegUserCircle } from 'react-icons/fa';
 
 import './styles.scss';
 
+
 export default function Header() {
   return (
     <div className="header">
@@ -12,6 +13,7 @@ export default function Header() {
       <div className="header__icon">
         <FaRegUserCircle />
       </div>
+
     </div>
   );
 }

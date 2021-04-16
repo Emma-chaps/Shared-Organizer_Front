@@ -7,6 +7,9 @@ Thumbs.db
 yarn-error.log
 
 
+
+
+.prettierrc
 .vscode
 .history
 .env
