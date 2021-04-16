@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import WidgetCreationForm from '../forms/WidgetCreationForm';
+
 import './styles.scss';
 import classNames from 'classnames';
 
@@ -15,6 +17,7 @@ const Modal = ({ hideModal, children }) => {
 Modal.propTypes = {
   hideModal: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+
 };
 
 export default Modal;
