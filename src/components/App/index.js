@@ -4,12 +4,21 @@ import PropTypes from 'prop-types';
 import Home from 'src/containers/pages/Home';
 import Header from 'src/components/Header';
 import Dashboard from 'src/components/pages/Dashboard';
-import FamilySettings from 'src/components/pages/FamilySettings';
+
 import Footer from 'src/components/Footer';
 import NotFound from 'src/components/pages/NotFound';
+import Modal from 'src/components/Modal';
 import { Switch, Route } from 'react-router-dom';
 
 import './styles.scss';
+import WidgetCreationForm from '../../containers/forms/WidgetCreationForm';
+
+import FamilySettings from 'src/components/pages/FamilySettings';
+
+
+
+
+
 
 // == Composant
 const App = ({ rehydrate }) => {
@@ -26,8 +35,15 @@ const App = ({ rehydrate }) => {
           <Header />
           <Dashboard />
         </Route>
+
+        <Route path="/modal" exact>
+          <Modal hideModal={false}>
+            <WidgetCreationForm />
+          </Modal>
+</Route>
         <Route path="/family-settings" exact>
           <FamilySettings />
+
         </Route>
         <Route>
           <Header />

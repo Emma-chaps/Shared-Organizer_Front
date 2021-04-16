@@ -39,10 +39,10 @@ export default (store) => (next) => (action) => {
         })
         .then(({ created, token }) => {
           if (created) {
-            localStorage.setItem(`jwtoken`, token);
+            localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
           } else {
-            //add errors messages
+            // add errors messages
           }
         })
         .catch((error) => {
@@ -60,10 +60,10 @@ export default (store) => (next) => (action) => {
         .then((result) => result.data)
         .then(({ connected, token }) => {
           if (connected) {
-            localStorage.setItem(`jwtoken`, token);
+            localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
           } else {
-            //add errors messages
+            // add errors messages
           }
         })
         .catch((error) => {
