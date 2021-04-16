@@ -1,16 +1,13 @@
 import React from 'react';
 
-import "./styles.scss";
+import './styles.scss';
 
-const Error = () => {
+const NotFound = () => {
   return (
-    <div className="error"
-        title="Erreur">
-        <h1 className="error__title">
-        "Ah ! Une erreur s'est produite."
-        </h1>
+    <div className="error" title="Erreur">
+      <h1 className="error__title">"Ah ! Une erreur s'est produite."</h1>
     </div>
   );
-}
+};
 
-export default Error;
+export default NotFound;

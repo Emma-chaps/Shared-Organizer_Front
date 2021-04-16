@@ -15,7 +15,7 @@ const FamilySettingsForm = ({ groupName, changeField }) => {
         value={groupName}
         onChange={changeField}
       />
-      <button>Save</button>
+      <button type="submit">Save</button>
     </form>
   );
 };

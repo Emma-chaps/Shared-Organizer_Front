@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Field from "src/components/forms/Field";
-import { FaUserAlt } from "react-icons/fa";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Field from 'src/components/forms/Field';
+import { FaUserAlt } from 'react-icons/fa';
 
-import "./style.scss";
+import './style.scss';
 
 const SignUpForm = ({
   email,
@@ -24,6 +24,9 @@ const SignUpForm = ({
     console.log(icon);
     selectedIcon(icon);
   };
+
+  console.log(groupName);
+  console.log('coucou');
 
   return (
     <div>

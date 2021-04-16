@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Home from 'src/containers/pages/Home';
 import Header from 'src/components/Header';
 import Dashboard from 'src/components/pages/Dashboard';
-
+import FamilySettings from 'src/containers/pages/FamilySettings';
 import Footer from 'src/components/Footer';
 import NotFound from 'src/components/pages/NotFound';
 import Modal from 'src/components/Modal';

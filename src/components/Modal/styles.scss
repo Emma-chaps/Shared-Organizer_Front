@@ -1,11 +1,10 @@
-.modal{
+.modal {
   height: 100vh;
   width: 100%;
   background-color: white;
   border-radius: 15px;
   border: black 2px solid;
   padding: 4px;
-  
   
   @media screen and (min-width: 900px) {
     position: fixed;
@@ -15,6 +14,7 @@
     left: 10%;
     top: 10vh;
   }
+
   
   @media screen and (min-width: 1500px) {
     width: 50%;
@@ -26,9 +26,8 @@
   &--hidden {
     display: none;
   }
-  
-  &__content {
+    &__content {
     height: 100%;
     overflow: auto;
   }
-}
+
