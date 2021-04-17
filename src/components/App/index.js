@@ -28,7 +28,6 @@ const App = ({ rehydrate }) => {
           <Header />
           <Dashboard />
         </Route>
-
         <Route path="/modal" exact>
           <Modal hideModal={false}>
             <WidgetCreationForm />
