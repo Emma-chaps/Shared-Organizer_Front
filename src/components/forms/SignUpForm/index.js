@@ -19,14 +19,11 @@ const SignUpForm = ({
     handleSignUp();
   };
 
-  const handleClick = (event) => {
+  const handleChange = (event) => {
     const icon = event.target.dataset.icon;
     console.log(icon);
     selectedIcon(icon);
   };
-
-  console.log(groupName);
-  console.log('coucou');
 
   return (
     <div>
@@ -63,7 +60,7 @@ const SignUpForm = ({
           <FaUserAlt
             className="icon"
             data-icon="FaUserAlt"
-            onClick={handleClick}
+            onClick={handleChange}
           />
         </div>
         <button className="buttonSign" type="submit">

@@ -12,7 +12,7 @@ function WeekNames() {
   return (
     <div className="calendar__content__days-names">
       {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((dayName) => (
-        <div className="calendar__content__weeks--day" key={dayName}>
+        <div className="calendar__content__weeks__day" key={dayName}>
           {dayName}
         </div>
       ))}
@@ -22,33 +22,21 @@ function WeekNames() {
 
 // const viewCalendar = {
 //   selectedDate: '2021-06-19',
-//   period: 'month',
 // };
 
 // const selectedDate = formatDate(viewCalendar.selectedDate);
 // console.log(selectedDate);
 
-const Calendar = () => {
-  const viewCalendar = {
-    year: 2021,
-    month: 4,
-    day: 15,
-    period: 'day',
-  };
-
+const Calendar = ({ range, date }) => {
   // converted to a date usable by date-fns
-  const selectedDate = new Date(
-    viewCalendar.year,
-    viewCalendar.month,
-    viewCalendar.day
-  );
+  const selectedDate = new Date(date.year, date.month, date.day);
 
   console.log(selectedDate);
   // call function who calls another function
   const month = takeMonth(selectedDate)();
   const week = takeWeek(selectedDate)();
 
-  if (viewCalendar.period === 'month') {
+  if (range === 'month') {
     return (
       <div className="calendar">
         <div className="calendar__header">
@@ -63,7 +51,7 @@ const Calendar = () => {
             <div className="calendar__content__weeks">
               {weeks.map((day) => (
                 <div
-                  className="calendar__content__weeks--day"
+                  className="calendar__content__weeks__day"
                   key={format(day, 'd')}
                 >
                   {format(day, 'dd')}
@@ -75,14 +63,14 @@ const Calendar = () => {
       </div>
     );
   }
-  if (viewCalendar.period === 'week') {
+  if (range === 'week') {
     return (
       <div className="calendar calendar-weeks">
         <div className="calendar__header">
           <MdDateRange className="calendar__header__day-picker" />
           <h3 className="calendar__header__title">
-            {format(selectedDate, 'wo')} Weeks : from{' '}
-            {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
+            {/* {format(selectedDate, 'wo')} Weeks :  */}
+            Weeks from {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
             {format(endOfWeek(selectedDate), 'do MMM yyyy')}
           </h3>
         </div>
@@ -91,7 +79,7 @@ const Calendar = () => {
           <div className="calendar__content__weeks">
             {week.map((day) => (
               <div
-                className="calendar__content__weeks--day"
+                className="calendar__content__weeks__day"
                 key={format(day, 'd')}
               >
                 {format(day, 'dd')}
@@ -107,7 +95,7 @@ const Calendar = () => {
       <div className="calendar__header">
         <MdDateRange className="calendar__header__day-picker" />
         <h3 className="calendar__header__title">
-          {format(selectedDate, 'EEEE do MMM yyyy')}
+          {format(selectedDate, 'EEEE do MMMM yyyy')}
         </h3>
       </div>
     </div>
