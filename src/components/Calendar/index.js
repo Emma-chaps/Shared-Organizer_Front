@@ -74,7 +74,8 @@ const Calendar = () => {
         </div>
       </div>
     );
-  } else if (viewCalendar.period === 'week') {
+  }
+  if (viewCalendar.period === 'week') {
     return (
       <div className="calendar calendar-weeks">
         <div className="calendar__header">
@@ -100,9 +101,17 @@ const Calendar = () => {
         </div>
       </div>
     );
-  } else {
-    return <div>{format(selectedDate, 'dd')}</div>;
   }
+  return (
+    <div className="calendar">
+      <div className="calendar__header">
+        <MdDateRange className="calendar__header__day-picker" />
+        <h3 className="calendar__header__title">
+          {format(selectedDate, 'EEEE do MMM yyyy')}
+        </h3>
+      </div>
+    </div>
+  );
 };
 
 export default Calendar;
