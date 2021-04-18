@@ -1,5 +1,5 @@
 import React from 'react';
-import { format } from 'date-fns';
+import { format, startOfWeek, endOfWeek } from 'date-fns';
 import {
   formatDate,
   takeMonth,
@@ -21,27 +21,28 @@ function WeekNames() {
 }
 
 // const viewCalendar = {
-//   year: 2021,
-//   month: 4,
-//   day: 15,
-//   period: 'week',
+//   selectedDate: '2021-06-19',
+//   period: 'month',
 // };
 
-// //transforme une date décomposée en une date utilisable par date-fns
-// const selectedDate = new Date(
-//   viewCalendar.year,
-//   viewCalendar.month,
-//   viewCalendar.day
-// );
+// const selectedDate = formatDate(viewCalendar.selectedDate);
 // console.log(selectedDate);
 
 const Calendar = () => {
   const viewCalendar = {
-    selectedDate: '2021-06-19',
-    period: 'month',
+    year: 2021,
+    month: 4,
+    day: 15,
+    period: 'day',
   };
 
-  const selectedDate = formatDate(viewCalendar.selectedDate);
+  // converted to a date usable by date-fns
+  const selectedDate = new Date(
+    viewCalendar.year,
+    viewCalendar.month,
+    viewCalendar.day
+  );
+
   console.log(selectedDate);
   // call function who calls another function
   const month = takeMonth(selectedDate)();
@@ -52,7 +53,9 @@ const Calendar = () => {
       <div className="calendar">
         <div className="calendar__header">
           <MdDateRange className="calendar__header__day-picker" />
-          <h3 className="calendar__header__title">Avril 2021</h3>
+          <h3 className="calendar__header__title">
+            {format(selectedDate, 'MMMM')} {format(selectedDate, 'yyyy')}
+          </h3>
         </div>
         <div className="calendar__content">
           <WeekNames />
@@ -61,7 +64,7 @@ const Calendar = () => {
               {weeks.map((day) => (
                 <div
                   className="calendar__content__weeks--day"
-                  key={format(day, 'dd')}
+                  key={format(day, 'd')}
                 >
                   {format(day, 'dd')}
                 </div>
@@ -73,12 +76,27 @@ const Calendar = () => {
     );
   } else if (viewCalendar.period === 'week') {
     return (
-      <div>
-        <WeekNames />
-        <div>
-          {week.map((day) => (
-            <div>{format(day, 'dd')}</div>
-          ))}
+      <div className="calendar calendar-weeks">
+        <div className="calendar__header">
+          <MdDateRange className="calendar__header__day-picker" />
+          <h3 className="calendar__header__title">
+            {format(selectedDate, 'wo')} Weeks : from{' '}
+            {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
+            {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+          </h3>
+        </div>
+        <div className="calendar__content">
+          <WeekNames />
+          <div className="calendar__content__weeks">
+            {week.map((day) => (
+              <div
+                className="calendar__content__weeks--day"
+                key={format(day, 'd')}
+              >
+                {format(day, 'dd')}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
