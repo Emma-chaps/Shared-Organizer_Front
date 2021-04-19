@@ -22,16 +22,15 @@ const FamilySettings = ({ fetchFamilyData, members }) => {
       <button type="submit" onClick={handleModal}>
         Add a new member
       </button>
-      <Modal hideModal={stateModal}>
-        <FamilySettingsFrom />
-      </Modal>
       {members.map((member) => (
         <div key={member.id}>
-          <span>{member.firstname}</span>
-          <span>{member.email}</span>
-          <span>Password</span>
-          <span>{member.role}</span>
-          <span>{member.icon}</span>
+          <FamilySettingsFrom
+            firstname={member.firstname}
+            email={member.email}
+            password={member.password}
+            role={member.role}
+            icon={member.icon}
+          />
         </div>
       ))}
     </div>

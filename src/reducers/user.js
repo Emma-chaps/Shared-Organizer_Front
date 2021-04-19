@@ -1,6 +1,7 @@
 import {
   SET_USER_FIELD_LOGIN_VALUE,
   SET_USER_FIELD_SIGN_UP_VALUE,
+  SET_GROUP_NAME_FIELD_VALUE,
   LOGIN,
   SELECT_ICON,
   SET_FAMILY_DATA,
@@ -21,6 +22,7 @@ const initialState = {
     icon: '',
   },
   family: {
+    groupName: '',
     members: [],
   },
 };
@@ -61,17 +63,21 @@ export default (state = initialState, action = {}) => {
         },
       };
     case SET_FAMILY_DATA: {
-      console.log(action.members);
-      console.log(action.name);
       return {
         ...state,
-        signup: {
-          ...state.signup,
-          groupName: action.name,
-        },
         family: {
           ...state.family,
+          groupName: action.name,
           members: action.members,
+        },
+      };
+    }
+    case SET_GROUP_NAME_FIELD_VALUE: {
+      return {
+        ...state,
+        family: {
+          ...state.family,
+          groupName: action.value,
         },
       };
     }
