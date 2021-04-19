@@ -9,23 +9,19 @@ export default (store) => (next) => (action) => {
     case SUBMIT_WIDGET_DATA_CREATION: {
       const {
         title,
-        listStyle,
         description,
-        color,
         date,
-        labelId,
-        fields,
+        range,
+        familyMembers,
       } = store.getState().widget.widgetCreation;
 
       api
         .post('/dashboard/widgets/create', {
           title,
-          listStyle,
           description,
-          color,
           date,
-          labelId,
-          fields,
+          range,
+          familyMembers,
         })
         .then((result) => result.data)
         .then(({ success, widget, fields: widgetFields }) => {

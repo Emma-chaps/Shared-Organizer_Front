@@ -7,14 +7,10 @@ import {
 const initialState = {
   widgetCreation: {
     title: '',
-    listStyle: '',
     description: '',
-    color: '',
     date: '',
-    labelId: '',
-    fields: [],
-    listFieldValue: '',
     familyMembers: [],
+    periodicity: '',
   },
   dashboardWidgets: [],
 };
