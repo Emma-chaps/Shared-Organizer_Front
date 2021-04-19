@@ -1,7 +1,7 @@
 import { SET_RANGE } from 'src/actions/calendar';
 
 const initialState = {
-  range: '',
+  range: 'month',
   date: {
     year: 2021,
     month: 5,

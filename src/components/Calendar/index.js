@@ -1,10 +1,6 @@
 import React from 'react';
 import { format, startOfWeek, endOfWeek } from 'date-fns';
-import {
-  formatDate,
-  takeMonth,
-  takeWeek,
-} from 'src/components/modules/calendar';
+import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
 import { MdDateRange } from 'react-icons/md';
 

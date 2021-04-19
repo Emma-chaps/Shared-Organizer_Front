@@ -59,3 +59,10 @@ export const setFamilyData = (members, name) => ({
   members,
   name,
 });
+
+export const SET_GROUP_NAME_FIELD_VALUE = 'SET_GROUP_NAME_FIELD_VALUE';
+
+export const setGroupNameFieldValue = (value) => ({
+  type: SET_GROUP_NAME_FIELD_VALUE,
+  value,
+});

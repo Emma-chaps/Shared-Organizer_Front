@@ -6,6 +6,7 @@ const FamilySettingsForm = ({ groupName, changeField }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+  console.log(groupName);
   return (
     <form onSubmit={handleSubmit}>
       <Field

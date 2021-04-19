@@ -2,7 +2,14 @@ import React from 'react';
 import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
 
-const FamilySettingsFrom = ({ firstname, email, password, changeField }) => {
+const FamilySettingsFrom = ({
+  firstname,
+  email,
+  password,
+  role,
+  icon,
+  changeField,
+}) => {
   return (
     <div>
       <form action="">

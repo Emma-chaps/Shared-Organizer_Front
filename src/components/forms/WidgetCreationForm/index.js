@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Field from 'src/components/forms/Field';
 import './styles.scss';
+import { FaUserAlt } from 'react-icons/fa';
 
 const WidgetCreationForm = ({
-  widgetTitle,
   changeField,
   changeTextarea,
-  widgetListField,
+  widgetTitle,
   widgetDescription,
+  date,
+  range,
+  members,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,16 +50,14 @@ const WidgetCreationForm = ({
         <h3 className="form__family__subtitle form__subtitle">
           Assign family members
         </h3>
-        {/* {familyMembers.length && (
-          <ul className="form__family__list">
-            {familyMembers.map((member) => (
-              <li className="form__family__list--member" key={member.id}>
-                <FaUserAlt />
-                <span>{member.firstname}</span>
-              </li>
-            ))}
-          </ul>
-        )} */}
+        <ul className="form__family__list">
+          {members.map((member) => (
+            <li className="form__family__list--member" key={member.id}>
+              <FaUserAlt />
+              <span>{member.firstname}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="form__submit">
@@ -79,19 +80,23 @@ const WidgetCreationForm = ({
 };
 
 WidgetCreationForm.propTypes = {
+  members: PropTypes.array,
+  widgetDescription: PropTypes.string,
+  date: PropTypes.string,
+  range: PropTypes.string,
   widgetTitle: PropTypes.string,
   changeField: PropTypes.func,
-  familyMembers: PropTypes.array,
-  widgetListField: PropTypes.string,
-  widgetDescription: PropTypes.string,
+  changeTextarea: PropTypes.func,
 };
 
 WidgetCreationForm.defaultProps = {
+  members: [],
+  widgetDescription: '',
+  date: '',
+  range: '',
   widgetTitle: '',
   changeField: () => {},
-  familyMembers: [],
-  widgetListField: '',
-  widgetDescription: '',
+  changeTextarea: () => {},
 };
 
 export default WidgetCreationForm;
