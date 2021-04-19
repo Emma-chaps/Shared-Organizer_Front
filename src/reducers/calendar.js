@@ -3,9 +3,9 @@ import { SET_RANGE } from 'src/actions/calendar';
 const initialState = {
   range: '',
   date: {
-    year: 2022,
-    month: 11,
-    day: 8,
+    year: 2021,
+    month: 5,
+    day: 30,
   },
 };
 

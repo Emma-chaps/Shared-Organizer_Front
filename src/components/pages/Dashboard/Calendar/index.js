@@ -29,7 +29,7 @@ function WeekNames() {
 
 const Calendar = ({ range, date }) => {
   // converted to a date usable by date-fns
-  const selectedDate = new Date(date.year, date.month, date.day);
+  const selectedDate = new Date(date.year, date.month - 1, date.day);
 
   console.log(selectedDate);
   // call function who calls another function
