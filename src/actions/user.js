@@ -66,3 +66,32 @@ export const setGroupNameFieldValue = (value) => ({
   type: SET_GROUP_NAME_FIELD_VALUE,
   value,
 });
+
+export const UPDATE_GROUP_NAME = 'UPDATE_GROUP_NAME';
+
+export const updateGroupName = () => ({
+  type: UPDATE_GROUP_NAME,
+});
+
+export const SET_GROUP_NAME = 'SET_GROUP_NAME';
+
+export const setGroupName = (groupName) => ({
+  type: SET_GROUP_NAME,
+  groupName,
+});
+
+export const SET_MEMBER_TO_CHANGE_FIELD_VALUE =
+  'SET_MEMBER_TO_CHANGE_FIELD_VALUE';
+
+export const setMemberToChangeFieldValue = (name, value) => ({
+  type: SET_MEMBER_TO_CHANGE_FIELD_VALUE,
+  name,
+  value,
+});
+
+export const COPY_MEMBER = 'COPY_MEMBER';
+
+export const copyMember = (member) => ({
+  type: COPY_MEMBER,
+  member,
+});

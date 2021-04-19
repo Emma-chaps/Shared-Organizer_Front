@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
-const FamilySettingsForm = ({ groupName, changeField }) => {
+const FamilySettingsForm = ({ groupName, changeField, updateGroupName }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    updateGroupName();
   };
-  console.log(groupName);
+
   return (
     <form onSubmit={handleSubmit}>
       <Field

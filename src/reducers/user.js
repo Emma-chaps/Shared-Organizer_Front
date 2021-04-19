@@ -5,6 +5,9 @@ import {
   LOGIN,
   SELECT_ICON,
   SET_FAMILY_DATA,
+  SET_MEMBER_TO_CHANGE_FIELD_VALUE,
+  COPY_MEMBER,
+  SET_GROUP_NAME,
 } from 'src/actions/user';
 
 const initialState = {
@@ -24,6 +27,12 @@ const initialState = {
   family: {
     groupName: '',
     members: [],
+  },
+  memberToChange: {
+    email: '',
+    firstname: '',
+    icon: '',
+    role: '',
   },
 };
 
@@ -78,6 +87,37 @@ export default (state = initialState, action = {}) => {
         family: {
           ...state.family,
           groupName: action.value,
+        },
+      };
+    }
+    case SET_MEMBER_TO_CHANGE_FIELD_VALUE: {
+      return {
+        ...state,
+        memberToChange: {
+          ...state.memberToChange,
+          [action.name]: action.value,
+        },
+      };
+    }
+    case COPY_MEMBER: {
+      return {
+        ...state,
+        memberToChange: {
+          ...state.memberToChange,
+          email: action.member.email,
+          password: '',
+          firstname: action.member.firstname,
+          icon: action.member.icon,
+          role: action.member.role,
+        },
+      };
+    }
+    case SET_GROUP_NAME: {
+      return {
+        ...state,
+        family: {
+          ...state.family,
+          groupName: action.groupName,
         },
       };
     }

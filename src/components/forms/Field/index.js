@@ -27,12 +27,13 @@ Field.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
 Field.defaultProps = {
   placeholder: '',
+  value: '',
 };
 
 export default Field;

@@ -9,7 +9,7 @@ const Dashboard = () => {
     <div>
       <DashboardMenu />
       <Calendar />
-      <Modal hideModal={false}>
+      <Modal hideModal={true}>
         <WidgetCreationForm />
       </Modal>
     </div>

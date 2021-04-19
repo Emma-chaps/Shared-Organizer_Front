@@ -1,39 +1,61 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Header from 'src/components/Header';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
 import FamilySettingsFrom from 'src/containers/forms/FamilySettingsForm';
-import Modal from 'src/components/Modal';
+import { BiPencil } from 'react-icons/bi';
 
-const FamilySettings = ({ fetchFamilyData, members }) => {
-  const [stateModal, setStateModal] = useState(true);
+const FamilySettings = ({ fetchFamilyData, members, setMemberToChange }) => {
+  const [isOpen, setOpen] = useState(false);
+  const handleChangeInputView = () => {
+    setOpen(!isOpen);
+    setMemberToChange();
+  };
+
+  const handleSubmitUpdateMember = (event) => {
+    event.preventDefault();
+  };
+
   useEffect(() => {
     fetchFamilyData();
   }, []);
-  const handleModal = () => {
-    setStateModal(false);
-  };
+
   console.log(members);
+
   return (
-    <div>
-      <h1>Family Settings</h1>
-      <FamilyNameForm />
-      <hr />
-      <h2>Member of family</h2>
-      <button type="submit" onClick={handleModal}>
-        Add a new member
-      </button>
-      {members.map((member) => (
-        <div key={member.id}>
-          <FamilySettingsFrom
-            firstname={member.firstname}
-            email={member.email}
-            password={member.password}
-            role={member.role}
-            icon={member.icon}
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <Header />
+      <div>
+        <h1>Family Settings</h1>
+        <FamilyNameForm />
+        <hr />
+        <h2>Member of family</h2>
+        <button type="submit">Add a new member</button>
+        {members.map((member) => (
+          <div key={member.id}>
+            {isOpen ? (
+              <div>
+                <form onSubmit={handleSubmitUpdateMember}>
+                  <FamilySettingsFrom member={member} />
+                  <button type="submit">Save</button>
+                </form>
+                <button type="submit" onClick={handleChangeInputView}>
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div>{member.firstname}</div>
+                <div>{member.email}</div>
+                <div>{member.role}</div>
+                <div>{member.icon}</div>
+                <BiPencil onClick={handleChangeInputView} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
