@@ -10,17 +10,18 @@ export default (store) => (next) => (action) => {
       const {
         title,
         description,
-        date,
-        range,
+        selectedDate,
         familyMembers,
       } = store.getState().widget.widgetCreation;
+      const { range, date } = store.getState().calendar;
 
       api
         .post('/dashboard/widgets/create', {
           title,
           description,
-          date,
+          selectedDate,
           range,
+          date,
           familyMembers,
         })
         .then((result) => result.data)
