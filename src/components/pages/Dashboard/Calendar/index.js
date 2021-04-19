@@ -20,21 +20,10 @@ function WeekNames() {
   );
 }
 
-// const viewCalendar = {
-//   selectedDate: '2021-06-19',
-// };
-
-// const selectedDate = formatDate(viewCalendar.selectedDate);
-// console.log(selectedDate);
-
 const Calendar = ({ range, date }) => {
-  // converted to a date usable by date-fns
-  const selectedDate = new Date(date.year, date.month - 1, date.day);
-
-  console.log(selectedDate);
   // call function who calls another function
-  const month = takeMonth(selectedDate)();
-  const week = takeWeek(selectedDate)();
+  const month = takeMonth(date)();
+  const week = takeWeek(date)();
 
   if (range === 'month') {
     return (
@@ -42,7 +31,7 @@ const Calendar = ({ range, date }) => {
         <div className="calendar__header">
           <MdDateRange className="calendar__header__day-picker" />
           <h3 className="calendar__header__title">
-            {format(selectedDate, 'MMMM')} {format(selectedDate, 'yyyy')}
+            {format(date, 'MMMM')} {format(date, 'yyyy')}
           </h3>
         </div>
         <div className="calendar__content">
@@ -69,9 +58,9 @@ const Calendar = ({ range, date }) => {
         <div className="calendar__header">
           <MdDateRange className="calendar__header__day-picker" />
           <h3 className="calendar__header__title">
-            {/* {format(selectedDate, 'wo')} Weeks :  */}
-            Weeks from {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
-            {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+            {/* {format(date, 'wo')} Weeks :  */}
+            Weeks from {format(startOfWeek(date), 'do MMM')} to{' '}
+            {format(endOfWeek(date), 'do MMM yyyy')}
           </h3>
         </div>
         <div className="calendar__content">
@@ -95,7 +84,7 @@ const Calendar = ({ range, date }) => {
       <div className="calendar__header">
         <MdDateRange className="calendar__header__day-picker" />
         <h3 className="calendar__header__title">
-          {format(selectedDate, 'EEEE do MMMM yyyy')}
+          {format(date, 'EEEE do MMMM yyyy')}
         </h3>
       </div>
     </div>

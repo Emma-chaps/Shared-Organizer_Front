@@ -8,7 +8,7 @@ const initialState = {
   widgetCreation: {
     title: '',
     description: '',
-    date: '',
+    selectedDate: '',
     familyMembers: [],
     periodicity: '',
   },
@@ -18,8 +18,6 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case SET_WIDGET_FIELD_VALUE:
-      // console.log('action.name:', action.name);
-      // console.log('action.value:', action.value);
       return {
         ...state,
         widgetCreation: {
@@ -29,7 +27,6 @@ export default (state = initialState, action = {}) => {
       };
 
     case SET_WIDGET_DESCRIPTION_VALUE:
-      console.log(action.value);
       return {
         ...state,
         widgetCreation: {

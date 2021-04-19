@@ -8,7 +8,9 @@ import {
 const mapStateToProps = (state) => ({
   widgetTitle: state.widget.widgetCreation.title,
   widgetDescription: state.widget.widgetCreation.description,
-  widgetListField: state.widget.widgetCreation.listFieldValue,
+  date: state.widget.widgetCreation.date,
+  range: state.widget.widgetCreation.range,
+  members: state.user.family.members,
 });
 
 const mapDispatchToProps = (dispatch) => ({
