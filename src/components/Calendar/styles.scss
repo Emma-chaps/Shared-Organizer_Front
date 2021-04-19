@@ -1,0 +1,16 @@
+.month {
+  border: black 3px solid;
+  width: 800px;
+  height: 700px;
+  display: flex;
+  flex-flow: row wrap;
+
+  &--day {
+    width: 100px;
+    height: 100px;
+    background-color: bisque;
+    border: black 1px solid;
+    margin: 5px;
+    border-radius: 10px;
+  }
+}

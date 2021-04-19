@@ -1,20 +1,14 @@
 import React from 'react';
-import WidgetCreationForm from '../../forms/WidgetCreationForm';
-
+import Calendar from 'src/components/Calendar';
 
 // import Footer from 'src/components/pages/Footer';< Footer />
 
-
-
 const Dashboard = () => {
-
   return (
     <div>
-      Bravo
-      <div className="widget-creation"></div>
+      <Calendar />
     </div>
   );
-
 };
 
 export default Dashboard;
