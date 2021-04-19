@@ -1,11 +1,11 @@
 import React from 'react';
-import Calendar from 'src/containers/pages/Dashboard/Calendar';
-import Menu from 'src/containers/pages/Dashboard/Menu';
-
+import Calendar from 'src/containers/Calendar';
+import DashboardMenu from 'src/containers/DashboardMenu';
+import Modal from 'src/components/Modal';
 const Dashboard = () => {
   return (
     <div>
-      <Menu />
+      <DashboardMenu />
       <Calendar />
     </div>
   );

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Calendar from 'src/components/pages/Dashboard/Calendar';
+import Calendar from 'src/components/Calendar';
 
 const mapStateToProps = (state) => ({
   range: state.calendar.range,

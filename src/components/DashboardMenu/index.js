@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FaUserAlt } from 'react-icons/fa';
 import './styles.scss';
 
-const Menu = ({ setRange }) => {
+const DashboardMenu = ({ setRange }) => {
   const onChange = (event) => {
     const value = event.target.dataset.range;
     setRange(value);
@@ -46,6 +46,6 @@ const Menu = ({ setRange }) => {
   );
 };
 
-Menu.propTypes = {};
+DashboardMenu.propTypes = {};
 
-export default Menu;
+export default DashboardMenu;
