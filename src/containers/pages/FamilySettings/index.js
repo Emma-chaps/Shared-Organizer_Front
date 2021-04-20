@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 import FamilySettings from 'src/components/pages/FamilySettings';
-import { fetchFamilyData, setMemberToChangeFieldValue } from 'src/actions/user';
-import { setInputState } from 'src/actions/settings';
+import {
+  fetchFamilyData,
+  setInputState,
+  setMemberToChangeFieldValue,
+} from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
-  initialGroupName: state.user.family.groupName,
-  members: state.user.family.members,
+  initialGroupName: state.settings.family.groupName,
+  members: state.settings.family.members,
   openedInput: state.settings.openedInput,
 });
 

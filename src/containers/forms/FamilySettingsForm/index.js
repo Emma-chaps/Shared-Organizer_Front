@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { setMemberToChangeFieldValue, copyMember } from 'src/actions/user';
+import { setMemberToChangeFieldValue, copyMember } from 'src/actions/settings';
 import FamilySettingsForm from 'src/components/forms/FamilySettingsForm';
 
 const mapStateToProps = (state) => ({
-  firstname: state.user.memberToChange.firstname,
-  email: state.user.memberToChange.email,
-  password: state.user.memberToChange.password,
-  role: state.user.memberToChange.role,
-  icon: state.user.memberToChange.icon,
+  firstname: state.settings.memberToChange.firstname,
+  email: state.settings.memberToChange.email,
+  password: state.settings.memberToChange.password,
+  role: state.settings.memberToChange.role,
+  icon: state.settings.memberToChange.icon,
 });
 
 const mapDispatchToProps = (dispatch) => ({
