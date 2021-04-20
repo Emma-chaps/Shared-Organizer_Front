@@ -26,7 +26,35 @@
   &--hidden {
     display: none;
   }
-    &__content {
+
+  &__header {
+    width: 100%;
+    text-align: right;
+    padding: 1rem;
+
+    .close {
+      border: black 3px solid;
+      border-radius: 50%;
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      position: relative;
+      cursor: pointer;
+
+      &:before {
+        content: 'X';
+        font-weight: 900;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 5px;
+        right: 7px;
+      }
+
+    }
+  }
+
+  &__content {
     height: 100%;
     overflow: auto;
   }

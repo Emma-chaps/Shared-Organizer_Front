@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Field from 'src/components/forms/Field';
 import './styles.scss';
 import { FaUserAlt } from 'react-icons/fa';
@@ -13,16 +12,30 @@ const WidgetCreationForm = ({
   date,
   range,
   members,
+  assignMember,
+  membersToAdd,
+  submitWidget,
 }) => {
+  const [errorMessage, setErrorMessage] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (membersToAdd.length && widgetTitle) {
+      setErrorMessage('');
+      submitWidget();
+    } else {
+      setErrorMessage(
+        'A widget must have a title and at least one member assigned',
+      );
+    }
   };
-
-  console.log(widgetDescription);
 
   const getTextareaValue = (event) => {
     const { value } = event.target;
     changeTextarea(value);
+  };
+
+  const handleAddMember = (event) => {
+    assignMember(event.target.id, members);
   };
 
   return (
@@ -54,25 +67,22 @@ const WidgetCreationForm = ({
           {members.map((member) => (
             <li className="form__family__list--member" key={member.id}>
               <FaUserAlt />
-              <span>{member.firstname}</span>
+              <button type="button" onClick={handleAddMember} id={member.id}>
+                add {member.firstname}
+              </button>
             </li>
           ))}
         </ul>
       </div>
 
       <div className="form__submit">
+        <span>{errorMessage}</span>
         <button
           type="button"
           className="form__submit__publish form__submit__button"
-          onSubmit={handleSubmit}
+          onClick={handleSubmit}
         >
           Publish
-        </button>
-        <button
-          type="button"
-          className="form__submit--delete-list form__submit__button"
-        >
-          Delete list
         </button>
       </div>
     </form>

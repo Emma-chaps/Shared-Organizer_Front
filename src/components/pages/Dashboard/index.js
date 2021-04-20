@@ -1,17 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
 
-const Dashboard = () => {
+const Dashboard = ({
+  getGroupData,
+  displayCreationModal,
+  showWidgetCreationModal,
+  hideWidgetCreationModal,
+}) => {
+  // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
+  const handleClick = () => {
+    showWidgetCreationModal();
+  };
+
+  useEffect(() => {
+    getGroupData();
+  }, []);
   return (
     <div>
       <DashboardMenu />
+
       <Calendar />
-      <Modal hideModal={true}>
+      <Modal
+        showModal={displayCreationModal}
+        hideModal={hideWidgetCreationModal}
+      >
         <WidgetCreationForm />
       </Modal>
+      <button type="button" onClick={handleClick}>
+        Add a Widget
+      </button>
     </div>
   );
 };
