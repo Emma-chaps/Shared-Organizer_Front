@@ -4,25 +4,32 @@ import Header from 'src/components/Header';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
 import FamilySettingsFrom from 'src/containers/forms/FamilySettingsForm';
 import { BiPencil } from 'react-icons/bi';
+import { copyMember } from '../../../actions/settings';
 
 const FamilySettings = ({
   fetchFamilyData,
   initialGroupName,
   members,
-  setMemberToChange,
+  // setMemberToChange,
   openedGroupNameInput,
-  setInputState,
+  setGroupNameInputState,
   openMembersInput,
   assignMemberToOpenInputView,
+  assignMemberToCloseInputView,
 }) => {
   const value = useRef(null);
 
   const handleOpenMemberInputView = () => {
     assignMemberToOpenInputView(value.current.dataset.firstname);
-    console.log('ici', value.current.dataset.firstname);
   };
 
-  const handleChangeInputView = (event) => {};
+  const handleCloseMemberInputView = () => {
+    assignMemberToCloseInputView(value.current.dataset.firstname);
+  };
+
+  const handleChangeGroupNameInputView = () => {
+    setGroupNameInputState();
+  };
 
   useEffect(() => {
     fetchFamilyData();
@@ -38,25 +45,32 @@ const FamilySettings = ({
         {openedGroupNameInput ? (
           <div>
             <FamilyNameForm initialGroupName={initialGroupName} />
-            <button type="button" onClick={handleChangeInputView}>
+            <button type="button" onClick={handleChangeGroupNameInputView}>
               Cancel
             </button>
           </div>
         ) : (
           <div>
             <div>{initialGroupName}</div>
-            <BiPencil onClick={handleChangeInputView} />
+            <button type="button" onClick={handleChangeGroupNameInputView}>
+              <BiPencil />
+            </button>
           </div>
         )}
         <hr />
-        <h2>Member of family</h2>
+        <h2>Group members</h2>
         <button type="button">Add a new member</button>
         {members.map((member) => (
           <div key={member.id}>
             {openMembersInput[member.firstname] ? (
               <div>
                 <FamilySettingsFrom member={member} />
-                <button type="button" onClick={handleCloseMemberInputView}>
+                <button
+                  type="button"
+                  onClick={handleCloseMemberInputView}
+                  ref={value}
+                  data-firstname={member.firstname}
+                >
                   Cancel
                 </button>
               </div>

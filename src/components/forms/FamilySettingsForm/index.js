@@ -11,6 +11,8 @@ const FamilySettingsFrom = ({
   icon,
   changeField,
   copyMember,
+  updateMember,
+  assignMemberToCloseInputView,
 }) => {
   useEffect(() => {
     copyMember(member);
@@ -18,6 +20,8 @@ const FamilySettingsFrom = ({
 
   const handleSubmitUpdateMember = (event) => {
     event.preventDefault();
+    updateMember();
+    assignMemberToCloseInputView(firstname);
   };
 
   return (

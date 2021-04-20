@@ -1,5 +1,5 @@
 import {
-  SET_INPUT_STATE,
+  SET_GROUP_NAME_INPUT_STATE,
   SET_NEW_GROUP_NAME_FIELD_VALUE,
   SET_MEMBER_TO_CHANGE_FIELD_VALUE,
   COPY_MEMBER,
@@ -8,22 +8,25 @@ import {
   SET_FAMILY_DATA,
   ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
   SET_MEMBERS_TO_EDIT,
+  ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
 } from 'src/actions/settings';
 
 const initialState = {
-  openedInput: false,
+  openedGroupNameInput: false,
+  openMembersInput: {},
   family: {
     groupName: '',
     members: [],
   },
   memberToChange: {
+    id: '',
     email: '',
     firstname: '',
+    password: '',
     icon: '',
     role: '',
   },
   groupNameToChange: '',
-  openMembersInput: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -48,6 +51,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         memberToChange: {
           ...state.memberToChange,
+          id: action.member.id,
           email: action.member.email,
           password: '',
           firstname: action.member.firstname,
@@ -71,10 +75,10 @@ export default (state = initialState, action = {}) => {
         groupNameToChange: action.groupName,
       };
     }
-    case SET_INPUT_STATE: {
+    case SET_GROUP_NAME_INPUT_STATE: {
       return {
         ...state,
-        openedInput: !state.openedInput,
+        openedGroupNameInput: !state.openedGroupNameInput,
       };
     }
     case SET_FAMILY_DATA: {
@@ -96,6 +100,15 @@ export default (state = initialState, action = {}) => {
       };
     }
     case SET_MEMBERS_TO_EDIT: {
+      return {
+        ...state,
+        openMembersInput: {
+          ...state.openMembersInput,
+          [action.firstname]: false,
+        },
+      };
+    }
+    case ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW: {
       return {
         ...state,
         openMembersInput: {

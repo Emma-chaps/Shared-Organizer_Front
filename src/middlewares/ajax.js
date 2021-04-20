@@ -5,6 +5,7 @@ import {
   UPDATE_GROUP_NAME,
   setGroupName,
   setMembersToEdit,
+  UPDATE_MEMBER,
 } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
@@ -37,6 +38,30 @@ export default (store) => (next) => (action) => {
           }
         });
       return next(action);
+    }
+    case UPDATE_MEMBER: {
+      const {
+        id,
+        firstname,
+        email,
+        password,
+        icon,
+        role,
+      } = store.getState().settings.memberToChange;
+
+      api
+        .post('/family-settings', {
+          id,
+          firstname,
+          email,
+          password,
+          icon,
+          role: Number(role),
+        })
+        .then((result) => {
+          console.log(result.data);
+        });
+      return {};
     }
     default:
       return next(action);

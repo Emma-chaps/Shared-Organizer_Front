@@ -1,7 +1,7 @@
-export const SET_INPUT_STATE = 'SET_INPUT_STATE';
+export const SET_GROUP_NAME_INPUT_STATE = 'SET_GROUP_NAME_INPUT_STATE';
 
-export const setInputState = () => ({
-  type: SET_INPUT_STATE,
+export const setGroupNameInputState = () => ({
+  type: SET_GROUP_NAME_INPUT_STATE,
 });
 
 export const SET_NEW_GROUP_NAME_FIELD_VALUE = 'SET_NEW_GROUP_NAME_FIELD_VALUE';
@@ -73,4 +73,18 @@ export const SET_MEMBERS_TO_EDIT = 'SET_MEMBERS_TO_EDIT';
 export const setMembersToEdit = (firstname) => ({
   type: SET_MEMBERS_TO_EDIT,
   firstname,
+});
+
+export const ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW =
+  'ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW';
+
+export const assignMemberToCloseInputView = (firstname) => ({
+  type: ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
+  firstname,
+});
+
+export const UPDATE_MEMBER = 'UPDATE_MEMBER';
+
+export const updateMember = () => ({
+  type: UPDATE_MEMBER,
 });

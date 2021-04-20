@@ -8,12 +8,12 @@ const FamilySettingsForm = ({
   copyGroupName,
   changeField,
   updateGroupName,
-  setInputState,
+  setGroupNameInputState,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     updateGroupName();
-    setInputState();
+    setGroupNameInputState();
   };
 
   useEffect(() => {
