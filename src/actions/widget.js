@@ -26,3 +26,23 @@ export const setWidgetToDashboard = (widget, fields) => ({
   widget,
   fields,
 });
+
+export const ASSIGN_MEMBER_TO_WIDGET = 'ASSIGN_MEMBER_TO_WIDGET';
+
+export const assignMemberToWidget = (id, members) => ({
+  type: ASSIGN_MEMBER_TO_WIDGET,
+  id,
+  members,
+});
+
+export const SHOW_CREATION_WIDGET_MODAL = 'SHOW_CREATION_WIDGET_MODAL';
+
+export const showWidgetCreationModal = () => ({
+  type: SHOW_CREATION_WIDGET_MODAL,
+});
+
+export const HIDE_WIDGET_CREATION_MODAL = 'HIDE_WIDGET_CREATION_MODAL';
+
+export const hideWidgetCreationModal = () => ({
+  type: HIDE_WIDGET_CREATION_MODAL,
+});
