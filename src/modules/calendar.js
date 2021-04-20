@@ -9,10 +9,10 @@ const {
 } = require('date-fns');
 
 // transforme une date de type '2021-04-19' en une date utilisable par date-fns
-// export const formatDate = (date) => {
-//   const selectedDate = addDays(parseISO(date), 0);
-//   return selectedDate;
-// };
+export const formatDate = (date) => {
+  const selectedDate = addDays(parseISO(date), 0);
+  return selectedDate;
+};
 
 // retourn un tableau des dates de la semaine correspondant au jour selectionné
 export const takeWeek = (selectedDate) => {

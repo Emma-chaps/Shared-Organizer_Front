@@ -9,10 +9,13 @@ import {
   ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
   SET_MEMBERS_TO_EDIT,
   ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
+  HIDE_MODAL,
+  SET_IS_OPENED_MODAL,
 } from 'src/actions/settings';
 
 const initialState = {
   openedGroupNameInput: false,
+  openedModal: false,
   openMembersInput: {},
   family: {
     groupName: '',
@@ -95,7 +98,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openMembersInput: {
-          [action.firstname]: true,
+          [action.id]: true,
         },
       };
     }
@@ -104,7 +107,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         openMembersInput: {
           ...state.openMembersInput,
-          [action.firstname]: false,
+          [action.id]: false,
         },
       };
     }
@@ -113,8 +116,20 @@ export default (state = initialState, action = {}) => {
         ...state,
         openMembersInput: {
           ...state.openMembersInput,
-          [action.firstname]: false,
+          [action.id]: false,
         },
+      };
+    }
+    case SET_IS_OPENED_MODAL: {
+      return {
+        ...state,
+        openedModal: true,
+      };
+    }
+    case HIDE_MODAL: {
+      return {
+        ...state,
+        openedModal: false,
       };
     }
     default:

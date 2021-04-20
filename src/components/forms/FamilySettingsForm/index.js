@@ -16,12 +16,12 @@ const FamilySettingsFrom = ({
 }) => {
   useEffect(() => {
     copyMember(member);
-  }, []);
+  }, [member]);
 
   const handleSubmitUpdateMember = (event) => {
     event.preventDefault();
     updateMember();
-    assignMemberToCloseInputView(firstname);
+    assignMemberToCloseInputView(`id${member.id}`);
   };
 
   return (
@@ -66,6 +66,30 @@ const FamilySettingsFrom = ({
   );
 };
 
-FamilySettingsFrom.propTypes = {};
+FamilySettingsFrom.propTypes = {
+  member: PropTypes.object,
+  firstname: PropTypes.string,
+  email: PropTypes.string,
+  password: PropTypes.string,
+  role: PropTypes.string,
+  icon: PropTypes.string,
+  changeField: PropTypes.func,
+  copyMember: PropTypes.func,
+  updateMember: PropTypes.func,
+  assignMemberToCloseInputView: PropTypes.func,
+};
+
+FamilySettingsFrom.defaultProps = {
+  member: {},
+  firstname: '',
+  email: '',
+  password: '',
+  role: '',
+  icon: '',
+  changeField: () => {},
+  copyMember: () => {},
+  updateMember: () => {},
+  assignMemberToCloseInputView: () => {},
+};
 
 export default FamilySettingsFrom;

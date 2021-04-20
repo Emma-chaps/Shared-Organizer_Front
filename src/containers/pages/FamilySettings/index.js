@@ -5,6 +5,8 @@ import {
   setGroupNameInputState,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
+  hideModal,
+  setIsOpenedModal,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -12,15 +14,18 @@ const mapStateToProps = (state) => ({
   members: state.settings.family.members,
   openedGroupNameInput: state.settings.openedGroupNameInput,
   openMembersInput: state.settings.openMembersInput,
+  isOpenedModal: state.settings.openedModal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchFamilyData: () => dispatch(fetchFamilyData()),
   setGroupNameInputState: () => dispatch(setGroupNameInputState()),
-  assignMemberToOpenInputView: (firstname) =>
-    dispatch(assignMemberToOpenInputView(firstname)),
-  assignMemberToCloseInputView: (firstname) =>
-    dispatch(assignMemberToCloseInputView(firstname)),
+  assignMemberToOpenInputView: (id) =>
+    dispatch(assignMemberToOpenInputView(id)),
+  assignMemberToCloseInputView: (id) =>
+    dispatch(assignMemberToCloseInputView(id)),
+  hideModal: () => dispatch(hideModal()),
+  setIsOpenedModal: () => dispatch(setIsOpenedModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FamilySettings);

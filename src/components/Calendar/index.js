@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { format, startOfWeek, endOfWeek } from 'date-fns';
 import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
@@ -16,18 +16,9 @@ function WeekNames() {
   );
 }
 
-// const viewCalendar = {
-//   selectedDate: '2021-06-19',
-// };
-
-// const selectedDate = formatDate(viewCalendar.selectedDate);
-// console.log(selectedDate);
-
 const Calendar = ({ range, date }) => {
-  // converted to a date usable by date-fns
-  const selectedDate = new Date(date.year, date.month - 1, date.day);
+  const selectedDate = formatDate(date);
 
-  console.log(selectedDate);
   // call function who calls another function
   const month = takeMonth(selectedDate)();
   const week = takeWeek(selectedDate)();

@@ -20,8 +20,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setMemberToChangeFieldValue(name, value)),
   copyMember: (member) => dispatch(copyMember(member)),
   updateMember: () => dispatch(updateMember()),
-  assignMemberToCloseInputView: (firstname) =>
-    dispatch(assignMemberToCloseInputView(firstname)),
+  assignMemberToCloseInputView: (id) =>
+    dispatch(assignMemberToCloseInputView(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FamilySettingsForm);

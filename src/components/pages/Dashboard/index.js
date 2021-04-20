@@ -22,7 +22,6 @@ const Dashboard = ({
   return (
     <div>
       <DashboardMenu />
-
       <Calendar />
       <Modal
         showModal={displayCreationModal}

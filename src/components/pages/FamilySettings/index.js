@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'src/components/Header';
+import Modal from 'src/components/Modal';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
-import FamilySettingsFrom from 'src/containers/forms/FamilySettingsForm';
+import FamilySettingsForm from 'src/containers/forms/FamilySettingsForm';
 import { BiPencil } from 'react-icons/bi';
-import { copyMember } from '../../../actions/settings';
 
 const FamilySettings = ({
   fetchFamilyData,
@@ -16,19 +16,24 @@ const FamilySettings = ({
   openMembersInput,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
+  setIsOpenedModal,
+  hideModal,
+  isOpenedModal,
 }) => {
-  const value = useRef(null);
+  const button = useRef(null);
 
   const handleOpenMemberInputView = () => {
-    assignMemberToOpenInputView(value.current.dataset.firstname);
+    const id = `id${button.current.dataset.id}`;
+    assignMemberToOpenInputView(id);
   };
 
   const handleCloseMemberInputView = () => {
-    assignMemberToCloseInputView(value.current.dataset.firstname);
+    const id = `id${button.current.dataset.id}`;
+    assignMemberToCloseInputView(id);
   };
 
-  const handleChangeGroupNameInputView = () => {
-    setGroupNameInputState();
+  const handleChangeAddMember = () => {
+    setIsOpenedModal();
   };
 
   useEffect(() => {
@@ -41,35 +46,40 @@ const FamilySettings = ({
     <>
       <Header />
       <div>
-        <h1>Family Settings</h1>
+        <h1>Group Settings</h1>
         {openedGroupNameInput ? (
           <div>
             <FamilyNameForm initialGroupName={initialGroupName} />
-            <button type="button" onClick={handleChangeGroupNameInputView}>
+            <button type="button" onClick={setGroupNameInputState}>
               Cancel
             </button>
           </div>
         ) : (
           <div>
             <div>{initialGroupName}</div>
-            <button type="button" onClick={handleChangeGroupNameInputView}>
+            <button type="button" onClick={setGroupNameInputState}>
               <BiPencil />
             </button>
           </div>
         )}
         <hr />
         <h2>Group members</h2>
-        <button type="button">Add a new member</button>
+        <button type="button" onClick={handleChangeAddMember}>
+          Add a new member
+        </button>
+        <Modal showModal={isOpenedModal} hideModal={hideModal}>
+          <FamilySettingsForm />
+        </Modal>
         {members.map((member) => (
           <div key={member.id}>
-            {openMembersInput[member.firstname] ? (
+            {openMembersInput[`id${member.id}`] ? (
               <div>
-                <FamilySettingsFrom member={member} />
+                <FamilySettingsForm member={member} />
                 <button
                   type="button"
                   onClick={handleCloseMemberInputView}
-                  ref={value}
-                  data-firstname={member.firstname}
+                  ref={button}
+                  data-id={member.id}
                 >
                   Cancel
                 </button>
@@ -83,8 +93,8 @@ const FamilySettings = ({
                 <button
                   type="button"
                   onClick={handleOpenMemberInputView}
-                  ref={value}
-                  data-firstname={member.firstname}
+                  ref={button}
+                  data-id={member.id}
                 >
                   <BiPencil />
                 </button>

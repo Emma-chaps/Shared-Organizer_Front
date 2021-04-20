@@ -4,11 +4,6 @@ import { SET_RANGE, SET_SELECTED_DATE_VALUE } from 'src/actions/calendar';
 const initialState = {
   range: 'month',
   selectedDateValue: format(new Date(), 'yyyy-MM-dd'),
-  date: {
-    year: 2021,
-    month: 5,
-    day: 30,
-  },
 };
 
 export default (state = initialState, action = {}) => {
