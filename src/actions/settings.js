@@ -63,28 +63,40 @@ export const setFamilyData = (members, name) => ({
 export const ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW =
   'ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW';
 
-export const assignMemberToOpenInputView = (firstname) => ({
+export const assignMemberToOpenInputView = (id) => ({
   type: ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
-  firstname,
+  id,
 });
 
 export const SET_MEMBERS_TO_EDIT = 'SET_MEMBERS_TO_EDIT';
 
-export const setMembersToEdit = (firstname) => ({
+export const setMembersToEdit = (id) => ({
   type: SET_MEMBERS_TO_EDIT,
-  firstname,
+  id,
 });
 
 export const ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW =
   'ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW';
 
-export const assignMemberToCloseInputView = (firstname) => ({
+export const assignMemberToCloseInputView = (id) => ({
   type: ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
-  firstname,
+  id,
 });
 
 export const UPDATE_MEMBER = 'UPDATE_MEMBER';
 
 export const updateMember = () => ({
   type: UPDATE_MEMBER,
+});
+
+export const HIDE_MODAL = 'HIDE_MODAL';
+
+export const hideModal = () => ({
+  type: HIDE_MODAL,
+});
+
+export const SET_IS_OPENED_MODAL = 'SET_IS_OPENED_MODAL';
+
+export const setIsOpenedModal = () => ({
+  type: SET_IS_OPENED_MODAL,
 });

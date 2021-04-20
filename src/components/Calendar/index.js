@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { format, startOfWeek, endOfWeek } from 'date-fns';
 import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
@@ -19,7 +19,6 @@ function WeekNames() {
 const Calendar = ({ range, date }) => {
   const selectedDate = formatDate(date);
 
-  console.log(selectedDate);
   // call function who calls another function
   const month = takeMonth(selectedDate)();
   const week = takeWeek(selectedDate)();

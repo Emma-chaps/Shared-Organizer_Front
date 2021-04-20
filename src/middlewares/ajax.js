@@ -20,7 +20,7 @@ export default (store) => (next) => (action) => {
         .then(({ members, name }) => {
           store.dispatch(setFamilyData(members, name));
           for (const member of members) {
-            store.dispatch(setMembersToEdit(member.firstname));
+            store.dispatch(setMembersToEdit(`id${member.id}`));
           }
         });
       return next(action);
