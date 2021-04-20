@@ -60,10 +60,10 @@ export const setFamilyData = (members, name) => ({
   name,
 });
 
-export const SET_GROUP_NAME_FIELD_VALUE = 'SET_GROUP_NAME_FIELD_VALUE';
+export const SET_NEW_GROUP_NAME_FIELD_VALUE = 'SET_NEW_GROUP_NAME_FIELD_VALUE';
 
-export const setGroupNameFieldValue = (value) => ({
-  type: SET_GROUP_NAME_FIELD_VALUE,
+export const setNewGroupNameFieldValue = (value) => ({
+  type: SET_NEW_GROUP_NAME_FIELD_VALUE,
   value,
 });
 
@@ -75,9 +75,8 @@ export const updateGroupName = () => ({
 
 export const SET_GROUP_NAME = 'SET_GROUP_NAME';
 
-export const setGroupName = (groupName) => ({
+export const setGroupName = () => ({
   type: SET_GROUP_NAME,
-  groupName,
 });
 
 export const SET_MEMBER_TO_CHANGE_FIELD_VALUE =
@@ -94,4 +93,11 @@ export const COPY_MEMBER = 'COPY_MEMBER';
 export const copyMember = (member) => ({
   type: COPY_MEMBER,
   member,
+});
+
+export const COPY_GROUP_NAME = 'COPY_GROUP_NAME';
+
+export const copyGroupName = (groupName) => ({
+  type: COPY_GROUP_NAME,
+  groupName,
 });

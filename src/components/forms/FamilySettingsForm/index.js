@@ -15,8 +15,13 @@ const FamilySettingsFrom = ({
   useEffect(() => {
     copyMember(member);
   }, []);
+
+  const handleSubmitUpdateMember = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <>
+    <form onSubmit={handleSubmitUpdateMember}>
       <Field
         name="firstname"
         type="text"
@@ -40,19 +45,20 @@ const FamilySettingsFrom = ({
       />
       <label htmlFor="role">
         <select name="role" id="role">
-          <option value="admin">Admin</option>
-          <option value="parent">Editor</option>
-          <option value="enfant">Visitor</option>
+          <option value="3">Admin</option>
+          <option value="2">Editor</option>
+          <option value="1">Visitor</option>
         </select>
       </label>
       <label htmlFor="icon">
         <select name="icon" id="icon">
-          <option value="admin">Img1</option>
-          <option value="parent">Img2</option>
-          <option value="enfant">Img3</option>
+          <option value="icon1">Img1</option>
+          <option value="icon2">Img2</option>
+          <option value="icon3">Img3</option>
         </select>
       </label>
-    </>
+      <button type="submit">Save</button>
+    </form>
   );
 };
 

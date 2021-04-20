@@ -5,15 +5,17 @@ import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
 import FamilySettingsFrom from 'src/containers/forms/FamilySettingsForm';
 import { BiPencil } from 'react-icons/bi';
 
-const FamilySettings = ({ fetchFamilyData, members, setMemberToChange }) => {
-  const [isOpen, setOpen] = useState(false);
+const FamilySettings = ({
+  fetchFamilyData,
+  initialGroupName,
+  members,
+  setMemberToChange,
+  openedInput,
+  setInputState,
+}) => {
   const handleChangeInputView = () => {
-    setOpen(!isOpen);
+    setInputState(!openedInput);
     setMemberToChange();
-  };
-
-  const handleSubmitUpdateMember = (event) => {
-    event.preventDefault();
   };
 
   useEffect(() => {
@@ -27,18 +29,27 @@ const FamilySettings = ({ fetchFamilyData, members, setMemberToChange }) => {
       <Header />
       <div>
         <h1>Family Settings</h1>
-        <FamilyNameForm />
+        {openedInput ? (
+          <div>
+            <FamilyNameForm initialGroupName={initialGroupName} />
+            <button type="submit" onClick={handleChangeInputView}>
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div>{initialGroupName}</div>
+            <BiPencil onClick={handleChangeInputView} />
+          </div>
+        )}
         <hr />
         <h2>Member of family</h2>
         <button type="submit">Add a new member</button>
         {members.map((member) => (
           <div key={member.id}>
-            {isOpen ? (
+            {openedInput ? (
               <div>
-                <form onSubmit={handleSubmitUpdateMember}>
-                  <FamilySettingsFrom member={member} />
-                  <button type="submit">Save</button>
-                </form>
+                <FamilySettingsFrom member={member} />
                 <button type="submit" onClick={handleChangeInputView}>
                   Cancel
                 </button>

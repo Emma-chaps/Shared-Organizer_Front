@@ -1,13 +1,14 @@
 import {
   SET_USER_FIELD_LOGIN_VALUE,
   SET_USER_FIELD_SIGN_UP_VALUE,
-  SET_GROUP_NAME_FIELD_VALUE,
+  SET_NEW_GROUP_NAME_FIELD_VALUE,
   LOGIN,
   SELECT_ICON,
   SET_FAMILY_DATA,
   SET_MEMBER_TO_CHANGE_FIELD_VALUE,
   COPY_MEMBER,
   SET_GROUP_NAME,
+  COPY_GROUP_NAME,
 } from 'src/actions/user';
 
 const initialState = {
@@ -34,6 +35,7 @@ const initialState = {
     icon: '',
     role: '',
   },
+  groupNameToChange: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -81,13 +83,10 @@ export default (state = initialState, action = {}) => {
         },
       };
     }
-    case SET_GROUP_NAME_FIELD_VALUE: {
+    case SET_NEW_GROUP_NAME_FIELD_VALUE: {
       return {
         ...state,
-        family: {
-          ...state.family,
-          groupName: action.value,
-        },
+        groupNameToChange: action.value,
       };
     }
     case SET_MEMBER_TO_CHANGE_FIELD_VALUE: {
@@ -117,8 +116,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         family: {
           ...state.family,
-          groupName: action.groupName,
+          groupName: state.groupNameToChange,
         },
+      };
+    }
+    case COPY_GROUP_NAME: {
+      return {
+        ...state,
+        groupNameToChange: action.groupName,
       };
     }
     default:

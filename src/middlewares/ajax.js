@@ -21,13 +21,10 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_GROUP_NAME: {
-      const { groupName } = store.getState().user.family;
+      const { groupNameToChange } = store.getState().user;
       api
-        .patch('/family-settings/group', { groupName })
-        .then((result) => {
-          console.log(result.data);
-          return result.data;
-        })
+        .patch('/family-settings/group', { groupName: groupNameToChange })
+        .then((result) => result.data)
         .then(({ updated }) => {
           if (updated) {
             store.dispatch(setGroupName());

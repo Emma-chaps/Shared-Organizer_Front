@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
-const FamilySettingsForm = ({ groupName, changeField, updateGroupName }) => {
+const FamilySettingsForm = ({
+  initialGroupName,
+  newGroupName,
+  copyGroupName,
+  changeField,
+  updateGroupName,
+  setInputState,
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     updateGroupName();
+    setInputState();
   };
+
+  useEffect(() => {
+    copyGroupName(initialGroupName);
+  }, [initialGroupName]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -14,7 +26,7 @@ const FamilySettingsForm = ({ groupName, changeField, updateGroupName }) => {
         name="groupName"
         type="text"
         placeholder="Family name"
-        value={groupName}
+        value={newGroupName}
         onChange={changeField}
       />
       <button type="submit">Save</button>
