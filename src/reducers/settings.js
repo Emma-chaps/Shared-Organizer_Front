@@ -6,6 +6,8 @@ import {
   SET_GROUP_NAME,
   COPY_GROUP_NAME,
   SET_FAMILY_DATA,
+  ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
+  SET_MEMBERS_TO_EDIT,
 } from 'src/actions/settings';
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
     role: '',
   },
   groupNameToChange: '',
+  openMembersInput: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -81,6 +84,23 @@ export default (state = initialState, action = {}) => {
           ...state.family,
           groupName: action.name,
           members: action.members,
+        },
+      };
+    }
+    case ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW: {
+      return {
+        ...state,
+        openMembersInput: {
+          [action.firstname]: true,
+        },
+      };
+    }
+    case SET_MEMBERS_TO_EDIT: {
+      return {
+        ...state,
+        openMembersInput: {
+          ...state.openMembersInput,
+          [action.firstname]: false,
         },
       };
     }

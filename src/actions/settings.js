@@ -59,3 +59,18 @@ export const setFamilyData = (members, name) => ({
   members,
   name,
 });
+
+export const ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW =
+  'ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW';
+
+export const assignMemberToOpenInputView = (firstname) => ({
+  type: ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
+  firstname,
+});
+
+export const SET_MEMBERS_TO_EDIT = 'SET_MEMBERS_TO_EDIT';
+
+export const setMembersToEdit = (firstname) => ({
+  type: SET_MEMBERS_TO_EDIT,
+  firstname,
+});

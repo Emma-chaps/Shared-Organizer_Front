@@ -4,6 +4,7 @@ import {
   setFamilyData,
   UPDATE_GROUP_NAME,
   setGroupName,
+  setMembersToEdit,
 } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
@@ -17,6 +18,9 @@ export default (store) => (next) => (action) => {
         })
         .then(({ members, name }) => {
           store.dispatch(setFamilyData(members, name));
+          for (const member of members) {
+            store.dispatch(setMembersToEdit(member.firstname));
+          }
         });
       return next(action);
     }

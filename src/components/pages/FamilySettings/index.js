@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'src/components/Header';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
@@ -10,13 +10,19 @@ const FamilySettings = ({
   initialGroupName,
   members,
   setMemberToChange,
-  openedInput,
+  openedGroupNameInput,
   setInputState,
+  openMembersInput,
+  assignMemberToOpenInputView,
 }) => {
-  const handleChangeInputView = () => {
-    setInputState(!openedInput);
-    setMemberToChange();
+  const value = useRef(null);
+
+  const handleOpenMemberInputView = () => {
+    assignMemberToOpenInputView(value.current.dataset.firstname);
+    console.log('ici', value.current.dataset.firstname);
   };
+
+  const handleChangeInputView = (event) => {};
 
   useEffect(() => {
     fetchFamilyData();
@@ -29,10 +35,10 @@ const FamilySettings = ({
       <Header />
       <div>
         <h1>Family Settings</h1>
-        {openedInput ? (
+        {openedGroupNameInput ? (
           <div>
             <FamilyNameForm initialGroupName={initialGroupName} />
-            <button type="submit" onClick={handleChangeInputView}>
+            <button type="button" onClick={handleChangeInputView}>
               Cancel
             </button>
           </div>
@@ -44,13 +50,13 @@ const FamilySettings = ({
         )}
         <hr />
         <h2>Member of family</h2>
-        <button type="submit">Add a new member</button>
+        <button type="button">Add a new member</button>
         {members.map((member) => (
           <div key={member.id}>
-            {openedInput ? (
+            {openMembersInput[member.firstname] ? (
               <div>
                 <FamilySettingsFrom member={member} />
-                <button type="submit" onClick={handleChangeInputView}>
+                <button type="button" onClick={handleCloseMemberInputView}>
                   Cancel
                 </button>
               </div>
@@ -60,7 +66,14 @@ const FamilySettings = ({
                 <div>{member.email}</div>
                 <div>{member.role}</div>
                 <div>{member.icon}</div>
-                <BiPencil onClick={handleChangeInputView} />
+                <button
+                  type="button"
+                  onClick={handleOpenMemberInputView}
+                  ref={value}
+                  data-firstname={member.firstname}
+                >
+                  <BiPencil />
+                </button>
               </div>
             )}
           </div>
