@@ -45,24 +45,3 @@ export const selectedIcon = (name) => ({
   type: SELECT_ICON,
   name,
 });
-
-export const FETCH_FAMILY_DATA = 'FETCH_FAMILY_DATA';
-
-export const fetchFamilyData = () => ({
-  type: FETCH_FAMILY_DATA,
-});
-
-export const SET_FAMILY_DATA = 'SET_FAMILY_DATA';
-
-export const setFamilyData = (members, name) => ({
-  type: SET_FAMILY_DATA,
-  members,
-  name,
-});
-
-export const SET_GROUP_NAME_FIELD_VALUE = 'SET_GROUP_NAME_FIELD_VALUE';
-
-export const setGroupNameFieldValue = (value) => ({
-  type: SET_GROUP_NAME_FIELD_VALUE,
-  value,
-});

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-calendar';
 import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
 import Modal from 'src/components/Modal';

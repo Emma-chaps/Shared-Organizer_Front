@@ -1,13 +1,21 @@
 import { connect } from 'react-redux';
 import FamilyNameForm from 'src/components/forms/FamilyNameForm';
-import { setGroupNameFieldValue } from 'src/actions/user';
+import {
+  setGroupNameInputState,
+  setNewGroupNameFieldValue,
+  updateGroupName,
+  copyGroupName,
+} from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
-  groupName: state.user.family.groupName,
+  newGroupName: state.settings.groupNameToChange,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeField: (value) => dispatch(setGroupNameFieldValue(value)),
+  copyGroupName: (groupName) => dispatch(copyGroupName(groupName)),
+  changeField: (value) => dispatch(setNewGroupNameFieldValue(value)),
+  updateGroupName: () => dispatch(updateGroupName()),
+  setGroupNameInputState: () => dispatch(setGroupNameInputState()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FamilyNameForm);
