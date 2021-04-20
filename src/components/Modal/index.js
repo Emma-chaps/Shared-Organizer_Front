@@ -5,19 +5,22 @@ import WidgetCreationForm from '../forms/WidgetCreationForm';
 import './styles.scss';
 import classNames from 'classnames';
 
-const Modal = ({ hideModal, children }) => {
-  const classes = classNames('modal', { 'modal--hidden': hideModal });
+const Modal = ({ showModal, children, hideModal }) => {
+  const classes = classNames('modal', { 'modal--hidden': !showModal });
+
   return (
     <div className={classes}>
+      <div className="modal__header">
+        <div className="close" onClick={hideModal}></div>
+      </div>
       <div className="modal__content">{children}</div>
     </div>
   );
 };
 
 Modal.propTypes = {
-  hideModal: PropTypes.bool.isRequired,
+  showModal: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-
 };
 
 export default Modal;
