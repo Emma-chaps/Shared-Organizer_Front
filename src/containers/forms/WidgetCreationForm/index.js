@@ -5,6 +5,7 @@ import {
   setWidgetDescriptionValue,
   assignMemberToWidget,
   submitWidgetDataCreation,
+  hideWidgetCreationModal,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => ({
   widgetDescription: state.widget.widgetCreation.description,
   date: state.widget.widgetCreation.date,
   range: state.widget.widgetCreation.range,
-  members: state.user.family.members,
+  members: state.settings.family.members,
   membersToAdd: state.widget.widgetCreation.familyMembers,
 });
 
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
   assignMember: (idMember, members) =>
     dispatch(assignMemberToWidget(idMember, members)),
   submitWidget: () => dispatch(submitWidgetDataCreation()),
+  hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WidgetCreationForm);

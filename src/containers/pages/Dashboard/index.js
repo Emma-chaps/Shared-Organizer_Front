@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Dashboard from 'src/components/pages/Dashboard';
-import { fetchFamilyData } from 'src/actions/user';
+import { fetchFamilyData } from 'src/actions/settings';
 import {
   showWidgetCreationModal,
   hideWidgetCreationModal,

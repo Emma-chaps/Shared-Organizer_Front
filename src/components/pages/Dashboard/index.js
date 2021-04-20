@@ -3,6 +3,7 @@ import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
+import { NavLink } from 'react-router-dom';
 
 const Dashboard = ({
   getGroupData,
@@ -29,6 +30,11 @@ const Dashboard = ({
       >
         <WidgetCreationForm />
       </Modal>
+      <button type="button">
+        <NavLink to="/family-settings" exact>
+          Family Settings
+        </NavLink>
+      </button>
       <button type="button" onClick={handleClick}>
         Add a Widget
       </button>

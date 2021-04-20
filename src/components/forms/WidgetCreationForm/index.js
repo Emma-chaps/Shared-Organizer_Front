@@ -15,12 +15,14 @@ const WidgetCreationForm = ({
   assignMember,
   membersToAdd,
   submitWidget,
+  hideWidgetCreationModal,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
     if (membersToAdd.length && widgetTitle) {
       setErrorMessage('');
+      hideWidgetCreationModal();
       submitWidget();
     } else {
       setErrorMessage(
