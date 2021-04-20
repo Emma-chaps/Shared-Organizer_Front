@@ -15,6 +15,7 @@ import {
 
 const initialState = {
   openedGroupNameInput: false,
+  openedModal: false,
   openMembersInput: {},
   family: {
     groupName: '',
@@ -122,13 +123,13 @@ export default (state = initialState, action = {}) => {
     case SET_IS_OPENED_MODAL: {
       return {
         ...state,
-        openedGroupNameInput: true,
+        openedModal: true,
       };
     }
     case HIDE_MODAL: {
       return {
         ...state,
-        openedGroupNameInput: false,
+        openedModal: false,
       };
     }
     default:

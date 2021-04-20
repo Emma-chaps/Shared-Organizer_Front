@@ -24,7 +24,6 @@ const FamilySettings = ({
 
   const handleOpenMemberInputView = () => {
     const id = `id${button.current.dataset.id}`;
-    console.log(id);
     assignMemberToOpenInputView(id);
   };
 
@@ -36,7 +35,6 @@ const FamilySettings = ({
   const handleChangeAddMember = () => {
     setIsOpenedModal();
   };
-  console.log();
 
   useEffect(() => {
     fetchFamilyData();

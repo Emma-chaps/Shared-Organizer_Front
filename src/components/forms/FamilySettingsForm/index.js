@@ -16,7 +16,7 @@ const FamilySettingsFrom = ({
 }) => {
   useEffect(() => {
     copyMember(member);
-  }, []);
+  }, [member]);
 
   const handleSubmitUpdateMember = (event) => {
     event.preventDefault();
