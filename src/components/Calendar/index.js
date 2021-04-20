@@ -16,16 +16,8 @@ function WeekNames() {
   );
 }
 
-// const viewCalendar = {
-//   selectedDate: '2021-06-19',
-// };
-
-// const selectedDate = formatDate(viewCalendar.selectedDate);
-// console.log(selectedDate);
-
 const Calendar = ({ range, date }) => {
-  // converted to a date usable by date-fns
-  const selectedDate = new Date(date.year, date.month - 1, date.day);
+  const selectedDate = formatDate(date);
 
   console.log(selectedDate);
   // call function who calls another function

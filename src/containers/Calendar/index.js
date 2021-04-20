@@ -3,7 +3,7 @@ import Calendar from 'src/components/Calendar';
 
 const mapStateToProps = (state) => ({
   range: state.calendar.range,
-  date: state.calendar.date,
+  date: state.calendar.selectedDateValue,
 });
 
 const mapDispatchToProps = () => ({});
