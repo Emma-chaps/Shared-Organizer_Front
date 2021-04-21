@@ -2,7 +2,7 @@ import {
   SET_USER_FIELD_LOGIN_VALUE,
   SET_USER_FIELD_SIGN_UP_VALUE,
   LOGIN,
-  SELECT_ICON,
+  SET_SELECT_ICON,
 } from 'src/actions/user';
 
 const initialState = {
@@ -48,7 +48,7 @@ export default (state = initialState, action = {}) => {
           logged: true,
         },
       };
-    case SELECT_ICON:
+    case SET_SELECT_ICON:
       return {
         ...state,
         signup: {

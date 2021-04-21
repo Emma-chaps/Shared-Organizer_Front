@@ -3,7 +3,7 @@ import LoginForm from 'src/components/forms/SignUpForm';
 import {
   setUserFieldSignUpValue,
   submitSignUp,
-  selectedIcon,
+  setSelectedIcon,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => dispatch(setUserFieldSignUpValue(name, value)),
   handleSignUp: () => dispatch(submitSignUp()),
-  selectedIcon: (icon) => dispatch(selectedIcon(icon)),
+  setSelectedIcon: (icon) => dispatch(setSelectedIcon(icon)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

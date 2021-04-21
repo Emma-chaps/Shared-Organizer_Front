@@ -5,6 +5,7 @@ import Modal from 'src/components/Modal';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
 import FamilySettingsForm from 'src/containers/forms/FamilySettingsForm';
 import { BiPencil } from 'react-icons/bi';
+import './styles.scss';
 
 const FamilySettings = ({
   fetchFamilyData,
@@ -40,12 +41,10 @@ const FamilySettings = ({
     fetchFamilyData();
   }, []);
 
-  console.log(members);
-
   return (
     <>
       <Header />
-      <div>
+      <div className="settings">
         <h1>Group Settings</h1>
         {openedGroupNameInput ? (
           <div>
