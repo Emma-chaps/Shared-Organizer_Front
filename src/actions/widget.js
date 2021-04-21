@@ -46,3 +46,16 @@ export const HIDE_WIDGET_CREATION_MODAL = 'HIDE_WIDGET_CREATION_MODAL';
 export const hideWidgetCreationModal = () => ({
   type: HIDE_WIDGET_CREATION_MODAL,
 });
+
+export const SET_WIDGET_TO_STATE = 'SET_WIDGET_TO_STATE';
+
+export const setWidgetToState = (widget) => ({
+  type: SET_WIDGET_TO_STATE,
+  widget,
+});
+
+export const REINITIALIZE_WIDGET = 'REINITIALIZE_WIDGET';
+
+export const reinitializeWidget = () => ({
+  type: REINITIALIZE_WIDGET,
+});

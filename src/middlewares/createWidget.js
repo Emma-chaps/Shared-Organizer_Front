@@ -1,6 +1,10 @@
 import api from 'src/api';
 import { format, parseISO } from 'date-fns';
-import { SUBMIT_WIDGET_DATA_CREATION } from 'src/actions/widget';
+import {
+  SUBMIT_WIDGET_DATA_CREATION,
+  reinitializeWidget,
+  setWidgetToState,
+} from 'src/actions/widget';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -11,47 +15,44 @@ export default (store) => (next) => (action) => {
         familyMembers,
       } = store.getState().widget.widgetCreation;
       const { range, selectedDateValue } = store.getState().calendar;
-      const year = format(parseISO(selectedDateValue), 'yyyy');
-      console.log('year:', year);
+      const year = Number(format(parseISO(selectedDateValue), 'yyyy'));
       let dateNb = null;
 
       switch (range) {
         case 'month': {
-          dateNb = format(parseISO(selectedDateValue), 'MM');
+          dateNb = Number(format(parseISO(selectedDateValue), 'MM'));
           break;
         }
         case 'week': {
-          dateNb = format(parseISO(selectedDateValue), 'w');
+          dateNb = Number(format(parseISO(selectedDateValue), 'w'));
           break;
         }
         case 'day': {
-          dateNb = format(parseISO(selectedDateValue), 'dd');
+          dateNb = Number(format(parseISO(selectedDateValue), 'dd'));
           break;
         }
         default:
           break;
       }
-      console.log('dateNb:', dateNb);
-
-      console.log('range:', range);
-
-      // api
-      //   .post('/dashboard/widgets/create', {
-      //     title,
-      //     description,
-      //     range,
-      //     date,
-      //     familyMembers,
-      //   })
-      //   .then((result) => result.data)
-      //   .then(({ success, widget, fields: widgetFields }) => {
-      //     if (success) {
-      //       store.dispatch(setWidgetToDashboard(widget, widgetFields));
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
+      api
+        .post('/dashboard/widgets/create', {
+          title,
+          description,
+          range,
+          year,
+          dateNb,
+          familyMembers,
+        })
+        .then((result) => result.data)
+        .then(({ success, widget }) => {
+          if (success) {
+            store.dispatch(setWidgetToState(widget));
+            store.dispatch(reinitializeWidget());
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       return next(action);
     }
     default:

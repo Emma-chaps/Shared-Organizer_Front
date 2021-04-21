@@ -5,6 +5,8 @@ import {
   ASSIGN_MEMBER_TO_WIDGET,
   SHOW_CREATION_WIDGET_MODAL,
   HIDE_WIDGET_CREATION_MODAL,
+  REINITIALIZE_WIDGET,
+  SET_WIDGET_TO_STATE,
 } from 'src/actions/widget';
 
 import { findMember } from 'src/selectors/findMember';
@@ -14,9 +16,7 @@ const initialState = {
   widgetCreation: {
     title: '',
     description: '',
-    selectedDate: '',
     familyMembers: [],
-    range: '',
   },
   dashboardWidgets: [],
 };
@@ -75,6 +75,23 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         displayCreationModal: false,
+      };
+    }
+    case REINITIALIZE_WIDGET: {
+      return {
+        ...state,
+        widgetCreation: {
+          ...state.widgetCreation,
+          title: '',
+          description: '',
+          familyMembers: [],
+        },
+      };
+    }
+    case SET_WIDGET_TO_STATE: {
+      return {
+        ...state,
+        dashboardWidgets: [...state.dashboardWidgets, action.widget],
       };
     }
 
