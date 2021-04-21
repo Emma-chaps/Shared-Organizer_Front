@@ -11,21 +11,28 @@ const FamilySettingsFrom = ({
   icon,
   changeField,
   copyMember,
-  updateMember,
-  assignMemberToCloseInputView,
+  onSubmit,
+  setSelectedIcon,
+  setSelectedRole,
 }) => {
   useEffect(() => {
     copyMember(member);
   }, [member]);
 
-  const handleSubmitUpdateMember = (event) => {
-    event.preventDefault();
-    updateMember();
-    assignMemberToCloseInputView(`id${member.id}`);
+  const handleChangeColorIcon = (event) => {
+    const selectedIcon = event.target.value;
+    console.log(selectedIcon);
+    setSelectedIcon(selectedIcon);
+  };
+
+  const handleChangeRole = (event) => {
+    const selectedRole = event.target.value;
+    console.log(selectedRole);
+    setSelectedRole(selectedRole);
   };
 
   return (
-    <form onSubmit={handleSubmitUpdateMember}>
+    <form onSubmit={onSubmit}>
       <Field
         name="firstname"
         type="text"
@@ -48,17 +55,25 @@ const FamilySettingsFrom = ({
         onChange={changeField}
       />
       <label htmlFor="role">
-        <select name="role" id="role">
+        <select name="role" id="role" value={role} onChange={handleChangeRole}>
+          <option value="">Choose a role</option>
           <option value="3">Admin</option>
           <option value="2">Editor</option>
           <option value="1">Visitor</option>
         </select>
       </label>
       <label htmlFor="icon">
-        <select name="icon" id="icon">
-          <option value="icon1">Img1</option>
-          <option value="icon2">Img2</option>
-          <option value="icon3">Img3</option>
+        Select your icon color
+        <select
+          name="icon"
+          id="icon"
+          value={icon}
+          onChange={handleChangeColorIcon}
+        >
+          <option value="">Choose a color</option>
+          <option value="green">Green</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Blue">Blue</option>
         </select>
       </label>
       <button type="submit">Save</button>
@@ -71,12 +86,10 @@ FamilySettingsFrom.propTypes = {
   firstname: PropTypes.string,
   email: PropTypes.string,
   password: PropTypes.string,
-  role: PropTypes.string,
+  role: PropTypes.number,
   icon: PropTypes.string,
   changeField: PropTypes.func,
   copyMember: PropTypes.func,
-  updateMember: PropTypes.func,
-  assignMemberToCloseInputView: PropTypes.func,
 };
 
 FamilySettingsFrom.defaultProps = {
@@ -84,7 +97,7 @@ FamilySettingsFrom.defaultProps = {
   firstname: '',
   email: '',
   password: '',
-  role: '',
+  role: 0,
   icon: '',
   changeField: () => {},
   copyMember: () => {},

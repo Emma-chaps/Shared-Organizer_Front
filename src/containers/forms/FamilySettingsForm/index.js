@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import {
   setMemberToChangeFieldValue,
   copyMember,
-  updateMember,
-  assignMemberToCloseInputView,
+  setSelectedIcon,
+  setSelectedRole,
 } from 'src/actions/settings';
 import FamilySettingsForm from 'src/components/forms/FamilySettingsForm';
 
@@ -19,9 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) =>
     dispatch(setMemberToChangeFieldValue(name, value)),
   copyMember: (member) => dispatch(copyMember(member)),
-  updateMember: () => dispatch(updateMember()),
-  assignMemberToCloseInputView: (id) =>
-    dispatch(assignMemberToCloseInputView(id)),
+  setSelectedIcon: (icon) => dispatch(setSelectedIcon(icon)),
+  setSelectedRole: (role) => dispatch(setSelectedRole(role)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FamilySettingsForm);

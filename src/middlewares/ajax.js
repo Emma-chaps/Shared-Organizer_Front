@@ -6,6 +6,8 @@ import {
   setGroupName,
   setMembersToEdit,
   UPDATE_MEMBER,
+  fetchFamilyData,
+  ADD_NEW_MEMBER,
 } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
@@ -48,10 +50,39 @@ export default (store) => (next) => (action) => {
         icon,
         role,
       } = store.getState().settings.memberToChange;
+      console.log(firstname, email, password, icon, role);
 
       api
-        .post('/family-settings', {
+        .patch('/family-settings/members', {
           id,
+          firstname,
+          email,
+          password,
+          icon,
+          role: Number(role),
+        })
+
+        .then((result) => {
+          return result.data;
+        })
+        .then(({ success }) => {
+          if (success) {
+            store.dispatch(fetchFamilyData());
+          }
+        });
+      return {};
+    }
+    case ADD_NEW_MEMBER: {
+      const {
+        firstname,
+        email,
+        password,
+        icon,
+        role,
+      } = store.getState().settings.memberToChange;
+      console.log(firstname, email, password, icon, role);
+      api
+        .post('/family-settings', {
           firstname,
           email,
           password,
@@ -60,8 +91,8 @@ export default (store) => (next) => (action) => {
         })
         .then((result) => {
           console.log(result.data);
+          return result.data;
         });
-      return {};
     }
     default:
       return next(action);

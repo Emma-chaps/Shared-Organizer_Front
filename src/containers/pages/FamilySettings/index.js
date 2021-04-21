@@ -7,6 +7,8 @@ import {
   assignMemberToCloseInputView,
   hideModal,
   setIsOpenedModal,
+  updateMember,
+  addNewMember,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -15,7 +17,7 @@ const mapStateToProps = (state) => ({
   openedGroupNameInput: state.settings.openedGroupNameInput,
   openMembersInput: state.settings.openMembersInput,
   isOpenedModal: state.settings.openedModal,
-  // newMember: state.settings.
+  newMember: state.settings.newMember,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,6 +29,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(assignMemberToCloseInputView(id)),
   hideModal: () => dispatch(hideModal()),
   setIsOpenedModal: () => dispatch(setIsOpenedModal()),
+  updateMember: () => dispatch(updateMember()),
+  addNewMember: () => dispatch(addNewMember()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FamilySettings);

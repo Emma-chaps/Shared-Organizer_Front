@@ -4,9 +4,10 @@ import Header from 'src/components/Header';
 import Modal from 'src/components/Modal';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
 import FamilySettingsForm from 'src/containers/forms/FamilySettingsForm';
-import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
+// import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
+import { copyMember } from '../../../actions/settings';
 
 const FamilySettings = ({
   fetchFamilyData,
@@ -21,11 +22,14 @@ const FamilySettings = ({
   hideModal,
   isOpenedModal,
   newMember,
+  updateMember,
+  addNewMember,
 }) => {
   const button = useRef(null);
 
   const handleOpenMemberInputView = () => {
     const id = `id${button.current.dataset.id}`;
+    console.log(id);
     assignMemberToOpenInputView(id);
   };
 
@@ -34,8 +38,20 @@ const FamilySettings = ({
     assignMemberToCloseInputView(id);
   };
 
-  const handleChangeAddMember = () => {
+  const handleOpenAddMember = () => {
     setIsOpenedModal();
+  };
+
+  const handleSubmitUpdateMember = (event) => {
+    event.preventDefault();
+    updateMember();
+    const id = `id${button.current.dataset.id}`;
+    assignMemberToCloseInputView(id);
+  };
+
+  const handleSubmitAddNewMember = (event) => {
+    event.preventDefault();
+    addNewMember();
   };
 
   useEffect(() => {
@@ -64,17 +80,23 @@ const FamilySettings = ({
         )}
         <hr />
         <h2>Group members</h2>
-        <button type="button" onClick={handleChangeAddMember}>
+        <button type="button" onClick={handleOpenAddMember}>
           Add a new member
         </button>
         <Modal showModal={isOpenedModal} hideModal={hideModal}>
-          <AddAMemberForm />
+          <FamilySettingsForm
+            member={newMember}
+            onSubmit={handleSubmitAddNewMember}
+          />
         </Modal>
         {members.map((member) => (
           <div key={member.id}>
             {openMembersInput[`id${member.id}`] ? (
               <div>
-                <FamilySettingsForm member={member} />
+                <FamilySettingsForm
+                  member={member}
+                  onSubmit={handleSubmitUpdateMember}
+                />
                 <button
                   type="button"
                   onClick={handleCloseMemberInputView}
@@ -107,6 +129,13 @@ const FamilySettings = ({
   );
 };
 
-FamilySettings.propTypes = {};
+FamilySettings.propTypes = {
+  updateMember: PropTypes.func,
+  assignMemberToCloseInputView: PropTypes.func,
+};
+FamilySettings.defaultProps = {
+  updateMember: () => {},
+  assignMemberToCloseInputView: () => {},
+};
 
 export default FamilySettings;

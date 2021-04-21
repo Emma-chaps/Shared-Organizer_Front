@@ -22,7 +22,6 @@ const SignUpForm = ({
 
   const handleChange = () => {
     const icon = selectedIcon.current.dataset.icon;
-    console.log(icon);
     setSelectedIcon(icon);
   };
 
