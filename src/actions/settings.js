@@ -100,3 +100,23 @@ export const SET_IS_OPENED_MODAL = 'SET_IS_OPENED_MODAL';
 export const setIsOpenedModal = () => ({
   type: SET_IS_OPENED_MODAL,
 });
+
+export const ADD_NEW_MEMBER = 'ADD_NEW_MEMBER';
+
+export const addNewMember = () => ({
+  type: ADD_NEW_MEMBER,
+});
+
+export const SET_SELECTED_ICON = 'SET_SELECTED_ICON';
+
+export const setSelectedIcon = (icon) => ({
+  type: SET_SELECTED_ICON,
+  icon,
+});
+
+export const SET_SELECTED_ROLE = 'SET_SELECTED_ROLE';
+
+export const setSelectedRole = (role) => ({
+  type: SET_SELECTED_ROLE,
+  role,
+});

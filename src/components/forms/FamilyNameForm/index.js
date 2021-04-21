@@ -18,7 +18,7 @@ const FamilySettingsForm = ({
 
   useEffect(() => {
     copyGroupName(initialGroupName);
-  }, [initialGroupName]);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>

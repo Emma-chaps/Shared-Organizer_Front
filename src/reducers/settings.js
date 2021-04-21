@@ -11,6 +11,8 @@ import {
   ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
   HIDE_MODAL,
   SET_IS_OPENED_MODAL,
+  SET_SELECTED_ICON,
+  SET_SELECTED_ROLE,
 } from 'src/actions/settings';
 
 const initialState = {
@@ -30,6 +32,13 @@ const initialState = {
     role: '',
   },
   groupNameToChange: '',
+  newMember: {
+    email: '',
+    firstname: '',
+    password: '',
+    icon: '',
+    role: '',
+  },
 };
 
 export default (state = initialState, action = {}) => {
@@ -130,6 +139,24 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openedModal: false,
+      };
+    }
+    case SET_SELECTED_ICON: {
+      return {
+        ...state,
+        memberToChange: {
+          ...state.memberToChange,
+          icon: action.icon,
+        },
+      };
+    }
+    case SET_SELECTED_ROLE: {
+      return {
+        ...state,
+        memberToChange: {
+          ...state.memberToChange,
+          role: action.role,
+        },
       };
     }
     default:
