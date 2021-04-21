@@ -35,8 +35,8 @@ const Dashboard = ({
         <WidgetCreationForm />
       </Modal>
       <button type="button">
-        <NavLink to="/family-settings" exact>
-          Family Settings
+        <NavLink to="/group-settings" exact>
+          Settings
         </NavLink>
       </button>
       <button type="button" onClick={handleClick}>

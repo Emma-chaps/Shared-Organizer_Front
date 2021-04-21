@@ -46,16 +46,16 @@ export const copyGroupName = (groupName) => ({
   groupName,
 });
 
-export const FETCH_FAMILY_DATA = 'FETCH_FAMILY_DATA';
+export const FETCH_GROUP_DATA = 'FETCH_GROUP_DATA';
 
-export const fetchFamilyData = () => ({
-  type: FETCH_FAMILY_DATA,
+export const fetchGroupData = () => ({
+  type: FETCH_GROUP_DATA,
 });
 
-export const SET_FAMILY_DATA = 'SET_FAMILY_DATA';
+export const SET_GROUP_DATA = 'SET_GROUP_DATA';
 
-export const setFamilyData = (members, name) => ({
-  type: SET_FAMILY_DATA,
+export const setGroupData = (members, name) => ({
+  type: SET_GROUP_DATA,
   members,
   name,
 });

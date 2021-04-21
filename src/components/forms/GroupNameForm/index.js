@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
-const FamilySettingsForm = ({
+const GroupSettingsForm = ({
   initialGroupName,
   newGroupName,
   copyGroupName,
@@ -25,7 +25,7 @@ const FamilySettingsForm = ({
       <Field
         name="groupName"
         type="text"
-        placeholder="Family name"
+        placeholder="group name"
         value={newGroupName}
         onChange={changeField}
       />
@@ -34,14 +34,14 @@ const FamilySettingsForm = ({
   );
 };
 
-FamilySettingsForm.propTypes = {
+GroupSettingsForm.propTypes = {
   groupName: PropTypes.string,
   changeField: PropTypes.func,
 };
 
-FamilySettingsForm.defaultProps = {
+GroupSettingsForm.defaultProps = {
   groupName: '',
   changeField: () => {},
 };
 
-export default FamilySettingsForm;
+export default GroupSettingsForm;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Home from 'src/containers/pages/Home';
 import Header from 'src/components/Header';
 import Dashboard from 'src/containers/pages/Dashboard';
-import FamilySettings from 'src/containers/pages/FamilySettings';
+import GroupSettings from 'src/containers/pages/GroupSettings';
 import Footer from 'src/components/Footer';
 import NotFound from 'src/components/pages/NotFound';
 
@@ -27,8 +27,8 @@ const App = ({ rehydrate }) => {
           <Header />
           <Dashboard />
         </Route>
-        <Route path="/family-settings" exact>
-          <FamilySettings />
+        <Route path="/group-settings" exact>
+          <GroupSettings />
         </Route>
         <Route>
           <Header />

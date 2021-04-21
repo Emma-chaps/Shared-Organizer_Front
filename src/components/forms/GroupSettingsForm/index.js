@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
 
-const FamilySettingsFrom = ({
+const GroupSettingsFrom = ({
   member,
   firstname,
   email,
@@ -81,7 +81,7 @@ const FamilySettingsFrom = ({
   );
 };
 
-FamilySettingsFrom.propTypes = {
+GroupSettingsFrom.propTypes = {
   member: PropTypes.object,
   firstname: PropTypes.string,
   email: PropTypes.string,
@@ -92,7 +92,7 @@ FamilySettingsFrom.propTypes = {
   copyMember: PropTypes.func,
 };
 
-FamilySettingsFrom.defaultProps = {
+GroupSettingsFrom.defaultProps = {
   member: {},
   firstname: '',
   email: '',
@@ -105,4 +105,4 @@ FamilySettingsFrom.defaultProps = {
   assignMemberToCloseInputView: () => {},
 };
 
-export default FamilySettingsFrom;
+export default GroupSettingsFrom;

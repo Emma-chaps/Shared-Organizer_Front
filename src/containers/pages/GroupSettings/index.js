@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import FamilySettings from 'src/components/pages/FamilySettings';
+import GroupSettings from 'src/components/pages/GroupSettings';
 import {
-  fetchFamilyData,
+  fetchGroupData,
   setGroupNameInputState,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
@@ -12,8 +12,8 @@ import {
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
-  initialGroupName: state.settings.family.groupName,
-  members: state.settings.family.members,
+  initialGroupName: state.settings.group.groupName,
+  members: state.settings.group.members,
   openedGroupNameInput: state.settings.openedGroupNameInput,
   openMembersInput: state.settings.openMembersInput,
   isOpenedModal: state.settings.openedModal,
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchFamilyData: () => dispatch(fetchFamilyData()),
+  fetchGroupData: () => dispatch(fetchGroupData()),
   setGroupNameInputState: () => dispatch(setGroupNameInputState()),
   assignMemberToOpenInputView: (id) =>
     dispatch(assignMemberToOpenInputView(id)),
@@ -33,4 +33,4 @@ const mapDispatchToProps = (dispatch) => ({
   addNewMember: () => dispatch(addNewMember()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FamilySettings);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupSettings);

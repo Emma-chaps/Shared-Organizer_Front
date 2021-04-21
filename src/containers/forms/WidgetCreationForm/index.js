@@ -13,8 +13,8 @@ const mapStateToProps = (state) => ({
   widgetDescription: state.widget.widgetCreation.description,
   date: state.widget.widgetCreation.date,
   range: state.widget.widgetCreation.range,
-  members: state.settings.family.members,
-  membersToAdd: state.widget.widgetCreation.familyMembers,
+  members: state.settings.group.members,
+  membersToAdd: state.widget.widgetCreation.groupMembers,
 });
 
 const mapDispatchToProps = (dispatch) => ({

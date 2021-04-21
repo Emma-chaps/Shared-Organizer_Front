@@ -12,7 +12,7 @@ export default (store) => (next) => (action) => {
       const {
         title,
         description,
-        familyMembers,
+        groupMembers,
       } = store.getState().widget.widgetCreation;
       const { range, selectedDateValue } = store.getState().calendar;
       const year = Number(format(parseISO(selectedDateValue), 'yyyy'));
@@ -41,7 +41,7 @@ export default (store) => (next) => (action) => {
           range,
           year,
           dateNb,
-          familyMembers,
+          groupMembers,
         })
         .then((result) => result.data)
         .then(({ success, widget }) => {

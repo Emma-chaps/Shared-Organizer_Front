@@ -5,7 +5,7 @@ import {
   COPY_MEMBER,
   SET_GROUP_NAME,
   COPY_GROUP_NAME,
-  SET_FAMILY_DATA,
+  SET_GROUP_DATA,
   ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
   SET_MEMBERS_TO_EDIT,
   ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
@@ -19,7 +19,7 @@ const initialState = {
   openedGroupNameInput: false,
   openedModal: false,
   openMembersInput: {},
-  family: {
+  group: {
     groupName: '',
     members: [],
   },
@@ -75,8 +75,8 @@ export default (state = initialState, action = {}) => {
     case SET_GROUP_NAME: {
       return {
         ...state,
-        family: {
-          ...state.family,
+        group: {
+          ...state.group,
           groupName: state.groupNameToChange,
         },
       };
@@ -93,11 +93,11 @@ export default (state = initialState, action = {}) => {
         openedGroupNameInput: !state.openedGroupNameInput,
       };
     }
-    case SET_FAMILY_DATA: {
+    case SET_GROUP_DATA: {
       return {
         ...state,
-        family: {
-          ...state.family,
+        group: {
+          ...state.group,
           groupName: action.name,
           members: action.members,
         },

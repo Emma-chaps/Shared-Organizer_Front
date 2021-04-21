@@ -2,14 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'src/components/Header';
 import Modal from 'src/components/Modal';
-import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
-import FamilySettingsForm from 'src/containers/forms/FamilySettingsForm';
+import GroupNameForm from 'src/containers/forms/GroupNameForm';
+import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 // import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
 
-const FamilySettings = ({
-  fetchFamilyData,
+const GroupSettings = ({
+  fetchGroupData,
   initialGroupName,
   members,
   openedGroupNameInput,
@@ -55,7 +55,7 @@ const FamilySettings = ({
   };
 
   useEffect(() => {
-    fetchFamilyData();
+    fetchGroupData();
   }, []);
 
   return (
@@ -65,7 +65,7 @@ const FamilySettings = ({
         <h1>Group Settings</h1>
         {openedGroupNameInput ? (
           <div>
-            <FamilyNameForm initialGroupName={initialGroupName} />
+            <GroupNameForm initialGroupName={initialGroupName} />
             <button type="button" onClick={setGroupNameInputState}>
               Cancel
             </button>
@@ -84,7 +84,7 @@ const FamilySettings = ({
           Add a new member
         </button>
         <Modal showModal={isOpenedModal} hideModal={hideModal}>
-          <FamilySettingsForm
+          <GroupSettingsForm
             member={newMember}
             onSubmit={handleSubmitAddNewMember}
           />
@@ -93,7 +93,7 @@ const FamilySettings = ({
           <div key={member.id}>
             {openMembersInput[`id${member.id}`] ? (
               <div>
-                <FamilySettingsForm
+                <GroupSettingsForm
                   member={member}
                   onSubmit={handleSubmitUpdateMember}
                 />
@@ -129,13 +129,13 @@ const FamilySettings = ({
   );
 };
 
-FamilySettings.propTypes = {
+GroupSettings.propTypes = {
   updateMember: PropTypes.func,
   assignMemberToCloseInputView: PropTypes.func,
 };
-FamilySettings.defaultProps = {
+GroupSettings.defaultProps = {
   updateMember: () => {},
   assignMemberToCloseInputView: () => {},
 };
 
-export default FamilySettings;
+export default GroupSettings;

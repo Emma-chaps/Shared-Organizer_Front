@@ -1,26 +1,26 @@
 import api from 'src/api';
 import {
-  FETCH_FAMILY_DATA,
-  setFamilyData,
+  FETCH_GROUP_DATA,
+  setGroupData,
   UPDATE_GROUP_NAME,
   setGroupName,
   setMembersToEdit,
   UPDATE_MEMBER,
-  fetchFamilyData,
   ADD_NEW_MEMBER,
+  fetchGroupData,
 } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_FAMILY_DATA: {
+    case FETCH_GROUP_DATA: {
       api
-        .get('/family-settings')
+        .get('/group-settings')
         .then((result) => {
           console.log(result.data.group);
           return result.data.group;
         })
         .then(({ members, name }) => {
-          store.dispatch(setFamilyData(members, name));
+          store.dispatch(setGroupData(members, name));
           for (const member of members) {
             store.dispatch(setMembersToEdit(`id${member.id}`));
           }
@@ -30,7 +30,7 @@ export default (store) => (next) => (action) => {
     case UPDATE_GROUP_NAME: {
       const { groupNameToChange } = store.getState().settings;
       api
-        .patch('/family-settings/group', { groupName: groupNameToChange })
+        .patch('/group-settings/group', { groupName: groupNameToChange })
         .then((result) => {
           return result.data;
         })
@@ -53,7 +53,7 @@ export default (store) => (next) => (action) => {
       console.log(firstname, email, password, icon, role);
 
       api
-        .patch('/family-settings/members', {
+        .patch('/group-settings/members', {
           id,
           firstname,
           email,
@@ -67,7 +67,7 @@ export default (store) => (next) => (action) => {
         })
         .then(({ success }) => {
           if (success) {
-            store.dispatch(fetchFamilyData());
+            store.dispatch(fetchGroupData());
           }
         });
       return {};
@@ -82,7 +82,7 @@ export default (store) => (next) => (action) => {
       } = store.getState().settings.memberToChange;
       console.log(firstname, email, password, icon, role);
       api
-        .post('/family-settings', {
+        .post('/group-settings', {
           firstname,
           email,
           password,
@@ -95,7 +95,7 @@ export default (store) => (next) => (action) => {
         })
         .then(({ success }) => {
           if (success) {
-            store.dispatch(fetchFamilyData());
+            store.dispatch(fetchGroupData());
           }
         });
     }

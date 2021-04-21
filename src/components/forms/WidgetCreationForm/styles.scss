@@ -8,7 +8,7 @@
     margin-bottom: 2rem;
   }
 
-  &__widget{
+  &__widget {
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -17,7 +17,7 @@
       width: 20%;
     }
 
-    &-description{
+    &-description {
       height: 6rem;
       width: 60%;
       max-width: 500px;
@@ -28,8 +28,7 @@
     font-size: 1.5em;
     margin-bottom: 1rem;
   }
-  &__family {
-
+  &__group {
     &__list {
       width: 60%;
       margin: auto;
@@ -40,7 +39,7 @@
       margin-bottom: 1rem;
 
       &--member {
-        margin: .5rem;
+        margin: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -54,7 +53,6 @@
   }
 
   &__theme {
-
     &-list {
       display: flex;
       justify-content: center;
@@ -62,7 +60,7 @@
       margin-bottom: 1rem;
 
       &--icon {
-        margin: .75rem;
+        margin: 0.75rem;
         border-radius: 50%;
         border: 1px solid black;
         height: 3rem;
@@ -86,10 +84,10 @@
     margin: 0 auto;
     margin-bottom: 1rem;
 
-    &--button{
-      margin-bottom: .5rem;
+    &--button {
+      margin-bottom: 0.5rem;
       width: 60%;
-      padding: .5rem;
+      padding: 0.5rem;
       background-color: white;
       color: black;
       border-radius: 10px;
@@ -104,9 +102,9 @@
 
   &__list {
     margin-bottom: 2rem;
-    
+
     &-styles--button {
-      margin: 0 1rem ;
+      margin: 0 1rem;
     }
 
     &--add-field {
@@ -118,29 +116,24 @@
   }
 
   &__submit {
-    
     &__button {
       height: 4rem;
       width: 20%;
       min-width: 100px;
       border-radius: 10px;
-      margin: 0 .5rem;
-   
+      margin: 0 0.5rem;
     }
   }
 }
-
-
-
 
 .form__date--input--hidden {
   display: none;
 }
 
-.form__list--display-none{
+.form__list--display-none {
   display: none;
 }
 
-.selected{
+.selected {
   background-color: green;
 }

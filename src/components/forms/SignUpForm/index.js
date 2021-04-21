@@ -38,7 +38,7 @@ const SignUpForm = ({
         <Field
           name="groupName"
           type="text"
-          placeholder="Family name"
+          placeholder="group name"
           value={groupName}
           onChange={changeField}
         />

@@ -5,7 +5,7 @@ import {
   setSelectedIcon,
   setSelectedRole,
 } from 'src/actions/settings';
-import FamilySettingsForm from 'src/components/forms/FamilySettingsForm';
+import GroupSettingsForm from 'src/components/forms/GroupSettingsForm';
 
 const mapStateToProps = (state) => ({
   firstname: state.settings.memberToChange.firstname,
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => ({
   setSelectedRole: (role) => dispatch(setSelectedRole(role)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FamilySettingsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupSettingsForm);

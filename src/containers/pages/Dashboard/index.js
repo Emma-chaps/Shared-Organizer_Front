@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Dashboard from 'src/components/pages/Dashboard';
-import { fetchFamilyData } from 'src/actions/settings';
+import { fetchGroupData } from 'src/actions/settings';
 import {
   showWidgetCreationModal,
   hideWidgetCreationModal,
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getGroupData: () => dispatch(fetchFamilyData()),
+  getGroupData: () => dispatch(fetchGroupData()),
   showWidgetCreationModal: () => dispatch(showWidgetCreationModal()),
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
 });

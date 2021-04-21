@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FamilyNameForm from 'src/components/forms/FamilyNameForm';
+import GroupNameForm from 'src/components/forms/GroupNameForm';
 import {
   setGroupNameInputState,
   setNewGroupNameFieldValue,
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
   setGroupNameInputState: () => dispatch(setGroupNameInputState()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FamilyNameForm);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupNameForm);

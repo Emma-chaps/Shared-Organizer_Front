@@ -26,7 +26,7 @@ const WidgetCreationForm = ({
       submitWidget();
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned',
+        'A widget must have a title and at least one member assigned'
       );
     }
   };
@@ -61,13 +61,13 @@ const WidgetCreationForm = ({
         className="form__widget form__widget-description"
       />
 
-      <div className="form__family">
-        <h3 className="form__family__subtitle form__subtitle">
-          Assign family members
+      <div className="form__group">
+        <h3 className="form__group__subtitle form__subtitle">
+          Assign group members
         </h3>
-        <ul className="form__family__list">
+        <ul className="form__group__list">
           {members.map((member) => (
-            <li className="form__family__list--member" key={member.id}>
+            <li className="form__group__list--member" key={member.id}>
               <FaUserAlt />
               <button type="button" onClick={handleAddMember} id={member.id}>
                 add {member.firstname}

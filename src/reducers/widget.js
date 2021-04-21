@@ -16,7 +16,7 @@ const initialState = {
   widgetCreation: {
     title: '',
     description: '',
-    familyMembers: [],
+    groupMembers: [],
   },
   dashboardWidgets: [],
 };
@@ -58,8 +58,8 @@ export default (state = initialState, action = {}) => {
         ...state,
         widgetCreation: {
           ...state.widgetCreation,
-          familyMembers: [
-            ...state.widgetCreation.familyMembers,
+          groupMembers: [
+            ...state.widgetCreation.groupMembers,
             findMember(action.id, action.members),
           ],
         },
@@ -84,7 +84,7 @@ export default (state = initialState, action = {}) => {
           ...state.widgetCreation,
           title: '',
           description: '',
-          familyMembers: [],
+          groupMembers: [],
         },
       };
     }
