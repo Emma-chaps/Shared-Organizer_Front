@@ -7,7 +7,6 @@ import FamilySettingsForm from 'src/containers/forms/FamilySettingsForm';
 // import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
-import { copyMember } from '../../../actions/settings';
 
 const FamilySettings = ({
   fetchFamilyData,
@@ -52,6 +51,7 @@ const FamilySettings = ({
   const handleSubmitAddNewMember = (event) => {
     event.preventDefault();
     addNewMember();
+    hideModal();
   };
 
   useEffect(() => {

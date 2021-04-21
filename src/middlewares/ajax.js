@@ -92,6 +92,11 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           console.log(result.data);
           return result.data;
+        })
+        .then(({ success }) => {
+          if (success) {
+            store.dispatch(fetchFamilyData());
+          }
         });
     }
     default:
