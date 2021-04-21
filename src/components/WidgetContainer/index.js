@@ -8,7 +8,7 @@ function WidgetContainer({ widgets, range }) {
   return (
     <div className="widgets">
       {RangedFilteredWidgets.map((widgetData) => (
-        <Widget key={widgetData.id} data={widgetData} />
+        <Widget key={widgetData.infos.id} widget={widgetData} />
       ))}
     </div>
   );

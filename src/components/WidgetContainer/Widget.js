@@ -1,12 +1,13 @@
 import React from 'react';
 
-function Widget({ data }) {
+function Widget({ widget }) {
+  const { infos, attributedMembers } = widget;
   return (
     <article className="widget">
-      <h2 className="widget__title">TITLE: {data.title}</h2>
-      <p className="widget__description">DESCRIPTION: {data.description}</p>
-      <p>MEMBERS : </p>
-      <p>AUTHOR: {data.author}</p>
+      <h2 className="widget__title">TITLE: {infos.title}</h2>
+      <p className="widget__description">DESCRIPTION: {infos.description}</p>
+      <p>MEMBERS :{attributedMembers.map((member) => member.firstname)}</p>
+      <p>AUTHOR: {infos.author}</p>
     </article>
   );
 }

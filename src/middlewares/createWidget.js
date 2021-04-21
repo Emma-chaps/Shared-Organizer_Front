@@ -45,6 +45,8 @@ export default (store) => (next) => (action) => {
         })
         .then((result) => result.data)
         .then(({ success, widget }) => {
+          console.log('widget:', widget);
+
           if (success) {
             store.dispatch(setWidgetToState(widget));
             store.dispatch(reinitializeWidget());
