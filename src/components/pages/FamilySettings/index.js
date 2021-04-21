@@ -4,6 +4,7 @@ import Header from 'src/components/Header';
 import Modal from 'src/components/Modal';
 import FamilyNameForm from 'src/containers/forms/FamilyNameForm';
 import FamilySettingsForm from 'src/containers/forms/FamilySettingsForm';
+import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
 
@@ -11,7 +12,6 @@ const FamilySettings = ({
   fetchFamilyData,
   initialGroupName,
   members,
-  // setMemberToChange,
   openedGroupNameInput,
   setGroupNameInputState,
   openMembersInput,
@@ -20,6 +20,7 @@ const FamilySettings = ({
   setIsOpenedModal,
   hideModal,
   isOpenedModal,
+  newMember,
 }) => {
   const button = useRef(null);
 
@@ -67,7 +68,7 @@ const FamilySettings = ({
           Add a new member
         </button>
         <Modal showModal={isOpenedModal} hideModal={hideModal}>
-          <FamilySettingsForm />
+          <AddAMemberForm />
         </Modal>
         {members.map((member) => (
           <div key={member.id}>

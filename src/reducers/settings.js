@@ -30,6 +30,13 @@ const initialState = {
     role: '',
   },
   groupNameToChange: '',
+  newMember: {
+    email: '',
+    firstname: '',
+    password: '',
+    icon: '',
+    role: '',
+  },
 };
 
 export default (state = initialState, action = {}) => {

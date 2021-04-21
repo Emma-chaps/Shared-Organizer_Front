@@ -24,7 +24,7 @@ const Home = ({ logged }) => {
   return (
     <div className="home">
       <div className="home__header">
-        <h1 className="home__header__title">Family Organizer</h1>
+        <h1 className="home__header__title">Shared Organizer</h1>
         <h2 className="home__header__subtitle">How it works ?</h2>
       </div>
       <div className="home__main">

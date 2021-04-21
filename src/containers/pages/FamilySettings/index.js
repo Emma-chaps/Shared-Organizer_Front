@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   openedGroupNameInput: state.settings.openedGroupNameInput,
   openMembersInput: state.settings.openMembersInput,
   isOpenedModal: state.settings.openedModal,
+  // newMember: state.settings.
 });
 
 const mapDispatchToProps = (dispatch) => ({
