@@ -22,19 +22,29 @@ const Home = ({ logged }) => {
   };
 
   return (
-    <div className="log">
-      <div>
-        <h1 className="log__title">Family Organizer</h1>
-        <h2 className="log__how">How it works ?</h2>
+    <div className="home">
+      <div className="home__header">
+        <h1 className="home__header__title">Family Organizer</h1>
+        <h2 className="home__header__subtitle">How it works ?</h2>
       </div>
-      <div className="log__form">
-        <div>{selectedButtonSignUp ? <SignUpForm /> : <LoginForm />}</div>
-        <button className="log__button" onClick={changeFormToSignUpForm}>
-          Sign up
-        </button>
-        <button className="log__button" onClick={changeFormToLoginForm}>
-          Login
-        </button>
+      <div className="home__main">
+        <div className="home__main__form-container">
+          {selectedButtonSignUp ? <SignUpForm /> : <LoginForm />}
+        </div>
+        <div className="home__main__btns-container">
+          <button
+            className="home__main__btns-container--signup"
+            onClick={changeFormToSignUpForm}
+          >
+            Sign up
+          </button>
+          <button
+            className="home__main__btns-container--login"
+            onClick={changeFormToLoginForm}
+          >
+            Login
+          </button>
+        </div>
       </div>
     </div>
   );

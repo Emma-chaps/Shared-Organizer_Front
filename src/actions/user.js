@@ -39,9 +39,9 @@ export const login = (token) => ({
   token,
 });
 
-export const SELECT_ICON = 'SELECT_ICON';
+export const SET_SELECT_ICON = 'SET_SELECT_ICON';
 
-export const selectedIcon = (name) => ({
-  type: SELECT_ICON,
+export const setSelectedIcon = (name) => ({
+  type: SET_SELECT_ICON,
   name,
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
@@ -12,22 +12,37 @@ const SignUpForm = ({
   firstname,
   changeField,
   handleSignUp,
-  selectedIcon,
+  setSelectedIcon,
 }) => {
+  const selectedIcon = useRef(null);
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSignUp();
   };
 
-  const handleChange = (event) => {
-    const icon = event.target.dataset.icon;
+  const handleChange = () => {
+    const icon = selectedIcon.current.dataset.icon;
     console.log(icon);
-    selectedIcon(icon);
+    setSelectedIcon(icon);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <>
+      <form className="form" onSubmit={handleSubmit}>
+        <Field
+          name="firstname"
+          type="text"
+          placeholder="Firstname"
+          value={firstname}
+          onChange={changeField}
+        />
+        <Field
+          name="groupName"
+          type="text"
+          placeholder="Family name"
+          value={groupName}
+          onChange={changeField}
+        />
         <Field
           name="email"
           type="email"
@@ -42,32 +57,23 @@ const SignUpForm = ({
           value={password}
           onChange={changeField}
         />
-        <Field
-          name="groupName"
-          type="text"
-          placeholder="Family name"
-          value={groupName}
-          onChange={changeField}
-        />
-        <Field
-          name="firstname"
-          type="text"
-          placeholder="Firstname"
-          value={firstname}
-          onChange={changeField}
-        />
-        <div>
-          <FaUserAlt
-            className="icon"
-            data-icon="FaUserAlt"
-            onClick={handleChange}
-          />
+
+        <div className="icon-container">
+          <div data-icon="bleu" onClick={handleChange} ref={selectedIcon}>
+            <FaUserAlt className="icon-container--blue" />
+          </div>
+          <div data-icon="green" onClick={handleChange} ref={selectedIcon}>
+            <FaUserAlt className="icon-container--green" />
+          </div>
+          <div data-icon="yellow" onClick={handleChange} ref={selectedIcon}>
+            <FaUserAlt className="icon-container--yellow" />
+          </div>
         </div>
         <button className="buttonSign" type="submit">
           Create group
         </button>
       </form>
-    </div>
+    </>
   );
 };
 
@@ -78,13 +84,13 @@ SignUpForm.propTypes = {
   firstname: PropTypes.string.isRequired,
   changeField: PropTypes.func,
   handleSignUp: PropTypes.func,
-  selectedIcon: PropTypes.func,
+  setSelectedIcon: PropTypes.func,
 };
 
 SignUpForm.defaultProps = {
   changeField: () => {},
   handleSignUp: () => {},
-  selectedIcon: () => {},
+  setSelectedIcon: () => {},
 };
 
 export default SignUpForm;

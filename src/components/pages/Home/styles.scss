@@ -1,0 +1,23 @@
+.home {
+  text-align: center;
+  &__header {
+    &__title {
+    }
+    &__subtitle {
+    }
+  }
+  &__main {
+    &__form-container {
+    }
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    &__btns-container {
+      margin: auto;
+      &--signup {
+      }
+      &--login {
+      }
+    }
+  }
+}
