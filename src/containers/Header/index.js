@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Header from 'src/components/Header';
 
 const mapStateToProps = (state) => ({
-  logged: state.user.login.logged,
+  isLogged: state.user.login.isLogged,
 });
 
 const mapDispatchToProps = () => ({});

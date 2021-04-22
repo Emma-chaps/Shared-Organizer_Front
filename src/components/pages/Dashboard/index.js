@@ -14,14 +14,8 @@ const Dashboard = ({
   displayCreationModal,
   showWidgetCreationModal,
   hideWidgetCreationModal,
-  logged,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
-
-  if (!logged) {
-    console.log('coucou');
-    return <Redirect to="/" exact />;
-  }
 
   const handleClick = () => {
     showWidgetCreationModal();

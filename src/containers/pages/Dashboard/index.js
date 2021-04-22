@@ -7,7 +7,6 @@ import {
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
-  logged: state.user.login.logged,
   displayCreationModal: state.widget.displayCreationModal,
 });
 

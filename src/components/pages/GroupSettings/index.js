@@ -9,7 +9,6 @@ import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
 
 const GroupSettings = ({
-  logged,
   fetchGroupData,
   initialGroupName,
   members,
@@ -54,11 +53,6 @@ const GroupSettings = ({
     addNewMember();
     hideModal();
   };
-
-  if (!logged) {
-    console.log('coucou');
-    return <Redirect to="/" exact />;
-  }
 
   useEffect(() => {
     fetchGroupData();

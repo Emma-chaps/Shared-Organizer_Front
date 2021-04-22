@@ -2,11 +2,11 @@ import React from 'react';
 
 import './styles.scss';
 
-export default function Header({ logged }) {
+export default function Header({ islogged }) {
   return (
     <div className="header">
       Header
-      {logged && <div>Disconnect</div>}
+      {islogged && <div>Disconnect</div>}
     </div>
   );
 }

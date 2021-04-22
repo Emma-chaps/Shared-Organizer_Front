@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
-import Home from "src/components/pages/Home";
+import { connect } from 'react-redux';
+import Home from 'src/components/pages/Home';
 
 const mapStateToProps = (state) => ({
-  logged: state.user.login.logged,
+  isLogged: state.user.login.isLogged,
 });
 
 const mapDispatchToProps = () => ({});
