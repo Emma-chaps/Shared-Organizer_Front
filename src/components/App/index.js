@@ -18,23 +18,9 @@ const App = ({ rehydrate, isLogged, isAdmin }) => {
   useEffect(() => {
     rehydrate();
   }, [isLogged]);
+
   return (
     <div className="app">
-      {/* <Switch>
-        <Route path="/" exact>
-          {isLogged ? <Redirect to="/dashboard" exact /> : <Home />}
-        </Route>
-        <Route path="/group-settings" exact>
-          {!isAdmin ? <Redirect to="/dashboard" exact /> : <GroupSettings />}
-        </Route>
-        <Route path="/dashboard" exact>
-          {!isLogged ? <Redirect to="/" exact /> : <Dashboard />}
-        </Route>
-        <Route>
-          <Header />
-          <NotFound />
-        </Route>
-      </Switch> */}
       <Switch>
         <Route path="/" exact>
           <Home />
