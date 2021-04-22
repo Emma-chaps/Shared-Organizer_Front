@@ -45,3 +45,9 @@ export const setSelectedIcon = (name) => ({
   type: SET_SELECT_ICON,
   name,
 });
+
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => ({
+  type: LOGOUT,
+});

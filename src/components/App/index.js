@@ -8,12 +8,12 @@ import GroupSettings from 'src/containers/pages/GroupSettings';
 import Footer from 'src/components/Footer';
 import NotFound from 'src/components/pages/NotFound';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './styles.scss';
 
 // == Composant
-const App = ({ rehydrate }) => {
+const App = ({ rehydrate, isLogged, isAdmin }) => {
   useEffect(() => {
     rehydrate();
   }, []);
@@ -23,13 +23,20 @@ const App = ({ rehydrate }) => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/dashboard" exact>
-          <Header />
-          <Dashboard />
-        </Route>
-        <Route path="/group-settings" exact>
-          <GroupSettings />
-        </Route>
+        {isLogged ? (
+          <Route path="/dashboard" exact>
+            <Dashboard />
+          </Route>
+        ) : (
+          <Redirect to="/" exact />
+        )}
+        {isAdmin ? (
+          <Route path="/group-settings" exact>
+            <GroupSettings />
+          </Route>
+        ) : (
+          <Redirect to="/dashboard" exact />
+        )}
         <Route>
           <Header />
           <NotFound />

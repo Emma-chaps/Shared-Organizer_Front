@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Home from 'src/components/pages/Home';
+import Header from 'src/components/Header';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.login.isLogged,
@@ -7,4 +7,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

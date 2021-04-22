@@ -6,11 +6,11 @@ import LoginForm from 'src/containers/forms/LoginForm';
 
 import './styles.scss';
 
-const Home = ({ logged }) => {
+const Home = ({ isLogged }) => {
   //  changes the display of the form according to the selected button
   const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
 
-  if (logged) {
+  if (isLogged) {
     return <Redirect to="/dashboard" />;
   }
 
@@ -51,11 +51,11 @@ const Home = ({ logged }) => {
 };
 
 Home.propTypes = {
-  logged: PropTypes.bool,
+  isLogged: PropTypes.bool,
 };
 
 Home.defaultProps = {
-  logged: false,
+  isLogged: false,
 };
 
 export default Home;

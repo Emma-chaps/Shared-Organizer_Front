@@ -2,15 +2,19 @@ import {
   SET_USER_FIELD_LOGIN_VALUE,
   SET_USER_FIELD_SIGN_UP_VALUE,
   LOGIN,
+  LOGOUT,
   SET_SELECT_ICON,
 } from 'src/actions/user';
+
+import { isAdmin } from 'src/selectors/user';
 
 const initialState = {
   login: {
     email: '',
     password: '',
     token: '',
-    logged: false,
+    isLogged: false,
+    isAdmin: false,
   },
   signup: {
     email: '',
@@ -45,7 +49,8 @@ export default (state = initialState, action = {}) => {
         login: {
           ...state.login,
           token: action.token,
-          logged: true,
+          isLogged: true,
+          isAdmin: isAdmin(action.token),
         },
       };
     case SET_SELECT_ICON:
@@ -54,6 +59,14 @@ export default (state = initialState, action = {}) => {
         signup: {
           ...state.signup,
           icon: action.name,
+        },
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          isLogged: false,
         },
       };
     default:
