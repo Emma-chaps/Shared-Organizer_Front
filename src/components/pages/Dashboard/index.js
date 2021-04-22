@@ -14,6 +14,7 @@ const Dashboard = ({
   displayCreationModal,
   showWidgetCreationModal,
   hideWidgetCreationModal,
+  logged,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
 
