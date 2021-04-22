@@ -12,7 +12,6 @@ import {
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
-  logged: state.user.login.logged,
   initialGroupName: state.settings.group.groupName,
   members: state.settings.group.members,
   openedGroupNameInput: state.settings.openedGroupNameInput,
