@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router';
+import { Redirect, useLocation } from 'react-router-dom';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
 
 import './styles.scss';
 
-const Home = ({ isLogged }) => {
+const Home = ({ isLogged, isAdmin }) => {
   //  changes the display of the form according to the selected button
   const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
 
-  if (isLogged) {
+  const { state } = useLocation();
+
+  if (isLogged && isAdmin) {
+    return <Redirect to={state?.from || '/dashboard'} />;
+  } else if (isLogged) {
     return <Redirect to="/dashboard" />;
   }
 

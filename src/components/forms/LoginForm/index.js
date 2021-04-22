@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
 import './style.scss';
 
 const LoginForm = ({ email, password, changeField, handleLogin }) => {
+  const [errors, setErrors] = useState('');
   const handleSubmit = (event) => {
-    event.preventDefault();
-    handleLogin();
+    if (email && password) {
+      console.log(email, password);
+      event.preventDefault();
+      handleLogin();
+    } else {
+    }
   };
   return (
     <div>
@@ -26,7 +31,9 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
           value={password}
           onChange={changeField}
         />
-        <button className="buttonLogin" type="submit">Connection</button>
+        <button className="buttonLogin" type="submit">
+          Connection
+        </button>
       </form>
     </div>
   );
