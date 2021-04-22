@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
@@ -14,19 +14,39 @@ const SignUpForm = ({
   handleSignUp,
   setSelectedIcon,
 }) => {
-  const selectedIcon = useRef(null);
+  const [loginErrors, setLoginErrors] = useState([]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleSignUp();
+    if (email && password && firstname && groupName) {
+      handleSignUp();
+    } else {
+      const errors = [];
+      if (!firstname) {
+        errors.push('Firstname is required');
+      }
+      if (!groupName) {
+        errors.push('Group name is required');
+      }
+      if (!email) {
+        errors.push('Email is required');
+      }
+      if (!password) {
+        errors.push('Password is required');
+      }
+      setLoginErrors(errors);
+    }
   };
 
-  const handleChange = () => {
-    const icon = selectedIcon.current.dataset.icon;
+  const handleChange = (event) => {
+    const { icon } = event.currentTarget.dataset;
     setSelectedIcon(icon);
   };
 
   return (
     <>
+      {loginErrors.map((error) => (
+        <div key={error}>{error}</div>
+      ))}
       <form className="form" onSubmit={handleSubmit}>
         <Field
           name="firstname"
@@ -38,7 +58,7 @@ const SignUpForm = ({
         <Field
           name="groupName"
           type="text"
-          placeholder="group name"
+          placeholder="Group name"
           value={groupName}
           onChange={changeField}
         />
@@ -56,15 +76,14 @@ const SignUpForm = ({
           value={password}
           onChange={changeField}
         />
-
         <div className="icon-container">
-          <div data-icon="bleu" onClick={handleChange} ref={selectedIcon}>
+          <div data-icon="bleu" onClick={handleChange}>
             <FaUserAlt className="icon-container--blue" />
           </div>
-          <div data-icon="green" onClick={handleChange} ref={selectedIcon}>
+          <div data-icon="green" onClick={handleChange}>
             <FaUserAlt className="icon-container--green" />
           </div>
-          <div data-icon="yellow" onClick={handleChange} ref={selectedIcon}>
+          <div data-icon="yellow" onClick={handleChange}>
             <FaUserAlt className="icon-container--yellow" />
           </div>
         </div>

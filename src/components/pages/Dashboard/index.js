@@ -23,7 +23,7 @@ const Dashboard = ({
     getGroupData();
   }, []);
   return (
-    <div>
+    <>
       <Header />
       <DashboardMenu />
       <main className="calendar-widgets">
@@ -44,7 +44,7 @@ const Dashboard = ({
       <button type="button" onClick={handleClick}>
         Add a Widget
       </button>
-    </div>
+    </>
   );
 };
 
