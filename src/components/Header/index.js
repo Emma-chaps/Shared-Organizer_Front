@@ -6,7 +6,8 @@ import './styles.scss';
 export default function Header({ isLogged, logout }) {
   return (
     <div className="header">
-      Header
+      <h1>Shared Organizer</h1>
+
       {isLogged && <div onClick={logout}>Disconnect</div>}
     </div>
   );
