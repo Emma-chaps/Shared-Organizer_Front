@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Home from 'src/containers/pages/Home';
-import Header from 'src/components/Header';
 import Dashboard from 'src/containers/pages/Dashboard';
 import GroupSettings from 'src/containers/pages/GroupSettings';
 import Footer from 'src/components/Footer';
@@ -24,14 +23,12 @@ const App = ({ rehydrate }) => {
           <Home />
         </Route>
         <Route path="/dashboard" exact>
-          <Header />
           <Dashboard />
         </Route>
         <Route path="/group-settings" exact>
           <GroupSettings />
         </Route>
         <Route>
-          <Header />
           <NotFound />
         </Route>
       </Switch>
