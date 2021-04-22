@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from 'src/containers/Header';
 import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
 import Modal from 'src/components/Modal';
@@ -23,6 +24,7 @@ const Dashboard = ({
   }, []);
   return (
     <div>
+      <Header />
       <DashboardMenu />
       <main className="calendar-widgets">
         <Calendar />

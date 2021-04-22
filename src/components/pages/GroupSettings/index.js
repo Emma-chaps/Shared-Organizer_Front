@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';

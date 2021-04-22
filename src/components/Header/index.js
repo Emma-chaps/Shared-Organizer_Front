@@ -1,12 +1,14 @@
 import React from 'react';
+import { logout } from '../../actions/user';
 
 import './styles.scss';
 
-export default function Header({ islogged }) {
+export default function Header({ isLogged, logout }) {
   return (
     <div className="header">
-      Header
-      {islogged && <div>Disconnect</div>}
+      <h1>Shared Organizer</h1>
+
+      {isLogged && <div onClick={logout}>Disconnect</div>}
     </div>
   );
 }
