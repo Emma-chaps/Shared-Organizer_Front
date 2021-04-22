@@ -1,14 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
-// import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
 
 const GroupSettings = ({
+  logged,
   fetchGroupData,
   initialGroupName,
   members,
@@ -53,6 +54,11 @@ const GroupSettings = ({
     addNewMember();
     hideModal();
   };
+
+  if (!logged) {
+    console.log('coucou');
+    return <Redirect to="/" exact />;
+  }
 
   useEffect(() => {
     fetchGroupData();
