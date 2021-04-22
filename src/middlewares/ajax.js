@@ -14,7 +14,7 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_GROUP_DATA: {
       api
-        .get('/group-settings')
+        .get('/group-infos')
         .then((result) => {
           console.log(result.data.group);
           return result.data.group;
@@ -50,8 +50,6 @@ export default (store) => (next) => (action) => {
         icon,
         role,
       } = store.getState().settings.memberToChange;
-      console.log(firstname, email, password, icon, role);
-
       api
         .patch('/group-settings/members', {
           id,
@@ -61,7 +59,6 @@ export default (store) => (next) => (action) => {
           icon,
           role: Number(role),
         })
-
         .then((result) => {
           return result.data;
         })
@@ -70,7 +67,7 @@ export default (store) => (next) => (action) => {
             store.dispatch(fetchGroupData());
           }
         });
-      return {};
+      return next(action);
     }
     case ADD_NEW_MEMBER: {
       const {
@@ -98,6 +95,7 @@ export default (store) => (next) => (action) => {
             store.dispatch(fetchGroupData());
           }
         });
+      return next(action);
     }
     default:
       return next(action);

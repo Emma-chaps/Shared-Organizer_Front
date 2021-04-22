@@ -5,7 +5,6 @@ import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
-// import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
 
@@ -63,19 +62,19 @@ const GroupSettings = ({
       <div className="settings">
         <h1>Group Settings</h1>
         {openedGroupNameInput ? (
-          <div>
+          <>
             <GroupNameForm initialGroupName={initialGroupName} />
             <button type="button" onClick={setGroupNameInputState}>
               Cancel
             </button>
-          </div>
+          </>
         ) : (
-          <div>
+          <>
             <div>{initialGroupName}</div>
             <button type="button" onClick={setGroupNameInputState}>
               <BiPencil />
             </button>
-          </div>
+          </>
         )}
         <hr />
         <h2>Group members</h2>

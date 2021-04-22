@@ -75,7 +75,7 @@ export default (state = initialState, action = {}) => {
     case SET_LOGIN_ERROR:
       return {
         ...state,
-        error: action.error,
+        errors: action.error,
       };
     default:
       return state;
