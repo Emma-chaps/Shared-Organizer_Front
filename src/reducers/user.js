@@ -69,6 +69,7 @@ export default (state = initialState, action = {}) => {
         login: {
           ...state.login,
           isLogged: false,
+          isAdmin: false,
         },
       };
     case SET_LOGIN_ERROR:

@@ -1,3 +1,6 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable brace-style */
+/* eslint-disable no-else-return */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
