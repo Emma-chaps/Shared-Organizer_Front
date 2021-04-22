@@ -23,19 +23,19 @@ const App = ({ rehydrate, isLogged, isAdmin }) => {
         <Route path="/" exact>
           <Home />
         </Route>
-        {isLogged ? (
+        {!isLogged ? (
+          <Redirect to="/" exact />
+        ) : (
           <Route path="/dashboard" exact>
             <Dashboard />
           </Route>
-        ) : (
-          <Redirect to="/" exact />
         )}
-        {isAdmin ? (
+        {!isAdmin ? (
+          <Redirect to="/dashboard" exact />
+        ) : (
           <Route path="/group-settings" exact>
             <GroupSettings />
           </Route>
-        ) : (
-          <Redirect to="/dashboard" exact />
         )}
         <Route>
           <Header />

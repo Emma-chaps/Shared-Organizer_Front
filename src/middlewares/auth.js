@@ -5,6 +5,7 @@ import {
   SUBMIT_SIGN_UP,
   SUBMIT_LOGIN,
   login,
+  LOGOUT,
 } from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
@@ -71,6 +72,11 @@ export default (store) => (next) => (action) => {
         });
       return next(action);
     }
+    case LOGOUT: {
+      localStorage.removeItem('jwtoken');
+      return next(action);
+    }
+
     default:
       return next(action);
   }
