@@ -4,6 +4,7 @@ import {
   LOGIN,
   LOGOUT,
   SET_SELECT_ICON,
+  SET_LOGIN_ERROR,
 } from 'src/actions/user';
 
 import { isAdmin } from 'src/selectors/user';
@@ -23,6 +24,7 @@ const initialState = {
     firstname: '',
     icon: '',
   },
+  error: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -68,6 +70,11 @@ export default (state = initialState, action = {}) => {
           ...state.login,
           isLogged: false,
         },
+      };
+    case SET_LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.error,
       };
     default:
       return state;

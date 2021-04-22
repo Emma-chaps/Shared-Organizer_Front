@@ -107,6 +107,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openMembersInput: {
+          ...state.openMembersInput,
           [action.id]: true,
         },
       };

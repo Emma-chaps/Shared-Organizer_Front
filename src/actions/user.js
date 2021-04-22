@@ -51,3 +51,10 @@ export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
 });
+
+export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+
+export const setLoginError = (error) => ({
+  type: SET_LOGIN_ERROR,
+  error,
+});

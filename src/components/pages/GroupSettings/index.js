@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
@@ -24,16 +25,14 @@ const GroupSettings = ({
   updateMember,
   addNewMember,
 }) => {
-  const button = useRef(null);
-
-  const handleOpenMemberInputView = () => {
-    const id = `id${button.current.dataset.id}`;
+  const handleOpenMemberInputView = (event) => {
+    const id = `id${event.currentTarget.dataset.id}`;
     console.log(id);
     assignMemberToOpenInputView(id);
   };
 
-  const handleCloseMemberInputView = () => {
-    const id = `id${button.current.dataset.id}`;
+  const handleCloseMemberInputView = (event) => {
+    const id = `id${event.currentTarget.dataset.id}`;
     assignMemberToCloseInputView(id);
   };
 
@@ -44,7 +43,7 @@ const GroupSettings = ({
   const handleSubmitUpdateMember = (event) => {
     event.preventDefault();
     updateMember();
-    const id = `id${button.current.dataset.id}`;
+    const id = `id${event.currentTarget.dataset.id}`;
     assignMemberToCloseInputView(id);
   };
 
@@ -100,7 +99,6 @@ const GroupSettings = ({
                 <button
                   type="button"
                   onClick={handleCloseMemberInputView}
-                  ref={button}
                   data-id={member.id}
                 >
                   Cancel
@@ -115,7 +113,6 @@ const GroupSettings = ({
                 <button
                   type="button"
                   onClick={handleOpenMemberInputView}
-                  ref={button}
                   data-id={member.id}
                 >
                   <BiPencil />
@@ -138,4 +135,4 @@ GroupSettings.defaultProps = {
   assignMemberToCloseInputView: () => {},
 };
 
-export default GroupSettings;
+export default withRouter(GroupSettings);

@@ -4,7 +4,7 @@ import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import WidgetContainer from 'src/containers/WidgetContainer';
 import './styles.scss';
 
@@ -48,4 +48,4 @@ const Dashboard = ({
   );
 };
 
-export default Dashboard;
+export default withRouter(Dashboard);
