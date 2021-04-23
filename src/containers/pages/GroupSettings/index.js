@@ -9,6 +9,7 @@ import {
   setIsOpenedModal,
   updateMember,
   addNewMember,
+  cleanMemberToChangeField,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({

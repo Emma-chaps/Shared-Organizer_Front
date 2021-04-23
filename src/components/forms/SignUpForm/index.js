@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
 
-import './style.scss';
+import '../styles.scss';
+import './styles.scss';
 
 const SignUpForm = ({
   email,
@@ -14,10 +15,11 @@ const SignUpForm = ({
   handleSignUp,
   setSelectedIcon,
 }) => {
-  const [loginErrors, setLoginErrors] = useState([]);
+  const [signUpErrors, setSignUpErrors] = useState([]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (email && password && firstname && groupName) {
+    const { icon } = event.currentTarget.dataset;
+    if (email && password && firstname && groupName && icon) {
       handleSignUp();
     } else {
       const errors = [];
@@ -33,7 +35,10 @@ const SignUpForm = ({
       if (!password) {
         errors.push('Password is required');
       }
-      setLoginErrors(errors);
+      if (!icon) {
+        errors.push('Icon is required');
+      }
+      setSignUpErrors(errors);
     }
   };
 
@@ -44,9 +49,13 @@ const SignUpForm = ({
 
   return (
     <>
-      {loginErrors.map((error) => (
-        <div key={error}>{error}</div>
-      ))}
+      <div className="errors">
+        {signUpErrors.map((error) => (
+          <div key={error} className="errors__message">
+            {error}
+          </div>
+        ))}
+      </div>
       <form className="form" onSubmit={handleSubmit}>
         <Field
           name="firstname"

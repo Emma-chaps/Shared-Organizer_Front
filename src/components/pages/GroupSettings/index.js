@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
@@ -23,6 +23,7 @@ const GroupSettings = ({
   newMember,
   updateMember,
   addNewMember,
+  cleanMemberToChangeField,
 }) => {
   const handleOpenMemberInputView = (event) => {
     const id = `id${event.currentTarget.dataset.id}`;
@@ -36,14 +37,13 @@ const GroupSettings = ({
   };
 
   const handleOpenAddMember = () => {
+    cleanMemberToChangeField();
     setIsOpenedModal();
   };
 
   const handleSubmitUpdateMember = (event) => {
     event.preventDefault();
     updateMember();
-    const id = `id${event.currentTarget.dataset.id}`;
-    assignMemberToCloseInputView(id);
   };
 
   const handleSubmitAddNewMember = (event) => {

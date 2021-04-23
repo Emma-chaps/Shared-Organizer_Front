@@ -39,8 +39,8 @@ export default (store) => (next) => (action) => {
           console.log(result.data);
           return result.data;
         })
-        .then(({ created, token }) => {
-          if (created) {
+        .then(({ connected, token }) => {
+          if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
           } else {
@@ -78,7 +78,6 @@ export default (store) => (next) => (action) => {
     }
     case LOGOUT: {
       localStorage.removeItem('jwtoken');
-      // rehydrate();
       return next(action);
     }
 

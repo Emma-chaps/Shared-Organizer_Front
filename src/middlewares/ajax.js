@@ -8,6 +8,7 @@ import {
   UPDATE_MEMBER,
   ADD_NEW_MEMBER,
   fetchGroupData,
+  assignMemberToCloseInputView,
 } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
@@ -16,7 +17,6 @@ export default (store) => (next) => (action) => {
       api
         .get('/group-infos')
         .then((result) => {
-          console.log(result.data.group);
           return result.data.group;
         })
         .then(({ members, name }) => {
@@ -65,6 +65,7 @@ export default (store) => (next) => (action) => {
         .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
+            store.dispatch(assignMemberToCloseInputView(id));
           }
         });
       return next(action);

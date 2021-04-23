@@ -13,6 +13,7 @@ import {
   SET_IS_OPENED_MODAL,
   SET_SELECTED_ICON,
   SET_SELECTED_ROLE,
+  CLEAN_MEMBER_TO_CHANGE_FIELD,
 } from 'src/actions/settings';
 
 const initialState = {
@@ -23,16 +24,9 @@ const initialState = {
     groupName: '',
     members: [],
   },
+  groupNameToChange: '',
   memberToChange: {
     id: '',
-    email: '',
-    firstname: '',
-    password: '',
-    icon: '',
-    role: '',
-  },
-  groupNameToChange: '',
-  newMember: {
     email: '',
     firstname: '',
     password: '',
@@ -157,6 +151,20 @@ export default (state = initialState, action = {}) => {
         memberToChange: {
           ...state.memberToChange,
           role: action.role,
+        },
+      };
+    }
+    case CLEAN_MEMBER_TO_CHANGE_FIELD: {
+      return {
+        ...state,
+        memberToChange: {
+          ...state.memberToChange,
+          id: '',
+          email: '',
+          firstname: '',
+          password: '',
+          icon: '',
+          role: '',
         },
       };
     }
