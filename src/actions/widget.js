@@ -59,3 +59,16 @@ export const REINITIALIZE_WIDGET = 'REINITIALIZE_WIDGET';
 export const reinitializeWidget = () => ({
   type: REINITIALIZE_WIDGET,
 });
+
+export const FETCH_DAY_WIDGETS_OF_RANGE = 'FETCH_DAY_WIDGETS_OF_RANGE';
+
+export const fetchDayWidgetsOfRange = () => ({
+  type: FETCH_DAY_WIDGETS_OF_RANGE,
+});
+
+export const SET_DAY_WIDGETS_OF_RANGE = 'SET_DAY_WIDGETS_OF_RANGE';
+
+export const setDayWidgetsOfRange = (widgets) => ({
+  type: SET_DAY_WIDGETS_OF_RANGE,
+  widgets,
+});
