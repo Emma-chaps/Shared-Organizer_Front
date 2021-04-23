@@ -14,7 +14,10 @@ import {
   SET_SELECTED_ICON,
   SET_SELECTED_ROLE,
   CLEAN_MEMBER_TO_CHANGE_FIELD,
+  SET_COLOR_TO_MEMBER,
 } from 'src/actions/settings';
+
+import { deleteColors } from 'src/selectors/utils';
 
 const initialState = {
   openedGroupNameInput: false,
@@ -40,6 +43,7 @@ const initialState = {
     icon: '',
     role: '',
   },
+  colors: ['red', 'yellow', 'green', 'blue', 'brown', 'purple'],
 };
 
 export default (state = initialState, action = {}) => {
@@ -174,6 +178,12 @@ export default (state = initialState, action = {}) => {
           icon: '',
           role: '',
         },
+      };
+    }
+    case SET_COLOR_TO_MEMBER: {
+      return {
+        ...state,
+        colors: deleteColors(state.colors, action.color),
       };
     }
     default:

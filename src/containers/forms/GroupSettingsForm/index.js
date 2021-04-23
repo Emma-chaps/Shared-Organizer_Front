@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   password: state.settings.memberToChange.password,
   role: state.settings.memberToChange.role,
   icon: state.settings.memberToChange.icon,
+  colors: state.settings.colors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

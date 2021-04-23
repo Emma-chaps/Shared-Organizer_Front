@@ -10,6 +10,7 @@ const Field = ({ type, name, placeholder, value, onChange }) => {
   return (
     <div>
       <label htmlFor={name}>
+        {placeholder}
         <input
           id={name}
           type={type}
@@ -17,7 +18,6 @@ const Field = ({ type, name, placeholder, value, onChange }) => {
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
-          required
         />
       </label>
     </div>

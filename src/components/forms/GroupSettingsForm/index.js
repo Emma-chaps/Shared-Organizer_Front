@@ -14,6 +14,7 @@ const GroupSettingsFrom = ({
   onSubmit,
   setSelectedIcon,
   setSelectedRole,
+  colors,
 }) => {
   useEffect(() => {
     copyMember(member);
@@ -81,9 +82,9 @@ const GroupSettingsFrom = ({
             required
           >
             <option value="">Choose a color</option>
-            <option value="green">Green</option>
-            <option value="yellow">Yellow</option>
-            <option value="blue">Blue</option>
+            {colors.map((color) => (
+              <option value={color}>{color}</option>
+            ))}
           </select>
         </label>
         <button type="submit">Save</button>

@@ -6,7 +6,7 @@ import {
   SET_SELECT_ICON,
 } from 'src/actions/user';
 
-import { isAdmin } from 'src/selectors/user';
+import { isAdmin } from 'src/selectors/utils';
 
 const initialState = {
   login: {

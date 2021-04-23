@@ -78,7 +78,6 @@ export default (store) => (next) => (action) => {
         icon,
         role,
       } = store.getState().settings.memberToChange;
-      console.log(firstname, email, password, icon, role);
       api
         .post('/group-settings', {
           firstname,

@@ -15,6 +15,7 @@ const SignUpForm = ({
   changeField,
   handleSignUp,
   setSelectedIcon,
+  colors,
 }) => {
   const [signUpErrors, setSignUpErrors] = useState([]);
   const handleSubmit = (event) => {
@@ -86,15 +87,11 @@ const SignUpForm = ({
           onChange={changeField}
         />
         <div className="icon-container">
-          <div data-icon="bleu" onClick={handleChange}>
-            <FaUserAlt className="icon-container--blue" />
-          </div>
-          <div data-icon="green" onClick={handleChange}>
-            <FaUserAlt className="icon-container--green" />
-          </div>
-          <div data-icon="yellow" onClick={handleChange}>
-            <FaUserAlt className="icon-container--yellow" />
-          </div>
+          {colors.map((color) => (
+            <div data-icon={color} onClick={handleChange} key={color}>
+              <FaUserAlt className={`icon-container--${color}`} />
+            </div>
+          ))}
         </div>
         <button className="buttonSign" type="submit">
           Create group

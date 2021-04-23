@@ -27,7 +27,6 @@ const GroupSettings = ({
 }) => {
   const handleOpenMemberInputView = (event) => {
     const id = `id${event.currentTarget.dataset.id}`;
-    console.log(id);
     assignMemberToOpenInputView(id);
   };
 

@@ -6,10 +6,22 @@
     color: blue;
   }
   &--yellow {
-    color: rgb(255, 136, 0);
+    color: rgb(255, 208, 0);
   }
   &--green {
     color: green;
+  }
+  &--purple {
+    color: rgb(204, 0, 255);
+  }
+  &--brown {
+    color: rgb(100, 41, 7);
+  }
+  &--green {
+    color: green;
+  }
+  &--red {
+    color: red;
   }
 }
 .buttonSign {
