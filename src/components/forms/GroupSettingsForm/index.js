@@ -91,7 +91,13 @@ const GroupSettingsFrom = ({
     </>
   );
 };
-
+/*
+let color = ['red', 'blue', 'green','yellow'];
+quand le mec il clique :
+const newArray = color.filter(newcolor => newcolor !== 'selectedColor')
+color = newArray  //
+color.push(saCouleurActuel)
+*/
 GroupSettingsFrom.propTypes = {
   member: PropTypes.object,
   firstname: PropTypes.string,

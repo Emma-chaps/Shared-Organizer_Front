@@ -11,6 +11,7 @@ const SignUpForm = ({
   password,
   groupName,
   firstname,
+  selectedIcon,
   changeField,
   handleSignUp,
   setSelectedIcon,
@@ -18,8 +19,7 @@ const SignUpForm = ({
   const [signUpErrors, setSignUpErrors] = useState([]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { icon } = event.currentTarget.dataset;
-    if (email && password && firstname && groupName && icon) {
+    if (email && password && firstname && groupName && selectedIcon) {
       handleSignUp();
     } else {
       const errors = [];
@@ -35,7 +35,7 @@ const SignUpForm = ({
       if (!password) {
         errors.push('Password is required');
       }
-      if (!icon) {
+      if (!selectedIcon) {
         errors.push('Icon is required');
       }
       setSignUpErrors(errors);

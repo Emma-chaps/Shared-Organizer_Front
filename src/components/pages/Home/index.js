@@ -14,7 +14,8 @@ const Home = ({ isLogged, isAdmin }) => {
 
   if (isLogged && isAdmin) {
     return <Redirect to={state?.from || '/dashboard'} />;
-  } else if (isLogged) {
+  }
+  if (isLogged) {
     return <Redirect to="/dashboard" />;
   }
 

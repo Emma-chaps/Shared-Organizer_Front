@@ -6,7 +6,6 @@ import {
   SUBMIT_LOGIN,
   login,
   LOGOUT,
-  setLoginError,
 } from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
@@ -63,16 +62,15 @@ export default (store) => (next) => (action) => {
           console.log(result.data);
           return result.data;
         })
-        .then(({ connected, token, error }) => {
+        .then(({ connected, token, error, success }) => {
+          console.log(success);
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
-          } else {
-            store.dispatch(setLoginError(error));
           }
         })
         .catch((error) => {
-          console.error(error);
+          console.log(error);
         });
       return next(action);
     }
