@@ -14,7 +14,8 @@ const Home = ({ isLogged, isAdmin }) => {
 
   if (isLogged && isAdmin) {
     return <Redirect to={state?.from || '/dashboard'} />;
-  } else if (isLogged) {
+  }
+  if (isLogged) {
     return <Redirect to="/dashboard" />;
   }
 
@@ -37,12 +38,14 @@ const Home = ({ isLogged, isAdmin }) => {
         </div>
         <div className="home__main__btns-container">
           <button
+            type="button"
             className="home__main__btns-container--signup"
             onClick={changeFormToSignUpForm}
           >
             Sign up
           </button>
           <button
+            type="button"
             className="home__main__btns-container--login"
             onClick={changeFormToLoginForm}
           >

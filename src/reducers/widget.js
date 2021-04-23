@@ -7,6 +7,7 @@ import {
   HIDE_WIDGET_CREATION_MODAL,
   REINITIALIZE_WIDGET,
   SET_WIDGET_TO_STATE,
+  SET_DAY_WIDGETS_OF_RANGE,
 } from 'src/actions/widget';
 
 import { findMember } from 'src/selectors/findMember';
@@ -19,6 +20,7 @@ const initialState = {
     groupMembers: [],
   },
   dashboardWidgets: [],
+  calendarWidgets: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -92,6 +94,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         dashboardWidgets: [...state.dashboardWidgets, action.widget],
+      };
+    }
+    case SET_DAY_WIDGETS_OF_RANGE: {
+      return {
+        ...state,
+        calendarWidgets: action.widgets,
       };
     }
 

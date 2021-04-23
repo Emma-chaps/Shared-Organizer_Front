@@ -1,9 +1,10 @@
 import api from 'src/api';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, addDays, getDayOfYear } from 'date-fns';
 import {
   SUBMIT_WIDGET_DATA_CREATION,
   reinitializeWidget,
   setWidgetToState,
+  fetchDayWidgetsOfRange,
 } from 'src/actions/widget';
 
 export default (store) => (next) => (action) => {
@@ -15,6 +16,7 @@ export default (store) => (next) => (action) => {
         groupMembers,
       } = store.getState().widget.widgetCreation;
       const { range, selectedDateValue } = store.getState().calendar;
+      const formattedISODate = addDays(parseISO(selectedDateValue), 0);
       const year = Number(format(parseISO(selectedDateValue), 'yyyy'));
       let dateNb = null;
 
@@ -28,12 +30,13 @@ export default (store) => (next) => (action) => {
           break;
         }
         case 'day': {
-          dateNb = Number(format(parseISO(selectedDateValue), 'dd'));
+          dateNb = getDayOfYear(formattedISODate);
           break;
         }
         default:
           break;
       }
+
       api
         .post('/dashboard/widgets/create', {
           title,
@@ -49,6 +52,7 @@ export default (store) => (next) => (action) => {
 
           if (success) {
             store.dispatch(setWidgetToState(widget));
+            store.dispatch(fetchDayWidgetsOfRange());
             store.dispatch(reinitializeWidget());
           }
         })

@@ -4,6 +4,7 @@ import { fetchGroupData } from 'src/actions/settings';
 import {
   showWidgetCreationModal,
   hideWidgetCreationModal,
+  fetchDayWidgetsOfRange,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   getGroupData: () => dispatch(fetchGroupData()),
   showWidgetCreationModal: () => dispatch(showWidgetCreationModal()),
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
+  fetchDayWidgetsOfRange: () => dispatch(fetchDayWidgetsOfRange()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
