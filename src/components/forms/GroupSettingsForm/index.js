@@ -54,11 +54,7 @@ const GroupSettingsFrom = ({
           onChange={changeField}
         />
         {role === 3 ? (
-          <label htmlFor="role">
-            <select name="role" id="role" value={role} required>
-              <option value="3">Admin</option>
-            </select>
-          </label>
+          <div>Admin</div>
         ) : (
           <label htmlFor="role">
             Select a role

@@ -33,6 +33,13 @@ const initialState = {
     icon: '',
     role: '',
   },
+  newMember: {
+    email: '',
+    firstname: '',
+    password: '',
+    icon: '',
+    role: '',
+  },
 };
 
 export default (state = initialState, action = {}) => {
@@ -101,7 +108,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openMembersInput: {
-          ...state.openMembersInput,
+          // ...state.openMembersInput,
           [action.id]: true,
         },
       };
@@ -157,6 +164,7 @@ export default (state = initialState, action = {}) => {
     case CLEAN_MEMBER_TO_CHANGE_FIELD: {
       return {
         ...state,
+        openMembersInput: {},
         memberToChange: {
           ...state.memberToChange,
           id: '',

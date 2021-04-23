@@ -17,13 +17,13 @@ const GroupSettings = ({
   openMembersInput,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
+  cleanMemberToChangeField,
   setIsOpenedModal,
   hideModal,
   isOpenedModal,
   newMember,
   updateMember,
   addNewMember,
-  cleanMemberToChangeField,
 }) => {
   const handleOpenMemberInputView = (event) => {
     const id = `id${event.currentTarget.dataset.id}`;

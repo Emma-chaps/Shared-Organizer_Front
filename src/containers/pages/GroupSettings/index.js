@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
   assignMemberToCloseInputView: (id) =>
     dispatch(assignMemberToCloseInputView(id)),
   hideModal: () => dispatch(hideModal()),
+  cleanMemberToChangeField: () => dispatch(cleanMemberToChangeField()),
   setIsOpenedModal: () => dispatch(setIsOpenedModal()),
   updateMember: () => dispatch(updateMember()),
   addNewMember: () => dispatch(addNewMember()),
