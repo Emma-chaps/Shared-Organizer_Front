@@ -11,7 +11,6 @@ const DashboardMenu = ({ setRange, selectedDateValue, setFieldDateValue }) => {
   };
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setFieldDateValue(event.target.value);
   };
 

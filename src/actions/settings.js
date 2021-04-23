@@ -120,3 +120,16 @@ export const setSelectedRole = (role) => ({
   type: SET_SELECTED_ROLE,
   role,
 });
+
+export const CLEAN_MEMBER_TO_CHANGE_FIELD = 'CLEAN_MEMBER_TO_CHANGE_FIELD';
+
+export const cleanMemberToChangeField = () => ({
+  type: CLEAN_MEMBER_TO_CHANGE_FIELD,
+});
+
+export const SET_COLOR_TO_MEMBER = 'SET_COLOR_TO_MEMBER';
+
+export const setColorToMember = (color) => ({
+  type: SET_COLOR_TO_MEMBER,
+  color,
+});

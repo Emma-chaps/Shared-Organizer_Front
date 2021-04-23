@@ -6,8 +6,8 @@ import {
   SUBMIT_LOGIN,
   login,
   LOGOUT,
-  setLoginError,
 } from 'src/actions/user';
+import { setColorToMember } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -26,7 +26,6 @@ export default (store) => (next) => (action) => {
         groupName,
         icon,
       } = store.getState().user.signup;
-      console.log(email, password, firstname, groupName, icon);
       api
         .post('/signup', {
           email,
@@ -43,6 +42,7 @@ export default (store) => (next) => (action) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
+            store.dispatch(setColorToMember(icon));
           } else {
             // add errors messages
           }
@@ -63,22 +63,16 @@ export default (store) => (next) => (action) => {
           console.log(result.data);
           return result.data;
         })
-        .then(({ connected, token, error }) => {
+        .then(({ connected, token }) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
-          } else {
-            store.dispatch(setLoginError(error));
           }
-        })
-        .catch((error) => {
-          console.error(error);
         });
       return next(action);
     }
     case LOGOUT: {
       localStorage.removeItem('jwtoken');
-      // rehydrate();
       return next(action);
     }
 

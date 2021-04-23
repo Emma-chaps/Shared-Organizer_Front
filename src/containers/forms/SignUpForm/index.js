@@ -11,6 +11,8 @@ const mapStateToProps = (state) => ({
   password: state.user.signup.password,
   groupName: state.user.signup.groupName,
   firstname: state.user.signup.firstname,
+  selectedIcon: state.user.signup.icon,
+  colors: state.settings.colors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

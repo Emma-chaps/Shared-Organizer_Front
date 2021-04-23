@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
-import './style.scss';
+import '../styles.scss';
 
 const LoginForm = ({ email, password, changeField, handleLogin }) => {
   const [loginErrors, setLoginErrors] = useState([]);
@@ -23,10 +23,14 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
     }
   };
   return (
-    <div>
-      {loginErrors.map((error) => (
-        <div key={error}>{error}</div>
-      ))}
+    <>
+      <div className="errors">
+        {loginErrors.map((error) => (
+          <div key={error} className="errors__message">
+            {error}
+          </div>
+        ))}
+      </div>
       <form onSubmit={handleSubmit}>
         <Field
           name="email"
@@ -48,7 +52,7 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
           Connection
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

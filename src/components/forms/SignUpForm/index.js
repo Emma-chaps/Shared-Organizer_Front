@@ -3,21 +3,24 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
 
-import './style.scss';
+import '../styles.scss';
+import './styles.scss';
 
 const SignUpForm = ({
   email,
   password,
   groupName,
   firstname,
+  selectedIcon,
   changeField,
   handleSignUp,
   setSelectedIcon,
+  colors,
 }) => {
-  const [loginErrors, setLoginErrors] = useState([]);
+  const [signUpErrors, setSignUpErrors] = useState([]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (email && password && firstname && groupName) {
+    if (email && password && firstname && groupName && selectedIcon) {
       handleSignUp();
     } else {
       const errors = [];
@@ -33,7 +36,10 @@ const SignUpForm = ({
       if (!password) {
         errors.push('Password is required');
       }
-      setLoginErrors(errors);
+      if (!selectedIcon) {
+        errors.push('Icon is required');
+      }
+      setSignUpErrors(errors);
     }
   };
 
@@ -44,9 +50,13 @@ const SignUpForm = ({
 
   return (
     <>
-      {loginErrors.map((error) => (
-        <div key={error}>{error}</div>
-      ))}
+      <div className="errors">
+        {signUpErrors.map((error) => (
+          <div key={error} className="errors__message">
+            {error}
+          </div>
+        ))}
+      </div>
       <form className="form" onSubmit={handleSubmit}>
         <Field
           name="firstname"
@@ -77,15 +87,11 @@ const SignUpForm = ({
           onChange={changeField}
         />
         <div className="icon-container">
-          <div data-icon="bleu" onClick={handleChange}>
-            <FaUserAlt className="icon-container--blue" />
-          </div>
-          <div data-icon="green" onClick={handleChange}>
-            <FaUserAlt className="icon-container--green" />
-          </div>
-          <div data-icon="yellow" onClick={handleChange}>
-            <FaUserAlt className="icon-container--yellow" />
-          </div>
+          {colors.map((color) => (
+            <div data-icon={color} onClick={handleChange} key={color}>
+              <FaUserAlt className={`icon-container--${color}`} />
+            </div>
+          ))}
         </div>
         <button className="buttonSign" type="submit">
           Create group

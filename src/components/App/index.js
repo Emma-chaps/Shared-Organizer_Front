@@ -1,15 +1,13 @@
 // == Import npm
 import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from 'src/components/ProtectedRoute';
 import PropTypes from 'prop-types';
 import Home from 'src/containers/pages/Home';
-import Header from 'src/components/Header';
 import Dashboard from 'src/containers/pages/Dashboard';
 import GroupSettings from 'src/containers/pages/GroupSettings';
 import Footer from 'src/components/Footer';
 import NotFound from 'src/components/pages/NotFound';
-
-import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -35,6 +33,9 @@ const App = ({ rehydrate, isLogged, isAdmin }) => {
           component={GroupSettings}
           isAuth={isAdmin}
         />
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
       <Footer />
     </div>

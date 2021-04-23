@@ -8,6 +8,7 @@ import {
   UPDATE_MEMBER,
   ADD_NEW_MEMBER,
   fetchGroupData,
+  assignMemberToCloseInputView,
 } from 'src/actions/settings';
 import {
   FETCH_DAY_WIDGETS_OF_RANGE,
@@ -28,7 +29,6 @@ export default (store) => (next) => (action) => {
       api
         .get('/group-infos')
         .then((result) => {
-          console.log(result.data.group);
           return result.data.group;
         })
         .then(({ members, name }) => {
@@ -73,6 +73,7 @@ export default (store) => (next) => (action) => {
         .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
+            store.dispatch(assignMemberToCloseInputView(id));
           }
         });
       return next(action);
@@ -85,7 +86,6 @@ export default (store) => (next) => (action) => {
         icon,
         role,
       } = store.getState().settings.memberToChange;
-      console.log(firstname, email, password, icon, role);
       api
         .post('/group-settings', {
           firstname,

@@ -10,6 +10,7 @@ const Field = ({ type, name, placeholder, value, onChange }) => {
   return (
     <div>
       <label htmlFor={name}>
+        {placeholder}
         <input
           id={name}
           type={type}

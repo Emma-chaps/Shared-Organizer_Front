@@ -13,7 +13,11 @@ import {
   SET_IS_OPENED_MODAL,
   SET_SELECTED_ICON,
   SET_SELECTED_ROLE,
+  CLEAN_MEMBER_TO_CHANGE_FIELD,
+  SET_COLOR_TO_MEMBER,
 } from 'src/actions/settings';
+
+import { deleteColors } from 'src/selectors/utils';
 
 const initialState = {
   openedGroupNameInput: false,
@@ -23,6 +27,7 @@ const initialState = {
     groupName: '',
     members: [],
   },
+  groupNameToChange: '',
   memberToChange: {
     id: '',
     email: '',
@@ -31,7 +36,6 @@ const initialState = {
     icon: '',
     role: '',
   },
-  groupNameToChange: '',
   newMember: {
     email: '',
     firstname: '',
@@ -39,6 +43,7 @@ const initialState = {
     icon: '',
     role: '',
   },
+  colors: ['red', 'yellow', 'green', 'blue', 'brown', 'purple'],
 };
 
 export default (state = initialState, action = {}) => {
@@ -107,7 +112,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openMembersInput: {
-          ...state.openMembersInput,
+          // ...state.openMembersInput,
           [action.id]: true,
         },
       };
@@ -158,6 +163,27 @@ export default (state = initialState, action = {}) => {
           ...state.memberToChange,
           role: action.role,
         },
+      };
+    }
+    case CLEAN_MEMBER_TO_CHANGE_FIELD: {
+      return {
+        ...state,
+        openMembersInput: {},
+        memberToChange: {
+          ...state.memberToChange,
+          id: '',
+          email: '',
+          firstname: '',
+          password: '',
+          icon: '',
+          role: '',
+        },
+      };
+    }
+    case SET_COLOR_TO_MEMBER: {
+      return {
+        ...state,
+        colors: deleteColors(state.colors, action.color),
       };
     }
     default:
