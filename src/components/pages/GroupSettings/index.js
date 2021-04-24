@@ -5,11 +5,13 @@ import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
+import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
+import { FaUserAlt } from 'react-icons/fa';
+
 import './styles.scss';
 
 const GroupSettings = ({
-  fetchGroupData,
   initialGroupName,
   members,
   openedGroupNameInput,
@@ -17,17 +19,20 @@ const GroupSettings = ({
   openMembersInput,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
-  cleanMemberToChangeField,
   setIsOpenedModal,
   hideModal,
   isOpenedModal,
-  newMember,
   updateMember,
-  addNewMember,
+  closeAllInput,
+  cleanNewMemberFields,
+  setUsableColorsToAddMember,
 }) => {
+  // Rerender component when set_group_data is started
+  useEffect(() => {}, [members]);
+
   const handleOpenMemberInputView = (event) => {
-    const id = `id${event.currentTarget.dataset.id}`;
-    assignMemberToOpenInputView(id);
+    closeAllInput();
+    assignMemberToOpenInputView(`id${event.currentTarget.dataset.id}`);
   };
 
   const handleCloseMemberInputView = (event) => {
@@ -36,7 +41,8 @@ const GroupSettings = ({
   };
 
   const handleOpenAddMember = () => {
-    cleanMemberToChangeField();
+    cleanNewMemberFields();
+    setUsableColorsToAddMember();
     setIsOpenedModal();
   };
 
@@ -44,16 +50,6 @@ const GroupSettings = ({
     event.preventDefault();
     updateMember();
   };
-
-  const handleSubmitAddNewMember = (event) => {
-    event.preventDefault();
-    addNewMember();
-    hideModal();
-  };
-
-  useEffect(() => {
-    fetchGroupData();
-  }, []);
 
   return (
     <>
@@ -69,25 +65,24 @@ const GroupSettings = ({
           </>
         ) : (
           <>
-            <div>{initialGroupName}</div>
             <button type="button" onClick={setGroupNameInputState}>
-              <BiPencil />
+              <BiPencil /> Change group name
             </button>
           </>
         )}
         <hr />
         <h2>Group members</h2>
-        <button type="button" onClick={handleOpenAddMember}>
-          Add a new member
-        </button>
-        <Modal showModal={isOpenedModal} hideModal={hideModal}>
-          <GroupSettingsForm
-            member={newMember}
-            onSubmit={handleSubmitAddNewMember}
-          />
-        </Modal>
+        {members && (
+          <div className="flex-row">
+            <div className="data icon">Icon</div>
+            <div className="data firstname">Firstname</div>
+            <div className="data email">Email</div>
+            <div className="data role">Role</div>
+            <div className="data edit">Edit</div>
+          </div>
+        )}
         {members.map((member) => (
-          <div key={member.id}>
+          <div key={member.id} className="flex-row">
             {openMembersInput[`id${member.id}`] ? (
               <div>
                 <GroupSettingsForm
@@ -103,22 +98,33 @@ const GroupSettings = ({
                 </button>
               </div>
             ) : (
-              <div>
-                <div>{member.firstname}</div>
-                <div>{member.email}</div>
-                <div>{member.role}</div>
-                <div>{member.icon}</div>
+              <>
+                <div className="data icon">
+                  <FaUserAlt className={`icon-container--${member.icon}`} />
+                </div>
+                <div className="data firstname">{member.firstname}</div>
+                <div className="data email">{member.email}</div>
+                <div className="data role">{member.role}</div>
                 <button
                   type="button"
                   onClick={handleOpenMemberInputView}
                   data-id={member.id}
+                  className="data edit"
                 >
                   <BiPencil />
                 </button>
-              </div>
+              </>
             )}
           </div>
         ))}
+        <div>
+          <button type="button" onClick={handleOpenAddMember}>
+            Add a new member
+          </button>
+          <Modal showModal={isOpenedModal} hideModal={hideModal}>
+            <AddAMemberForm />
+          </Modal>
+        </div>
       </div>
     </>
   );

@@ -1,3 +1,32 @@
 .settings {
   text-align: center;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.data {
+  margin: 1rem;
+}
+
+.email {
+  min-width: 10rem;
+}
+
+.firstname {
+  min-width: 5rem;
+}
+
+.icon {
+  min-width: 5rem;
+}
+
+.role {
+  min-width: 5rem;
+}
+.edit {
+  min-width: 5rem;
+}

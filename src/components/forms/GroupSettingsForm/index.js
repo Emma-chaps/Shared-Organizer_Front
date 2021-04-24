@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
+import { FaUserAlt } from 'react-icons/fa';
+
+import '../styles.scss';
 
 const GroupSettingsFrom = ({
   member,
@@ -10,17 +13,19 @@ const GroupSettingsFrom = ({
   role,
   icon,
   changeField,
-  copyMember,
   onSubmit,
   setSelectedIcon,
   setSelectedRole,
   colors,
+  copyMember,
+  setUsableColors,
 }) => {
   useEffect(() => {
     copyMember(member);
+    setUsableColors();
   }, [member]);
 
-  const handleChangeColorIcon = (event) => {
+  const handleChangeIcon = (event) => {
     const selectedIcon = event.target.value;
     setSelectedIcon(selectedIcon);
   };
@@ -31,8 +36,25 @@ const GroupSettingsFrom = ({
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <div>
+      <form onSubmit={onSubmit} className="flex-row">
+        <label htmlFor="icon">
+          <select
+            name="icon"
+            id="icon"
+            value={icon}
+            onChange={handleChangeIcon}
+            required
+          >
+            <option value="">Choose a color</option>
+            {colors.map(({ name, value }) => (
+              <option value={name} key={name}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <FaUserAlt className={`icon-container--${icon}`} />
         <Field
           name="firstname"
           type="text"
@@ -47,18 +69,17 @@ const GroupSettingsFrom = ({
           value={email}
           onChange={changeField}
         />
-        <Field
+        {/* <Field
           name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={changeField}
-        />
+        /> */}
         {role === 3 ? (
           <div>Admin</div>
         ) : (
           <label htmlFor="role">
-            Select a role
             <select
               name="role"
               id="role"
@@ -72,33 +93,11 @@ const GroupSettingsFrom = ({
             </select>
           </label>
         )}
-        <label htmlFor="icon">
-          Select an icon color
-          <select
-            name="icon"
-            id="icon"
-            value={icon}
-            onChange={handleChangeColorIcon}
-            required
-          >
-            <option value="">Choose a color</option>
-            {colors.map((color) => (
-              <option value={color}>{color}</option>
-            ))}
-          </select>
-        </label>
         <button type="submit">Save</button>
       </form>
-    </>
+    </div>
   );
 };
-/*
-let color = ['red', 'blue', 'green','yellow'];
-quand le mec il clique :
-const newArray = color.filter(newcolor => newcolor !== 'selectedColor')
-color = newArray  //
-color.push(saCouleurActuel)
-*/
 GroupSettingsFrom.propTypes = {
   member: PropTypes.object,
   firstname: PropTypes.string,

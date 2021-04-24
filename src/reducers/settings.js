@@ -13,11 +13,17 @@ import {
   SET_IS_OPENED_MODAL,
   SET_SELECTED_ICON,
   SET_SELECTED_ROLE,
-  CLEAN_MEMBER_TO_CHANGE_FIELD,
+  CLEAN_NEW_MEMBER_FIELDS,
   SET_COLOR_TO_MEMBER,
+  SET_USABLE_COLORS,
+  CLOSE_ALL_INPUT,
+  SET_ICON_TO_NEW_MEMBER,
+  SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE,
+  SET_ROLE_TO_NEW_MEMBER,
+  SET_USABLE_COLORS_TO_ADD_MEMBER,
 } from 'src/actions/settings';
 
-import { deleteColors } from 'src/selectors/utils';
+import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
 
 const initialState = {
   openedGroupNameInput: false,
@@ -34,16 +40,24 @@ const initialState = {
     firstname: '',
     password: '',
     icon: '',
-    role: '',
+    role: 0,
   },
   newMember: {
     email: '',
     firstname: '',
     password: '',
     icon: '',
-    role: '',
+    role: 0,
   },
-  colors: ['red', 'yellow', 'green', 'blue', 'brown', 'purple'],
+  colors: [
+    { name: 'red', value: 'Red' },
+    { name: 'yellow', value: 'Yellow' },
+    { name: 'green', value: 'Green' },
+    { name: 'blue', value: 'Blue' },
+    { name: 'brown', value: 'Brown' },
+    { name: 'purple', value: 'Purple' },
+  ],
+  usableColors: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -66,15 +80,7 @@ export default (state = initialState, action = {}) => {
     case COPY_MEMBER: {
       return {
         ...state,
-        memberToChange: {
-          ...state.memberToChange,
-          id: action.member.id,
-          email: action.member.email,
-          password: '',
-          firstname: action.member.firstname,
-          icon: action.member.icon,
-          role: action.member.role,
-        },
+        memberToChange: action.member,
       };
     }
     case SET_GROUP_NAME: {
@@ -161,17 +167,15 @@ export default (state = initialState, action = {}) => {
         ...state,
         memberToChange: {
           ...state.memberToChange,
-          role: action.role,
+          role: Number(action.role),
         },
       };
     }
-    case CLEAN_MEMBER_TO_CHANGE_FIELD: {
+    case CLEAN_NEW_MEMBER_FIELDS: {
       return {
         ...state,
-        openMembersInput: {},
-        memberToChange: {
+        newMember: {
           ...state.memberToChange,
-          id: '',
           email: '',
           firstname: '',
           password: '',
@@ -183,7 +187,60 @@ export default (state = initialState, action = {}) => {
     case SET_COLOR_TO_MEMBER: {
       return {
         ...state,
-        colors: deleteColors(state.colors, action.color),
+        colors: deleteColor(state.colors, action.color),
+      };
+    }
+    case SET_USABLE_COLORS: {
+      return {
+        ...state,
+        usableColors: updateColors(
+          state.group.members,
+          state.colors,
+          state.memberToChange.icon
+        ),
+      };
+    }
+    case CLOSE_ALL_INPUT: {
+      return {
+        ...state,
+        openMembersInput: closeInput(state.group.members),
+      };
+    }
+    case SET_ICON_TO_NEW_MEMBER: {
+      return {
+        ...state,
+        newMember: {
+          ...state.newMember,
+          icon: action.icon,
+        },
+      };
+    }
+    case SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE: {
+      return {
+        ...state,
+        newMember: {
+          ...state.newMember,
+          [action.name]: action.value,
+        },
+      };
+    }
+    case SET_ROLE_TO_NEW_MEMBER: {
+      return {
+        ...state,
+        newMember: {
+          ...state.newMember,
+          role: action.role,
+        },
+      };
+    }
+    case SET_USABLE_COLORS_TO_ADD_MEMBER: {
+      return {
+        ...state,
+        usableColors: updateColors(
+          state.group.members,
+          state.colors,
+          state.newMember.icon
+        ),
       };
     }
     default:

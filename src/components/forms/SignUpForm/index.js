@@ -59,17 +59,17 @@ const SignUpForm = ({
       </div>
       <form className="form" onSubmit={handleSubmit}>
         <Field
-          name="firstname"
-          type="text"
-          placeholder="Firstname"
-          value={firstname}
-          onChange={changeField}
-        />
-        <Field
           name="groupName"
           type="text"
           placeholder="Group name"
           value={groupName}
+          onChange={changeField}
+        />
+        <Field
+          name="firstname"
+          type="text"
+          placeholder="Firstname"
+          value={firstname}
           onChange={changeField}
         />
         <Field
@@ -87,9 +87,9 @@ const SignUpForm = ({
           onChange={changeField}
         />
         <div className="icon-container">
-          {colors.map((color) => (
-            <div data-icon={color} onClick={handleChange} key={color}>
-              <FaUserAlt className={`icon-container--${color}`} />
+          {colors.map(({ name }) => (
+            <div data-icon={name} onClick={handleChange} key={name}>
+              <FaUserAlt className={`icon-container--${name}`} />
             </div>
           ))}
         </div>

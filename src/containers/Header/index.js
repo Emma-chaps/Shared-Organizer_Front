@@ -4,7 +4,7 @@ import Header from 'src/components/Header';
 import { logout } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
-  isLogged: state.user.login.isLogged,
+  groupName: state.settings.group.groupName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

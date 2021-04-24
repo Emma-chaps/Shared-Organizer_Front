@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import {
   setMemberToChangeFieldValue,
-  copyMember,
   setSelectedIcon,
   setSelectedRole,
+  copyMember,
+  setUsableColors,
 } from 'src/actions/settings';
 import GroupSettingsForm from 'src/components/forms/GroupSettingsForm';
 
@@ -13,15 +14,16 @@ const mapStateToProps = (state) => ({
   password: state.settings.memberToChange.password,
   role: state.settings.memberToChange.role,
   icon: state.settings.memberToChange.icon,
-  colors: state.settings.colors,
+  colors: state.settings.usableColors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) =>
     dispatch(setMemberToChangeFieldValue(name, value)),
-  copyMember: (member) => dispatch(copyMember(member)),
   setSelectedIcon: (icon) => dispatch(setSelectedIcon(icon)),
   setSelectedRole: (role) => dispatch(setSelectedRole(role)),
+  copyMember: (member) => dispatch(copyMember(member)),
+  setUsableColors: () => dispatch(setUsableColors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettingsForm);
