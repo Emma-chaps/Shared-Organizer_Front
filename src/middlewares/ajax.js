@@ -89,7 +89,7 @@ export default (store) => (next) => (action) => {
         password,
         icon,
         role,
-      } = store.getState().settings.memberToChange;
+      } = store.getState().settings.newMember;
       api
         .post('/group-settings', {
           firstname,

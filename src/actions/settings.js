@@ -121,11 +121,11 @@ export const setSelectedRole = (role) => ({
   role,
 });
 
-// export const CLEAN_MEMBER_TO_CHANGE_FIELD = 'CLEAN_MEMBER_TO_CHANGE_FIELD';
+export const CLEAN_NEW_MEMBER_FIELDS = 'CLEAN_NEW_MEMBER_FIELDS';
 
-// export const cleanMemberToChangeField = () => ({
-//   type: CLEAN_MEMBER_TO_CHANGE_FIELD,
-// });
+export const cleanNewMemberFields = () => ({
+  type: CLEAN_NEW_MEMBER_FIELDS,
+});
 
 export const SET_COLOR_TO_MEMBER = 'SET_COLOR_TO_MEMBER';
 
@@ -146,4 +146,34 @@ export const CLOSE_ALL_INPUT = 'CLOSE_ALL_INPUT';
 
 export const closeAllInput = () => ({
   type: CLOSE_ALL_INPUT,
+});
+
+export const SET_ICON_TO_NEW_MEMBER = 'SET_ICON_TO_NEW_MEMBER';
+
+export const setIconToNewMember = (icon) => ({
+  type: SET_ICON_TO_NEW_MEMBER,
+  icon,
+});
+
+export const SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE =
+  'SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE';
+
+export const setNewMemberToChangeFieldValue = (name, value) => ({
+  type: SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE,
+  name,
+  value,
+});
+
+export const SET_ROLE_TO_NEW_MEMBER = 'SET_ROLE_TO_NEW_MEMBER';
+
+export const setRoleToNewMember = (role) => ({
+  type: SET_ROLE_TO_NEW_MEMBER,
+  role,
+});
+
+export const SET_USABLE_COLORS_TO_ADD_MEMBER =
+  'SET_USABLE_COLORS_TO_ADD_MEMBER';
+
+export const setUsableColorsToAddMember = () => ({
+  type: SET_USABLE_COLORS_TO_ADD_MEMBER,
 });

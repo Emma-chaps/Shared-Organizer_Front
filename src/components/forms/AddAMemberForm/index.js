@@ -1,43 +1,47 @@
+/* eslint-disable arrow-body-style */
 import React, { useEffect } from 'react';
-import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
+import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
+import { hideModal } from '../../../actions/settings';
 
-import '../styles.scss';
-
-const GroupSettingsFrom = ({
-  member,
+const AddAMemberForm = ({
+  icon,
   firstname,
   email,
   password,
   role,
-  icon,
-  changeField,
-  onSubmit,
-  setSelectedIcon,
-  setSelectedRole,
   colors,
-  copyMember,
-  setUsableColors,
+  addNewMember,
+  setIconToNewMember,
+  changeField,
+  setRoleToNewMember,
+  setUsableColorsToAddMember,
+  hideModal,
 }) => {
   useEffect(() => {
-    copyMember(member);
-    setUsableColors();
-  }, [member]);
+    setUsableColorsToAddMember();
+  }, []);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    addNewMember();
+    hideModal();
+  };
 
   const handleChangeIcon = (event) => {
     const selectedIcon = event.target.value;
-    setSelectedIcon(selectedIcon);
+    setIconToNewMember(selectedIcon);
   };
 
   const handleChangeRole = (event) => {
     const selectedRole = event.target.value;
-    setSelectedRole(selectedRole);
+    setRoleToNewMember(selectedRole);
   };
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="flex-row">
+      <form onSubmit={onSubmit}>
         <label htmlFor="icon">
           <select
             name="icon"
@@ -69,57 +73,30 @@ const GroupSettingsFrom = ({
           value={email}
           onChange={changeField}
         />
-        {/* <Field
+        <Field
           name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={changeField}
-        /> */}
-        {role === 3 ? (
-          <div>Admin</div>
-        ) : (
-          <label htmlFor="role">
-            <select
-              name="role"
-              id="role"
-              value={role}
-              onChange={handleChangeRole}
-              required
-            >
-              <option value="">Choose a role</option>
-              <option value="2">Editor</option>
-              <option value="1">Visitor</option>
-            </select>
-          </label>
-        )}
+        />
+        <label htmlFor="role">
+          <select
+            name="role"
+            id="role"
+            value={role}
+            onChange={handleChangeRole}
+            required
+          >
+            <option value="">Choose a role</option>
+            <option value="2">Editor</option>
+            <option value="1">Visitor</option>
+          </select>
+        </label>
         <button type="submit">Save</button>
       </form>
     </div>
   );
 };
-GroupSettingsFrom.propTypes = {
-  member: PropTypes.object,
-  firstname: PropTypes.string,
-  email: PropTypes.string,
-  password: PropTypes.string,
-  role: PropTypes.number,
-  icon: PropTypes.string,
-  changeField: PropTypes.func,
-  copyMember: PropTypes.func,
-};
 
-GroupSettingsFrom.defaultProps = {
-  member: {},
-  firstname: '',
-  email: '',
-  password: '',
-  role: 0,
-  icon: '',
-  changeField: () => {},
-  copyMember: () => {},
-  updateMember: () => {},
-  assignMemberToCloseInputView: () => {},
-};
-
-export default GroupSettingsFrom;
+export default AddAMemberForm;

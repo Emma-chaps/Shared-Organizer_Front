@@ -5,11 +5,11 @@ import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
+import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { BiPencil } from 'react-icons/bi';
 import { FaUserAlt } from 'react-icons/fa';
 
 import './styles.scss';
-import { fetchGroupData } from '../../../actions/settings';
 
 const GroupSettings = ({
   initialGroupName,
@@ -23,9 +23,10 @@ const GroupSettings = ({
   hideModal,
   isOpenedModal,
   updateMember,
-  addNewMember,
   closeAllInput,
+  cleanNewMemberFields,
 }) => {
+  // Rerender component when set_group_data is started
   useEffect(() => {}, [members]);
 
   const handleOpenMemberInputView = (event) => {
@@ -39,6 +40,7 @@ const GroupSettings = ({
   };
 
   const handleOpenAddMember = () => {
+    cleanNewMemberFields();
     setIsOpenedModal();
   };
 
@@ -46,14 +48,6 @@ const GroupSettings = ({
     event.preventDefault();
     updateMember();
   };
-
-  const handleSubmitAddNewMember = (event) => {
-    event.preventDefault();
-    addNewMember();
-    hideModal();
-  };
-  // Rerender component when set_group_data is started
-  // useEffect(() => {}, [members]);
 
   return (
     <>
@@ -127,7 +121,7 @@ const GroupSettings = ({
             Add a new member
           </button>
           <Modal showModal={isOpenedModal} hideModal={hideModal}>
-            <GroupSettingsForm onSubmit={handleSubmitAddNewMember} />
+            <AddAMemberForm />
           </Modal>
         </div>
       </div>

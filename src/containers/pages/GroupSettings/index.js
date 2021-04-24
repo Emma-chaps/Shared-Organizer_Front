@@ -10,6 +10,7 @@ import {
   addNewMember,
   closeAllInput,
   setUsableColors,
+  cleanNewMemberFields,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
   addNewMember: () => dispatch(addNewMember()),
   closeAllInput: () => dispatch(closeAllInput()),
   setUsableColors: () => dispatch(setUsableColors()),
+  cleanNewMemberFields: () => dispatch(cleanNewMemberFields()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettings);
