@@ -6,7 +6,10 @@ import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import { BiPencil } from 'react-icons/bi';
+import { FaUserAlt } from 'react-icons/fa';
+
 import './styles.scss';
+import { fetchGroupData } from '../../../actions/settings';
 
 const GroupSettings = ({
   initialGroupName,
@@ -16,7 +19,6 @@ const GroupSettings = ({
   openMembersInput,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
-  cleanMemberToChangeField,
   setIsOpenedModal,
   hideModal,
   isOpenedModal,
@@ -24,6 +26,8 @@ const GroupSettings = ({
   addNewMember,
   closeAllInput,
 }) => {
+  useEffect(() => {}, [members]);
+
   const handleOpenMemberInputView = (event) => {
     closeAllInput();
     assignMemberToOpenInputView(`id${event.currentTarget.dataset.id}`);
@@ -35,7 +39,6 @@ const GroupSettings = ({
   };
 
   const handleOpenAddMember = () => {
-    cleanMemberToChangeField();
     setIsOpenedModal();
   };
 
@@ -74,14 +77,17 @@ const GroupSettings = ({
         )}
         <hr />
         <h2>Group members</h2>
-        <button type="button" onClick={handleOpenAddMember}>
-          Add a new member
-        </button>
-        <Modal showModal={isOpenedModal} hideModal={hideModal}>
-          <GroupSettingsForm onSubmit={handleSubmitAddNewMember} />
-        </Modal>
+        {members && (
+          <div className="flex-row">
+            <div className="data icon">Icon</div>
+            <div className="data firstname">Firstname</div>
+            <div className="data email">Email</div>
+            <div className="data role">Role</div>
+            <div className="data edit">Edit</div>
+          </div>
+        )}
         {members.map((member) => (
-          <div key={member.id}>
+          <div key={member.id} className="flex-row">
             {openMembersInput[`id${member.id}`] ? (
               <div>
                 <GroupSettingsForm
@@ -97,22 +103,33 @@ const GroupSettings = ({
                 </button>
               </div>
             ) : (
-              <div>
-                <div>{member.firstname}</div>
-                <div>{member.email}</div>
-                <div>{member.role}</div>
-                <div>{member.icon}</div>
+              <>
+                <div className="data icon">
+                  <FaUserAlt className={`icon-container--${member.icon}`} />
+                </div>
+                <div className="data firstname">{member.firstname}</div>
+                <div className="data email">{member.email}</div>
+                <div className="data role">{member.role}</div>
                 <button
                   type="button"
                   onClick={handleOpenMemberInputView}
                   data-id={member.id}
+                  className="data edit"
                 >
                   <BiPencil />
                 </button>
-              </div>
+              </>
             )}
           </div>
         ))}
+        <div>
+          <button type="button" onClick={handleOpenAddMember}>
+            Add a new member
+          </button>
+          <Modal showModal={isOpenedModal} hideModal={hideModal}>
+            <GroupSettingsForm onSubmit={handleSubmitAddNewMember} />
+          </Modal>
+        </div>
       </div>
     </>
   );

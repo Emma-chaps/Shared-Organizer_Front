@@ -19,7 +19,11 @@ export const AddColor = (array, value) => {
   return newArray;
 };
 
-export const updateColors = (members, colors, memberToChangeColor) => {
+export const updateColors = (
+  members = [],
+  colors = [],
+  memberToChangeColor = ''
+) => {
   let newColors = colors;
   members.forEach((member) => {
     if (member.icon !== memberToChangeColor) {

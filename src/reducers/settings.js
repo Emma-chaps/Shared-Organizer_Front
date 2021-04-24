@@ -13,7 +13,7 @@ import {
   SET_IS_OPENED_MODAL,
   SET_SELECTED_ICON,
   SET_SELECTED_ROLE,
-  CLEAN_MEMBER_TO_CHANGE_FIELD,
+  // CLEAN_MEMBER_TO_CHANGE_FIELD,
   SET_COLOR_TO_MEMBER,
   SET_USABLE_COLORS,
   CLOSE_ALL_INPUT,
@@ -160,21 +160,21 @@ export default (state = initialState, action = {}) => {
         },
       };
     }
-    case CLEAN_MEMBER_TO_CHANGE_FIELD: {
-      return {
-        ...state,
-        openMembersInput: {},
-        memberToChange: {
-          ...state.memberToChange,
-          id: '',
-          email: '',
-          firstname: '',
-          password: '',
-          icon: '',
-          role: '',
-        },
-      };
-    }
+    // case CLEAN_MEMBER_TO_CHANGE_FIELD: {
+    //   return {
+    //     ...state,
+    //     openMembersInput: {},
+    //     memberToChange: {
+    //       ...state.memberToChange,
+    //       id: '',
+    //       email: '',
+    //       firstname: '',
+    //       password: '',
+    //       icon: '',
+    //       role: '',
+    //     },
+    // };
+    // }
     case SET_COLOR_TO_MEMBER: {
       return {
         ...state,

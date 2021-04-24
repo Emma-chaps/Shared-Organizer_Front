@@ -15,7 +15,7 @@ import './styles.scss';
 const App = ({ rehydrate, isLogged, isAdmin }) => {
   useEffect(() => {
     rehydrate();
-  }, []);
+  }, [isLogged]);
 
   return (
     <div className="app">

@@ -30,6 +30,8 @@ export default (store) => (next) => (action) => {
       api
         .get('/group-infos')
         .then((result) => {
+          console.log('ça marche');
+          console.log(result.data.group);
           return result.data.group;
         })
         .then(({ members, name }) => {

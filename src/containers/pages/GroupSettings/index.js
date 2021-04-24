@@ -8,8 +8,8 @@ import {
   setIsOpenedModal,
   updateMember,
   addNewMember,
-  cleanMemberToChangeField,
   closeAllInput,
+  setUsableColors,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -27,12 +27,11 @@ const mapDispatchToProps = (dispatch) => ({
   assignMemberToCloseInputView: (id) =>
     dispatch(assignMemberToCloseInputView(id)),
   hideModal: () => dispatch(hideModal()),
-  cleanMemberToChangeField: () => dispatch(cleanMemberToChangeField()),
   setIsOpenedModal: () => dispatch(setIsOpenedModal()),
   updateMember: () => dispatch(updateMember()),
   addNewMember: () => dispatch(addNewMember()),
-
   closeAllInput: () => dispatch(closeAllInput()),
+  setUsableColors: () => dispatch(setUsableColors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettings);

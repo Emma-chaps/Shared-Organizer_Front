@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
+import { FaUserAlt } from 'react-icons/fa';
+
+import '../styles.scss';
 
 const GroupSettingsFrom = ({
   member,
@@ -33,8 +36,25 @@ const GroupSettingsFrom = ({
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <div>
+      <form onSubmit={onSubmit} className="flex-row">
+        <label htmlFor="icon">
+          <select
+            name="icon"
+            id="icon"
+            value={icon}
+            onChange={handleChangeColorIcon}
+            required
+          >
+            <option value="">Choose a color</option>
+            {colors.map(({ name, value }) => (
+              <option value={name} key={name}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <FaUserAlt className={`icon-container--${icon}`} />
         <Field
           name="firstname"
           type="text"
@@ -57,10 +77,9 @@ const GroupSettingsFrom = ({
           onChange={changeField}
         />
         {role === 3 ? (
-          <div>Role : Admin</div>
+          <div>Admin</div>
         ) : (
           <label htmlFor="role">
-            Select a role
             <select
               name="role"
               id="role"
@@ -74,26 +93,9 @@ const GroupSettingsFrom = ({
             </select>
           </label>
         )}
-        <label htmlFor="icon">
-          Select an icon color
-          <select
-            name="icon"
-            id="icon"
-            value={icon}
-            onChange={handleChangeColorIcon}
-            required
-          >
-            <option value="">Choose a color</option>
-            {colors.map(({ name, value }) => (
-              <option value={name} key={name}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </label>
         <button type="submit">Save</button>
       </form>
-    </>
+    </div>
   );
 };
 GroupSettingsFrom.propTypes = {
