@@ -194,10 +194,7 @@ export default (state = initialState, action = {}) => {
     case CLOSE_ALL_INPUT: {
       return {
         ...state,
-        // openMembersInput: closeInput(state.group.members),
-        openMembersInput: {
-          [`id${state.memberToChange.id}`]: false,
-        },
+        openMembersInput: closeInput(state.group.members),
       };
     }
     default:

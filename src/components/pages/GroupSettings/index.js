@@ -22,12 +22,10 @@ const GroupSettings = ({
   isOpenedModal,
   updateMember,
   addNewMember,
-  setUsableColors,
   closeAllInput,
 }) => {
   const handleOpenMemberInputView = (event) => {
     closeAllInput();
-    setUsableColors();
     assignMemberToOpenInputView(`id${event.currentTarget.dataset.id}`);
   };
 

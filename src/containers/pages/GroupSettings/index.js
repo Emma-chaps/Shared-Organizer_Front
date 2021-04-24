@@ -9,8 +9,6 @@ import {
   updateMember,
   addNewMember,
   cleanMemberToChangeField,
-  copyMember,
-  setUsableColors,
   closeAllInput,
 } from 'src/actions/settings';
 
@@ -33,7 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
   setIsOpenedModal: () => dispatch(setIsOpenedModal()),
   updateMember: () => dispatch(updateMember()),
   addNewMember: () => dispatch(addNewMember()),
-  setUsableColors: () => dispatch(setUsableColors()),
+
   closeAllInput: () => dispatch(closeAllInput()),
 });
 

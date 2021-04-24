@@ -20,12 +20,13 @@ export const AddColor = (array, value) => {
 };
 
 export const updateColors = (members, colors, memberToChangeColor) => {
+  let newColors = colors;
   members.forEach((member) => {
     if (member.icon !== memberToChangeColor) {
-      colors = colors.filter((color) => color.name !== member.icon);
+      newColors = newColors.filter((color) => color.name !== member.icon);
     }
   });
-  return colors;
+  return newColors;
 };
 
 export const closeInput = (members) => {
