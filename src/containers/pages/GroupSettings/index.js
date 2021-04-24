@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import GroupSettings from 'src/components/pages/GroupSettings';
 import {
-  fetchGroupData,
   setGroupNameInputState,
   assignMemberToOpenInputView,
   assignMemberToCloseInputView,
@@ -10,6 +9,8 @@ import {
   updateMember,
   addNewMember,
   cleanMemberToChangeField,
+  copyMember,
+  setUsableColors,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -18,11 +19,9 @@ const mapStateToProps = (state) => ({
   openedGroupNameInput: state.settings.openedGroupNameInput,
   openMembersInput: state.settings.openMembersInput,
   isOpenedModal: state.settings.openedModal,
-  newMember: state.settings.newMember,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchGroupData: () => dispatch(fetchGroupData()),
   setGroupNameInputState: () => dispatch(setGroupNameInputState()),
   assignMemberToOpenInputView: (id) =>
     dispatch(assignMemberToOpenInputView(id)),
@@ -33,6 +32,8 @@ const mapDispatchToProps = (dispatch) => ({
   setIsOpenedModal: () => dispatch(setIsOpenedModal()),
   updateMember: () => dispatch(updateMember()),
   addNewMember: () => dispatch(addNewMember()),
+  copyMember: (id) => dispatch(copyMember(id)),
+  setUsableColors: () => dispatch(setUsableColors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettings);

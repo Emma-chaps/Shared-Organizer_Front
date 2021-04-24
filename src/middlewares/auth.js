@@ -68,6 +68,7 @@ export default (store) => (next) => (action) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
+            store.dispatch(fetchGroupData());
           }
         });
       return next(action);

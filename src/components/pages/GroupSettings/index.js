@@ -7,9 +7,9 @@ import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
+import { setUsableColors } from '../../../actions/settings';
 
 const GroupSettings = ({
-  fetchGroupData,
   initialGroupName,
   members,
   openedGroupNameInput,
@@ -21,13 +21,16 @@ const GroupSettings = ({
   setIsOpenedModal,
   hideModal,
   isOpenedModal,
-  newMember,
   updateMember,
   addNewMember,
+  copyMember,
+  setUsableColors,
 }) => {
   const handleOpenMemberInputView = (event) => {
-    const id = `id${event.currentTarget.dataset.id}`;
-    assignMemberToOpenInputView(id);
+    const { id } = event.currentTarget.dataset;
+    copyMember(id);
+    setUsableColors();
+    assignMemberToOpenInputView(`id${id}`);
   };
 
   const handleCloseMemberInputView = (event) => {
@@ -50,10 +53,8 @@ const GroupSettings = ({
     addNewMember();
     hideModal();
   };
-
-  useEffect(() => {
-    fetchGroupData();
-  }, []);
+  // Rerender component when set_group_data is started
+  useEffect(() => {}, [members]);
 
   return (
     <>
@@ -81,19 +82,13 @@ const GroupSettings = ({
           Add a new member
         </button>
         <Modal showModal={isOpenedModal} hideModal={hideModal}>
-          <GroupSettingsForm
-            member={newMember}
-            onSubmit={handleSubmitAddNewMember}
-          />
+          <GroupSettingsForm onSubmit={handleSubmitAddNewMember} />
         </Modal>
         {members.map((member) => (
           <div key={member.id}>
             {openMembersInput[`id${member.id}`] ? (
               <div>
-                <GroupSettingsForm
-                  member={member}
-                  onSubmit={handleSubmitUpdateMember}
-                />
+                <GroupSettingsForm onSubmit={handleSubmitUpdateMember} />
                 <button
                   type="button"
                   onClick={handleCloseMemberInputView}

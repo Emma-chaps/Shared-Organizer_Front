@@ -16,10 +16,10 @@ import {
   CLEAN_MEMBER_TO_CHANGE_FIELD,
   SET_COLOR_TO_MEMBER,
   SET_USABLE_COLORS,
-  MAKE_AVAILABLE_COLOR,
 } from 'src/actions/settings';
 
-import { deleteColor, updateColors, AddColor } from 'src/selectors/utils';
+import { deleteColor, updateColors } from 'src/selectors/utils';
+import { findMember } from 'src/selectors/findMember';
 
 const initialState = {
   openedGroupNameInput: false,
@@ -38,13 +38,6 @@ const initialState = {
     icon: '',
     role: '',
   },
-  newMember: {
-    email: '',
-    firstname: '',
-    password: '',
-    icon: '',
-    role: '',
-  },
   colors: [
     { name: 'red', value: 'Red' },
     { name: 'yellow', value: 'Yellow' },
@@ -53,6 +46,7 @@ const initialState = {
     { name: 'brown', value: 'Brown' },
     { name: 'purple', value: 'Purple' },
   ],
+  usableColors: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -75,15 +69,7 @@ export default (state = initialState, action = {}) => {
     case COPY_MEMBER: {
       return {
         ...state,
-        memberToChange: {
-          ...state.memberToChange,
-          id: action.member.id,
-          email: action.member.email,
-          password: '',
-          firstname: action.member.firstname,
-          icon: action.member.icon,
-          role: action.member.role,
-        },
+        memberToChange: findMember(action.id, state.group.members),
       };
     }
     case SET_GROUP_NAME: {
@@ -198,7 +184,7 @@ export default (state = initialState, action = {}) => {
     case SET_USABLE_COLORS: {
       return {
         ...state,
-        colors: updateColors(
+        usableColors: updateColors(
           state.group.members,
           state.colors,
           state.memberToChange.icon

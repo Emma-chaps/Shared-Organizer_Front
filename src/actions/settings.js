@@ -34,9 +34,9 @@ export const setMemberToChangeFieldValue = (name, value) => ({
 
 export const COPY_MEMBER = 'COPY_MEMBER';
 
-export const copyMember = (member) => ({
+export const copyMember = (id) => ({
   type: COPY_MEMBER,
-  member,
+  id,
 });
 
 export const COPY_GROUP_NAME = 'COPY_GROUP_NAME';
@@ -139,3 +139,5 @@ export const SET_USABLE_COLORS = 'SET_USABLE_COLORS';
 export const setUsableColors = () => ({
   type: SET_USABLE_COLORS,
 });
+
+export const SET_US = 'SET_US';
