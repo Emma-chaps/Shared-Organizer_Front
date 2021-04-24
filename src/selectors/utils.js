@@ -27,3 +27,11 @@ export const updateColors = (members, colors, memberToChangeColor) => {
   });
   return colors;
 };
+
+export const closeInput = (members) => {
+  const newObj = {};
+  members.forEach((member) => {
+    newObj[`id${member.id}`] = false;
+  });
+  return newObj;
+};

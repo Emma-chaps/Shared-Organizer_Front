@@ -11,6 +11,7 @@ import {
   cleanMemberToChangeField,
   copyMember,
   setUsableColors,
+  closeAllInput,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -32,8 +33,8 @@ const mapDispatchToProps = (dispatch) => ({
   setIsOpenedModal: () => dispatch(setIsOpenedModal()),
   updateMember: () => dispatch(updateMember()),
   addNewMember: () => dispatch(addNewMember()),
-  copyMember: (id) => dispatch(copyMember(id)),
   setUsableColors: () => dispatch(setUsableColors()),
+  closeAllInput: () => dispatch(closeAllInput()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettings);

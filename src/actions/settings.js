@@ -34,9 +34,9 @@ export const setMemberToChangeFieldValue = (name, value) => ({
 
 export const COPY_MEMBER = 'COPY_MEMBER';
 
-export const copyMember = (id) => ({
+export const copyMember = (member) => ({
   type: COPY_MEMBER,
-  id,
+  member,
 });
 
 export const COPY_GROUP_NAME = 'COPY_GROUP_NAME';
@@ -141,3 +141,9 @@ export const setUsableColors = () => ({
 });
 
 export const SET_US = 'SET_US';
+
+export const CLOSE_ALL_INPUT = 'CLOSE_ALL_INPUT';
+
+export const closeAllInput = () => ({
+  type: CLOSE_ALL_INPUT,
+});

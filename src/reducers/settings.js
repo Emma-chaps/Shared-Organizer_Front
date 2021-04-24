@@ -16,10 +16,10 @@ import {
   CLEAN_MEMBER_TO_CHANGE_FIELD,
   SET_COLOR_TO_MEMBER,
   SET_USABLE_COLORS,
+  CLOSE_ALL_INPUT,
 } from 'src/actions/settings';
 
-import { deleteColor, updateColors } from 'src/selectors/utils';
-import { findMember } from 'src/selectors/findMember';
+import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
 
 const initialState = {
   openedGroupNameInput: false,
@@ -36,7 +36,7 @@ const initialState = {
     firstname: '',
     password: '',
     icon: '',
-    role: '',
+    role: 0,
   },
   colors: [
     { name: 'red', value: 'Red' },
@@ -69,7 +69,7 @@ export default (state = initialState, action = {}) => {
     case COPY_MEMBER: {
       return {
         ...state,
-        memberToChange: findMember(action.id, state.group.members),
+        memberToChange: action.member,
       };
     }
     case SET_GROUP_NAME: {
@@ -156,7 +156,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         memberToChange: {
           ...state.memberToChange,
-          role: action.role,
+          role: Number(action.role),
         },
       };
     }
@@ -189,6 +189,15 @@ export default (state = initialState, action = {}) => {
           state.colors,
           state.memberToChange.icon
         ),
+      };
+    }
+    case CLOSE_ALL_INPUT: {
+      return {
+        ...state,
+        // openMembersInput: closeInput(state.group.members),
+        openMembersInput: {
+          [`id${state.memberToChange.id}`]: false,
+        },
       };
     }
     default:

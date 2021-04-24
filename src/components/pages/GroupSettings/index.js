@@ -7,7 +7,6 @@ import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import { BiPencil } from 'react-icons/bi';
 import './styles.scss';
-import { setUsableColors } from '../../../actions/settings';
 
 const GroupSettings = ({
   initialGroupName,
@@ -23,14 +22,13 @@ const GroupSettings = ({
   isOpenedModal,
   updateMember,
   addNewMember,
-  copyMember,
   setUsableColors,
+  closeAllInput,
 }) => {
   const handleOpenMemberInputView = (event) => {
-    const { id } = event.currentTarget.dataset;
-    copyMember(id);
+    closeAllInput();
     setUsableColors();
-    assignMemberToOpenInputView(`id${id}`);
+    assignMemberToOpenInputView(`id${event.currentTarget.dataset.id}`);
   };
 
   const handleCloseMemberInputView = (event) => {
@@ -54,7 +52,7 @@ const GroupSettings = ({
     hideModal();
   };
   // Rerender component when set_group_data is started
-  useEffect(() => {}, [members]);
+  // useEffect(() => {}, [members]);
 
   return (
     <>
@@ -88,7 +86,10 @@ const GroupSettings = ({
           <div key={member.id}>
             {openMembersInput[`id${member.id}`] ? (
               <div>
-                <GroupSettingsForm onSubmit={handleSubmitUpdateMember} />
+                <GroupSettingsForm
+                  member={member}
+                  onSubmit={handleSubmitUpdateMember}
+                />
                 <button
                   type="button"
                   onClick={handleCloseMemberInputView}

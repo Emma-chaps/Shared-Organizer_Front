@@ -14,8 +14,12 @@ const GroupSettingsFrom = ({
   setSelectedIcon,
   setSelectedRole,
   colors,
+  copyMember,
 }) => {
-  useEffect(() => {}, [member]);
+  useEffect(() => {
+    copyMember(member);
+    console.log(member);
+  }, [member]);
 
   const handleChangeColorIcon = (event) => {
     const selectedIcon = event.target.value;

@@ -3,6 +3,7 @@ import {
   setMemberToChangeFieldValue,
   setSelectedIcon,
   setSelectedRole,
+  copyMember,
 } from 'src/actions/settings';
 import GroupSettingsForm from 'src/components/forms/GroupSettingsForm';
 
@@ -20,6 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setMemberToChangeFieldValue(name, value)),
   setSelectedIcon: (icon) => dispatch(setSelectedIcon(icon)),
   setSelectedRole: (role) => dispatch(setSelectedRole(role)),
+  copyMember: (member) => dispatch(copyMember(member)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettingsForm);
