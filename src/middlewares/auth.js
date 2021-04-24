@@ -7,7 +7,7 @@ import {
   login,
   LOGOUT,
 } from 'src/actions/user';
-import { setColorToMember } from 'src/actions/settings';
+import { setColorToMember, fetchGroupData } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -15,6 +15,7 @@ export default (store) => (next) => (action) => {
       const token = localStorage.getItem('jwtoken');
       if (token) {
         store.dispatch(login(token));
+        store.dispatch(fetchGroupData());
       }
       return next(action);
     }

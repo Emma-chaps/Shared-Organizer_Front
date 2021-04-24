@@ -87,9 +87,9 @@ const SignUpForm = ({
           onChange={changeField}
         />
         <div className="icon-container">
-          {colors.map((color) => (
-            <div data-icon={color} onClick={handleChange} key={color}>
-              <FaUserAlt className={`icon-container--${color}`} />
+          {colors.map(({ name }) => (
+            <div data-icon={name} onClick={handleChange} key={name}>
+              <FaUserAlt className={`icon-container--${name}`} />
             </div>
           ))}
         </div>

@@ -55,7 +55,7 @@ const GroupSettingsFrom = ({
           onChange={changeField}
         />
         {role === 3 ? (
-          <div>Admin</div>
+          <div>Role : Admin</div>
         ) : (
           <label htmlFor="role">
             Select a role
@@ -82,8 +82,10 @@ const GroupSettingsFrom = ({
             required
           >
             <option value="">Choose a color</option>
-            {colors.map((color) => (
-              <option value={color}>{color}</option>
+            {colors.map(({ name, value }) => (
+              <option value={name} key={name}>
+                {value}
+              </option>
             ))}
           </select>
         </label>

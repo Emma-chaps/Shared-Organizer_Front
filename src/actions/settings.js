@@ -133,3 +133,9 @@ export const setColorToMember = (color) => ({
   type: SET_COLOR_TO_MEMBER,
   color,
 });
+
+export const SET_USABLE_COLORS = 'SET_USABLE_COLORS';
+
+export const setUsableColors = () => ({
+  type: SET_USABLE_COLORS,
+});

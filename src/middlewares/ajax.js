@@ -9,6 +9,7 @@ import {
   ADD_NEW_MEMBER,
   fetchGroupData,
   assignMemberToCloseInputView,
+  setUsableColors,
 } from 'src/actions/settings';
 import {
   FETCH_DAY_WIDGETS_OF_RANGE,
@@ -36,6 +37,7 @@ export default (store) => (next) => (action) => {
           for (const member of members) {
             store.dispatch(setMembersToEdit(`id${member.id}`));
           }
+          store.dispatch(setUsableColors());
         });
       return next(action);
     }
@@ -123,7 +125,7 @@ export default (store) => (next) => (action) => {
       const rangeStartDayNb = getDayOfYear(rangeStart);
       const dateContainer = new Array(numberOfDaysInRange).fill(undefined);
       const dayNumbers = dateContainer.map(
-        (element, index) => rangeStartDayNb + index,
+        (element, index) => rangeStartDayNb + index
       );
 
       api
@@ -138,7 +140,7 @@ export default (store) => (next) => (action) => {
               ...new Set(combinedWidgets.map((widget) => widget.id)),
             ];
             const allUniqueWidgets = allWidgetUniqueIds.map((id) =>
-              combinedWidgets.find((widget) => widget.id === id),
+              combinedWidgets.find((widget) => widget.id === id)
             );
             console.log('allUniqueWidgets:', allUniqueWidgets);
             store.dispatch(setDayWidgetsOfRange(allUniqueWidgets));

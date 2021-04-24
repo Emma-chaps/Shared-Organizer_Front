@@ -9,7 +9,19 @@ export const isAdmin = (token) => {
   return false;
 };
 
-export const deleteColors = (array, value) => {
-  const newArray = array.filter((initialValue) => initialValue !== value);
+export const deleteColor = (array, value) => {
+  const newArray = array.filter((initialValue) => initialValue.name !== value);
   return newArray;
+};
+
+export const AddColor = (array, value) => {
+  const newArray = array.push(value);
+  return newArray;
+};
+
+export const updateColors = (members, colors) => {
+  members.forEach((member) => {
+    colors = colors.filter((color) => color.name !== member.icon);
+  });
+  return colors;
 };
