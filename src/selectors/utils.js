@@ -19,9 +19,11 @@ export const AddColor = (array, value) => {
   return newArray;
 };
 
-export const updateColors = (members, colors) => {
+export const updateColors = (members, colors, memberToChange) => {
   members.forEach((member) => {
-    colors = colors.filter((color) => color.name !== member.icon);
+    if (member.icon !== memberToChange.icon) {
+      colors = colors.filter((color) => color.name !== member.icon);
+    }
   });
   return colors;
 };

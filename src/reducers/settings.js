@@ -16,9 +16,10 @@ import {
   CLEAN_MEMBER_TO_CHANGE_FIELD,
   SET_COLOR_TO_MEMBER,
   SET_USABLE_COLORS,
+  MAKE_AVAILABLE_COLOR,
 } from 'src/actions/settings';
 
-import { deleteColor, updateColors } from 'src/selectors/utils';
+import { deleteColor, updateColors, AddColor } from 'src/selectors/utils';
 
 const initialState = {
   openedGroupNameInput: false,
@@ -197,7 +198,11 @@ export default (state = initialState, action = {}) => {
     case SET_USABLE_COLORS: {
       return {
         ...state,
-        colors: updateColors(state.group.members, state.colors),
+        colors: updateColors(
+          state.group.members,
+          state.colors,
+          state.memberToChange.icon
+        ),
       };
     }
     default:
