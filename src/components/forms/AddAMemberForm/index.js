@@ -16,13 +16,8 @@ const AddAMemberForm = ({
   setIconToNewMember,
   changeField,
   setRoleToNewMember,
-  setUsableColorsToAddMember,
   hideModal,
 }) => {
-  useEffect(() => {
-    setUsableColorsToAddMember();
-  }, []);
-
   const onSubmit = (event) => {
     event.preventDefault();
     addNewMember();

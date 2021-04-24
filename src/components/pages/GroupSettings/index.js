@@ -25,6 +25,7 @@ const GroupSettings = ({
   updateMember,
   closeAllInput,
   cleanNewMemberFields,
+  setUsableColorsToAddMember,
 }) => {
   // Rerender component when set_group_data is started
   useEffect(() => {}, [members]);
@@ -41,6 +42,7 @@ const GroupSettings = ({
 
   const handleOpenAddMember = () => {
     cleanNewMemberFields();
+    setUsableColorsToAddMember();
     setIsOpenedModal();
   };
 
@@ -63,9 +65,8 @@ const GroupSettings = ({
           </>
         ) : (
           <>
-            <div>{initialGroupName}</div>
             <button type="button" onClick={setGroupNameInputState}>
-              <BiPencil />
+              <BiPencil /> Change group name
             </button>
           </>
         )}

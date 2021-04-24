@@ -5,7 +5,6 @@ import {
   setIconToNewMember,
   setNewMemberToChangeFieldValue,
   setRoleToNewMember,
-  setUsableColorsToAddMember,
   hideModal,
 } from 'src/actions/settings';
 
@@ -24,7 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) =>
     dispatch(setNewMemberToChangeFieldValue(name, value)),
   setRoleToNewMember: (role) => dispatch(setRoleToNewMember(role)),
-  setUsableColorsToAddMember: () => dispatch(setUsableColorsToAddMember()),
   hideModal: () => dispatch(hideModal()),
 });
 

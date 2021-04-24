@@ -59,17 +59,17 @@ const SignUpForm = ({
       </div>
       <form className="form" onSubmit={handleSubmit}>
         <Field
-          name="firstname"
-          type="text"
-          placeholder="Firstname"
-          value={firstname}
-          onChange={changeField}
-        />
-        <Field
           name="groupName"
           type="text"
           placeholder="Group name"
           value={groupName}
+          onChange={changeField}
+        />
+        <Field
+          name="firstname"
+          type="text"
+          placeholder="Firstname"
+          value={firstname}
           onChange={changeField}
         />
         <Field
