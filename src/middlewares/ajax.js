@@ -133,6 +133,7 @@ export default (store) => (next) => (action) => {
         })
         .then((result) => result.data)
         .then(({ success, widgets }) => {
+          console.log('widgets:', widgets);
           if (success) {
             const combinedWidgets = [...dailyWidgets, ...widgets];
             const allWidgetUniqueIds = [
