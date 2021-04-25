@@ -20,7 +20,7 @@ const initialState = {
     groupMembers: [],
   },
   dashboardWidgets: [],
-  calendarWidgets: [],
+  dailyWidgets: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -99,7 +99,7 @@ export default (state = initialState, action = {}) => {
     case SET_DAY_WIDGETS_OF_RANGE: {
       return {
         ...state,
-        calendarWidgets: action.widgets,
+        dailyWidgets: action.widgets,
       };
     }
 

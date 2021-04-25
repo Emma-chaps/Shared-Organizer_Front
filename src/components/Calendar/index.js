@@ -3,6 +3,7 @@ import { format, startOfWeek, endOfWeek } from 'date-fns';
 import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
 import { MdDateRange } from 'react-icons/md';
+import Day from './Day';
 
 function WeekNames() {
   return (
@@ -16,10 +17,10 @@ function WeekNames() {
   );
 }
 
-const Calendar = ({ range, date }) => {
+const Calendar = ({ range, date, dailyWidgets }) => {
   const selectedDate = formatDate(date);
 
-  // call function who calls another function
+  // calls a function that calls another function
   const month = takeMonth(selectedDate)();
   const week = takeWeek(selectedDate)();
 
@@ -37,12 +38,12 @@ const Calendar = ({ range, date }) => {
           {month.map((weeks) => (
             <div className="calendar__content__weeks">
               {weeks.map((day) => (
-                <div
+                <Day
                   className="calendar__content__weeks__day"
                   key={format(day, 'd')}
-                >
-                  {format(day, 'dd')}
-                </div>
+                  day={day}
+                  widgets={dailyWidgets}
+                />
               ))}
             </div>
           ))}
@@ -65,12 +66,12 @@ const Calendar = ({ range, date }) => {
           <WeekNames />
           <div className="calendar__content__weeks">
             {week.map((day) => (
-              <div
+              <Day
                 className="calendar__content__weeks__day"
                 key={format(day, 'd')}
-              >
-                {format(day, 'dd')}
-              </div>
+                day={day}
+                widgets={dailyWidgets}
+              />
             ))}
           </div>
         </div>

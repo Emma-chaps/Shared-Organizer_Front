@@ -30,8 +30,6 @@ export default (store) => (next) => (action) => {
       api
         .get('/group-infos')
         .then((result) => {
-          console.log('ça marche');
-          console.log(result.data.group);
           return result.data.group;
         })
         .then(({ members, name }) => {
@@ -112,8 +110,7 @@ export default (store) => (next) => (action) => {
 
     case FETCH_DAY_WIDGETS_OF_RANGE: {
       const { range, selectedDateValue } = store.getState().calendar;
-      const { calendarWidgets } = store.getState().widget;
-      console.log('calendarWidgets:', calendarWidgets);
+      const { dailyWidgets } = store.getState().widget;
       const year = selectedDateValue.split('-')[0];
       const formattedISODate = addDays(parseISO(selectedDateValue), 0);
       let rangeStart = startOfMonth(formattedISODate);
@@ -127,7 +124,7 @@ export default (store) => (next) => (action) => {
       const rangeStartDayNb = getDayOfYear(rangeStart);
       const dateContainer = new Array(numberOfDaysInRange).fill(undefined);
       const dayNumbers = dateContainer.map(
-        (element, index) => rangeStartDayNb + index
+        (element, index) => rangeStartDayNb + index,
       );
 
       api
@@ -137,14 +134,13 @@ export default (store) => (next) => (action) => {
         .then((result) => result.data)
         .then(({ success, widgets }) => {
           if (success) {
-            const combinedWidgets = [...calendarWidgets, ...widgets];
+            const combinedWidgets = [...dailyWidgets, ...widgets];
             const allWidgetUniqueIds = [
               ...new Set(combinedWidgets.map((widget) => widget.id)),
             ];
             const allUniqueWidgets = allWidgetUniqueIds.map((id) =>
-              combinedWidgets.find((widget) => widget.id === id)
+              combinedWidgets.find((widget) => widget.id === id),
             );
-            console.log('allUniqueWidgets:', allUniqueWidgets);
             store.dispatch(setDayWidgetsOfRange(allUniqueWidgets));
           }
         });
