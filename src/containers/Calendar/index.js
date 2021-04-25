@@ -4,6 +4,7 @@ import Calendar from 'src/components/Calendar';
 const mapStateToProps = (state) => ({
   range: state.calendar.range,
   date: state.calendar.selectedDateValue,
+  dailyWidgets: state.widget.dailyWidgets,
 });
 
 const mapDispatchToProps = () => ({});
