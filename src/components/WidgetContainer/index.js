@@ -1,14 +1,43 @@
-import React from 'react';
-import { specificRangeWidgets } from 'src/selectors/filterWidgets';
+import React, { useEffect, useState } from 'react';
+import {
+  specificRangeWidgets,
+  widgetMonthChecker,
+  widgetWeekChecker,
+  widgetDayChecker,
+} from 'src/selectors/filterWidgets';
 import Widget from './Widget';
 import './styles.scss';
 
-function WidgetContainer({ widgets, range }) {
-  const RangedFilteredWidgets = specificRangeWidgets(widgets, range);
+function WidgetContainer({
+  // widgets,
+  range,
+  dailyWidgets,
+  weeklyWidgets,
+  monthlyWidgets,
+  selectedDateValue,
+}) {
+  const [rangedFilteredWidgets, setRangedFilteredWidgets] = useState([]);
+  useEffect(() => {
+    if (range === 'month') {
+      setRangedFilteredWidgets(
+        widgetMonthChecker(monthlyWidgets, selectedDateValue),
+      );
+    }
+    if (range === 'week') {
+      setRangedFilteredWidgets(
+        widgetWeekChecker(weeklyWidgets, selectedDateValue),
+      );
+    }
+    if (range === 'day') {
+      setRangedFilteredWidgets(
+        widgetDayChecker(dailyWidgets, selectedDateValue),
+      );
+    }
+  }, [range]);
   return (
     <div className="widgets">
-      {RangedFilteredWidgets.map((widgetData) => (
-        <Widget key={widgetData.infos.id} widget={widgetData} />
+      {rangedFilteredWidgets?.map((widgetData) => (
+        <Widget key={widgetData.id} widget={widgetData} />
       ))}
     </div>
   );

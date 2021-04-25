@@ -14,6 +14,7 @@ const Dashboard = ({
   showWidgetCreationModal,
   hideWidgetCreationModal,
   fetchDayWidgetsOfRange,
+  fetchDisplayedWidgets,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
   const handleClick = () => {
@@ -23,6 +24,7 @@ const Dashboard = ({
   useEffect(() => {
     getGroupData();
     fetchDayWidgetsOfRange();
+    fetchDisplayedWidgets();
   }, []);
   return (
     <>

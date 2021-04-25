@@ -1,3 +1,4 @@
+import { widgetsCombiner } from 'src/selectors/widgetsCombiner';
 import api from 'src/api';
 import {
   FETCH_GROUP_DATA,
@@ -14,6 +15,9 @@ import {
 import {
   FETCH_DAY_WIDGETS_OF_RANGE,
   setDayWidgetsOfRange,
+  FETCH_DISPLAYED_WIDGETS,
+  setMonthlyWidgets,
+  setWeeklyWidgets,
 } from 'src/actions/widget';
 import {
   startOfMonth,
@@ -22,6 +26,7 @@ import {
   getDayOfYear,
   addDays,
   parseISO,
+  format,
 } from 'date-fns';
 
 export default (store) => (next) => (action) => {
@@ -133,18 +138,51 @@ export default (store) => (next) => (action) => {
         })
         .then((result) => result.data)
         .then(({ success, widgets }) => {
-          console.log('widgets:', widgets);
           if (success) {
-            const combinedWidgets = [...dailyWidgets, ...widgets];
-            const allWidgetUniqueIds = [
-              ...new Set(combinedWidgets.map((widget) => widget.id)),
-            ];
-            const allUniqueWidgets = allWidgetUniqueIds.map((id) =>
-              combinedWidgets.find((widget) => widget.id === id),
+            store.dispatch(
+              setDayWidgetsOfRange(widgetsCombiner(dailyWidgets, widgets)),
             );
-            store.dispatch(setDayWidgetsOfRange(allUniqueWidgets));
           }
         });
+      return next(action);
+    }
+
+    case FETCH_DISPLAYED_WIDGETS: {
+      const { range, selectedDateValue } = store.getState().calendar;
+      const { monthlyWidgets, weeklyWidgets } = store.getState().widget;
+      const year = selectedDateValue.split('-')[0];
+
+      let dateNb = null;
+
+      switch (range) {
+        case 'month': {
+          dateNb = Number(format(parseISO(selectedDateValue), 'MM'));
+          break;
+        }
+        case 'week': {
+          dateNb = Number(format(parseISO(selectedDateValue), 'w'));
+          break;
+        }
+        default:
+          break;
+      }
+
+      api
+        .get(`/dashboard/${year}/${range}/${dateNb}`)
+        .then((response) => response.data)
+        .then(({ success, widgets }) => {
+          if (success && range === 'month') {
+            store.dispatch(
+              setMonthlyWidgets(widgetsCombiner(monthlyWidgets, widgets)),
+            );
+          }
+          if (success && range === 'week') {
+            store.dispatch(
+              setWeeklyWidgets(widgetsCombiner(weeklyWidgets, widgets)),
+            );
+          }
+        });
+
       return next(action);
     }
     default:

@@ -72,3 +72,23 @@ export const setDayWidgetsOfRange = (widgets) => ({
   type: SET_DAY_WIDGETS_OF_RANGE,
   widgets,
 });
+
+export const FETCH_DISPLAYED_WIDGETS = 'FETCH_DISPLAYED_WIDGETS';
+
+export const fetchDisplayedWidgets = () => ({
+  type: FETCH_DISPLAYED_WIDGETS,
+});
+
+export const SET_WEEKLY_WIDETS = 'SET_WEEKLY_WIDETS';
+
+export const setWeeklyWidgets = (widgets) => ({
+  type: SET_WEEKLY_WIDETS,
+  widgets,
+});
+
+export const SET_MONTLY_WIDETS = 'SET_MONTLY_WIDETS';
+
+export const setMonthlyWidgets = (widgets) => ({
+  type: SET_MONTLY_WIDETS,
+  widgets,
+});
