@@ -35,8 +35,8 @@ const Calendar = ({ range, date, dailyWidgets }) => {
         </div>
         <div className="calendar__content">
           <WeekNames />
-          {month.map((weeks) => (
-            <div className="calendar__content__weeks">
+          {month.map((weeks, index) => (
+            <div key={index} className="calendar__content__weeks">
               {weeks.map((day) => (
                 <Day
                   className="calendar__content__weeks__day"

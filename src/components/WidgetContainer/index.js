@@ -3,12 +3,13 @@ import {
   specificRangeWidgets,
   widgetMonthChecker,
   widgetWeekChecker,
+  widgetDayChecker,
 } from 'src/selectors/filterWidgets';
 import Widget from './Widget';
 import './styles.scss';
 
 function WidgetContainer({
-  widgets,
+  // widgets,
   range,
   dailyWidgets,
   weeklyWidgets,
@@ -27,10 +28,15 @@ function WidgetContainer({
         widgetWeekChecker(weeklyWidgets, selectedDateValue),
       );
     }
+    if (range === 'day') {
+      setRangedFilteredWidgets(
+        widgetDayChecker(dailyWidgets, selectedDateValue),
+      );
+    }
   }, [range]);
   return (
     <div className="widgets">
-      {rangedFilteredWidgets.map((widgetData) => (
+      {rangedFilteredWidgets?.map((widgetData) => (
         <Widget key={widgetData.id} widget={widgetData} />
       ))}
     </div>
