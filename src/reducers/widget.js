@@ -11,6 +11,7 @@ import {
 } from 'src/actions/widget';
 
 import { findMember } from 'src/selectors/findMember';
+import { LOGOUT } from '../actions/user';
 
 const initialState = {
   displayCreationModal: false,
@@ -100,6 +101,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         dailyWidgets: action.widgets,
+      };
+    }
+    case LOGOUT: {
+      return {
+        ...state,
+        dashboardWidgets: [],
+        dailyWidgets: [],
       };
     }
 
