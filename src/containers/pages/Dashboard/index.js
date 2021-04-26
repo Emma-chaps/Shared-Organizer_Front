@@ -6,6 +6,7 @@ import {
   hideWidgetCreationModal,
   fetchDayWidgetsOfRange,
   fetchDisplayedWidgets,
+  fetchAllWidgets,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
   fetchDayWidgetsOfRange: () => dispatch(fetchDayWidgetsOfRange()),
   fetchDisplayedWidgets: () => dispatch(fetchDisplayedWidgets()),
+  fetchAllWidgets: () => dispatch(fetchAllWidgets()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

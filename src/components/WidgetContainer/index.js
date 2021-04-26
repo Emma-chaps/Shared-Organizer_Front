@@ -4,39 +4,21 @@ import {
   widgetMonthChecker,
   widgetWeekChecker,
   widgetDayChecker,
+  simpleWidgetFilter,
 } from 'src/selectors/filterWidgets';
 import Widget from './Widget';
 import './styles.scss';
 
-function WidgetContainer({
-  // widgets,
-  range,
-  dailyWidgets,
-  weeklyWidgets,
-  monthlyWidgets,
-  selectedDateValue,
-}) {
-  const [rangedFilteredWidgets, setRangedFilteredWidgets] = useState([]);
-  useEffect(() => {
-    if (range === 'month') {
-      setRangedFilteredWidgets(
-        widgetMonthChecker(monthlyWidgets, selectedDateValue),
-      );
-    }
-    if (range === 'week') {
-      setRangedFilteredWidgets(
-        widgetWeekChecker(weeklyWidgets, selectedDateValue),
-      );
-    }
-    if (range === 'day') {
-      setRangedFilteredWidgets(
-        widgetDayChecker(dailyWidgets, selectedDateValue),
-      );
-    }
-  }, [range]);
+function WidgetContainer({ range, selectedDateValue, dashboardWidgets }) {
+  const filteredWidgets = simpleWidgetFilter(
+    dashboardWidgets,
+    selectedDateValue,
+    range,
+  );
+
   return (
     <div className="widgets">
-      {rangedFilteredWidgets?.map((widgetData) => (
+      {filteredWidgets?.map((widgetData) => (
         <Widget key={widgetData.id} widget={widgetData} />
       ))}
     </div>
