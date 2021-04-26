@@ -8,7 +8,6 @@ import {
   SET_GROUP_DATA,
   ASSIGN_MEMBER_TO_OPEN_INPUT_VIEW,
   SET_MEMBERS_TO_EDIT,
-  ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
   HIDE_MODAL,
   SET_IS_OPENED_MODAL,
   SET_SELECTED_ICON,
@@ -21,6 +20,8 @@ import {
   SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE,
   SET_ROLE_TO_NEW_MEMBER,
   SET_USABLE_COLORS_TO_ADD_MEMBER,
+  HIDE_ALERT_MODAL,
+  SET_IS_OPENED_ALERT_MODAL,
 } from 'src/actions/settings';
 
 import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
@@ -28,6 +29,7 @@ import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
 const initialState = {
   openedGroupNameInput: false,
   openedModal: false,
+  openedAlertModal: false,
   openMembersInput: {},
   group: {
     groupName: '',
@@ -118,21 +120,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openMembersInput: {
-          // ...state.openMembersInput,
+          ...state.openMembersInput,
           [action.id]: true,
         },
       };
     }
     case SET_MEMBERS_TO_EDIT: {
-      return {
-        ...state,
-        openMembersInput: {
-          ...state.openMembersInput,
-          [action.id]: false,
-        },
-      };
-    }
-    case ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW: {
       return {
         ...state,
         openMembersInput: {
@@ -241,6 +234,18 @@ export default (state = initialState, action = {}) => {
           state.colors,
           state.newMember.icon
         ),
+      };
+    }
+    case HIDE_ALERT_MODAL: {
+      return {
+        ...state,
+        openedAlertModal: false,
+      };
+    }
+    case SET_IS_OPENED_ALERT_MODAL: {
+      return {
+        ...state,
+        openedAlertModal: true,
       };
     }
     default:

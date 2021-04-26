@@ -41,6 +41,7 @@ export default (store) => (next) => (action) => {
         })
         .then(({ connected, token }) => {
           if (connected) {
+            console.log(token);
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
             store.dispatch(setColorToMember(icon));
@@ -48,6 +49,7 @@ export default (store) => (next) => (action) => {
             // add errors messages
           }
         })
+        .finally(() => store.dispatch(fetchGroupData()))
         .catch((error) => {
           console.error(error);
         });

@@ -9,8 +9,9 @@ import {
   UPDATE_MEMBER,
   ADD_NEW_MEMBER,
   fetchGroupData,
-  assignMemberToCloseInputView,
   setUsableColors,
+  closeAllInput,
+  DELETE_MEMBER,
 } from 'src/actions/settings';
 import {
   FETCH_DAY_WIDGETS_OF_RANGE,
@@ -34,15 +35,15 @@ export default (store) => (next) => (action) => {
     case FETCH_GROUP_DATA: {
       api
         .get('/group-infos')
-        .then((result) => {
-          return result.data.group;
-        })
+        .then((result) => result.data.group)
         .then(({ members, name }) => {
           store.dispatch(setGroupData(members, name));
-          for (const member of members) {
-            store.dispatch(setMembersToEdit(`id${member.id}`));
+          if (members) {
+            for (const member of members) {
+              store.dispatch(setMembersToEdit(`id${member.id}`));
+            }
+            store.dispatch(setUsableColors());
           }
-          store.dispatch(setUsableColors());
         });
       return next(action);
     }
@@ -80,7 +81,7 @@ export default (store) => (next) => (action) => {
         .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
-            store.dispatch(assignMemberToCloseInputView(id));
+            store.dispatch(closeAllInput());
           }
         });
       return next(action);
@@ -129,7 +130,7 @@ export default (store) => (next) => (action) => {
       const rangeStartDayNb = getDayOfYear(rangeStart);
       const dateContainer = new Array(numberOfDaysInRange).fill(undefined);
       const dayNumbers = dateContainer.map(
-        (element, index) => rangeStartDayNb + index,
+        (element, index) => rangeStartDayNb + index
       );
 
       api
@@ -140,7 +141,7 @@ export default (store) => (next) => (action) => {
         .then(({ success, widgets }) => {
           if (success) {
             store.dispatch(
-              setDayWidgetsOfRange(widgetsCombiner(dailyWidgets, widgets)),
+              setDayWidgetsOfRange(widgetsCombiner(dailyWidgets, widgets))
             );
           }
         });
@@ -173,16 +174,31 @@ export default (store) => (next) => (action) => {
         .then(({ success, widgets }) => {
           if (success && range === 'month') {
             store.dispatch(
-              setMonthlyWidgets(widgetsCombiner(monthlyWidgets, widgets)),
+              setMonthlyWidgets(widgetsCombiner(monthlyWidgets, widgets))
             );
           }
           if (success && range === 'week') {
             store.dispatch(
-              setWeeklyWidgets(widgetsCombiner(weeklyWidgets, widgets)),
+              setWeeklyWidgets(widgetsCombiner(weeklyWidgets, widgets))
             );
           }
         });
 
+      return next(action);
+    }
+    case DELETE_MEMBER: {
+      console.log(action.id);
+      api
+        .delete(`/group-settings/member/delete/${action.id}`)
+        .then((result) => {
+          console.log(result.data);
+          return result.data;
+        })
+        .then(({ success }) => {
+          if (success) {
+            store.dispatch(fetchGroupData());
+          }
+        });
       return next(action);
     }
     default:
