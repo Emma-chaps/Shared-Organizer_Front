@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   monthlyWidgets: state.widget.monthlyWidgets,
   range: state.calendar.range,
   selectedDateValue: state.calendar.selectedDateValue,
+  dashboardWidgets: state.widget.dashboardWidgets,
 });
 
 const mapDispatchToProps = () => ({});

@@ -1,6 +1,6 @@
 import {
   SET_WIDGET_FIELD_VALUE,
-  SET_WIDGET_TO_DASHBOARD,
+  SET_ALL_WIDGETS,
   SET_WIDGET_DESCRIPTION_VALUE,
   ASSIGN_MEMBER_TO_WIDGET,
   SHOW_CREATION_WIDGET_MODAL,
@@ -48,16 +48,10 @@ export default (state = initialState, action = {}) => {
         },
       };
 
-    case SET_WIDGET_TO_DASHBOARD:
+    case SET_ALL_WIDGETS:
       return {
         ...state,
-        dashboardWidgets: [
-          ...state.dashboardWidgets,
-          {
-            widget: action.widget,
-            fields: action.fields,
-          },
-        ],
+        dashboardWidgets: [...action.widgets],
       };
 
     case ASSIGN_MEMBER_TO_WIDGET: {
@@ -101,24 +95,24 @@ export default (state = initialState, action = {}) => {
         dashboardWidgets: [...state.dashboardWidgets, action.widget],
       };
     }
-    case SET_DAY_WIDGETS_OF_RANGE: {
-      return {
-        ...state,
-        dailyWidgets: action.widgets,
-      };
-    }
-    case SET_MONTLY_WIDETS: {
-      return {
-        ...state,
-        monthlyWidgets: action.widgets,
-      };
-    }
-    case SET_WEEKLY_WIDETS: {
-      return {
-        ...state,
-        weeklyWidgets: action.widgets,
-      };
-    }
+    // case SET_DAY_WIDGETS_OF_RANGE: {
+    //   return {
+    //     ...state,
+    //     dailyWidgets: action.widgets,
+    //   };
+    // }
+    // case SET_MONTLY_WIDETS: {
+    //   return {
+    //     ...state,
+    //     monthlyWidgets: action.widgets,
+    //   };
+    // }
+    // case SET_WEEKLY_WIDETS: {
+    //   return {
+    //     ...state,
+    //     weeklyWidgets: action.widgets,
+    //   };
+    // }
 
     case LOGOUT: {
       return {

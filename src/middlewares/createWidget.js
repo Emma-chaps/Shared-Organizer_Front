@@ -5,6 +5,7 @@ import {
   reinitializeWidget,
   setWidgetToState,
   fetchDayWidgetsOfRange,
+  fetchAllWidgets,
 } from 'src/actions/widget';
 
 export default (store) => (next) => (action) => {
@@ -48,11 +49,9 @@ export default (store) => (next) => (action) => {
         })
         .then((result) => result.data)
         .then(({ success, widget }) => {
-          console.log('widget:', widget);
-
           if (success) {
             store.dispatch(setWidgetToState(widget));
-            store.dispatch(fetchDayWidgetsOfRange());
+            store.dispatch(fetchAllWidgets());
             store.dispatch(reinitializeWidget());
           }
         })

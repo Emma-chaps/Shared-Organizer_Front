@@ -92,3 +92,16 @@ export const setMonthlyWidgets = (widgets) => ({
   type: SET_MONTLY_WIDETS,
   widgets,
 });
+
+export const FETCH_ALL_WIDGETS = 'FETCH_ALL_WIDGETS';
+
+export const fetchAllWidgets = () => ({
+  type: FETCH_ALL_WIDGETS,
+});
+
+export const SET_ALL_WIDGETS = 'SET_ALL_WIDGETS';
+
+export const setAllWidgets = (widgets) => ({
+  type: SET_ALL_WIDGETS,
+  widgets,
+});
