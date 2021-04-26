@@ -9,15 +9,7 @@ import {
 import Widget from './Widget';
 import './styles.scss';
 
-function WidgetContainer({
-  // widgets,
-  range,
-  dailyWidgets,
-  weeklyWidgets,
-  monthlyWidgets,
-  selectedDateValue,
-  dashboardWidgets,
-}) {
+function WidgetContainer({ range, selectedDateValue, dashboardWidgets }) {
   const filteredWidgets = simpleWidgetFilter(
     dashboardWidgets,
     selectedDateValue,

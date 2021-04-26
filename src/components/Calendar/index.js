@@ -3,6 +3,7 @@ import { format, startOfWeek, endOfWeek } from 'date-fns';
 import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
 import { MdDateRange } from 'react-icons/md';
+import { dailyWidgetsFilter } from 'src/selectors/filterWidgets';
 import Day from './Day';
 
 function WeekNames() {
@@ -17,7 +18,8 @@ function WeekNames() {
   );
 }
 
-const Calendar = ({ range, date, dailyWidgets }) => {
+const Calendar = ({ range, date, dashboardWidgets }) => {
+  const dailyWidgets = dailyWidgetsFilter(dashboardWidgets, range);
   const selectedDate = formatDate(date);
 
   // calls a function that calls another function
