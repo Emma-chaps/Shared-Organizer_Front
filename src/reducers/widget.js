@@ -7,9 +7,6 @@ import {
   HIDE_WIDGET_CREATION_MODAL,
   REINITIALIZE_WIDGET,
   SET_WIDGET_TO_STATE,
-  SET_DAY_WIDGETS_OF_RANGE,
-  SET_WEEKLY_WIDETS,
-  SET_MONTLY_WIDETS,
 } from 'src/actions/widget';
 
 import { findMember } from 'src/selectors/findMember';
@@ -23,9 +20,6 @@ const initialState = {
     groupMembers: [],
   },
   dashboardWidgets: [],
-  dailyWidgets: [],
-  monthlyWidgets: [],
-  weeklyWidgets: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -95,30 +89,11 @@ export default (state = initialState, action = {}) => {
         dashboardWidgets: [...state.dashboardWidgets, action.widget],
       };
     }
-    // case SET_DAY_WIDGETS_OF_RANGE: {
-    //   return {
-    //     ...state,
-    //     dailyWidgets: action.widgets,
-    //   };
-    // }
-    // case SET_MONTLY_WIDETS: {
-    //   return {
-    //     ...state,
-    //     monthlyWidgets: action.widgets,
-    //   };
-    // }
-    // case SET_WEEKLY_WIDETS: {
-    //   return {
-    //     ...state,
-    //     weeklyWidgets: action.widgets,
-    //   };
-    // }
 
     case LOGOUT: {
       return {
         ...state,
         dashboardWidgets: [],
-        dailyWidgets: [],
       };
     }
 

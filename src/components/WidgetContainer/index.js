@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  specificRangeWidgets,
-  widgetMonthChecker,
-  widgetWeekChecker,
-  widgetDayChecker,
-  simpleWidgetFilter,
-} from 'src/selectors/filterWidgets';
+import { simpleWidgetFilter } from 'src/selectors/filterWidgets';
 import Widget from './Widget';
 import './styles.scss';
 
