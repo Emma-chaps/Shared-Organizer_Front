@@ -6,8 +6,7 @@ import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
-import { BiPencil, BiTrash } from 'react-icons/bi';
-import { RiUserAddLine } from 'react-icons/ri';
+import { FiEdit2, FiTrash2, FiUserPlus } from 'react-icons/fi';
 import { FaUserAlt } from 'react-icons/fa';
 
 import './styles.scss';
@@ -70,7 +69,7 @@ const GroupSettings = ({
         ) : (
           <>
             <button type="button" onClick={setGroupNameInputState}>
-              <BiPencil /> Update group name
+              <FiEdit2 /> Update group name
             </button>
           </>
         )}
@@ -109,7 +108,7 @@ const GroupSettings = ({
                   data-id={member.id}
                   className="data edit"
                 >
-                  <BiPencil />
+                  <FiEdit2 />
                 </button>
                 {member.role === 3 ? (
                   <></>
@@ -121,7 +120,7 @@ const GroupSettings = ({
                       data-id={member.id}
                       className="data edit"
                     >
-                      <BiTrash />
+                      <FiTrash2 />
                     </button>
                     <Modal
                       showModal={isOpenedModalAlert}
@@ -149,7 +148,7 @@ const GroupSettings = ({
         ))}
         <div>
           <button type="button" onClick={handleOpenAddMember}>
-            <RiUserAddLine /> Add a new member
+            <FiUserPlus /> Add a new member
           </button>
           <Modal showModal={isOpenedModal} hideModal={hideModal}>
             <AddAMemberForm />

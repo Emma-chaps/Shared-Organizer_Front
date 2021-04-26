@@ -1,6 +1,43 @@
+@use 'src/styles/extend';
+
 .header {
-  display: flex;
-  flex-direction: row;
+  @extend .flex-row;
   justify-content: space-between;
   padding: 1rem 1rem;
+  &__main-menu {
+    @extend .flex-row;
+  }
+  &__settings-menu {
+    position: relative;
+    background-color: white;
+    &__modal {
+      -webkit-box-shadow: 0px 0px 7px -3px #000000;
+      box-shadow: 0px 0px 4px -3px #000000;
+      border-radius: 1px;
+
+      border: 0.5px solid rgb(214, 214, 214);
+
+      background-color: white;
+
+      position: absolute;
+      right: 0px;
+      z-index: 10;
+      &--is-hidden {
+        display: none;
+      }
+      .disconnect-btn {
+        padding: 0.5rem 1rem;
+      }
+      .settings-btn {
+        padding: 0.5rem 1rem;
+        position: relative;
+        &__name {
+          padding-right: 0.4rem;
+        }
+        &__icon {
+          position: absolute;
+        }
+      }
+    }
+  }
 }
