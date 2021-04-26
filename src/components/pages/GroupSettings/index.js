@@ -6,7 +6,8 @@ import Modal from 'src/components/Modal';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
-import { BiPencil } from 'react-icons/bi';
+import { BiPencil, BiTrash } from 'react-icons/bi';
+import { RiUserAddLine } from 'react-icons/ri';
 import { FaUserAlt } from 'react-icons/fa';
 
 import './styles.scss';
@@ -18,7 +19,6 @@ const GroupSettings = ({
   setGroupNameInputState,
   openMembersInput,
   assignMemberToOpenInputView,
-  assignMemberToCloseInputView,
   setIsOpenedModal,
   hideModal,
   isOpenedModal,
@@ -26,6 +26,10 @@ const GroupSettings = ({
   closeAllInput,
   cleanNewMemberFields,
   setUsableColorsToAddMember,
+  deleteMember,
+  setIsOpenedAlertModal,
+  isOpenedModalAlert,
+  hideAlertModal,
 }) => {
   // Rerender component when set_group_data is started
   useEffect(() => {}, [members]);
@@ -33,11 +37,6 @@ const GroupSettings = ({
   const handleOpenMemberInputView = (event) => {
     closeAllInput();
     assignMemberToOpenInputView(`id${event.currentTarget.dataset.id}`);
-  };
-
-  const handleCloseMemberInputView = (event) => {
-    const id = `id${event.currentTarget.dataset.id}`;
-    assignMemberToCloseInputView(id);
   };
 
   const handleOpenAddMember = () => {
@@ -49,6 +48,11 @@ const GroupSettings = ({
   const handleSubmitUpdateMember = (event) => {
     event.preventDefault();
     updateMember();
+  };
+
+  const handleDeleteMember = (event) => {
+    deleteMember(event.currentTarget.dataset.id);
+    hideAlertModal();
   };
 
   return (
@@ -66,7 +70,7 @@ const GroupSettings = ({
         ) : (
           <>
             <button type="button" onClick={setGroupNameInputState}>
-              <BiPencil /> Change group name
+              <BiPencil /> Update group name
             </button>
           </>
         )}
@@ -81,21 +85,15 @@ const GroupSettings = ({
             <div className="data edit">Edit</div>
           </div>
         )}
-        {members.map((member) => (
+        {members?.map((member) => (
           <div key={member.id} className="flex-row">
             {openMembersInput[`id${member.id}`] ? (
               <div>
                 <GroupSettingsForm
                   member={member}
                   onSubmit={handleSubmitUpdateMember}
+                  onClose={closeAllInput}
                 />
-                <button
-                  type="button"
-                  onClick={handleCloseMemberInputView}
-                  data-id={member.id}
-                >
-                  Cancel
-                </button>
               </div>
             ) : (
               <>
@@ -113,13 +111,45 @@ const GroupSettings = ({
                 >
                   <BiPencil />
                 </button>
+                {member.role === 3 ? (
+                  <></>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      onClick={setIsOpenedAlertModal}
+                      data-id={member.id}
+                      className="data edit"
+                    >
+                      <BiTrash />
+                    </button>
+                    <Modal
+                      showModal={isOpenedModalAlert}
+                      hideModal={hideAlertModal}
+                    >
+                      <span>
+                        Are you sure you want to delete {member.firstname} ?
+                      </span>
+                      <button type="button" onClick={hideAlertModal}>
+                        No
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleDeleteMember}
+                        data-id={member.id}
+                      >
+                        Yes
+                      </button>
+                    </Modal>
+                  </>
+                )}
               </>
             )}
           </div>
         ))}
         <div>
           <button type="button" onClick={handleOpenAddMember}>
-            Add a new member
+            <RiUserAddLine /> Add a new member
           </button>
           <Modal showModal={isOpenedModal} hideModal={hideModal}>
             <AddAMemberForm />
@@ -132,11 +162,9 @@ const GroupSettings = ({
 
 GroupSettings.propTypes = {
   updateMember: PropTypes.func,
-  assignMemberToCloseInputView: PropTypes.func,
 };
 GroupSettings.defaultProps = {
   updateMember: () => {},
-  assignMemberToCloseInputView: () => {},
 };
 
 export default withRouter(GroupSettings);

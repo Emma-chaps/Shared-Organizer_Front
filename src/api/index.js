@@ -1,9 +1,19 @@
 import axios from 'axios';
 
-export default axios.create({
+const api = axios.create({
   baseURL: 'http://localhost:3000',
   timeout: 5000,
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
-  },
 });
+
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('jwtoken');
+    if (token) {
+      config.headers.authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+export default api;

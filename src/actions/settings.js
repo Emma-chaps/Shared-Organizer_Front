@@ -75,14 +75,6 @@ export const setMembersToEdit = (id) => ({
   id,
 });
 
-export const ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW =
-  'ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW';
-
-export const assignMemberToCloseInputView = (id) => ({
-  type: ASSIGN_MEMBER_TO_CLOSE_INPUT_VIEW,
-  id,
-});
-
 export const UPDATE_MEMBER = 'UPDATE_MEMBER';
 
 export const updateMember = () => ({
@@ -176,4 +168,23 @@ export const SET_USABLE_COLORS_TO_ADD_MEMBER =
 
 export const setUsableColorsToAddMember = () => ({
   type: SET_USABLE_COLORS_TO_ADD_MEMBER,
+});
+
+export const DELETE_MEMBER = 'DELETE_MEMBER';
+
+export const deleteMember = (id) => ({
+  type: DELETE_MEMBER,
+  id,
+});
+
+export const HIDE_ALERT_MODAL = 'HIDE_ALERT_MODAL';
+
+export const hideAlertModal = () => ({
+  type: HIDE_ALERT_MODAL,
+});
+
+export const SET_IS_OPENED_ALERT_MODAL = 'SET_IS_OPENED_ALERT_MODAL';
+
+export const setIsOpenedAlertModal = () => ({
+  type: SET_IS_OPENED_ALERT_MODAL,
 });

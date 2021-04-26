@@ -14,6 +14,7 @@ const GroupSettingsFrom = ({
   icon,
   changeField,
   onSubmit,
+  onClose,
   setSelectedIcon,
   setSelectedRole,
   colors,
@@ -94,6 +95,9 @@ const GroupSettingsFrom = ({
           </label>
         )}
         <button type="submit">Save</button>
+        <button type="button" onClick={onClose}>
+          Cancel
+        </button>
       </form>
     </div>
   );

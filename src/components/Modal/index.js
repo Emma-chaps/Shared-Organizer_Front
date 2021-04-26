@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import WidgetCreationForm from '../forms/WidgetCreationForm';
 
 import './styles.scss';
 import classNames from 'classnames';
