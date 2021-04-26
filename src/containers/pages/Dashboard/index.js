@@ -17,8 +17,6 @@ const mapDispatchToProps = (dispatch) => ({
   getGroupData: () => dispatch(fetchGroupData()),
   showWidgetCreationModal: () => dispatch(showWidgetCreationModal()),
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
-  fetchDayWidgetsOfRange: () => dispatch(fetchDayWidgetsOfRange()),
-  fetchDisplayedWidgets: () => dispatch(fetchDisplayedWidgets()),
   fetchAllWidgets: () => dispatch(fetchAllWidgets()),
 });
 

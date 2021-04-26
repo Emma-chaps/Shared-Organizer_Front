@@ -1,4 +1,4 @@
-import { getDayOfYear, getWeekYear } from 'date-fns';
+import { getDayOfYear, getWeekYear, getWeek } from 'date-fns';
 
 // export const specificRangeWidgets = (widgets, range) =>
 //   widgets.filter((widget) => range === widget.range);
@@ -8,6 +8,7 @@ export const simpleWidgetFilter = (widgets, date, range) => {
   const month = date.split('-')[1];
   const day = date.split('-')[2];
   const dayNb = getDayOfYear(new Date(year, month - 1, day));
+  const week = getWeek(new Date(year, month - 1, day));
 
   const rangeFilteredWidgets = widgets.filter((widget) => {
     if (widget.range === range && widget.year === Number(year)) return widget;
@@ -18,6 +19,12 @@ export const simpleWidgetFilter = (widgets, date, range) => {
       (widget) => widget.date_nb === Number(month),
     );
     return monthlyWidgets;
+  }
+  if (range === 'week') {
+    const weeklyWidgets = rangeFilteredWidgets.filter(
+      (widget) => widget.date_nb === Number(week),
+    );
+    return weeklyWidgets;
   }
   return rangeFilteredWidgets.filter((widget) => widget.date_nb === dayNb);
 };
