@@ -3,7 +3,14 @@ import { simpleWidgetFilter } from 'src/selectors/filterWidgets';
 import Widget from './Widget';
 import './styles.scss';
 
-function WidgetContainer({ range, selectedDateValue, dashboardWidgets }) {
+function WidgetContainer({
+  range,
+  selectedDateValue,
+  dashboardWidgets,
+  editWidget,
+  deleteWidget,
+  copyWidgetToEdit,
+}) {
   const filteredWidgets = simpleWidgetFilter(
     dashboardWidgets,
     selectedDateValue,
@@ -13,7 +20,13 @@ function WidgetContainer({ range, selectedDateValue, dashboardWidgets }) {
   return (
     <div className="widgets">
       {filteredWidgets?.map((widgetData) => (
-        <Widget key={widgetData.id} widget={widgetData} />
+        <Widget
+          key={widgetData.id}
+          widget={widgetData}
+          editWidget={editWidget}
+          deleteWidget={deleteWidget}
+          copyWidgetToEdit={copyWidgetToEdit}
+        />
       ))}
     </div>
   );

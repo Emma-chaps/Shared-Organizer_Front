@@ -4,8 +4,6 @@ import { fetchGroupData } from 'src/actions/settings';
 import {
   showWidgetCreationModal,
   hideWidgetCreationModal,
-  fetchDayWidgetsOfRange,
-  fetchDisplayedWidgets,
   fetchAllWidgets,
 } from 'src/actions/widget';
 
