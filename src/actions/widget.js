@@ -95,3 +95,10 @@ export const deleteWidget = (widget) => ({
   type: DELETE_WIDGET,
   widget,
 });
+
+export const SET_FILTERED_MEMBERS = 'SET_FILTERED_MEMBERS';
+
+export const setFilteredMembers = (members) => ({
+  type: SET_FILTERED_MEMBERS,
+  members,
+});
