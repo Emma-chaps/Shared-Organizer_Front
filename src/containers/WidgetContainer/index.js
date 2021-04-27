@@ -17,7 +17,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteWidget: (widget) => dispatch(deleteWidget(widget)),
+  deleteWidget: (id) => dispatch(deleteWidget(id)),
   editWidget: (widget) => dispatch(editWidget(widget)),
   copyWidgetToEdit: (widget, members) =>
     dispatch(copyWidgetToEdit(widget, members)),
