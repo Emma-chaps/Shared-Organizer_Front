@@ -60,13 +60,16 @@ export default (store) => (next) => (action) => {
           password,
         })
         .then((result) => result.data)
-        .then(({ connected, token }) => {
-          if (connected) {
-            localStorage.setItem('jwtoken', token);
-            store.dispatch(login(token));
+        .then((value) => {
+          if (value.connected) {
+            localStorage.setItem('jwtoken', value.token);
+            store.dispatch(login(value.token));
             store.dispatch(fetchGroupData());
+          } else {
+            console.log(value);
           }
-        });
+        })
+        .catch((error) => console.error(error.error));
       return next(action);
     }
     case LOGOUT: {
