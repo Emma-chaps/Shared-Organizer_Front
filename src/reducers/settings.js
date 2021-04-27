@@ -22,6 +22,7 @@ import {
   SET_USABLE_COLORS_TO_ADD_MEMBER,
   HIDE_ALERT_MODAL,
   SET_IS_OPENED_ALERT_MODAL,
+  CLEAN_PASSWORD_FIELD,
 } from 'src/actions/settings';
 
 import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
@@ -248,6 +249,15 @@ export default (state = initialState, action = {}) => {
         openedAlertModal: true,
       };
     }
+    case CLEAN_PASSWORD_FIELD: {
+      return {
+        ...state,
+        memberToChange: {
+          password: '',
+        },
+      };
+    }
+
     default:
       return state;
   }

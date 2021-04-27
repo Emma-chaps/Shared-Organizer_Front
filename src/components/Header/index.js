@@ -5,7 +5,7 @@ import { FiCalendar, FiSettings, FiUser } from 'react-icons/fi';
 import './styles.scss';
 import classNames from 'classnames';
 
-export default function Header({ groupName, logout }) {
+export default function Header({ groupName, logout, isAdmin }) {
   const [displayMenu, setDisplayMenu] = useState(false);
   const hideSettingsMenu = classNames('header__settings-menu__modal', {
     'header__settings-menu__modal--is-hidden': !displayMenu,
@@ -24,19 +24,20 @@ export default function Header({ groupName, logout }) {
           </div>
         </NavLink>
       </div>
-
-      <h2>{groupName}</h2>
+      <div>{groupName}</div>
       <div className="header__settings-menu">
         <FiUser onClick={handleClick} className="header__settings-menu__user" />
         <div className={hideSettingsMenu}>
           <div className="settings-btn">
-            <NavLink to="/group-settings">
-              <span className="settings-btn__name">Settings</span>
-              <FiSettings className="settings-btn__icon" />
-            </NavLink>
-          </div>
-          <div onClick={logout} className="disconnect-btn">
-            Disconnect
+            {isAdmin && (
+              <NavLink to="/group-settings">
+                <span className="settings-btn__name">Settings</span>
+                <FiSettings className="settings-btn__icon" />
+              </NavLink>
+            )}
+            <div onClick={logout} className="disconnect-btn">
+              Disconnect
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ const GroupSettingsFrom = ({
   member,
   firstname,
   email,
-  password,
   role,
   icon,
   changeField,
@@ -70,13 +69,6 @@ const GroupSettingsFrom = ({
           value={email}
           onChange={changeField}
         />
-        {/* <Field
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={changeField}
-        /> */}
         {role === 3 ? (
           <div>Admin</div>
         ) : (
