@@ -3,12 +3,20 @@ import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 
-function Widget({ widget, editWidget, deleteWidget, copyWidgetToEdit }) {
+function Widget({
+  widget,
+  editWidget,
+  deleteWidget,
+  copyWidgetToEdit,
+  showWidgetCreationModal,
+  hideWidgetCreationModal,
+  displayCreationModal,
+}) {
   const [displayEdit, setDisplayEdit] = useState(false);
   const { members } = widget;
   const handleEdit = (event) => {
     copyWidgetToEdit(widget, members);
-    // editWidget(widget);
+    showWidgetCreationModal();
     setDisplayEdit(true);
   };
   const handleDelete = (event) => {
@@ -37,8 +45,11 @@ function Widget({ widget, editWidget, deleteWidget, copyWidgetToEdit }) {
       <button type="button" id={widget.id} onClick={handleDelete}>
         <FiTrash2 />
       </button>
-      <Modal showModal={displayEdit} hideModal={handleExitModal}>
-        <WidgetCreationForm widget={widget} />
+      <Modal showModal={displayCreationModal}>
+        <WidgetCreationForm
+          hideWidgetCreationModal={hideWidgetCreationModal}
+          widget={widget}
+        />
       </Modal>
     </article>
   );

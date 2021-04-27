@@ -13,6 +13,7 @@ import {
   closeAllInput,
   DELETE_MEMBER,
 } from 'src/actions/settings';
+import { setFilteredMembers } from 'src/actions/widget';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -28,6 +29,10 @@ export default (store) => (next) => (action) => {
             }
             store.dispatch(setUsableColors());
           }
+          return members;
+        })
+        .then((members) => {
+          store.dispatch(setFilteredMembers(members));
         });
       return next(action);
     }

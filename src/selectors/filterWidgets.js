@@ -1,9 +1,6 @@
 import { getDayOfYear, getWeekYear, getWeek } from 'date-fns';
 
-// export const specificRangeWidgets = (widgets, range) =>
-//   widgets.filter((widget) => range === widget.range);
-
-export const simpleWidgetFilter = (widgets, date, range) => {
+export const RangeWidgetFilter = (widgets, date, range) => {
   const year = date.split('-')[0];
   const month = date.split('-')[1];
   const day = date.split('-')[2];
@@ -34,43 +31,39 @@ export const dailyWidgetsFilter = (widgets, range) => {
   return filteredWidgets;
 };
 
-// export const widgetMonthChecker = (widgets, date) => {
-//   const year = date.split('-')[0];
-//   const month = date.split('-')[1];
+// export const MemberWidgetFilter = (members = [], widgets = []) => {
 //   const filteredWidgets = widgets.filter((widget) => {
-//     if (widget.date_nb === Number(month) && widget.year === Number(year)) {
-//       return widget;
-//     }
+//     const firstFilter = widget.members.map((widgetMember) => {
+//       const comparison = members.map((member) => member.id === widgetMember.id);
+//       return comparison;
+//     });
+//     console.log('firstFilter:', firstFilter);
+//     return firstFilter;
 //   });
+
 //   return filteredWidgets;
 // };
 
-// export const widgetWeekChecker = (widgets, date) => {
-//   const year = date.split('-')[0];
-//   const month = date.split('-')[1];
-//   const day = date.split('-')[2];
-//   const filteredWidgets = widgets.filter((widget) => {
-//     if (
-//       widget.date_nb === getWeekYear(new Date(year, month - 1, day)) &&
-//       widget.year === Number(year)
-//     ) {
-//       return widget;
-//     }
-//   });
+// export const MemberWidgetFilter = (members = [], widgets = []) => {
+//   const filteredWidgets = widgets.filter((widget) =>
+//     widget.members.map((widgetMember) =>
+//       members.map((member) => member.id === widgetMember.id),
+//     ),
+//   );
 //   return filteredWidgets;
 // };
-
-// export const widgetDayChecker = (widgets, date) => {
-//   const year = date.split('-')[0];
-//   const month = date.split('-')[1];
-//   const day = date.split('-')[2];
-//   const filteredWidgets = widgets.filter((widget) => {
-//     if (
-//       widget.date_nb === getDayOfYear(new Date(year, month - 1, day)) &&
-//       widget.year === Number(year)
-//     ) {
-//       return widget;
-//     }
-//   });
-//   return filteredWidgets;
-// };
+export const MemberWidgetFilter = (members = [], widgets = []) => {
+  let array = [];
+  const filteredWidgets = members.forEach((member) => {
+    let widgetsArray = [];
+    widgets.forEach((widget) => {
+      widget.members.forEach((item) => {
+        if (item.id === member.id) {
+          widgetsArray.push(widget);
+        }
+      });
+    });
+    array = [...widgetsArray];
+  });
+  return array;
+};

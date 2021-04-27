@@ -3,7 +3,7 @@ import { format, parseISO, addDays, getDayOfYear } from 'date-fns';
 import {
   SUBMIT_WIDGET_DATA_CREATION,
   reinitializeWidget,
-  setWidgetToState,
+  hideWidgetCreationModal,
   fetchAllWidgets,
   EDIT_WIDGET,
   DELETE_WIDGET,
@@ -30,6 +30,7 @@ export default (store) => (next) => (action) => {
             if (success) {
               store.dispatch(fetchAllWidgets());
               store.dispatch(reinitializeWidget());
+              store.dispatch(hideWidgetCreationModal());
             }
           });
       } else {

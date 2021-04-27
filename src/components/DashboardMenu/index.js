@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format, compareAsc } from 'date-fns';
+import { findMember } from 'src/selectors/findMember';
 import { FaUserAlt } from 'react-icons/fa';
 import './styles.scss';
 
-const DashboardMenu = ({ setRange, selectedDateValue, setFieldDateValue }) => {
+const DashboardMenu = ({
+  setRange,
+  selectedDateValue,
+  setFieldDateValue,
+  members,
+  setFilteredMembers,
+}) => {
   const onChange = (event) => {
     const value = event.target.dataset.range;
     setRange(value);
@@ -12,6 +18,15 @@ const DashboardMenu = ({ setRange, selectedDateValue, setFieldDateValue }) => {
 
   const handleChange = (event) => {
     setFieldDateValue(event.target.value);
+  };
+
+  const handleFilter = (event) => {
+    const searchedMember = findMember(event.currentTarget.id, members);
+    setFilteredMembers([searchedMember]);
+  };
+
+  const handleResetFilter = () => {
+    setFilteredMembers(members);
   };
 
   return (
@@ -50,9 +65,20 @@ const DashboardMenu = ({ setRange, selectedDateValue, setFieldDateValue }) => {
         </button>
       </div>
       <div className="menu__members">
-        <FaUserAlt />
-        <FaUserAlt />
-        <FaUserAlt />
+        <button type="button" onClick={handleResetFilter}>
+          ALL
+        </button>
+        {members.map((member) => (
+          <button
+            type="button"
+            key={member.id}
+            id={member.id}
+            onClick={handleFilter}
+          >
+            <FaUserAlt />
+            {member.firstname}
+          </button>
+        ))}
       </div>
     </div>
   );

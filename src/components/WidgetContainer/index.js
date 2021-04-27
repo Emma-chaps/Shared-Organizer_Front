@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { simpleWidgetFilter } from 'src/selectors/filterWidgets';
+import {
+  RangeWidgetFilter,
+  MemberWidgetFilter,
+} from 'src/selectors/filterWidgets';
 import Widget from './Widget';
 import './styles.scss';
 
@@ -10,12 +13,20 @@ function WidgetContainer({
   editWidget,
   deleteWidget,
   copyWidgetToEdit,
+  hideWidgetCreationModal,
+  showWidgetCreationModal,
+  displayCreationModal,
+  filteredMembers,
 }) {
-  const filteredWidgets = simpleWidgetFilter(
+  let filteredWidgets = RangeWidgetFilter(
     dashboardWidgets,
     selectedDateValue,
     range,
   );
+
+  if (filteredMembers.length === 1) {
+    filteredWidgets = MemberWidgetFilter(filteredMembers, filteredWidgets);
+  }
 
   return (
     <div className="widgets">
@@ -26,6 +37,9 @@ function WidgetContainer({
           editWidget={editWidget}
           deleteWidget={deleteWidget}
           copyWidgetToEdit={copyWidgetToEdit}
+          displayCreationModal={displayCreationModal}
+          showWidgetCreationModal={showWidgetCreationModal}
+          hideWidgetCreationModal={hideWidgetCreationModal}
         />
       ))}
     </div>

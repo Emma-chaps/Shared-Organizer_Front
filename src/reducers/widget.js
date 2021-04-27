@@ -8,10 +8,11 @@ import {
   REINITIALIZE_WIDGET,
   SET_WIDGET_TO_STATE,
   COPY_WIDGET_TO_EDIT,
+  SET_FILTERED_MEMBERS,
 } from 'src/actions/widget';
 
 import { findMember } from 'src/selectors/findMember';
-import { LOGOUT } from '../actions/user';
+import { LOGOUT } from 'src/actions/user';
 
 const initialState = {
   displayCreationModal: false,
@@ -21,11 +22,7 @@ const initialState = {
     groupMembers: [],
   },
   dashboardWidgets: [],
-  editWidget: {
-    title: '',
-    description: '',
-    groupMembers: [],
-  },
+  filteredMembers: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -103,14 +100,10 @@ export default (state = initialState, action = {}) => {
       };
     }
 
-    case COPY_WIDGET_TO_EDIT: {
+    case SET_FILTERED_MEMBERS: {
       return {
         ...state,
-        widgetCreation: {
-          title: action.widget.title,
-          description: action.widget.description,
-          groupMembers: action.widget.members,
-        },
+        filteredMembers: action.members,
       };
     }
 
