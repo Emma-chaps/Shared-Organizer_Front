@@ -7,8 +7,8 @@ import {
   HIDE_WIDGET_CREATION_MODAL,
   REINITIALIZE_WIDGET,
   SET_WIDGET_TO_STATE,
-  COPY_WIDGET_TO_EDIT,
   SET_FILTERED_MEMBERS,
+  COPY_WIDGET_TO_EDIT,
 } from 'src/actions/widget';
 
 import { findMember } from 'src/selectors/findMember';
@@ -104,6 +104,17 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         filteredMembers: action.members,
+      };
+    }
+
+    case COPY_WIDGET_TO_EDIT: {
+      return {
+        ...state,
+        widgetCreation: {
+          title: action.widget.title,
+          description: action.widget.description,
+          groupMembers: action.members,
+        },
       };
     }
 

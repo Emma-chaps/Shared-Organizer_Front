@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
@@ -14,16 +14,13 @@ function Widget({
 }) {
   const [displayEdit, setDisplayEdit] = useState(false);
   const { members } = widget;
-  const handleEdit = (event) => {
+  const handleEdit = () => {
     copyWidgetToEdit(widget, members);
     showWidgetCreationModal();
     setDisplayEdit(true);
   };
   const handleDelete = (event) => {
-    deleteWidget(widget);
-  };
-  const handleExitModal = () => {
-    setDisplayEdit(false);
+    deleteWidget(event.currentTarget.id);
   };
 
   return (

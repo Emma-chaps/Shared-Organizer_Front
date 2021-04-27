@@ -95,6 +95,15 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case DELETE_WIDGET: {
+      api
+        .delete(`/delete-widget/${action.id}`)
+        .then((value) => value.data)
+        .then(({ success }) => {
+          if (success) {
+            store.dispatch(fetchAllWidgets());
+          }
+        });
+
       return next(action);
     }
     default:

@@ -91,9 +91,9 @@ export const copyWidgetToEdit = (widget, members) => ({
 
 export const DELETE_WIDGET = 'DELETE_WIDGET';
 
-export const deleteWidget = (widget) => ({
+export const deleteWidget = (id) => ({
   type: DELETE_WIDGET,
-  widget,
+  id,
 });
 
 export const SET_FILTERED_MEMBERS = 'SET_FILTERED_MEMBERS';
