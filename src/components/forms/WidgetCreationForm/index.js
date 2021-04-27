@@ -16,6 +16,8 @@ const WidgetCreationForm = ({
   membersToAdd,
   submitWidget,
   hideWidgetCreationModal,
+  editWidgetMode,
+  widget,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const handleSubmit = (event) => {
@@ -23,10 +25,10 @@ const WidgetCreationForm = ({
     if (membersToAdd.length && widgetTitle) {
       setErrorMessage('');
       hideWidgetCreationModal();
-      submitWidget();
+      submitWidget(widget);
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned'
+        'A widget must have a title and at least one member assigned',
       );
     }
   };

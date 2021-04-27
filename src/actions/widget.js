@@ -15,8 +15,9 @@ export const setWidgetDescriptionValue = (value) => ({
 
 export const SUBMIT_WIDGET_DATA_CREATION = 'SUBMIT_WIDGET_DATA_CREATION';
 
-export const submitWidgetDataCreation = () => ({
+export const submitWidgetDataCreation = (widget) => ({
   type: SUBMIT_WIDGET_DATA_CREATION,
+  widget,
 });
 
 export const SET_WIDGET_TO_DASHBOARD = 'SET_WIDGET_TO_DASHBOARD';
@@ -71,4 +72,26 @@ export const SET_ALL_WIDGETS = 'SET_ALL_WIDGETS';
 export const setAllWidgets = (widgets) => ({
   type: SET_ALL_WIDGETS,
   widgets,
+});
+
+export const EDIT_WIDGET = 'EDIT_WIDGET';
+
+export const editWidget = (widget) => ({
+  type: EDIT_WIDGET,
+  widget,
+});
+
+export const COPY_WIDGET_TO_EDIT = 'COPY_WIDGET_TO_EDIT';
+
+export const copyWidgetToEdit = (widget, members) => ({
+  type: COPY_WIDGET_TO_EDIT,
+  widget,
+  members,
+});
+
+export const DELETE_WIDGET = 'DELETE_WIDGET';
+
+export const deleteWidget = (widget) => ({
+  type: DELETE_WIDGET,
+  widget,
 });

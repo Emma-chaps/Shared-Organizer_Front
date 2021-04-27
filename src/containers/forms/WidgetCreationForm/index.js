@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeTextarea: (value) => dispatch(setWidgetDescriptionValue(value)),
   assignMember: (idMember, members) =>
     dispatch(assignMemberToWidget(idMember, members)),
-  submitWidget: () => dispatch(submitWidgetDataCreation()),
+  submitWidget: (widget) => dispatch(submitWidgetDataCreation(widget)),
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
 });
 
