@@ -5,6 +5,7 @@ import { logout } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
   groupName: state.settings.group.groupName,
+  isAdmin: state.user.login.isAdmin,
 });
 
 const mapDispatchToProps = (dispatch) => ({

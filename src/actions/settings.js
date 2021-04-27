@@ -188,3 +188,16 @@ export const SET_IS_OPENED_ALERT_MODAL = 'SET_IS_OPENED_ALERT_MODAL';
 export const setIsOpenedAlertModal = () => ({
   type: SET_IS_OPENED_ALERT_MODAL,
 });
+
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+
+export const updatePassword = (id) => ({
+  type: UPDATE_PASSWORD,
+  id,
+});
+
+export const CLEAN_PASSWORD_FIELD = 'CLEAN_PASSWORD_FIELD';
+
+export const cleanPasswordField = () => ({
+  type: CLEAN_PASSWORD_FIELD,
+});

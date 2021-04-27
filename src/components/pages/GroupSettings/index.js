@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
+import Field from 'src/components/forms/Field';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
@@ -29,9 +30,17 @@ const GroupSettings = ({
   setIsOpenedAlertModal,
   isOpenedModalAlert,
   hideAlertModal,
+  changeField,
+  updatePassword,
+  password,
+  cleanPasswordField,
 }) => {
   // Rerender component when set_group_data is started
   useEffect(() => {}, [members]);
+  const [
+    isOpenedUpdatePasswordModal,
+    setIsOpenedUpdatePasswordModal,
+  ] = useState(false);
 
   const handleOpenMemberInputView = (event) => {
     closeAllInput();
@@ -54,6 +63,20 @@ const GroupSettings = ({
     hideAlertModal();
   };
 
+  const openUpdateMemberModal = () => {
+    cleanPasswordField();
+    setIsOpenedUpdatePasswordModal(true);
+  };
+
+  const hideUpdatePasswordModal = () => {
+    setIsOpenedUpdatePasswordModal(false);
+  };
+
+  const handleUpdatePassword = (event) => {
+    updatePassword(event.currentTarget.dataset.id);
+    setIsOpenedUpdatePasswordModal(false);
+  };
+
   return (
     <>
       <Header />
@@ -67,11 +90,13 @@ const GroupSettings = ({
             </button>
           </>
         ) : (
-          <>
+          <div>
+            <h2>Group name</h2>
+            <div>{initialGroupName}</div>
             <button type="button" onClick={setGroupNameInputState}>
               <FiEdit2 /> Update group name
             </button>
-          </>
+          </div>
         )}
         <hr />
         <h2>Group members</h2>
@@ -101,7 +126,9 @@ const GroupSettings = ({
                 </div>
                 <div className="data firstname">{member.firstname}</div>
                 <div className="data email">{member.email}</div>
-                <div className="data role">{member.role}</div>
+                {member.role === 3 && <div className="data role">Admin</div>}
+                {member.role === 2 && <div className="data role">Editor</div>}
+                {member.role === 1 && <div className="data role">Visitor</div>}
                 <button
                   type="button"
                   onClick={handleOpenMemberInputView}
@@ -110,6 +137,37 @@ const GroupSettings = ({
                 >
                   <FiEdit2 />
                 </button>
+                <>
+                  <button
+                    type="button"
+                    onClick={openUpdateMemberModal}
+                    data-id={member.id}
+                    className="data edit"
+                  >
+                    Update password
+                  </button>
+                  <Modal
+                    showModal={isOpenedUpdatePasswordModal}
+                    hideModal={hideUpdatePasswordModal}
+                  >
+                    <form>
+                      <Field
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={changeField}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleUpdatePassword}
+                        data-id={member.id}
+                      >
+                        Save
+                      </button>
+                    </form>
+                  </Modal>
+                </>
                 {member.role === 3 ? (
                   <></>
                 ) : (

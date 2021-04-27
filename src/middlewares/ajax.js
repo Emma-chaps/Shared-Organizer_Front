@@ -12,6 +12,7 @@ import {
   setUsableColors,
   closeAllInput,
   DELETE_MEMBER,
+  UPDATE_PASSWORD,
 } from 'src/actions/settings';
 import { setFilteredMembers } from 'src/actions/widget';
 
@@ -104,11 +105,9 @@ export default (store) => (next) => (action) => {
     }
 
     case DELETE_MEMBER: {
-      console.log(action.id);
       api
         .delete(`/group-settings/member/delete/${action.id}`)
         .then((result) => {
-          console.log(result.data);
           return result.data;
         })
         .then(({ success }) => {
@@ -117,6 +116,18 @@ export default (store) => (next) => (action) => {
           }
         });
       return next(action);
+    }
+    case UPDATE_PASSWORD: {
+      const { password } = store.getState().settings.memberToChange;
+      api
+        .patch('/group-settings/member/password', {
+          id: action.id,
+          password,
+        })
+        .then((result) => {
+          console.log(result.data);
+          return result.data;
+        });
     }
     default:
       return next(action);

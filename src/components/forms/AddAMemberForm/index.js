@@ -1,9 +1,8 @@
 /* eslint-disable arrow-body-style */
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
-import { hideModal } from '../../../actions/settings';
 
 const AddAMemberForm = ({
   icon,
