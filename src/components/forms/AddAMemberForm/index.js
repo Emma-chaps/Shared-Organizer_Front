@@ -44,7 +44,7 @@ const AddAMemberForm = ({
             onChange={handleChangeIcon}
             required
           >
-            <option value="">Choose a color</option>
+            <option value="">Choose an icon color</option>
             {colors.map(({ name, value }) => (
               <option value={name} key={name}>
                 {value}

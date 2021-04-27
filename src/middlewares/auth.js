@@ -35,16 +35,13 @@ export default (store) => (next) => (action) => {
           groupName,
           icon,
         })
-        .then((result) => {
-          console.log(result.data);
-          return result.data;
-        })
+        .then((result) => result.data)
         .then(({ connected, token, error }) => {
           if (connected) {
-            console.log(token);
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
             store.dispatch(setColorToMember(icon));
+            store.dispatch(fetchGroupData());
           }
           if (error) {
             console.log(error);
@@ -52,8 +49,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('hey', error);
-        })
-        .finally(() => store.dispatch(fetchGroupData()));
+        });
       return next(action);
     }
     case SUBMIT_LOGIN: {
@@ -63,10 +59,7 @@ export default (store) => (next) => (action) => {
           email,
           password,
         })
-        .then((result) => {
-          console.log(result.data);
-          return result.data;
-        })
+        .then((result) => result.data)
         .then(({ connected, token }) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);

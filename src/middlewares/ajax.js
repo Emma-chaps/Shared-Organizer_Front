@@ -1,4 +1,3 @@
-import { widgetsCombiner } from 'src/selectors/widgetsCombiner';
 import api from 'src/api';
 import {
   FETCH_GROUP_DATA,
@@ -13,6 +12,7 @@ import {
   closeAllInput,
   DELETE_MEMBER,
   UPDATE_PASSWORD,
+  // setSuccessMessage,
 } from 'src/actions/settings';
 import { setFilteredMembers } from 'src/actions/widget';
 
@@ -92,10 +92,7 @@ export default (store) => (next) => (action) => {
           icon,
           role: Number(role),
         })
-        .then((result) => {
-          console.log(result.data);
-          return result.data;
-        })
+        .then((result) => result.data)
         .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
@@ -107,9 +104,7 @@ export default (store) => (next) => (action) => {
     case DELETE_MEMBER: {
       api
         .delete(`/group-settings/member/delete/${action.id}`)
-        .then((result) => {
-          return result.data;
-        })
+        .then((result) => result.data)
         .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
@@ -124,10 +119,13 @@ export default (store) => (next) => (action) => {
           id: action.id,
           password,
         })
-        .then((result) => {
-          console.log(result.data);
-          return result.data;
+        .then((result) => result.data)
+        .then(({ success, message }) => {
+          if (success) {
+            // store.dispatch(setSuccessMessage(message));
+          }
         });
+      return next(action);
     }
     default:
       return next(action);

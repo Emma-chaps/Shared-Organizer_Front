@@ -94,7 +94,7 @@ const GroupSettings = ({
             <h2>Group name</h2>
             <div>{initialGroupName}</div>
             <button type="button" onClick={setGroupNameInputState}>
-              <FiEdit2 /> Update group name
+              <FiEdit2 /> Edit group name
             </button>
           </div>
         )}
@@ -144,7 +144,7 @@ const GroupSettings = ({
                     data-id={member.id}
                     className="data edit"
                   >
-                    Update password
+                    Edit password
                   </button>
                   <Modal
                     showModal={isOpenedUpdatePasswordModal}
@@ -184,9 +184,7 @@ const GroupSettings = ({
                       showModal={isOpenedModalAlert}
                       hideModal={hideAlertModal}
                     >
-                      <span>
-                        Are you sure you want to delete {member.firstname} ?
-                      </span>
+                      <span>Do you want to delete {member.firstname} ?</span>
                       <button type="button" onClick={hideAlertModal}>
                         No
                       </button>
