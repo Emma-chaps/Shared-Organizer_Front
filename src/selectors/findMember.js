@@ -5,9 +5,6 @@ export const findMember = (id = null, memberArray = []) => {
 };
 
 export const removeGivenMember = (id = null, memberArray = []) => {
-  console.log('memberArray:', memberArray);
-  console.log('id:', id);
   const cleanMembers = memberArray.filter((member) => member.id !== Number(id));
-  console.log('cleanMembers:', cleanMembers);
   return cleanMembers;
 };
