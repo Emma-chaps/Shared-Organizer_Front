@@ -6,15 +6,16 @@ import {
   assignMemberToWidget,
   submitWidgetDataCreation,
   hideWidgetCreationModal,
+  removeMemberFromWidget,
+  setWidgetToEdit,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
   widgetTitle: state.widget.widgetCreation.title,
   widgetDescription: state.widget.widgetCreation.description,
-  date: state.widget.widgetCreation.date,
-  range: state.widget.widgetCreation.range,
   members: state.settings.group.members,
   membersToAdd: state.widget.widgetCreation.groupMembers,
+  widgetToEdit: state.widget.widgetToEdit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,8 +23,11 @@ const mapDispatchToProps = (dispatch) => ({
   changeTextarea: (value) => dispatch(setWidgetDescriptionValue(value)),
   assignMember: (idMember, members) =>
     dispatch(assignMemberToWidget(idMember, members)),
-  submitWidget: (widget) => dispatch(submitWidgetDataCreation(widget)),
+  removeMember: (idMember, members) =>
+    dispatch(removeMemberFromWidget(idMember, members)),
+  submitWidget: () => dispatch(submitWidgetDataCreation()),
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
+  setWidgetToEdit: () => dispatch(setWidgetToEdit()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WidgetCreationForm);

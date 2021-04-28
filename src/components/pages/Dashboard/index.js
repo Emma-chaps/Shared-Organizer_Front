@@ -14,10 +14,12 @@ const Dashboard = ({
   showWidgetCreationModal,
   hideWidgetCreationModal,
   fetchAllWidgets,
+  reinitializeWidget,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
   const handleClick = () => {
     showWidgetCreationModal();
+    reinitializeWidget();
   };
 
   useEffect(() => {

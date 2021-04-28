@@ -13,12 +13,15 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_WIDGET_DATA_CREATION: {
       const {
+        id,
         title,
         description,
         groupMembers,
       } = store.getState().widget.widgetCreation;
-      const id = action.widget ? action.widget.id : null;
+
       if (id) {
+        console.log('groupMembers:', groupMembers);
+        console.log('SUBMIT_WIDGET_DATA_CREATION IF');
         api
           .patch(`update-widget/${id}`, {
             title,
@@ -34,6 +37,7 @@ export default (store) => (next) => (action) => {
             }
           });
       } else {
+        console.log('SUBMIT_WIDGET_DATA_CREATION ELSE');
         const { range, selectedDateValue } = store.getState().calendar;
         const formattedISODate = addDays(parseISO(selectedDateValue), 0);
         const year = Number(format(parseISO(selectedDateValue), 'yyyy'));

@@ -10,6 +10,7 @@ const DashboardMenu = ({
   setFieldDateValue,
   members,
   setFilteredMembers,
+  fetchAllWidgets,
 }) => {
   const onChange = (event) => {
     const value = event.target.dataset.range;
@@ -18,6 +19,7 @@ const DashboardMenu = ({
 
   const handleChange = (event) => {
     setFieldDateValue(event.target.value);
+    fetchAllWidgets();
   };
 
   const handleFilter = (event) => {
