@@ -5,19 +5,9 @@ import './styles.scss';
 import { MdDateRange } from 'react-icons/md';
 import { dailyWidgetsFilter } from 'src/selectors/filterWidgets';
 import Day from './Day';
+import DaysNames from './DaysNames';
 import DateBrowser from './DateBrowser';
 
-function WeekNames() {
-  return (
-    <div className="calendar__content__days-names">
-      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((dayName) => (
-        <div className="calendar__content__weeks__day" key={dayName}>
-          {dayName}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
   const dailyWidgets = dailyWidgetsFilter(dashboardWidgets, range);
@@ -49,7 +39,7 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
           </h3>
         </div>
         <div className="calendar__content">
-          <WeekNames />
+          <DaysNames />
           {month.map((weeks, index) => (
             <div key={index} className="calendar__content__weeks">
               {weeks.map((day) => (
@@ -90,7 +80,7 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
           </h3>
         </div>
         <div className="calendar__content">
-          <WeekNames />
+          <DaysNames />
           <div className="calendar__content__weeks">
             {week.map((day) => (
               <Day

@@ -18,8 +18,12 @@ const Modal = ({ showModal, children, hideModal }) => {
 };
 
 Modal.propTypes = {
-  showModal: PropTypes.bool.isRequired,
+  showModal: PropTypes.bool,
   children: PropTypes.node.isRequired,
+};
+
+Modal.defaultProps = {
+  showModal: false,
 };
 
 export default Modal;
