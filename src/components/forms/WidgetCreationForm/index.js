@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import './styles.scss';
 import { FaUserAlt } from 'react-icons/fa';
+import { findMember } from 'src/selectors/findMember';
 
 const WidgetCreationForm = ({
   changeField,
   changeTextarea,
   widgetTitle,
   widgetDescription,
-  date,
-  range,
   members,
   assignMember,
   membersToAdd,
   submitWidget,
   hideWidgetCreationModal,
-  editWidgetMode,
   widget,
+  removeMember,
+  setWidgetToEdit,
+  widgetToEdit,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
+  // const [selectedWidget, setSelectedWidget] = useState(widget);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (membersToAdd.length && widgetTitle) {
+    if (membersToAdd?.length && widgetTitle) {
       setErrorMessage('');
       hideWidgetCreationModal();
-      submitWidget(widget);
+      submitWidget();
     } else {
       setErrorMessage(
         'A widget must have a title and at least one member assigned',
@@ -39,7 +42,13 @@ const WidgetCreationForm = ({
   };
 
   const handleAddMember = (event) => {
-    assignMember(event.target.id, members);
+    if (!findMember(event.currentTarget.id, membersToAdd)) {
+      console.log('IF');
+      assignMember(event.currentTarget.id, members);
+    } else {
+      console.log('ELSE');
+      removeMember(event.currentTarget.id, membersToAdd);
+    }
   };
 
   return (

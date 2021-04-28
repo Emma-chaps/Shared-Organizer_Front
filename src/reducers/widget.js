@@ -9,20 +9,23 @@ import {
   SET_WIDGET_TO_STATE,
   SET_FILTERED_MEMBERS,
   COPY_WIDGET_TO_EDIT,
+  REMOVE_MEMBER_FROM_WIDGET,
 } from 'src/actions/widget';
 
-import { findMember } from 'src/selectors/findMember';
+import { findMember, removeGivenMember } from 'src/selectors/findMember';
 import { LOGOUT } from 'src/actions/user';
 
 const initialState = {
   displayCreationModal: false,
   widgetCreation: {
+    id: '',
     title: '',
     description: '',
     groupMembers: [],
   },
   dashboardWidgets: [],
   filteredMembers: [],
+  widgetToEdit: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -63,6 +66,17 @@ export default (state = initialState, action = {}) => {
         },
       };
     }
+
+    case REMOVE_MEMBER_FROM_WIDGET: {
+      return {
+        ...state,
+        widgetCreation: {
+          ...state.widgetCreation,
+          groupMembers: removeGivenMember(action.id, action.members),
+        },
+      };
+    }
+
     case SHOW_CREATION_WIDGET_MODAL: {
       return {
         ...state,
@@ -80,6 +94,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         widgetCreation: {
           ...state.widgetCreation,
+          id: '',
           title: '',
           description: '',
           groupMembers: [],
@@ -111,6 +126,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         widgetCreation: {
+          id: action.widget.id,
           title: action.widget.title,
           description: action.widget.description,
           groupMembers: action.members,
