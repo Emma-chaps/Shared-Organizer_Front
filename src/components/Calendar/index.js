@@ -6,8 +6,10 @@ import { MdDateRange } from 'react-icons/md';
 import { dailyWidgetsFilter } from 'src/selectors/filterWidgets';
 import Day from './Day';
 import DaysNames from './DaysNames';
+import DateBrowser from './DateBrowser';
 
-const Calendar = ({ range, date, dashboardWidgets }) => {
+
+const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
   const dailyWidgets = dailyWidgetsFilter(dashboardWidgets, range);
   const selectedDate = formatDate(date);
 
@@ -21,7 +23,19 @@ const Calendar = ({ range, date, dashboardWidgets }) => {
         <div className="calendar__header">
           <MdDateRange className="calendar__header__day-picker" />
           <h3 className="calendar__header__title">
+            <DateBrowser
+              content="<"
+              range={range}
+              date={date}
+              setSelectedDateValue={setSelectedDateValue}
+            />
             {format(selectedDate, 'MMMM')} {format(selectedDate, 'yyyy')}
+            <DateBrowser
+              content=">"
+              range={range}
+              date={date}
+              setSelectedDateValue={setSelectedDateValue}
+            />
           </h3>
         </div>
         <div className="calendar__content">
@@ -49,8 +63,20 @@ const Calendar = ({ range, date, dashboardWidgets }) => {
           <MdDateRange className="calendar__header__day-picker" />
           <h3 className="calendar__header__title">
             {/* {format(selectedDate, 'wo')} Weeks :  */}
+            <DateBrowser
+              content="<"
+              range={range}
+              date={date}
+              setSelectedDateValue={setSelectedDateValue}
+            />
             Weeks from {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
             {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+            <DateBrowser
+              content=">"
+              range={range}
+              date={date}
+              setSelectedDateValue={setSelectedDateValue}
+            />
           </h3>
         </div>
         <div className="calendar__content">
@@ -74,7 +100,19 @@ const Calendar = ({ range, date, dashboardWidgets }) => {
       <div className="calendar__header">
         <MdDateRange className="calendar__header__day-picker" />
         <h3 className="calendar__header__title">
+          <DateBrowser
+            content="<"
+            range={range}
+            date={date}
+            setSelectedDateValue={setSelectedDateValue}
+          />
           {format(selectedDate, 'EEEE do MMMM yyyy')}
+          <DateBrowser
+            content=">"
+            range={range}
+            date={date}
+            setSelectedDateValue={setSelectedDateValue}
+          />
         </h3>
       </div>
     </div>
