@@ -79,7 +79,6 @@ const GroupSettings = ({
 
   return (
     <>
-      <Header />
       <div className="settings">
         <h1>Group Settings</h1>
         {openedGroupNameInput ? (
@@ -216,7 +215,27 @@ const GroupSettings = ({
 };
 
 GroupSettings.propTypes = {
-  updateMember: PropTypes.func,
+  // initialGroupName,
+  // members,
+  // openedGroupNameInput,
+  // setGroupNameInputState,
+  // openMembersInput,
+  // assignMemberToOpenInputView,
+  // setIsOpenedModal,
+  // hideModal,
+  // isOpenedModal,
+  // updateMember,
+  // closeAllInput,
+  // cleanNewMemberFields,
+  // setUsableColorsToAddMember,
+  // deleteMember,
+  // setIsOpenedAlertModal,
+  // isOpenedModalAlert,
+  // hideAlertModal,
+  // changeField,
+  // updatePassword,
+  // password,
+  // cleanPasswordField,
 };
 GroupSettings.defaultProps = {
   updateMember: () => {},

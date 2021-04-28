@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Header from 'src/containers/Header';
 import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
@@ -24,7 +24,6 @@ const Dashboard = ({
 
   useEffect(() => {
     getGroupData();
-
     fetchAllWidgets();
   }, []);
   return (

@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Modal from 'src/components/Modal';
+import GroupSettings from 'src/containers/pages/GroupSettings';
 import { findMember } from 'src/selectors/findMember';
 import { FaUserAlt } from 'react-icons/fa';
+import { FiEdit2 } from 'react-icons/fi';
+
 import './styles.scss';
 
 const DashboardMenu = ({
-  setRange,
+  groupName,
+  isAdmin,
   selectedDateValue,
   setFieldDateValue,
   members,
   setFilteredMembers,
   fetchAllWidgets,
 }) => {
-  const onChange = (event) => {
-    const value = event.target.dataset.range;
-    setRange(value);
-  };
-
+  const [displayModal, setDisplayModal] = useState(false);
   const handleChange = (event) => {
     setFieldDateValue(event.target.value);
     fetchAllWidgets();
@@ -31,6 +32,10 @@ const DashboardMenu = ({
     setFilteredMembers(members);
   };
 
+  const handleDisplaySettingsModal = () => {
+    setDisplayModal(!displayModal);
+  };
+
   return (
     <div className="menu">
       <input
@@ -40,32 +45,19 @@ const DashboardMenu = ({
         value={selectedDateValue}
         onChange={handleChange}
       />
-      <div className="menu__ranges">
-        <button
-          type="button"
-          onClick={onChange}
-          data-range="month"
-          className="item"
-        >
-          Month
-        </button>
-        <button
-          type="button"
-          onClick={onChange}
-          data-range="week"
-          className="item"
-        >
-          Week
-        </button>
-        <button
-          type="button"
-          onClick={onChange}
-          data-range="day"
-          className="item"
-        >
-          Day
-        </button>
+      <div>
+        <div>{groupName}</div>
+        {isAdmin && (
+          <div onClick={handleDisplaySettingsModal}>
+            <FiEdit2 />
+          </div>
+        )}
       </div>
+      {displayModal && (
+        <Modal showModal={displayModal} hideModal={handleDisplaySettingsModal}>
+          <GroupSettings closeModal={handleDisplaySettingsModal} />
+        </Modal>
+      )}
       <div className="menu__members">
         <button type="button" onClick={handleResetFilter}>
           ALL
