@@ -76,7 +76,7 @@ const SignUpForm = ({
           className="home-input"
         />
 
-        <button className="buttonSign" type="submit">
+        <button className="classic-btn button-sign" type="submit">
           Create group
         </button>
       </form>
