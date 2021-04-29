@@ -25,7 +25,6 @@ export default (store) => (next) => (action) => {
         password,
         firstname,
         groupName,
-        icon,
       } = store.getState().user.signup;
       api
         .post('/signup', {
@@ -33,7 +32,6 @@ export default (store) => (next) => (action) => {
           password,
           firstname,
           groupName,
-          icon,
         })
         .then((result) => result.data)
         .then(({ connected, token, error }) => {

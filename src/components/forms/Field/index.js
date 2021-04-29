@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Field = ({ type, name, placeholder, value, onChange, className }) => {
+const Field = ({
+  type,
+  name,
+  placeholder,
+  label,
+  value,
+  onChange,
+  className,
+}) => {
   const handleChange = (event) => {
     onChange(event.target.value, name);
   };
   return (
     <div className={className}>
       <label htmlFor={name}>
-        {name[0].toUpperCase() + name.substring(1)}
+        {label}
         <input
           id={name}
           type={type}

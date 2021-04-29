@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Header({ logout, setRange }) {
+  const [selectedMonth, setSelectedMonth] = useState('selected-range');
+  const [selectedWeek, setSelectedWeek] = useState('');
+  const [selectedDay, setSelectedDay] = useState('');
+
   const onChange = (event) => {
     const value = event.currentTarget.dataset.range;
     setRange(value);
+    setSelectedMonth('');
+    setSelectedWeek('');
+    setSelectedDay('');
+    if (value === 'month') {
+      setSelectedMonth('selected-range');
+    }
+    if (value === 'week') {
+      setSelectedWeek('selected-range');
+    }
+    if (value === 'day') {
+      setSelectedDay('selected-range');
+    }
   };
   return (
     <header className="header">
@@ -15,7 +31,7 @@ export default function Header({ logout, setRange }) {
           data-range="month"
           className="header__range-menu__range-btn left-btn"
         >
-          <span>Month</span>
+          <span className={selectedMonth}>Month</span>
         </button>
         <button
           type="button"
@@ -23,7 +39,7 @@ export default function Header({ logout, setRange }) {
           data-range="week"
           className="header__range-menu__range-btn"
         >
-          <span>Week</span>
+          <span className={selectedWeek}>Week</span>
         </button>
         <button
           type="button"
@@ -31,7 +47,7 @@ export default function Header({ logout, setRange }) {
           data-range="day"
           className="header__range-menu__range-btn right-btn"
         >
-          <span className="selected-range">Day</span>
+          <span className={selectedDay}>Day</span>
         </button>
       </div>
       <div className="header__logout">

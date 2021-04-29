@@ -6,8 +6,6 @@ import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
 import Footer from 'src/components/Footer';
 
-import './styles.scss';
-
 const Home = ({ isLogged, isAdmin }) => {
   //  changes the display of the form according to the selected button
   const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
@@ -20,10 +18,6 @@ const Home = ({ isLogged, isAdmin }) => {
   const signupClasses = classNames('home__btns-container__btn', {
     'home__btns-container__btn-unselected': signupUnselected,
   });
-  const toggleSelected = () => {
-    setLoginUnselected(!loginUnselected);
-    setSignupUnselected(!signupUnselected);
-  };
 
   const { state } = useLocation();
 
@@ -36,18 +30,20 @@ const Home = ({ isLogged, isAdmin }) => {
 
   const changeFormToLoginForm = () => {
     setSelectedButtonSignUp(false);
-    toggleSelected();
+    setLoginUnselected(false);
+    setSignupUnselected(true);
   };
   const changeFormToSignUpForm = () => {
     setSelectedButtonSignUp(true);
-    toggleSelected();
+    setLoginUnselected(true);
+    setSignupUnselected(false);
   };
 
   return (
     <div className="home-container">
       <div className="home">
         <div className="home__header">
-          <h1 className="home__header__title">Shared Organizer</h1>
+          <h1 className="home__header__title">Shared Organizer.</h1>
           <h2 className="home__header__subtitle">How does it work ?</h2>
         </div>
         <div className="home__main">
@@ -60,14 +56,14 @@ const Home = ({ isLogged, isAdmin }) => {
           className={signupClasses}
           onClick={changeFormToSignUpForm}
         >
-          Sign up
+          Create group
         </button>
         <button
           type="button"
           className={loginClasses}
           onClick={changeFormToLoginForm}
         >
-          Login
+          Sign in
         </button>
       </div>
     </div>
