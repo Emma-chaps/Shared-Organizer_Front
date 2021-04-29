@@ -7,16 +7,13 @@ const SignUpForm = ({
   password,
   groupName,
   firstname,
-  selectedIcon,
   changeField,
   handleSignUp,
-  setSelectedIcon,
-  colors,
 }) => {
   const [signUpErrors, setSignUpErrors] = useState([]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (email && password && firstname && groupName && selectedIcon) {
+    if (email && password && firstname && groupName) {
       handleSignUp();
     } else {
       const errors = [];
@@ -32,22 +29,15 @@ const SignUpForm = ({
       if (!password) {
         errors.push('Password is required');
       }
-      if (!selectedIcon) {
-        errors.push('Icon is required');
-      }
       setSignUpErrors(errors);
     }
-  };
-
-  const handleChange = (event) => {
-    const { icon } = event.currentTarget.dataset;
-    setSelectedIcon(icon);
   };
 
   return (
     <>
       <form className="form-signup" onSubmit={handleSubmit}>
         <Field
+          label="group name"
           name="groupName"
           type="text"
           value={groupName}
@@ -55,6 +45,7 @@ const SignUpForm = ({
           className="home-input"
         />
         <Field
+          label="first name"
           name="firstname"
           type="text"
           value={firstname}
@@ -62,6 +53,7 @@ const SignUpForm = ({
           className="home-input"
         />
         <Field
+          label="email"
           name="email"
           type="email"
           value={email}
@@ -69,6 +61,7 @@ const SignUpForm = ({
           className="home-input"
         />
         <Field
+          label="password"
           name="password"
           type="password"
           value={password}

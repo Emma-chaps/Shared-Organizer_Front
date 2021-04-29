@@ -46,10 +46,13 @@ body {
       padding-bottom: 1rem;
 
       &__title {
+        text-align: center;
         color: $white;
         font-size: 2.5em;
-        font-weight: bold;
         padding: 0.5rem;
+        text-transform: uppercase;
+        font-family: 'Sequel';
+        line-height: 2.7rem;
       }
 
       &__subtitle {
@@ -90,12 +93,14 @@ body {
       @include flex($justify: flex-end);
 
       &__btn {
+        position: relative;
+        top: -1px;
         border: none;
         color: $white;
         text-transform: uppercase;
         margin-left: 1rem;
         width: 25%;
-        min-width: 7rem;
+        min-width: 7.6rem;
         background: rgba(#404939, 0.1);
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
@@ -116,11 +121,13 @@ body {
 }
 
 .button-sign {
+  margin-top: 0.5rem;
 }
 
 .home-input {
   width: 100%;
   padding-bottom: 0.5rem;
+  text-transform: capitalize;
 
   label {
     width: 100%;
@@ -152,9 +159,10 @@ body {
     min-width: 23%;
     //logo style
     background-image: linear-gradient(
-      105deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(139, 198, 220, 1) 15%
+      90deg,
+      rgba(220, 238, 244, 1) 0%,
+      rgba(196, 226, 237, 1) 33%,
+      rgba(139, 198, 220, 1) 66%
     );
     background-size: 100%;
     background-repeat: repeat;
@@ -192,9 +200,10 @@ body {
       border-radius: 5px;
 
       background-image: linear-gradient(
-        30deg,
-        rgba(139, 198, 220, 1) 57%,
-        rgba(255, 255, 255, 1) 100%
+        90deg,
+        rgba(139, 198, 220, 1) 50%,
+        rgba(196, 226, 237, 1) 90%,
+        rgba(220, 238, 244, 1) 100%
       );
 
       color: $white;
@@ -205,27 +214,15 @@ body {
     }
   }
 }
-.selected-range {
+.mobile-selected-range {
   font-weight: 700;
   color: $light-blue;
   border-bottom: 2px solid $light-blue;
 }
-// .selected-range {
-//   background-color: $light-blue;
-//   color: $white;
-// }
-// .right-btn {
-//   border-top-right-radius: 25%;
-//   border-bottom-right-radius: 25%;
-// }
-// .left-btn {
-//   border-top-left-radius: 25%;
-//   border-bottom-left-radius: 25%;
-// }
 
 .classic-btn {
   min-width: 6.5rem;
-  padding: 0.8rem 0.2rem;
+  padding: 0.8rem 1.2rem;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
 
   border: none;
@@ -255,8 +252,6 @@ body {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   height: 20rem;
-  padding: .75rem;
-  overflow: auto;
   width: 95%;
   margin: auto;
   position: relative;
@@ -361,5 +356,50 @@ body {
   }
 }
 
+@media (min-width: 700px) {
+  .header {
+    &__logo {
+      padding-left: 1rem;
+      background-image: linear-gradient(
+        90deg,
+        rgba(220, 238, 244, 1) 0%,
+        rgba(196, 226, 237, 1) 10%,
+        rgba(139, 198, 220, 1) 30%
+      );
+    }
 
+    &__range-menu {
+      &__range-btn {
+        min-width: 5rem;
+        border: 1px solid $light-blue;
+        // font-size: 0.8rem;
+      }
+    }
 
+    &__logout {
+      padding-right: 1rem;
+
+      &__btn {
+        padding: 0.5rem 0.8rem;
+      }
+    }
+  }
+
+  .other-selected-range {
+    background-color: $light-blue;
+  }
+
+  .mobile-selected-range {
+    color: $white;
+    font-weight: 700;
+  }
+  .right-btn {
+    border-top-right-radius: 25% 100%;
+    border-bottom-right-radius: 25% 100%;
+  }
+
+  .left-btn {
+    border-top-left-radius: 25% 100%;
+    border-bottom-left-radius: 25% 100%;
+  }
+}

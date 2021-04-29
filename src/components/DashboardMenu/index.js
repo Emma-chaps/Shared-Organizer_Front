@@ -6,8 +6,6 @@ import { findMember } from 'src/selectors/findMember';
 import { FaUserAlt } from 'react-icons/fa';
 import { FiEdit2 } from 'react-icons/fi';
 
-import './styles.scss';
-
 const DashboardMenu = ({
   groupName,
   isAdmin,
