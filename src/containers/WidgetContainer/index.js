@@ -6,6 +6,7 @@ import {
   copyWidgetToEdit,
   hideWidgetCreationModal,
   showWidgetCreationModal,
+  reinitializeWidget,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -23,6 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(copyWidgetToEdit(widget, members)),
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
   showWidgetCreationModal: () => dispatch(showWidgetCreationModal()),
+  reinitializeWidget: () => dispatch(reinitializeWidget()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WidgetContainer);
