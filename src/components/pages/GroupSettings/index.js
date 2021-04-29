@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Header from 'src/containers/Header';
 import Modal from 'src/components/Modal';
 import Field from 'src/components/forms/Field';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
