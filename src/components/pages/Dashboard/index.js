@@ -17,10 +17,6 @@ const Dashboard = ({
   reinitializeWidget,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
-  const handleClick = () => {
-    showWidgetCreationModal();
-    reinitializeWidget();
-  };
 
   useEffect(() => {
     getGroupData();
@@ -41,9 +37,6 @@ const Dashboard = ({
       >
         <WidgetCreationForm />
       </Modal>
-      <button type="button" onClick={handleClick}>
-        Add a Widget
-      </button>
     </>
   );
 };
