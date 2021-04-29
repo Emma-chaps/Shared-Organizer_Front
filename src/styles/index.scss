@@ -18,8 +18,9 @@ body {
 }
 
 .app {
-  min-height: 100vh;
-  @include mixins.flex($flow: column);
+  height: 100vh;
+  @include mixins.flex($flow: column, $justify: space-between);
+  position: relative;
 }
 
 .home-container {
@@ -138,7 +139,9 @@ body {
 .header {
   padding: 0.7rem 0;
   width: 100%;
-
+  // position: fixed;
+  // top: 0;
+  // z-index: 100;
   background-color: $white;
 
   @include mixins.flex($justify: space-between);
@@ -239,4 +242,12 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.widgets {
+  background-color: $white;
+  border-radius: $border-radius;
+  height: 20rem;
+  padding: .5rem;
+  overflow: auto;
 }
