@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-
 import './style.scss';
 
 const Field = ({ type, name, placeholder, value, onChange }) => {
@@ -12,20 +9,16 @@ const Field = ({ type, name, placeholder, value, onChange }) => {
   };
   return (
     <div>
-      <TextField
-        label={name}
-        variant="outlined"
-        margin="dense"
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-        required
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
+      <label htmlFor={name}>
+        <input
+          id={name}
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={handleChange}
+        />
+      </label>
     </div>
   );
 };

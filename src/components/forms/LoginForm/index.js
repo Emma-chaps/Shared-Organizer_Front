@@ -2,18 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-
 import '../styles.scss';
 
 const LoginForm = ({ email, password, changeField, handleLogin }) => {
   const [loginErrors, setLoginErrors] = useState([]);
-  const handleChange = (event) => {
-    changeField(event.target.value, event.target.name);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,23 +40,17 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
           onChange={changeField}
           isRequired="isrequired"
         />
-        <TextField
+        <Field
           name="password"
-          label="password"
           type="password"
           placeholder="Password"
           value={password}
-          onChange={handleChange}
-          required
-          variant="outlined"
-          margin="dense"
-          InputLabelProps={{
-            shrink: true,
-          }}
+          onChange={changeField}
+          isRequired="isrequired"
         />
-        <Button className="buttonLogin" type="submit">
-          Sign in
-        </Button>
+        <button className="buttonLogin" type="submit">
+          Connection
+        </button>
       </form>
     </>
   );

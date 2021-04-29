@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
-export default function Header({ logout, isAdmin, setRange }) {
+export default function Header({ logout, setRange }) {
   const onChange = (event) => {
     const value = event.currentTarget.dataset.range;
     setRange(value);

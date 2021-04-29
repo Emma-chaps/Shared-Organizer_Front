@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
 
-import Button from '@material-ui/core/Button';
-
 import '../styles.scss';
 import './styles.scss';
 
@@ -95,9 +93,9 @@ const SignUpForm = ({
             </div>
           ))}
         </div>
-        <Button className="buttonSign" type="submit">
+        <button className="buttonSign" type="submit">
           Create group
-        </Button>
+        </button>
       </form>
     </>
   );
