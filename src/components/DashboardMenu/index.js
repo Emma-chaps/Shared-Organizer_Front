@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Modal from 'src/components/Modal';
 import GroupSettings from 'src/containers/pages/GroupSettings';
 import { findMember } from 'src/selectors/findMember';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FiEdit2 } from 'react-icons/fi';
 
 const DashboardMenu = ({
@@ -16,6 +17,16 @@ const DashboardMenu = ({
   fetchAllWidgets,
 }) => {
   const [displayModal, setDisplayModal] = useState(false);
+  const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 1000px)').matches,
+  );
+  useEffect(() => {
+    const handler = (event) => setMatches(event.matches);
+
+    window.matchMedia('(min-width: 1000px)').addListener(handler);
+  });
+
   const handleChange = (event) => {
     setFieldDateValue(event.target.value);
     fetchAllWidgets();
@@ -33,6 +44,14 @@ const DashboardMenu = ({
   const handleDisplaySettingsModal = () => {
     setDisplayModal(!displayModal);
   };
+
+  const handleToggleModal = () => {
+    setDisplayHiddenMembers(!displayHiddenMembers);
+  };
+
+  const classes = classNames('member-filter__modal', {
+    'hidden-members-modal': displayHiddenMembers,
+  });
 
   return (
     <div className="menu">
@@ -56,22 +75,48 @@ const DashboardMenu = ({
           <GroupSettings closeModal={handleDisplaySettingsModal} />
         </Modal>
       )}
-      <div className="menu__members">
-        <button type="button" onClick={handleResetFilter}>
-          ALL
-        </button>
-        {members.map((member) => (
+      {matches ? (
+        <div className="menu__members">
+          <button type="button" onClick={handleResetFilter}>
+            ALL
+          </button>
+          {members.map((member) => (
+            <button
+              type="button"
+              key={member.id}
+              id={member.id}
+              onClick={handleFilter}
+            >
+              {member.firstname[0]}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="member-filter">
           <button
             type="button"
-            key={member.id}
-            id={member.id}
-            onClick={handleFilter}
+            className="member-filter__btn"
+            onClick={handleToggleModal}
           >
-            <FaUserAlt />
-            {member.firstname}
+            <FaUsers />
           </button>
-        ))}
-      </div>
+          <div className={classes}>
+            <button type="button" onClick={handleResetFilter}>
+              ALL
+            </button>
+            {members.map((member) => (
+              <button
+                type="button"
+                key={member.id}
+                id={member.id}
+                onClick={handleFilter}
+              >
+                {member.firstname[0]}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
