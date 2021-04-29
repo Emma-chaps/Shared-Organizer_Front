@@ -1,7 +1,18 @@
 @use 'reset';
 @use 'vars';
+@use 'mixins';
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('http://fonts.cdnfonts.com/css/aquatico');
+
+@font-face {
+  font-family: 'Butler-normal';
+  src: url('../assets/fonts/Butler/Butler.woff2') format('woff2'),
+    url('../assets/fonts/Butler/Butler.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -11,14 +22,128 @@ body {
   height: 100%;
 }
 
-/* 
-  // or you can import your own font
-  @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
-  }
+.app {
+  min-height: 100vh;
+  @include mixins.flex($flow: column);
 
-  body {
-    font-family: 'Roboto', sans-serif;
+}
+
+.home-container {
+  @include mixins.flex($flow: column);
+  margin: auto;
+  width: 95%;
+  max-width: 40rem;
+  min-height: 70vh;
+  
+  .home {
+    @include mixins.flex($flow: column, $justify: space-between);
+    width: 100%;
+    padding: 2rem 0;
+    background: rgba(#404939,0.1);
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 13px;
+    border-bottom-right-radius: 0;
+    
+    
+    &__header {
+      @include mixins.flex($flow: column);
+      padding-bottom: 1rem;
+      
+      &__title {
+        color: vars.$white;
+        font-size: 2.5em;
+        font-weight: bold;
+        padding: .5rem;
+        
+      }
+      
+      &__subtitle {
+        font-size: .6em;
+        cursor: pointer;
+        text-decoration: underline;
+        color: vars.$dark;
+      }
+    }
+
+    &__main {
+      width: 70%;
+      @include mixins.flex($flow: column);
+
+      .errors {
+        @include mixins.flex($flow: column);
+        font-size: .8em;
+        color: rgb(216, 18, 18);
+        min-height: 2rem;
+        min-width: 70%;
+        padding-top: .5rem;
+      }
+      
+      .form-login{
+        padding-top: 3rem;
+        min-height: 17rem;
+        @include mixins.flex($flow: column, $justify: space-between);
+        
+      }
+      
+      .form-signup {
+        min-height: 17rem;
+        @include mixins.flex($flow: column, $justify: space-between);
+      }
+      
+    }
+
+    &__btns-container {
+      width: 100%;
+      @include mixins.flex($justify: flex-end);
+
+      &__btn {
+        border: none;
+        color: vars.$white;
+        text-transform: uppercase;
+        margin-left: 1rem;
+        width: 25%;
+        min-width: 7rem;
+        background: rgba(#404939,0.1);
+        backdrop-filter: blur( 7px );
+        -webkit-backdrop-filter: blur( 7px );
+        border-bottom-left-radius: 13px;
+        border-bottom-right-radius: 13px;
+        padding: 1rem;
+        font-size: .7em;
+        @include mixins.flex;
+        font-weight: bold;
+        
+        &-unselected {
+          background: rgba(#262b22,0.5);
+          font-weight: normal;
+        }
+      }
+
+    }
   }
-*/
+}
+
+.button-sign {
+
+}
+
+.home-input {
+  width: 100%;
+  padding-bottom: .5rem;
+  
+  label {
+    width: 100%;
+    font-size: .7em;
+    font-weight: bold;
+    color: vars.$dark;
+
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px vars.$dark solid;
+      padding: .5rem;
+    }
+  }
+}

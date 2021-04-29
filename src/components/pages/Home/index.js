@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
+import Footer from 'src/components/Footer';
 
 import './styles.scss';
 
 const Home = ({ isLogged, isAdmin }) => {
   //  changes the display of the form according to the selected button
   const [selectedButtonSignUp, setSelectedButtonSignUp] = useState(false);
+  const [loginUnselected, setLoginUnselected] = useState(false);
+  const [signupUnselected, setSignupUnselected] = useState(true);
+
+  const loginClasses = classNames('home__btns-container__btn', {
+    'home__btns-container__btn-unselected': loginUnselected,
+  });
+  const signupClasses = classNames('home__btns-container__btn', {
+    'home__btns-container__btn-unselected': signupUnselected,
+  });
+  const toggleSelected = () => {
+    setLoginUnselected(!loginUnselected);
+    setSignupUnselected(!signupUnselected);
+  };
 
   const { state } = useLocation();
 
@@ -21,37 +36,39 @@ const Home = ({ isLogged, isAdmin }) => {
 
   const changeFormToLoginForm = () => {
     setSelectedButtonSignUp(false);
+    toggleSelected();
   };
   const changeFormToSignUpForm = () => {
     setSelectedButtonSignUp(true);
+    toggleSelected();
   };
 
   return (
-    <div className="home">
-      <div className="home__header">
-        <h1 className="home__header__title">Shared Organizer</h1>
-        <h2 className="home__header__subtitle">How it works ?</h2>
-      </div>
-      <div className="home__main">
-        <div className="home__main__form-container">
+    <div className="home-container">
+      <div className="home">
+        <div className="home__header">
+          <h1 className="home__header__title">Shared Organizer</h1>
+          <h2 className="home__header__subtitle">How does it work ?</h2>
+        </div>
+        <div className="home__main">
           {selectedButtonSignUp ? <SignUpForm /> : <LoginForm />}
         </div>
-        <div className="home__main__btns-container">
-          <button
-            type="button"
-            className="home__main__btns-container--signup"
-            onClick={changeFormToSignUpForm}
-          >
-            Sign up
-          </button>
-          <button
-            type="button"
-            className="home__main__btns-container--login"
-            onClick={changeFormToLoginForm}
-          >
-            Login
-          </button>
-        </div>
+      </div>
+      <div className="home__btns-container">
+        <button
+          type="button"
+          className={signupClasses}
+          onClick={changeFormToSignUpForm}
+        >
+          Sign up
+        </button>
+        <button
+          type="button"
+          className={loginClasses}
+          onClick={changeFormToLoginForm}
+        >
+          Login
+        </button>
       </div>
     </div>
   );
