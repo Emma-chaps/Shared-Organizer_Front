@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 
-import '../styles.scss';
-
 const LoginForm = ({ email, password, changeField, handleLogin }) => {
   const [loginErrors, setLoginErrors] = useState([]);
 
@@ -41,8 +39,8 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
           isRequired="isrequired"
           className="home-input"
         />
-        <button className="classic-btn button-sign " type="submit">
-          Connection
+        <button className="classic-btn button-sign" type="submit">
+          sign in
         </button>
       </form>
       <div className="errors">

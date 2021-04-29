@@ -3,8 +3,6 @@ import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
 import { FaUserAlt } from 'react-icons/fa';
 
-import '../styles.scss';
-
 const GroupSettingsFrom = ({
   member,
   firstname,

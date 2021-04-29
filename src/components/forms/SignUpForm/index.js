@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
-import { FaUserAlt } from 'react-icons/fa';
-
-import '../styles.scss';
-import './styles.scss';
 
 const SignUpForm = ({
   email,

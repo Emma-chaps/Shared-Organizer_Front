@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
-import './styles.scss';
 import { FaUserAlt } from 'react-icons/fa';
 import { findMember } from 'src/selectors/findMember';
 
@@ -31,7 +30,7 @@ const WidgetCreationForm = ({
       submitWidget();
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned',
+        'A widget must have a title and at least one member assigned'
       );
     }
   };
