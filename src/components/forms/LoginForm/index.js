@@ -24,34 +24,34 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
   };
   return (
     <>
-      <div className="errors">
-        {loginErrors.map((error) => (
-          <div key={error} className="errors__message">
-            {error}
-          </div>
-        ))}
-      </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-login">
         <Field
           name="email"
           type="email"
-          placeholder="Email"
           value={email}
           onChange={changeField}
           isRequired="isrequired"
+          className="home-input"
         />
         <Field
           name="password"
           type="password"
-          placeholder="Password"
           value={password}
           onChange={changeField}
           isRequired="isrequired"
+          className="home-input"
         />
-        <button className="buttonLogin" type="submit">
+        <button className="classic-btn button-sign " type="submit">
           Connection
         </button>
       </form>
+      <div className="errors">
+        {loginErrors.map((error) => (
+          <div key={error} className="errors__message">
+            *{error}
+          </div>
+        ))}
+      </div>
     </>
   );
 };

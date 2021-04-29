@@ -50,53 +50,47 @@ const SignUpForm = ({
 
   return (
     <>
-      <div className="errors">
-        {signUpErrors.map((error) => (
-          <div key={error} className="errors__message">
-            {error}
-          </div>
-        ))}
-      </div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form-signup" onSubmit={handleSubmit}>
         <Field
           name="groupName"
           type="text"
-          placeholder="Group name"
           value={groupName}
           onChange={changeField}
+          className="home-input"
         />
         <Field
           name="firstname"
           type="text"
-          placeholder="Firstname"
           value={firstname}
           onChange={changeField}
+          className="home-input"
         />
         <Field
           name="email"
           type="email"
-          placeholder="Email"
           value={email}
           onChange={changeField}
+          className="home-input"
         />
         <Field
           name="password"
           type="password"
-          placeholder="Password"
           value={password}
           onChange={changeField}
+          className="home-input"
         />
-        <div className="icon-container">
-          {colors.map(({ name }) => (
-            <div data-icon={name} onClick={handleChange} key={name}>
-              <FaUserAlt className={`icon-container--${name}`} />
-            </div>
-          ))}
-        </div>
+
         <button className="buttonSign" type="submit">
           Create group
         </button>
       </form>
+      <div className="errors">
+        {signUpErrors.map((error) => (
+          <div key={error} className="errors__message">
+            *{error}
+          </div>
+        ))}
+      </div>
     </>
   );
 };

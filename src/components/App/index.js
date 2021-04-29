@@ -32,7 +32,6 @@ const App = ({ rehydrate, isLogged }) => {
           <NotFound />
         </Route>
       </Switch>
-      <Footer />
     </div>
   );
 };

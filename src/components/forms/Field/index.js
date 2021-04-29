@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Field = ({ type, name, placeholder, value, onChange }) => {
+const Field = ({ type, name, placeholder, value, onChange, className }) => {
   const handleChange = (event) => {
     onChange(event.target.value, name);
   };
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={name}>
+        {name[0].toUpperCase() + name.substring(1)}
         <input
           id={name}
           type={type}
