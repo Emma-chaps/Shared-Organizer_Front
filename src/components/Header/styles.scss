@@ -1,40 +1,40 @@
 @use 'src/styles/extend';
 
-.header {
-  @extend .flex-row;
-  justify-content: space-between;
-  padding: 1rem 1rem;
-  &__main-menu {
-    @extend .flex-row;
-  }
-  &__settings-menu {
-    position: relative;
-    background-color: white;
-    &__modal {
-      box-shadow: 0 0 0 1px rgb(64 87 109 / 7%), 0 2px 12px rgb(53 71 90 / 20%);
-      border-radius: 4px;
+// .header {
+//   @extend .flex-row;
+//   justify-content: space-between;
+//   padding: 1rem 1rem;
+//   &__main-menu {
+//     @extend .flex-row;
+//   }
+//   &__settings-menu {
+//     position: relative;
+//     background-color: white;
+//     &__modal {
+//       box-shadow: 0 0 0 1px rgb(64 87 109 / 7%), 0 2px 12px rgb(53 71 90 / 20%);
+//       border-radius: 4px;
 
-      background-color: white;
+//       background-color: white;
 
-      position: absolute;
-      right: 0px;
-      z-index: 10;
-      &--is-hidden {
-        display: none;
-      }
-      .disconnect-btn {
-        padding: 0.5rem 1rem;
-      }
-      .settings-btn {
-        padding: 0.5rem 1rem;
-        position: relative;
-        &__name {
-          padding-right: 0.4rem;
-        }
-        &__icon {
-          position: absolute;
-        }
-      }
-    }
-  }
-}
+//       position: absolute;
+//       right: 0px;
+//       z-index: 10;
+//       &--is-hidden {
+//         display: none;
+//       }
+//       .disconnect-btn {
+//         padding: 0.5rem 1rem;
+//       }
+//       .settings-btn {
+//         padding: 0.5rem 1rem;
+//         position: relative;
+//         &__name {
+//           padding-right: 0.4rem;
+//         }
+//         &__icon {
+//           position: absolute;
+//         }
+//       }
+//     }
+//   }
+// }

@@ -9,39 +9,37 @@ export default function Header({ logout, setRange }) {
   };
   return (
     <header className="header">
-      <div className="header__main-menu">
-        <h1>Shared Organizer</h1>
-      </div>
-      <div className="menu__ranges">
+      <h1 className="header__logo">SO.</h1>
+      <div className="header__range-menu">
         <button
           type="button"
           onClick={onChange}
           data-range="month"
-          className="item"
+          className="header__range-menu__range-btn left-btn"
         >
-          Month
+          <span>Month</span>
         </button>
         <button
           type="button"
           onClick={onChange}
           data-range="week"
-          className="item"
+          className="header__range-menu__range-btn"
         >
-          Week
+          <span>Week</span>
         </button>
         <button
           type="button"
           onClick={onChange}
           data-range="day"
-          className="item"
+          className="header__range-menu__range-btn right-btn"
         >
-          Day
+          <span className="selected-range">Day</span>
         </button>
       </div>
-      <div className="header__settings-menu">
-        <div onClick={logout} className="disconnect-btn">
-          Disconnect
-        </div>
+      <div className="header__logout">
+        <button type="button" onClick={logout} className="header__logout__btn">
+          Log out
+        </button>
       </div>
     </header>
   );

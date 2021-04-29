@@ -1,0 +1,7 @@
+// FLEX
+@mixin flex($justify: center, $align: center, $flow: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-flow: $flow;
+}
