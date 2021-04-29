@@ -212,23 +212,11 @@ body {
     }
   }
 }
-.selected-range {
+.mobile-selected-range {
   font-weight: 700;
   color: $light-blue;
   border-bottom: 2px solid $light-blue;
 }
-// .selected-range {
-//   background-color: $light-blue;
-//   color: $white;
-// }
-// .right-btn {
-//   border-top-right-radius: 25%;
-//   border-bottom-right-radius: 25%;
-// }
-// .left-btn {
-//   border-top-left-radius: 25%;
-//   border-bottom-left-radius: 25%;
-// }
 
 .classic-btn {
   min-width: 6.5rem;
@@ -258,4 +246,52 @@ body {
   height: 20rem;
   padding: 0.5rem;
   overflow: auto;
+}
+
+@media (min-width: 700px) {
+  .header {
+    &__logo {
+      padding-left: 1rem;
+      background-image: linear-gradient(
+        90deg,
+        rgba(220, 238, 244, 1) 0%,
+        rgba(196, 226, 237, 1) 10%,
+        rgba(139, 198, 220, 1) 30%
+      );
+    }
+
+    &__range-menu {
+      &__range-btn {
+        min-width: 5rem;
+        border: 1px solid $light-blue;
+        // font-size: 0.8rem;
+      }
+    }
+
+    &__logout {
+      padding-right: 1rem;
+
+      &__btn {
+        padding: 0.5rem 0.8rem;
+      }
+    }
+  }
+
+  .other-selected-range {
+    background-color: $light-blue;
+  }
+
+  .mobile-selected-range {
+    color: $white;
+    font-weight: 700;
+  }
+  .right-btn {
+    border-top-right-radius: 25% 100%;
+    border-bottom-right-radius: 25% 100%;
+  }
+
+  .left-btn {
+    border-top-left-radius: 25% 100%;
+    border-bottom-left-radius: 25% 100%;
+  }
 }

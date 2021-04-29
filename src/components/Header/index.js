@@ -29,25 +29,25 @@ export default function Header({ logout, setRange }) {
           type="button"
           onClick={onChange}
           data-range="month"
-          className="header__range-menu__range-btn left-btn"
+          className={`header__range-menu__range-btn left-btn other-${selectedMonth}`}
         >
-          <span className={selectedMonth}>Month</span>
+          <span className={`mobile-${selectedMonth}`}>Month</span>
         </button>
         <button
           type="button"
           onClick={onChange}
           data-range="week"
-          className="header__range-menu__range-btn"
+          className={`header__range-menu__range-btn other-${selectedWeek}`}
         >
-          <span className={selectedWeek}>Week</span>
+          <span className={`mobile-${selectedWeek}`}>Week</span>
         </button>
         <button
           type="button"
           onClick={onChange}
           data-range="day"
-          className="header__range-menu__range-btn right-btn"
+          className={`header__range-menu__range-btn right-btn other-${selectedDay}`}
         >
-          <span className={selectedDay}>Day</span>
+          <span className={`mobile-${selectedDay}`}>Day</span>
         </button>
       </div>
       <div className="header__logout">
