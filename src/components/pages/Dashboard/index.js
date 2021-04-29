@@ -40,11 +40,6 @@ const Dashboard = ({
       >
         <WidgetCreationForm />
       </Modal>
-      <button type="button">
-        <NavLink to="/group-settings" exact>
-          Settings
-        </NavLink>
-      </button>
       <button type="button" onClick={handleClick}>
         Add a Widget
       </button>

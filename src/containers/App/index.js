@@ -5,7 +5,6 @@ import { rehydrate, logout } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.login.isLogged,
-  isAdmin: state.user.login.isAdmin,
 });
 
 const mapDispatchToProps = (dispatch) => ({

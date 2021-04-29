@@ -12,7 +12,7 @@ import NotFound from 'src/components/pages/NotFound';
 import './styles.scss';
 
 // == Composant
-const App = ({ rehydrate, isLogged, isAdmin }) => {
+const App = ({ rehydrate, isLogged }) => {
   useEffect(() => {
     rehydrate();
   }, [isLogged]);
@@ -27,11 +27,6 @@ const App = ({ rehydrate, isLogged, isAdmin }) => {
           path="/dashboard"
           component={Dashboard}
           isAuth={isLogged}
-        />
-        <ProtectedRoute
-          path="/group-settings"
-          component={GroupSettings}
-          isAuth={isAdmin}
         />
         <Route>
           <NotFound />
