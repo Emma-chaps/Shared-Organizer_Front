@@ -2,6 +2,7 @@
 @use 'mixins';
 @use 'extend';
 @import 'vars';
+@import 'mixins';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @font-face {
   font-family: 'Sequel';
@@ -19,19 +20,19 @@ body {
 
 .app {
   height: 100vh;
-  @include mixins.flex($flow: column, $justify: space-between);
+  @include flex($flow: column, $justify: space-between);
   position: relative;
 }
 
 .home-container {
-  @include mixins.flex($flow: column);
+  @include flex($flow: column);
   margin: auto;
   width: 95%;
   max-width: 40rem;
   min-height: 70vh;
 
   .home {
-    @include mixins.flex($flow: column, $justify: space-between);
+    @include flex($flow: column, $justify: space-between);
     width: 100%;
     padding: 2rem 0;
     background: rgba(#404939, 0.1);
@@ -41,7 +42,7 @@ body {
     border-bottom-right-radius: 0;
 
     &__header {
-      @include mixins.flex($flow: column);
+      @include flex($flow: column);
       padding-bottom: 1rem;
 
       &__title {
@@ -61,10 +62,10 @@ body {
 
     &__main {
       width: 70%;
-      @include mixins.flex($flow: column);
+      @include flex($flow: column);
 
       .errors {
-        @include mixins.flex($flow: column);
+        @include flex($flow: column);
         font-size: 0.8em;
         color: rgb(216, 18, 18);
         min-height: 2rem;
@@ -75,18 +76,18 @@ body {
       .form-login {
         padding-top: 3rem;
         min-height: 17rem;
-        @include mixins.flex($flow: column, $justify: space-between);
+        @include flex($flow: column, $justify: space-between);
       }
 
       .form-signup {
         min-height: 17rem;
-        @include mixins.flex($flow: column, $justify: space-between);
+        @include flex($flow: column, $justify: space-between);
       }
     }
 
     &__btns-container {
       width: 100%;
-      @include mixins.flex($justify: flex-end);
+      @include flex($justify: flex-end);
 
       &__btn {
         border: none;
@@ -102,7 +103,7 @@ body {
         border-bottom-right-radius: 13px;
         padding: 1rem;
         font-size: 0.7em;
-        @include mixins.flex;
+        @include flex;
         font-weight: bold;
 
         &-unselected {
@@ -144,7 +145,7 @@ body {
   // z-index: 100;
   background-color: $white;
 
-  @include mixins.flex($justify: space-between);
+  @include flex($justify: space-between);
 
   &__logo {
     padding-left: 0.4rem;
@@ -247,7 +248,100 @@ body {
 .widgets {
   background-color: $white;
   border-radius: $border-radius;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   height: 20rem;
-  padding: .5rem;
+  padding: .75rem;
   overflow: auto;
+  width: 95%;
+  margin: auto;
+  position: relative;
+
+
+  .widget {
+    -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
+    border-radius: $border-radius;
+    padding: 0 .5rem;
+    padding-bottom: .75rem;
+    width: 95%;
+    max-width: 97%;
+    margin: auto;
+    margin-bottom: .75rem;
+    
+    .visible-collapsed{
+      @include flex( $justify: flex-start);
+
+      .name-tag {
+        @include name-tag;
+        margin-right: 1rem;
+      }
+
+      .widget-header {
+        padding: .75rem 0;
+        .widget__title {
+          font-weight: bold;
+          font-size: 1.2em;
+          text-transform: capitalize;
+          padding-bottom: .25rem;
+        }
+        .widget__author {
+          font-style: italic;
+          font-size: .8em;
+        }
+      }
+      
+      .edit-delete-btns {
+        margin-left: auto;
+
+        .button-change {
+          border: none;
+          background: transparent;
+          font-size: 1.1em;
+       
+        }
+      }
+    }
+
+    &__description {
+      padding: 1rem .5rem;
+
+    }
+
+    .widget__members {
+      @include flex($justify: flex-start); 
+
+      .widget__member {
+        span {
+          @include name-tag($size: 1.5rem, $font-size: .75rem);
+          margin-left: .3rem;
+        }
+      }
+    }
+  }
+
+  .add-widget-btn {
+    position: fixed;
+    top: 90%;
+    right: 2rem;
+    z-index: 10;
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    color: $white;
+    font-size: 3rem;
+    // transform: translate(50%);
+    background-image: linear-gradient(
+        30deg,
+        rgba(139, 198, 220, 1) 57%,
+        rgba(255, 255, 255, 1) 100%
+      );
+    @include flex;
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.3);
+  }
 }
+
+
+

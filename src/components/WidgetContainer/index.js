@@ -18,6 +18,11 @@ function WidgetContainer({
   displayCreationModal,
   filteredMembers,
 }) {
+  const handleClick = () => {
+    showWidgetCreationModal();
+    reinitializeWidget();
+  };
+
   let filteredWidgets = RangeWidgetFilter(
     dashboardWidgets,
     selectedDateValue,
@@ -42,6 +47,9 @@ function WidgetContainer({
           hideWidgetCreationModal={hideWidgetCreationModal}
         />
       ))}
+      <button type="button" onClick={handleClick} className="add-widget-btn">
+        +
+      </button>
     </div>
   );
 }

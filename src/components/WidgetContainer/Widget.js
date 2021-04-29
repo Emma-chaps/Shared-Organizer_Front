@@ -13,6 +13,7 @@ function Widget({
   displayCreationModal,
 }) {
   const [displayEdit, setDisplayEdit] = useState(false);
+
   const { members } = widget;
   const handleEdit = () => {
     copyWidgetToEdit(widget, members);
@@ -25,23 +26,39 @@ function Widget({
 
   return (
     <article className="widget">
-      <h2 className="widget__title">TITLE: {widget.title}</h2>
-      <p className="widget__description">DESCRIPTION: {widget.description}</p>
+      <div className="visible-collapsed">
+        <span className="name-tag">{widget.author[0]}</span>
+        <header className="widget-header">
+          <h2 className="widget__title">{widget.title}</h2>
+          <p className="widget__author">Added by {widget.author}</p>{' '}
+        </header>
+        <div className="edit-delete-btns">
+          <button
+            type="button"
+            className="button-change button-edit"
+            id={widget.id}
+            onClick={handleEdit}
+          >
+            <FiEdit2 />
+          </button>
+          <button
+            type="button"
+            className="button-change button-delete"
+            id={widget.id}
+            onClick={handleDelete}
+          >
+            <FiTrash2 />
+          </button>
+        </div>
+      </div>
+      <p className="widget__description">{widget.description}</p>
       <ul className="widget__members">
-        CONCERNED MEMBERS:
         {members?.map((member) => (
           <li key={member.id} className="widget__member">
-            {member.firstname}
+            <span className="name-tag">{member.firstname[0]}</span>
           </li>
         ))}
       </ul>
-      <p className="widget__author">AUTHOR: {widget.author}</p>
-      <button type="button" id={widget.id} onClick={handleEdit}>
-        <FiEdit2 />
-      </button>
-      <button type="button" id={widget.id} onClick={handleDelete}>
-        <FiTrash2 />
-      </button>
       <Modal showModal={displayCreationModal}>
         <WidgetCreationForm
           hideWidgetCreationModal={hideWidgetCreationModal}
