@@ -35,23 +35,27 @@ function WidgetContainer({
   }
 
   return (
-    <div className="widgets">
-      {filteredWidgets?.map((widgetData) => (
-        <Widget
-          key={widgetData.id}
-          widget={widgetData}
-          editWidget={editWidget}
-          deleteWidget={deleteWidget}
-          copyWidgetToEdit={copyWidgetToEdit}
-          displayCreationModal={displayCreationModal}
-          showWidgetCreationModal={showWidgetCreationModal}
-          hideWidgetCreationModal={hideWidgetCreationModal}
-        />
-      ))}
+    <>
+      {/* <div className="widgets-add-btn-container"> */}
+      <div className="widgets">
+        {filteredWidgets?.map((widgetData) => (
+          <Widget
+            key={widgetData.id}
+            widget={widgetData}
+            editWidget={editWidget}
+            deleteWidget={deleteWidget}
+            copyWidgetToEdit={copyWidgetToEdit}
+            displayCreationModal={displayCreationModal}
+            showWidgetCreationModal={showWidgetCreationModal}
+            hideWidgetCreationModal={hideWidgetCreationModal}
+          />
+        ))}
+      </div>
       <button type="button" onClick={handleClick} className="add-widget-btn">
         +
       </button>
-    </div>
+      {/* </div> */}
+    </>
   );
 }
 

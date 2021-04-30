@@ -1,4 +1,4 @@
-export const widgetsCombiner = (rangeWidgets, newWidgets) => {
+const widgetsCombiner = (rangeWidgets, newWidgets) => {
   const combinedWidgets = [...rangeWidgets, ...newWidgets];
   const allWidgetUniqueIds = [
     ...new Set(combinedWidgets.map((widget) => widget.id)),
@@ -8,3 +8,4 @@ export const widgetsCombiner = (rangeWidgets, newWidgets) => {
   );
   return allUniqueWidgets;
 };
+export default widgetsCombiner;
