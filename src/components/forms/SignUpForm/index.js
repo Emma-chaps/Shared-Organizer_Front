@@ -43,6 +43,7 @@ const SignUpForm = ({
           value={groupName}
           onChange={changeField}
           className="home-input"
+          maxLength="30"
         />
         <Field
           label="first name"

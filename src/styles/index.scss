@@ -408,6 +408,7 @@ body {
 .menu {
   @include flex($justify: space-between);
   padding: .75rem;
+  position: relative;
 
   .menu__datePicker {
     border: none;
@@ -443,20 +444,71 @@ body {
       border-radius: $border-radius;
       top: 25px;
       right: 50%;
-      padding: .75rem;
+      padding: 1.25rem .75rem .75rem .75rem;
       z-index: -1;
       background: rgba(#404939, 0.1);
       backdrop-filter: blur(7px);
       -webkit-backdrop-filter: blur(7px);
 
-      button {
+      .button-modal-filter {
         @include name-tag($font-size: .75rem, $size: 2rem);
-        border: none;
-        margin: .5rem;
+        margin: .5rem; 
       }
     }
   }
+  
+  &__members {
+    @include flex($justify: flex-end);
+    flex-wrap: wrap;
+    max-width: 40%;
+
+    &--btn {
+      cursor: pointer;
+      @include flex;
+      margin-left: 1.5rem;
+      
+      .letter {
+        @include name-tag($size: 1.5rem, $font-size: .75rem);
+        margin-right: .25rem
+      }
+      .member-firstname{
+        font-size: .9em;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .group-name {
+    position: absolute;
+    width: 12rem;
+    left: calc(50% - 6rem);
+    text-align: center;
+
+    &__title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    &__edit {
+      background-color: transparent;
+      border: none;
+    }
+
+    @media (min-width: 1200px) {
+      width: 22rem;
+      left: calc(50% - 11rem);
+    }
+  }
 }
+.member-filter--all {
+  @include pill;
+
+  &-modal{
+    border: white;
+  }
+
+}
+
 .hidden-members-modal {
   display: none;
 }

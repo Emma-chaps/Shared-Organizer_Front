@@ -17,5 +17,30 @@
   height: $size;
   width: $size;
   border-radius: 50%;
+  border: none;
   @include flex;
 }
+
+
+@mixin pill($color: white, $background: transparent) {
+  border-top-right-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  border-bottom-left-radius: 50% 100%;
+  color: $color;
+  background-color: $background;
+  border: 1px solid $color;
+  padding: .25rem 1rem;
+  font-weight: bold;
+}
+
+// @mixin pill-left($color: white, $background: transparent) {
+//   border-top-left-radius: 50% 100%;
+//   border-bottom-left-radius: 50% 100%;
+//   color: $color;
+//   background-color: $background;
+//   border: 1px solid $color;
+//   padding: .25rem 1rem;
+//   font-weight: bold;
+//   margin: .5rem 1rem;
+// }

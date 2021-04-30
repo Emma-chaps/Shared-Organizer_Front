@@ -23,8 +23,10 @@ const DashboardMenu = ({
   );
   useEffect(() => {
     const handler = (event) => setMatches(event.matches);
-
     window.matchMedia('(min-width: 1000px)').addListener(handler);
+    return () => {
+      window.matchMedia('(min-width: 1000px)').removeListener(handler);
+    };
   });
 
   const handleChange = (event) => {
@@ -62,14 +64,18 @@ const DashboardMenu = ({
         value={selectedDateValue}
         onChange={handleChange}
       />
-      <div>
-        <div>{groupName}</div>
+      <h1 className="group-name">
+        <span className="group-name__title">{groupName}</span>
         {isAdmin && (
-          <div onClick={handleDisplaySettingsModal}>
+          <button
+            type="button"
+            className="group-name__edit"
+            onClick={handleDisplaySettingsModal}
+          >
             <FiEdit2 />
-          </div>
+          </button>
         )}
-      </div>
+      </h1>
       {displayModal && (
         <Modal showModal={displayModal} hideModal={handleDisplaySettingsModal}>
           <GroupSettings closeModal={handleDisplaySettingsModal} />
@@ -77,18 +83,24 @@ const DashboardMenu = ({
       )}
       {matches ? (
         <div className="menu__members">
-          <button type="button" onClick={handleResetFilter}>
-            ALL
+          <button
+            type="button"
+            onClick={handleResetFilter}
+            className="member-filter--all"
+          >
+            All
           </button>
           {members.map((member) => (
-            <button
-              type="button"
+            <div
+              // type="button"
               key={member.id}
               id={member.id}
               onClick={handleFilter}
+              className="menu__members--btn"
             >
-              {member.firstname[0]}
-            </button>
+              <span className="letter">{member.firstname[0]}</span>
+              <span className="member-firstname">{member.firstname}</span>
+            </div>
           ))}
         </div>
       ) : (
@@ -101,8 +113,12 @@ const DashboardMenu = ({
             <FaUsers />
           </button>
           <div className={classes}>
-            <button type="button" onClick={handleResetFilter}>
-              ALL
+            <button
+              type="button"
+              onClick={handleResetFilter}
+              className="member-filter--all"
+            >
+              All
             </button>
             {members.map((member) => (
               <button
@@ -110,6 +126,7 @@ const DashboardMenu = ({
                 key={member.id}
                 id={member.id}
                 onClick={handleFilter}
+                className="button-modal-filter"
               >
                 {member.firstname[0]}
               </button>
