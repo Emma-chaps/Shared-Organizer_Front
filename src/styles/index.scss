@@ -419,7 +419,7 @@ body {
 }
 
 .calendar {
-  min-height: 265px;
+  // min-height: 265px;
   width: 100%;
   &__header {
     width: 100%;
@@ -508,7 +508,7 @@ body {
       @include flex;
     }
   .widgets {
-    height: 70%;
+    height: 110%;
     width: 100%;
     background-color: $white;
     border-radius: 10px;
