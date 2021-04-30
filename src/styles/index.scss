@@ -554,13 +554,34 @@ body {
 
 .calendar {
   width: 100%;
+  &__header {
+    width: 100%;
+    @include flex;
+    color: $dark;
+    &__title {
+      button {
+          background-color: transparent;
+          border: none;
+          font-weight: bold;
+          font-size: 1rem;
+          color: $dark;
+        }
+        span {
+          color: $dark;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+    }
+  }
   &__content {
     display: grid;
+    padding: 4px;
     gap: 4px;
     &__days-names {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      grid-template-rows:  minmax(30px, 40px);
+      place-items: center;
+      color: $light-grey;
     }
     &__weeks {
       display: grid;
@@ -571,6 +592,26 @@ body {
         background-color: $white;
         border-radius: 3px;
         overflow: scroll;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 2px;
+        .day-number {
+          position: absolute;
+          bottom: 1px;
+          right: 1px;
+          color: $light-blue;
+        }
+        .calendar-members-concerned {
+          font-size: 10px;
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          background-color: $dark-green;
+          color: $white;
+          text-transform: uppercase;
+          @include flex
+        }
       }
     }
   }
