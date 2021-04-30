@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MdClose } from 'react-icons/md';
 
-import './styles.scss';
 import classNames from 'classnames';
 
 const Modal = ({ showModal, children, hideModal }) => {
@@ -10,7 +10,7 @@ const Modal = ({ showModal, children, hideModal }) => {
   return (
     <div className={classes}>
       <div className="modal__header">
-        <div className="close" onClick={hideModal}></div>
+        <MdClose className="close" onClick={hideModal} />
       </div>
       <div className="modal__content">{children}</div>
     </div>
