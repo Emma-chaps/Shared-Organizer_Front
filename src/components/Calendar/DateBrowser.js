@@ -9,7 +9,13 @@ import {
   subDays,
 } from 'date-fns';
 
-function DateBrowser({ content, range, date, setSelectedDateValue }) {
+function DateBrowser({
+  fetchAllWidgets,
+  content,
+  range,
+  date,
+  setSelectedDateValue,
+}) {
   const year = date.split('-')[0];
   const month = date.split('-')[1];
   const day = date.split('-')[2];
@@ -42,6 +48,7 @@ function DateBrowser({ content, range, date, setSelectedDateValue }) {
         changeDate(subDays);
       }
     }
+    fetchAllWidgets();
   };
 
   return (
