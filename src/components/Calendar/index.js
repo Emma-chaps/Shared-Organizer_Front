@@ -68,8 +68,10 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
               date={date}
               setSelectedDateValue={setSelectedDateValue}
             />
-            Weeks from {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
-            {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+            <span>
+              {format(startOfWeek(selectedDate), 'do MMM')} To{' '}
+              {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+            </span>
             <DateBrowser
               content=">"
               range={range}
@@ -104,7 +106,7 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
             date={date}
             setSelectedDateValue={setSelectedDateValue}
           />
-          {format(selectedDate, 'EEEE do MMMM yyyy')}
+          <span>{format(selectedDate, 'EEEE do MMMM yyyy')}</span>
           <DateBrowser
             content=">"
             range={range}
