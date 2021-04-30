@@ -28,7 +28,6 @@ const Dashboard = ({
       <main className="calendar-widgets">
         <DashboardMenu />
         <Calendar />
-
         <WidgetContainer />
       </main>
       <Modal

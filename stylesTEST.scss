@@ -1,11 +1,11 @@
 .modal {
   height: 100vh;
-  width: 100%;
+  margin: auto;
+  width: 95%;
   background-color: white;
   border-radius: 15px;
   border: black 2px solid;
   padding: 4px;
-  
   @media screen and (min-width: 900px) {
     position: fixed;
     z-index: 100;
@@ -14,19 +14,14 @@
     left: 10%;
     top: 10vh;
   }
-
-  
   @media screen and (min-width: 1500px) {
     width: 50%;
     left: 25%;
     height: 80vh;
-    // left: calc((100vw - 1800px) / 2)
   }
-  
   &--hidden {
     display: none;
   }
-
   &__header {
     width: 100%;
     text-align: right;
@@ -50,7 +45,6 @@
         top: 5px;
         right: 7px;
       }
-
     }
   }
 
@@ -58,5 +52,4 @@
     height: 100%;
     overflow: auto;
   }
-
 }
