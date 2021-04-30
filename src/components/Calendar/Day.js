@@ -9,7 +9,7 @@ function Day({ className, day, widgets }) {
   });
   return (
     <div className={className}>
-      {format(day, 'dd')}
+      <span className="day-number">{format(day, 'dd')}</span>
       {widgetsOfSpecificDay?.map((widget) => (
         <p key={widget.id}>{widget.title}</p>
       ))}
