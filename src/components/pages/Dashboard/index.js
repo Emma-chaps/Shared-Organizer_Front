@@ -27,10 +27,12 @@ const Dashboard = ({
       <Header />
       <main className="calendar-widgets">
         <DashboardMenu />
+
         <section className="calendar-widget-container">
           <Calendar />
           <WidgetContainer />
         </section>
+
       </main>
       <Modal
         showModal={displayCreationModal}

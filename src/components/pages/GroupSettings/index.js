@@ -78,8 +78,8 @@ const GroupSettings = ({
 
   return (
     <>
-      <div className="settings">
-        <h1>Group Settings</h1>
+      <div className="settings-container">
+        <h1 className="settings-container__title">Group Settings</h1>
         {openedGroupNameInput ? (
           <>
             <GroupNameForm initialGroupName={initialGroupName} />
@@ -88,7 +88,7 @@ const GroupSettings = ({
             </button>
           </>
         ) : (
-          <div>
+          <div className="settings-container__groupName">
             <h2>Group name</h2>
             <div>{initialGroupName}</div>
             <button type="button" onClick={setGroupNameInputState}>

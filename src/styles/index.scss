@@ -24,6 +24,7 @@ body {
   position: relative;
 }
 
+
 .calendar-widget-container {
   height: 80vh;
   @media (min-width: 1000px) {
@@ -32,6 +33,9 @@ body {
   }
 
 }
+
+
+//////////////// HOME ////////////////
 
 .home-container {
   @include flex($direction: column);
@@ -153,6 +157,8 @@ body {
     }
   }
 }
+
+//////////////// HEADER ////////////////
 .header {
   padding: 0.7rem 0;
   width: 100%;
@@ -179,32 +185,45 @@ body {
 
     font-family: 'Sequel';
     font-size: 2em;
+
+    @media (min-width: 700px) {
+      padding-left: 1rem;
+      background-image: linear-gradient(
+        90deg,
+        rgba(220, 238, 244, 1) 0%,
+        rgba(196, 226, 237, 1) 10%,
+        rgba(139, 198, 220, 1) 30%
+      );
+    }
   }
   &__range-menu {
     &__range-btn {
-      min-width: 3.5rem;
-
+      min-width: 3.6rem;
       border: none;
-      // border: 1px solid $light-blue;
-
       background-color: $white;
-
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
       font-size: 0.8rem;
+      @media (min-width: 700px) {
+        min-width: 5rem;
+        border: 1px solid $light-blue;
+      }
     }
   }
   &__logout {
     padding-right: 0.4rem;
     min-width: 23%;
     text-align: right;
+
+    @media (min-width: 700px) {
+      padding-right: 1rem;
+    }
+
     &__btn {
       padding: 0.4rem 0.5rem;
       box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
-
       border: none;
       border-radius: 5px;
-
       background-image: linear-gradient(
         90deg,
         rgba(139, 198, 220, 1) 50%,
@@ -217,15 +236,38 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
       text-transform: uppercase;
+
+      @media (min-width: 700px) {
+        padding: 0.5rem 0.8rem;
+      }
     }
   }
 }
+
 .mobile-selected-range {
   font-weight: 700;
   color: $light-blue;
   border-bottom: 2px solid $light-blue;
+  @media (min-width: 700px) {
+    color: $white;
+  }
 }
 
+@media (min-width: 700px) {
+  .other-selected-range {
+    background-color: $light-blue;
+  }
+  .right-btn {
+    border-top-right-radius: 25% 100%;
+    border-bottom-right-radius: 25% 100%;
+  }
+  .left-btn {
+    border-top-left-radius: 25% 100%;
+    border-bottom-left-radius: 25% 100%;
+  }
+}
+
+//////////////// CLASSIC BUTTON ////////////////
 .classic-btn {
   min-width: 6.5rem;
   padding: 0.8rem 1.2rem;
@@ -248,62 +290,98 @@ body {
   text-transform: uppercase;
 }
 
+//////////////// CALENDAR WIDGET ////////////////
 .calendar-widgets {
   width: 100%;
+
   @media (min-width: 1000px) {
     height: 100%;
     @include flex($direction: column, $justify: space-evenly);
     max-width: 1600px;
+
   }
 }
 
 
 
-@media (min-width: 700px) {
-  .header {
-    &__logo {
-      padding-left: 1rem;
-      background-image: linear-gradient(
-        90deg,
-        rgba(220, 238, 244, 1) 0%,
-        rgba(196, 226, 237, 1) 10%,
-        rgba(139, 198, 220, 1) 30%
-      );
+//////////////// MODAL ////////////////
+
+.modal {
+  background-color: red;
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  width: 90%;
+  margin: 0 5%;
+  border-radius: 5px;
+  &--hidden {
+    display: none;
+  }
+
+  &__header {
+    box-sizing: content-box;
+    width: 100%;
+    .close {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+
+      // &:before {
+      //   content: 'X';
+      //   font-weight: 900;
+      //   width: 24px;
+      //   height: 24px;
+      //   position: absolute;
+      //   top: 5px;
+      //   right: 7px;
+      // }
     }
-
-    &__range-menu {
-      &__range-btn {
-        min-width: 5rem;
-        border: 1px solid $light-blue;
-        // font-size: 0.8rem;
-      }
-    }
-
-    &__logout {
-      padding-right: 1rem;
-
-      &__btn {
-        padding: 0.5rem 0.8rem;
-      }
-    }
   }
 
-  .other-selected-range {
-    background-color: $light-blue;
+  &__content {
+    box-sizing: border-box;
+    width: 100%;
   }
+}
 
-  .mobile-selected-range {
-    color: $white;
-    font-weight: 700;
+// .modal::before {
+//   content: '';
+//   position: fixed;
+//   z-index: -1;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background: rgba(#404939, 0.5);
+// }
+.menu {
+  position: relative;
+  z-index: 0;
+}
+//////////////// GROUP SETTINGS ////////////////
+.settings-container {
+  padding: 1rem;
+  text-align: center;
+  &__title {
+    margin: 1rem 0;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-transform: uppercase;
   }
-  .right-btn {
-    border-top-right-radius: 25% 100%;
-    border-bottom-right-radius: 25% 100%;
-  }
-
-  .left-btn {
-    border-top-left-radius: 25% 100%;
-    border-bottom-left-radius: 25% 100%;
+  &__groupName {
+    color: $light-blue;
+    font-size: 1em;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }
 
