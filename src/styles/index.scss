@@ -150,11 +150,7 @@ body {
 .header {
   padding: 0.7rem 0;
   width: 100%;
-  // position: fixed;
-  // top: 0;
-  // z-index: 100;
   background-color: $white;
-
   @include flex($justify: space-between);
 
   &__logo {
@@ -284,6 +280,7 @@ body {
 //////////////// CALENDAR WIDGET ////////////////
 .calendar-widgets {
   width: 100%;
+  position: relative;
 }
 
 .widgets {
@@ -295,10 +292,8 @@ body {
   width: 95%;
   margin: auto;
   position: relative;
-  z-index: -1;
-  padding-top: .75rem;
+  padding-top: 0.75rem;
   overflow: auto;
-
 
   @media (min-width: 700px) {
     display: grid;
@@ -399,16 +394,16 @@ body {
 //////////////// MODAL ////////////////
 
 .modal {
-  background-color: red;
+  background-color: $white;
   position: fixed;
   top: 50px;
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 1000;
   width: 90%;
   margin: 0 5%;
   border-radius: 5px;
+  z-index: 3;
   &--hidden {
     display: none;
   }
@@ -454,33 +449,115 @@ body {
 //   height: 100vh;
 //   background: rgba(#404939, 0.5);
 // }
-.menu {
-  position: relative;
-  z-index: 0;
-}
+
 //////////////// GROUP SETTINGS ////////////////
 .settings-container {
   padding: 1rem;
   text-align: center;
   &__title {
-    margin: 1rem 0;
+    margin: 1rem 0 1.5rem 0;
     font-size: 1.4em;
     font-weight: bold;
     text-transform: uppercase;
   }
-  &__groupName {
-    color: $light-blue;
-    font-size: 1em;
-    padding-bottom: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
+  &__group-name {
+    padding-bottom: 2.5rem;
+
+    &__title {
+      color: $light-blue;
+      font-size: 1em;
+      padding-bottom: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    &__content {
+      @include flex();
+      .name {
+        color: $dark;
+        padding-right: 0.3rem;
+      }
+    }
+    &__form {
+      @include flex();
+      .input-form {
+        @include flex();
+        &__btn {
+          color: green;
+        }
+      }
+      .btn {
+        color: red;
+      }
+    }
+  }
+  &__group-members {
+    &__title {
+      color: $light-blue;
+      font-size: 1em;
+      padding-bottom: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    &__member {
+      margin: auto;
+      width: 90%;
+      @include flex($direction: column);
+      padding: 0.5rem;
+      border: 1px solid $light-blue;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      .member-icon {
+        @include name-tag($font-size: 0.75rem, $size: 2rem);
+        margin-bottom: 0.4rem;
+      }
+      .member-data {
+        margin-bottom: 0.4rem;
+      }
+      .member-icons {
+        @include flex();
+      }
+    }
   }
 }
 
+.settings-input {
+  width: 100%;
+  padding-bottom: 0.5rem;
+  text-transform: capitalize;
+  text-align: left;
+
+  label {
+    width: 100%;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: $dark;
+
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px $dark solid;
+      padding: 0.5rem;
+    }
+  }
+}
+
+//////////////// CLASSIC ICON BTN ////////////////
+.icon-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.icon {
+  width: 100%;
+}
+
+//////////////// DASHBOARD MENU ////////////////
 .menu {
   @include flex($justify: space-between);
-  padding: .75rem;
+  padding: 0.75rem;
   position: relative;
+  z-index: 2;
 
   .menu__datePicker {
     border: none;
@@ -489,12 +566,13 @@ body {
     font-size: 20px;
     padding: 0;
     background-color: transparent;
+    z-index: 1;
   }
-  
+
   .member-filter {
     position: relative;
-    z-index: 10;
-    
+    z-index: 2;
+
     &__btn {
       @include flex($direction: column);
       border-radius: 50%;
@@ -516,19 +594,19 @@ body {
       border-radius: $border-radius;
       top: 25px;
       right: 50%;
-      padding: 1.25rem .75rem .75rem .75rem;
+      padding: 1.25rem 0.75rem 0.75rem 0.75rem;
       z-index: -1;
       background: rgba(#404939, 0.1);
       backdrop-filter: blur(7px);
       -webkit-backdrop-filter: blur(7px);
 
       .button-modal-filter {
-        @include name-tag($font-size: .75rem, $size: 2rem);
-        margin: .5rem; 
+        @include name-tag($font-size: 0.75rem, $size: 2rem);
+        margin: 0.5rem;
       }
     }
   }
-  
+
   &__members {
     @include flex($justify: flex-end);
     flex-wrap: wrap;
@@ -538,13 +616,13 @@ body {
       cursor: pointer;
       @include flex;
       margin-left: 1.5rem;
-      
+
       .letter {
-        @include name-tag($size: 1.5rem, $font-size: .75rem);
-        margin-right: .25rem
+        @include name-tag($size: 1.5rem, $font-size: 0.75rem);
+        margin-right: 0.25rem;
       }
-      .member-firstname{
-        font-size: .9em;
+      .member-firstname {
+        font-size: 0.9em;
         font-weight: bold;
       }
     }
@@ -555,6 +633,7 @@ body {
     width: 12rem;
     left: calc(50% - 6rem);
     text-align: center;
+    z-index: 3;
 
     &__title {
       text-transform: uppercase;
@@ -575,10 +654,9 @@ body {
 .member-filter--all {
   @include pill;
 
-  &-modal{
+  &-modal {
     border: white;
   }
-
 }
 
 .hidden-members-modal {
@@ -588,11 +666,12 @@ body {
 .calendar {
   width: 100%;
   height: 45vh;
+  z-index: 1;
 
   &__header {
     width: 100%;
     @include flex;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     &__title {
       button {
         background-color: transparent;
@@ -612,7 +691,7 @@ body {
   &__content {
     margin: auto;
     height: 100%;
-    padding: .2rem;
+    padding: 0.2rem;
     &__days-names {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -621,31 +700,30 @@ body {
         text-transform: uppercase;
         color: $light-grey;
         font-weight: bold;
-        font-size: .8em;
+        font-size: 0.8em;
       }
     }
-    
+
     &__weeks {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       justify-content: stretch;
-      place-content: stretch;      
+      place-content: stretch;
       // gap: .4rem .4rem;
       &__day {
         background-color: $white;
         min-height: 2.5rem;
         min-width: 2.5rem;
-        margin: .2rem;
+        margin: 0.2rem;
         border-radius: 4px;
         position: relative;
-        .day-number{
+        .day-number {
           position: absolute;
           bottom: 2px;
           right: 2px;
-          color: $light-blue;   
+          color: $light-blue;
           font-weight: bold;
-          font-size: .8em;   
-
+          font-size: 0.8em;
         }
       }
     }
