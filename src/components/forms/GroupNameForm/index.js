@@ -28,6 +28,7 @@ const GroupSettingsForm = ({
         placeholder="group name"
         value={newGroupName}
         onChange={changeField}
+        maxLength="30"
       />
       <button type="submit">Save</button>
     </form>

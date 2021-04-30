@@ -9,6 +9,7 @@ const Field = ({
   value,
   onChange,
   className,
+  maxLength,
 }) => {
   const handleChange = (event) => {
     onChange(event.target.value, name);
@@ -24,6 +25,7 @@ const Field = ({
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
+          maxLength={maxLength}
         />
       </label>
     </div>

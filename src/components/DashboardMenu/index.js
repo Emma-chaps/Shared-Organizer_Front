@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Modal from 'src/components/Modal';
 import GroupSettings from 'src/containers/pages/GroupSettings';
 import { findMember } from 'src/selectors/findMember';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FiEdit2 } from 'react-icons/fi';
 
 const DashboardMenu = ({
@@ -16,6 +17,18 @@ const DashboardMenu = ({
   fetchAllWidgets,
 }) => {
   const [displayModal, setDisplayModal] = useState(false);
+  const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 1000px)').matches,
+  );
+  useEffect(() => {
+    const handler = (event) => setMatches(event.matches);
+    window.matchMedia('(min-width: 1000px)').addListener(handler);
+    return () => {
+      window.matchMedia('(min-width: 1000px)').removeListener(handler);
+    };
+  });
+
   const handleChange = (event) => {
     setFieldDateValue(event.target.value);
     fetchAllWidgets();
@@ -34,6 +47,14 @@ const DashboardMenu = ({
     setDisplayModal(!displayModal);
   };
 
+  const handleToggleModal = () => {
+    setDisplayHiddenMembers(!displayHiddenMembers);
+  };
+
+  const classes = classNames('member-filter__modal', {
+    'hidden-members-modal': displayHiddenMembers,
+  });
+
   return (
     <div className="menu">
       <input
@@ -43,35 +64,76 @@ const DashboardMenu = ({
         value={selectedDateValue}
         onChange={handleChange}
       />
-      <div>
-        <div>{groupName}</div>
+      <h1 className="group-name">
+        <span className="group-name__title">{groupName}</span>
         {isAdmin && (
-          <div onClick={handleDisplaySettingsModal}>
+          <button
+            type="button"
+            className="group-name__edit"
+            onClick={handleDisplaySettingsModal}
+          >
             <FiEdit2 />
-          </div>
+          </button>
         )}
-      </div>
+      </h1>
       {displayModal && (
         <Modal showModal={displayModal} hideModal={handleDisplaySettingsModal}>
           <GroupSettings closeModal={handleDisplaySettingsModal} />
         </Modal>
       )}
-      <div className="menu__members">
-        <button type="button" onClick={handleResetFilter}>
-          ALL
-        </button>
-        {members.map((member) => (
+      {matches ? (
+        <div className="menu__members">
           <button
             type="button"
-            key={member.id}
-            id={member.id}
-            onClick={handleFilter}
+            onClick={handleResetFilter}
+            className="member-filter--all"
           >
-            <FaUserAlt />
-            {member.firstname}
+            All
           </button>
-        ))}
-      </div>
+          {members.map((member) => (
+            <div
+              // type="button"
+              key={member.id}
+              id={member.id}
+              onClick={handleFilter}
+              className="menu__members--btn"
+            >
+              <span className="letter">{member.firstname[0]}</span>
+              <span className="member-firstname">{member.firstname}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="member-filter">
+          <button
+            type="button"
+            className="member-filter__btn"
+            onClick={handleToggleModal}
+          >
+            <FaUsers />
+          </button>
+          <div className={classes}>
+            <button
+              type="button"
+              onClick={handleResetFilter}
+              className="member-filter--all"
+            >
+              All
+            </button>
+            {members.map((member) => (
+              <button
+                type="button"
+                key={member.id}
+                id={member.id}
+                onClick={handleFilter}
+                className="button-modal-filter"
+              >
+                {member.firstname[0]}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

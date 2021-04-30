@@ -17,6 +17,7 @@ function WidgetContainer({
   showWidgetCreationModal,
   displayCreationModal,
   filteredMembers,
+  reinitializeWidget,
 }) {
   const handleClick = () => {
     showWidgetCreationModal();
