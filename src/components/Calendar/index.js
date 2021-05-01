@@ -8,7 +8,13 @@ import Day from './Day';
 import DaysNames from './DaysNames';
 import DateBrowser from './DateBrowser';
 
-const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
+const Calendar = ({
+  fetchAllWidgets,
+  range,
+  date,
+  dashboardWidgets,
+  setSelectedDateValue,
+}) => {
   const dailyWidgets = dailyWidgetsFilter(dashboardWidgets, range);
   const selectedDate = formatDate(date);
 
@@ -22,6 +28,7 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
         <div className="calendar__header">
           <h3 className="calendar__header__title">
             <DateBrowser
+              fetchAllWidgets={fetchAllWidgets}
               content="<"
               range={range}
               date={date}
@@ -31,6 +38,7 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
               {format(selectedDate, 'MMMM')} {format(selectedDate, 'yyyy')}
             </span>
             <DateBrowser
+              fetchAllWidgets={fetchAllWidgets}
               content=">"
               range={range}
               date={date}
@@ -63,14 +71,18 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
           <h3 className="calendar__header__title">
             {/* {format(selectedDate, 'wo')} Weeks :  */}
             <DateBrowser
+              fetchAllWidgets={fetchAllWidgets}
               content="<"
               range={range}
               date={date}
               setSelectedDateValue={setSelectedDateValue}
             />
-            Weeks from {format(startOfWeek(selectedDate), 'do MMM')} to{' '}
-            {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+            <span>
+              {format(startOfWeek(selectedDate), 'do MMM')} To{' '}
+              {format(endOfWeek(selectedDate), 'do MMM yyyy')}
+            </span>
             <DateBrowser
+              fetchAllWidgets={fetchAllWidgets}
               content=">"
               range={range}
               date={date}
@@ -99,13 +111,15 @@ const Calendar = ({ range, date, dashboardWidgets, setSelectedDateValue }) => {
       <div className="calendar__header">
         <h3 className="calendar__header__title">
           <DateBrowser
+            fetchAllWidgets={fetchAllWidgets}
             content="<"
             range={range}
             date={date}
             setSelectedDateValue={setSelectedDateValue}
           />
-          {format(selectedDate, 'EEEE do MMMM yyyy')}
+          <span>{format(selectedDate, 'EEEE do MMMM yyyy')}</span>
           <DateBrowser
+            fetchAllWidgets={fetchAllWidgets}
             content=">"
             range={range}
             date={date}
