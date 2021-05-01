@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const GroupSettingsForm = ({
   initialGroupName,
@@ -21,8 +22,9 @@ const GroupSettingsForm = ({
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="input-form">
       <Field
+        className="settings-input"
         name="groupName"
         type="text"
         placeholder="group name"
@@ -30,7 +32,9 @@ const GroupSettingsForm = ({
         onChange={changeField}
         maxLength="30"
       />
-      <button type="submit">Save</button>
+      <button type="submit" className="input-form__btn icon-btn">
+        <AiOutlineCheckCircle />
+      </button>
     </form>
   );
 };

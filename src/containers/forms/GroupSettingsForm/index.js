@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   email: state.settings.memberToChange.email,
   password: state.settings.memberToChange.password,
   role: state.settings.memberToChange.role,
-  icon: state.settings.memberToChange.icon,
+  color: state.settings.memberToChange.icon,
   colors: state.settings.usableColors,
 });
 

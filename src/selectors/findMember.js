@@ -8,3 +8,10 @@ export const removeGivenMember = (id = null, memberArray = []) => {
   const cleanMembers = memberArray.filter((member) => member.id !== Number(id));
   return cleanMembers;
 };
+
+export const findMemberbyFirstname = (firstName = null, memberArray = []) => {
+  const searchedMember = memberArray.find(
+    (member) => member.firstname === firstName
+  );
+  return searchedMember;
+};

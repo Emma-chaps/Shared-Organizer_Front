@@ -6,7 +6,6 @@ import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
 import { NavLink, withRouter } from 'react-router-dom';
 import WidgetContainer from 'src/containers/WidgetContainer';
-import './styles.scss';
 
 const Dashboard = ({
   getGroupData,

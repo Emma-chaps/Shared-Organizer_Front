@@ -6,10 +6,8 @@ import Field from 'src/components/forms/Field';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
-import { FiEdit2, FiTrash2, FiUserPlus } from 'react-icons/fi';
-import { FaUserAlt } from 'react-icons/fa';
-
-import './styles.scss';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { IoMdLock, IoMdCreate, IoMdTrash } from 'react-icons/io';
 
 const GroupSettings = ({
   initialGroupName,
@@ -80,129 +78,148 @@ const GroupSettings = ({
     <>
       <div className="settings-container">
         <h1 className="settings-container__title">Group Settings</h1>
-        {openedGroupNameInput ? (
-          <>
-            <GroupNameForm initialGroupName={initialGroupName} />
-            <button type="button" onClick={setGroupNameInputState}>
-              Cancel
-            </button>
-          </>
-        ) : (
-          <div className="settings-container__groupName">
-            <h2>Group name</h2>
-            <div>{initialGroupName}</div>
-            <button type="button" onClick={setGroupNameInputState}>
-              <FiEdit2 /> Edit group name
-            </button>
-          </div>
-        )}
-        <hr />
-        <h2>Group members</h2>
-        {members && (
-          <div className="flex-row">
-            <div className="data icon">Icon</div>
-            <div className="data firstname">Firstname</div>
-            <div className="data email">Email</div>
-            <div className="data role">Role</div>
-            <div className="data edit">Edit</div>
-          </div>
-        )}
-        {members?.map((member) => (
-          <div key={member.id} className="flex-row">
-            {openMembersInput[`id${member.id}`] ? (
-              <div>
-                <GroupSettingsForm
-                  member={member}
-                  onSubmit={handleSubmitUpdateMember}
-                  onClose={closeAllInput}
-                />
-              </div>
-            ) : (
-              <>
-                <div className="data icon">
-                  <FaUserAlt className={`icon-container--${member.icon}`} />
-                </div>
-                <div className="data firstname">{member.firstname}</div>
-                <div className="data email">{member.email}</div>
-                {member.role === 3 && <div className="data role">Admin</div>}
-                {member.role === 2 && <div className="data role">Editor</div>}
-                {member.role === 1 && <div className="data role">Visitor</div>}
-                <button
-                  type="button"
-                  onClick={handleOpenMemberInputView}
-                  data-id={member.id}
-                  className="data edit"
-                >
-                  <FiEdit2 />
-                </button>
+        <div className="settings-container__group-name">
+          <h2 className="settings-container__group-name__title">Group name</h2>
+          {openedGroupNameInput ? (
+            <div className="settings-container__group-name__form">
+              <GroupNameForm initialGroupName={initialGroupName} />
+              <button
+                type="button"
+                onClick={setGroupNameInputState}
+                className="btn icon-btn"
+              >
+                <AiOutlineCloseCircle />
+              </button>
+            </div>
+          ) : (
+            <div className="settings-container__group-name__content">
+              <div className="name">{initialGroupName}</div>
+              <button
+                type="button"
+                onClick={setGroupNameInputState}
+                className="btn icon-btn"
+              >
+                <IoMdCreate />
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="settings-container__group-members">
+          <h2 className="settings-container__group-members__title">
+            Group members
+          </h2>
+          {members?.map((member) => (
+            <div
+              key={member.id}
+              className="settings-container__group-members__member"
+            >
+              {openMembersInput[`id${member.id}`] ? (
                 <>
-                  <button
-                    type="button"
-                    onClick={openUpdateMemberModal}
-                    data-id={member.id}
-                    className="data edit"
-                  >
-                    Edit password
-                  </button>
-                  <Modal
-                    showModal={isOpenedUpdatePasswordModal}
-                    hideModal={hideUpdatePasswordModal}
-                  >
-                    <form>
-                      <Field
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={changeField}
-                      />
-                      <button
-                        type="button"
-                        onClick={handleUpdatePassword}
-                        data-id={member.id}
-                      >
-                        Save
-                      </button>
-                    </form>
-                  </Modal>
+                  <GroupSettingsForm
+                    member={member}
+                    onSubmit={handleSubmitUpdateMember}
+                    onClose={closeAllInput}
+                  />
                 </>
-                {member.role === 3 ? (
-                  <></>
-                ) : (
-                  <>
+              ) : (
+                <>
+                  <div className={`member-icon icon-container--${member.icon}`}>
+                    {member.firstname[0]}
+                  </div>
+                  <div className="member-data">{member.firstname}</div>
+                  <div className="member-data">{member.email}</div>
+                  {member.role === 3 && (
+                    <div className="member-data">Administrator</div>
+                  )}
+                  {member.role === 2 && (
+                    <div className="member-data">Editor</div>
+                  )}
+                  {member.role === 1 && (
+                    <div className="member-data">Visitor</div>
+                  )}
+                  <div className="member-icons">
                     <button
                       type="button"
-                      onClick={setIsOpenedAlertModal}
+                      onClick={handleOpenMemberInputView}
                       data-id={member.id}
-                      className="data edit"
+                      className="icon-btn"
                     >
-                      <FiTrash2 />
+                      <IoMdCreate />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={openUpdateMemberModal}
+                      data-id={member.id}
+                      className="icon-btn"
+                    >
+                      <IoMdLock />
                     </button>
                     <Modal
-                      showModal={isOpenedModalAlert}
-                      hideModal={hideAlertModal}
+                      showModal={isOpenedUpdatePasswordModal}
+                      hideModal={hideUpdatePasswordModal}
                     >
-                      <span>Do you want to delete {member.firstname} ?</span>
-                      <button type="button" onClick={hideAlertModal}>
-                        No
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleDeleteMember}
-                        data-id={member.id}
-                      >
-                        Yes
-                      </button>
+                      <form>
+                        <Field
+                          name="password"
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={changeField}
+                        />
+                        <button
+                          type="button"
+                          onClick={handleUpdatePassword}
+                          data-id={member.id}
+                        >
+                          Save
+                        </button>
+                      </form>
                     </Modal>
-                  </>
-                )}
-              </>
-            )}
-          </div>
-        ))}
+                    {member.role === 3 ? (
+                      <></>
+                    ) : (
+                      <>
+                        <button
+                          type="button"
+                          onClick={setIsOpenedAlertModal}
+                          data-id={member.id}
+                          className="icon-btn"
+                        >
+                          <IoMdTrash />
+                        </button>
+                        <Modal
+                          showModal={isOpenedModalAlert}
+                          hideModal={hideAlertModal}
+                        >
+                          <span>
+                            Do you want to delete {member.firstname} ?
+                          </span>
+                          <button type="button" onClick={hideAlertModal}>
+                            No
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleDeleteMember}
+                            data-id={member.id}
+                          >
+                            Yes
+                          </button>
+                        </Modal>
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
         <div>
-          <button type="button" onClick={handleOpenAddMember}>
-            <FiUserPlus /> Add a new member
+          <button
+            type="button"
+            onClick={handleOpenAddMember}
+            className="classic-btn"
+          >
+            Add member
           </button>
           <Modal showModal={isOpenedModal} hideModal={hideModal}>
             <AddAMemberForm />
