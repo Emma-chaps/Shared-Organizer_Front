@@ -53,12 +53,10 @@ const initialState = {
     role: 0,
   },
   colors: [
-    { name: 'red', value: 'Red' },
-    { name: 'yellow', value: 'Yellow' },
+    { name: 'dark', value: 'Dark' },
+    { name: 'light-blue', value: 'Light Blue' },
     { name: 'green', value: 'Green' },
-    { name: 'blue', value: 'Blue' },
-    { name: 'brown', value: 'Brown' },
-    { name: 'purple', value: 'Purple' },
+    { name: 'light-grey', value: 'Light Grey' },
   ],
   usableColors: [],
 };

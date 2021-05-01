@@ -19,7 +19,7 @@ const DashboardMenu = ({
   const [displayModal, setDisplayModal] = useState(false);
   const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
   const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 1000px)').matches,
+    window.matchMedia('(min-width: 1000px)').matches
   );
   useEffect(() => {
     const handler = (event) => setMatches(event.matches);
@@ -126,7 +126,7 @@ const DashboardMenu = ({
                 key={member.id}
                 id={member.id}
                 onClick={handleFilter}
-                className="button-modal-filter"
+                className={`button-modal-filter icon-container--${member.icon}`}
               >
                 {member.firstname[0]}
               </button>

@@ -27,7 +27,7 @@ function Widget({
   return (
     <article className="widget">
       <div className="visible-collapsed">
-        <span className="name-tag">{widget.author[0]}</span>
+        <span className="name-tag ">{widget.author[0]}</span>
         <header className="widget-header">
           <h2 className="widget__title">{widget.title}</h2>
           <p className="widget__author">Added by {widget.author}</p>{' '}
@@ -55,7 +55,9 @@ function Widget({
       <ul className="widget__members">
         {members?.map((member) => (
           <li key={member.id} className="widget__member">
-            <span className="name-tag">{member.firstname[0]}</span>
+            <span className={`icon-container--${member.icon}`}>
+              {member.firstname[0]}
+            </span>
           </li>
         ))}
       </ul>

@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
 import { FaUserAlt } from 'react-icons/fa';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 
 const GroupSettingsFrom = ({
   member,
   firstname,
   email,
   role,
-  icon,
+  color,
   changeField,
   onSubmit,
   onClose,
@@ -34,13 +35,13 @@ const GroupSettingsFrom = ({
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit} className="flex-row">
+    <>
+      <form onSubmit={onSubmit} className="member-form">
         <label htmlFor="icon">
           <select
             name="icon"
             id="icon"
-            value={icon}
+            value={color}
             onChange={handleChangeIcon}
             required
           >
@@ -52,8 +53,10 @@ const GroupSettingsFrom = ({
             ))}
           </select>
         </label>
-        <FaUserAlt className={`icon-container--${icon}`} />
+        <FaUserAlt className={`icon-container--${color}`} />
         <Field
+          className="settings-input"
+          label="firstname"
           name="firstname"
           type="text"
           placeholder="Firstname"
@@ -61,6 +64,8 @@ const GroupSettingsFrom = ({
           onChange={changeField}
         />
         <Field
+          className="settings-input"
+          label="email"
           name="email"
           type="email"
           placeholder="Email"
@@ -68,7 +73,7 @@ const GroupSettingsFrom = ({
           onChange={changeField}
         />
         {role === 3 ? (
-          <div>Admin</div>
+          <div className="member-data">Administrator</div>
         ) : (
           <label htmlFor="role">
             <select
@@ -84,12 +89,20 @@ const GroupSettingsFrom = ({
             </select>
           </label>
         )}
-        <button type="submit">Save</button>
-        <button type="button" onClick={onClose}>
-          Cancel
-        </button>
+        <div className="member-form__btns">
+          <button type="submit" className="color-icon-check icon-btn">
+            <AiOutlineCheckCircle />
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="color-icon-cancel icon-btn"
+          >
+            <AiOutlineCloseCircle />
+          </button>
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 GroupSettingsFrom.propTypes = {
@@ -97,7 +110,7 @@ GroupSettingsFrom.propTypes = {
   firstname: PropTypes.string,
   email: PropTypes.string,
   role: PropTypes.number,
-  icon: PropTypes.string,
+  color: PropTypes.string,
   changeField: PropTypes.func,
   copyMember: PropTypes.func,
 };
@@ -107,7 +120,7 @@ GroupSettingsFrom.defaultProps = {
   firstname: '',
   email: '',
   role: 0,
-  icon: '',
+  color: '',
   changeField: () => {},
   copyMember: () => {},
   updateMember: () => {},

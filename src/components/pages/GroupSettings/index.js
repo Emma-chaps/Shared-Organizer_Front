@@ -6,11 +6,8 @@ import Field from 'src/components/forms/Field';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
-import { FiEdit2, FiTrash2, FiUserPlus } from 'react-icons/fi';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { IoMdLock, IoMdCreate, IoMdTrash } from 'react-icons/io';
-
-import './styles.scss';
 
 const GroupSettings = ({
   initialGroupName,
@@ -111,35 +108,28 @@ const GroupSettings = ({
           <h2 className="settings-container__group-members__title">
             Group members
           </h2>
-          {/* {members && (
-            <div className="flex-row">
-              <div className="data icon">Icon</div>
-              <div className="data firstname">Firstname</div>
-              <div className="data email">Email</div>
-              <div className="data role">Role</div>
-              <div className="data edit">Edit</div>
-            </div>
-          )} */}
           {members?.map((member) => (
             <div
               key={member.id}
               className="settings-container__group-members__member"
             >
               {openMembersInput[`id${member.id}`] ? (
-                <div>
+                <>
                   <GroupSettingsForm
                     member={member}
                     onSubmit={handleSubmitUpdateMember}
                     onClose={closeAllInput}
                   />
-                </div>
+                </>
               ) : (
                 <>
-                  <div className="member-icon">{member.firstname[0]}</div>
+                  <div className={`member-icon icon-container--${member.icon}`}>
+                    {member.firstname[0]}
+                  </div>
                   <div className="member-data">{member.firstname}</div>
                   <div className="member-data">{member.email}</div>
                   {member.role === 3 && (
-                    <div className="member-data">Admin</div>
+                    <div className="member-data">Administrator</div>
                   )}
                   {member.role === 2 && (
                     <div className="member-data">Editor</div>
@@ -164,66 +154,72 @@ const GroupSettings = ({
                     >
                       <IoMdLock />
                     </button>
-                  </div>
-                  <Modal
-                    showModal={isOpenedUpdatePasswordModal}
-                    hideModal={hideUpdatePasswordModal}
-                  >
-                    <form>
-                      <Field
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={changeField}
-                      />
-                      <button
-                        type="button"
-                        onClick={handleUpdatePassword}
-                        data-id={member.id}
-                      >
-                        Save
-                      </button>
-                    </form>
-                  </Modal>
-                  {member.role === 3 ? (
-                    <></>
-                  ) : (
-                    <>
-                      <button
-                        type="button"
-                        onClick={setIsOpenedAlertModal}
-                        data-id={member.id}
-                        className="data edit"
-                      >
-                        <IoMdTrash />
-                      </button>
-                      <Modal
-                        showModal={isOpenedModalAlert}
-                        hideModal={hideAlertModal}
-                      >
-                        <span>Do you want to delete {member.firstname} ?</span>
-                        <button type="button" onClick={hideAlertModal}>
-                          No
-                        </button>
+                    <Modal
+                      showModal={isOpenedUpdatePasswordModal}
+                      hideModal={hideUpdatePasswordModal}
+                    >
+                      <form>
+                        <Field
+                          name="password"
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={changeField}
+                        />
                         <button
                           type="button"
-                          onClick={handleDeleteMember}
+                          onClick={handleUpdatePassword}
                           data-id={member.id}
                         >
-                          Yes
+                          Save
                         </button>
-                      </Modal>
-                    </>
-                  )}
+                      </form>
+                    </Modal>
+                    {member.role === 3 ? (
+                      <></>
+                    ) : (
+                      <>
+                        <button
+                          type="button"
+                          onClick={setIsOpenedAlertModal}
+                          data-id={member.id}
+                          className="icon-btn"
+                        >
+                          <IoMdTrash />
+                        </button>
+                        <Modal
+                          showModal={isOpenedModalAlert}
+                          hideModal={hideAlertModal}
+                        >
+                          <span>
+                            Do you want to delete {member.firstname} ?
+                          </span>
+                          <button type="button" onClick={hideAlertModal}>
+                            No
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleDeleteMember}
+                            data-id={member.id}
+                          >
+                            Yes
+                          </button>
+                        </Modal>
+                      </>
+                    )}
+                  </div>
                 </>
               )}
             </div>
           ))}
         </div>
         <div>
-          <button type="button" onClick={handleOpenAddMember}>
-            <FiUserPlus /> Add a new member
+          <button
+            type="button"
+            onClick={handleOpenAddMember}
+            className="classic-btn"
+          >
+            Add member
           </button>
           <Modal showModal={isOpenedModal} hideModal={hideModal}>
             <AddAMemberForm />

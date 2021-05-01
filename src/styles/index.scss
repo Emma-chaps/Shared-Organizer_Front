@@ -361,7 +361,11 @@ body {
 
       .widget__member {
         span {
-          @include name-tag($size: 1.5rem, $font-size: 0.75rem);
+          @include name-tag(
+            $size: 1.5rem,
+            $font-size: 0.75rem,
+            $background: none
+          );
           margin-left: 0.3rem;
         }
       }
@@ -372,7 +376,7 @@ body {
     position: fixed;
     top: 90%;
     right: 2rem;
-    z-index: 10;
+    z-index: 1;
     border: none;
     height: 3rem;
     width: 3rem;
@@ -392,76 +396,72 @@ body {
 }
 
 //////////////// MODAL ////////////////
-
 .modal {
-  background-color: $white;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 50px;
-  bottom: 0;
-  right: 0;
+  z-index: 20;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
   left: 0;
-  width: 90%;
-  margin: 0 5%;
-  border-radius: 5px;
-  z-index: 3;
+  right: 0;
+  bottom: 0;
+  transition: opacity 300ms ease-in-out;
+
   &--hidden {
     display: none;
   }
 
-  &__header {
-    box-sizing: content-box;
-    width: 100%;
-    .close {
-      display: inline-block;
-      width: 2rem;
-      height: 2rem;
-      position: absolute;
-      right: 0;
-      cursor: pointer;
+  &__container {
+    position: absolute;
+    top: 5%;
+    max-height: 90vh;
+    min-width: 90vw;
+    margin: 0 5%;
+    border-radius: 5px;
+    background-color: $white;
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    pointer-events: auto;
 
-      // &:before {
-      //   content: 'X';
-      //   font-weight: 900;
-      //   width: 24px;
-      //   height: 24px;
-      //   position: absolute;
-      //   top: 5px;
-      //   right: 7px;
-      // }
+    &__header {
+      box-sizing: content-box;
+      width: 100%;
+
+      .close {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        position: fixed;
+        top: 35px;
+        right: 20px;
+        cursor: pointer;
+        transition: all 50ms ease-in-out;
+        &:hover {
+          color: rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+    &__content {
+      box-sizing: border-box;
+      width: 100%;
     }
   }
-
-  &__content {
-    box-sizing: border-box;
-    width: 100%;
-  }
 }
-
-// .modal::before {
-//   content: '';
-//   position: fixed;
-//   z-index: -1;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   background: rgba(#404939, 0.5);
-// }
 
 //////////////// GROUP SETTINGS ////////////////
 .settings-container {
   padding: 1rem;
   text-align: center;
   &__title {
-    margin: 1rem 0 1.5rem 0;
+    margin: 1rem 0 2rem 0;
     font-size: 1.4em;
     font-weight: bold;
     text-transform: uppercase;
   }
   &__group-name {
-    padding-bottom: 2.5rem;
+    padding-bottom: 2rem;
 
     &__title {
       color: $light-blue;
@@ -507,7 +507,7 @@ body {
       border-radius: 5px;
       margin-bottom: 1rem;
       .member-icon {
-        @include name-tag($font-size: 0.75rem, $size: 2rem);
+        @include name-tag($font-size: 0.75rem, $size: 2rem, $background: none);
         margin-bottom: 0.4rem;
       }
       .member-data {
@@ -515,6 +515,12 @@ body {
       }
       .member-icons {
         @include flex();
+      }
+      .member-form {
+        @include flex($direction: column);
+        &__btns {
+          @include flex();
+        }
       }
     }
   }
@@ -550,6 +556,31 @@ body {
 
 .icon {
   width: 100%;
+}
+
+//////////////// COLOR ICONS ////////////////
+.color-icon-check {
+  color: green;
+}
+
+.color-icon-cancel {
+  color: red;
+}
+
+.icon-container--dark {
+  background-color: #2e2e2e;
+}
+
+.icon-container--light-blue {
+  background-color: #8bc6dc;
+}
+
+.icon-container--green {
+  background-color: #5a7247;
+}
+
+.icon-container--light-grey {
+  background-color: #8b8b8b;
 }
 
 //////////////// DASHBOARD MENU ////////////////
@@ -601,7 +632,7 @@ body {
       -webkit-backdrop-filter: blur(7px);
 
       .button-modal-filter {
-        @include name-tag($font-size: 0.75rem, $size: 2rem);
+        @include name-tag($font-size: 0.75rem, $size: 2rem, $background: none);
         margin: 0.5rem;
       }
     }

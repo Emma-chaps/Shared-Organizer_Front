@@ -9,10 +9,12 @@ const Modal = ({ showModal, children, hideModal }) => {
 
   return (
     <div className={classes}>
-      <div className="modal__header">
-        <MdClose className="close" onClick={hideModal} />
+      <div className="modal__container">
+        <div className="modal__container__header">
+          <MdClose className="close" onClick={hideModal} />
+        </div>
+        <div className="modal__container__content">{children}</div>
       </div>
-      <div className="modal__content">{children}</div>
     </div>
   );
 };
