@@ -6,7 +6,7 @@ import Field from 'src/components/forms/Field';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import { IoMdLock, IoMdCreate, IoMdTrash } from 'react-icons/io';
 
 const GroupSettings = ({
@@ -158,22 +158,30 @@ const GroupSettings = ({
                       showModal={isOpenedUpdatePasswordModal}
                       hideModal={hideUpdatePasswordModal}
                     >
-                      <form>
-                        <Field
-                          name="password"
-                          type="password"
-                          placeholder="Password"
-                          value={password}
-                          onChange={changeField}
-                        />
-                        <button
-                          type="button"
-                          onClick={handleUpdatePassword}
-                          data-id={member.id}
+                      <div className="container-password-confirm ">
+                        <h4 className="container-password-confirm__subtitle">
+                          Update password ?
+                        </h4>
+                        <form
+                          onSubmit={handleUpdatePassword}
+                          className="container-password-confirm__form"
                         >
-                          Save
-                        </button>
-                      </form>
+                          <Field
+                            className="container-password-confirm__form__input"
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={changeField}
+                          />
+                          <button
+                            className="container-password-confirm__form__btn classic-btn"
+                            type="submit"
+                            data-id={member.id}
+                          >
+                            Update
+                          </button>
+                        </form>
+                      </div>
                     </Modal>
                     {member.role === 3 ? (
                       <></>

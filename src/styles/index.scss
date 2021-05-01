@@ -34,7 +34,6 @@ body {
   bottom: 0;
 }
 
-
 .calendar-widget-container {
   height: 82vh;
   position: relative;
@@ -48,7 +47,6 @@ body {
     width: 100%;
   }
 }
-
 
 //////////////// HOME ////////////////
 
@@ -315,7 +313,6 @@ body {
     height: 100%;
     @include flex($direction: column, $justify: space-around);
     max-width: 1600px;
-
   }
 }
 
@@ -347,7 +344,6 @@ body {
     overflow: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     pointer-events: auto;
-
 
     &__header {
       box-sizing: content-box;
@@ -444,11 +440,16 @@ body {
       .member-form {
         @include flex($direction: column);
         &__select {
-          display: flex;
+          width: 100%;
+          padding-bottom: 0.5rem;
+          text-transform: capitalize;
+          text-align: left;
           justify-content: flex-start;
           &__icon {
             font-size: 0.7em;
             font-weight: bold;
+          }
+          &__form {
           }
         }
         &__btns {
@@ -519,13 +520,12 @@ body {
 //////////////// DASHBOARD MENU ////////////////
 .menu {
   @include flex($justify: space-between);
-  padding: .25rem .75rem;
+  padding: 0.25rem 0.75rem;
   position: relative;
   z-index: 5;
   @media (min-width: 1000px) {
     width: 100%;
   }
-
 
   .menu__datePicker {
     border: none;
@@ -540,7 +540,7 @@ body {
   .member-filter {
     position: relative;
     z-index: 15;
- 
+
     &__btn {
       @include flex($direction: column);
       border-radius: 50%;
@@ -644,7 +644,6 @@ body {
     padding: 0 1rem;
   }
   @media (min-width: 1000px) {
-
   }
   // @media (min-width: 1000px) {
   //   // min-height: 1200px;
@@ -656,17 +655,17 @@ body {
     color: $dark;
     &__title {
       button {
-          background-color: transparent;
-          border: none;
-          font-weight: bold;
-          font-size: 1rem;
-          color: $dark;
-        }
-        span {
-          color: $dark;
-          font-weight: bold;
-          text-transform: uppercase;
-        }
+        background-color: transparent;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        color: $dark;
+      }
+      span {
+        color: $dark;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
     }
   }
   &__content {
@@ -688,7 +687,7 @@ body {
       grid-template-rows: minmax(30px, 40px);
       column-gap: 4px;
       @media (min-width: 1000px) {
-        grid-template-rows: minmax(60px,70px);
+        grid-template-rows: minmax(60px, 70px);
         column-gap: 10px;
       }
       @media (min-width: 1200px) {
@@ -705,7 +704,6 @@ body {
         padding: 2px;
         @media (min-width: 1000px) {
           border-radius: 13px;
-
         }
         .day-number {
           position: absolute;
@@ -715,7 +713,7 @@ body {
           @media (min-width: 1000px) {
             bottom: 5px;
             right: 5px;
-            font-size: 25px;    
+            font-size: 25px;
           }
         }
         .calendar-members-concerned {
@@ -745,7 +743,6 @@ body {
 
 ////////WIDGETS////////////////////////////
 
-
 .add-widget-btn {
   position: fixed;
   bottom: 10px;
@@ -761,13 +758,13 @@ body {
     30deg,
     rgba(139, 198, 220, 1) 57%,
     rgba(255, 255, 255, 1) 100%
-    );
+  );
   @include flex;
-  @media (min-width:700px) {
+  @media (min-width: 700px) {
     bottom: 20px;
     right: 20px;
   }
-  @media (min-width:1000px) {
+  @media (min-width: 1000px) {
     position: fixed;
     top: 120px;
     left: 88%;
@@ -780,17 +777,17 @@ body {
   background-color: $white;
   border-radius: 10px;
   overflow-y: auto;
-  padding-top: .75rem;
+  padding-top: 0.75rem;
   padding-bottom: 300px;
-  margin-top: .5rem;
-  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
-    box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
-  @media (min-width:700px) {
-    @include flex($align: flex-start, $justify:flex-start);
+  margin-top: 0.5rem;
+  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+  @media (min-width: 700px) {
+    @include flex($align: flex-start, $justify: flex-start);
     flex-wrap: wrap;
     // width: 700px;
   }
-  @media (min-width:1000px) {
+  @media (min-width: 1000px) {
     max-height: 70%;
     min-width: 100%;
     display: grid;
@@ -801,39 +798,39 @@ body {
   }
 
   .widget {
-    -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
-    box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
     border-radius: $border-radius;
-    padding: 0 .5rem;
-    padding-bottom: .75rem;
+    padding: 0 0.5rem;
+    padding-bottom: 0.75rem;
     width: 95%;
     margin: auto;
-    margin-bottom: .75rem;
-    @media (min-width:700px) {
+    margin-bottom: 0.75rem;
+    @media (min-width: 700px) {
       width: 46%;
       margin: auto;
       margin-bottom: 10px;
     }
-    @media (min-width:1000px) {
+    @media (min-width: 1000px) {
       width: 100%;
     }
-    .visible-collapsed{
+    .visible-collapsed {
       @include flex;
       .name-tag {
         @include name-tag;
         margin-right: 1rem;
       }
       .widget-header {
-        padding: .75rem 0;
+        padding: 0.75rem 0;
         .widget__title {
           font-weight: bold;
           font-size: 1.2em;
           text-transform: capitalize;
-          padding-bottom: .25rem;
+          padding-bottom: 0.25rem;
         }
         .widget__author {
           font-style: italic;
-          font-size: .8em;
+          font-size: 0.8em;
         }
       }
       .edit-delete-btns {
@@ -844,27 +841,47 @@ body {
           font-size: 1.1em;
         }
       }
-    }              
+    }
     &__description {
-      padding: 1rem .5rem;
+      padding: 1rem 0.5rem;
     }
     .widget__members {
-      @include flex($justify: flex-end); 
+      @include flex($justify: flex-end);
       margin-right: 50px;
       .widget__member {
         span {
-          @include name-tag($size: 1.5rem, $font-size: .75rem);
-          margin-left: .3rem;
+          @include name-tag($size: 1.5rem, $font-size: 0.75rem);
+          margin-left: 0.3rem;
         }
       }
     }
   }
 }
 
+/////////////// FORM SELECT ///////////////////////
+
+/////////////// FORM ///////////////////////
+.container-form {
+  padding: 1rem;
+  text-align: center;
+  &__title {
+    margin: 1rem 0 2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &__subtitle {
+    margin: 1rem 0 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+}
+
 .form-select {
   font-size: 0.8em;
   line-height: 1.3;
-  padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  padding: 0.5rem 0.2rem;
   min-width: 100%;
   max-width: 100%;
   border-bottom: 1px solid $dark;
@@ -873,4 +890,80 @@ body {
   border-left: none;
   background-color: $white;
   margin-bottom: 0.3rem;
+}
+
+.member-form {
+  @include flex($direction: column);
+  &__select {
+    width: 100%;
+    padding-bottom: 0.5rem;
+    text-transform: capitalize;
+    text-align: left;
+    justify-content: flex-start;
+    &__icon {
+      font-size: 0.7em;
+      font-weight: bold;
+    }
+    &__form {
+    }
+  }
+  &__btns {
+    @include flex();
+  }
+}
+
+.widget-settings {
+  &__input {
+    width: 100%;
+    padding-bottom: 0.5rem;
+    text-transform: capitalize;
+    text-align: left;
+
+    label {
+      width: 100%;
+      font-size: 0.7em;
+      font-weight: bold;
+      color: $dark;
+      padding-left: 0.5rem;
+      background-color: $white;
+      position: relative;
+      top: -1px;
+
+      input {
+        width: 100%;
+        background-color: transparent;
+        border-bottom: 1px $dark solid;
+        padding: 0.5rem;
+      }
+    }
+  }
+  &__text-area {
+  }
+}
+
+.container-password-confirm {
+  padding: 1rem;
+  text-align: center;
+  &__subtitle {
+    margin: 1rem 0 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &__form {
+    &__input {
+      width: 100%;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      margin-bottom: 1rem;
+      label {
+        input {
+          width: 100%;
+          border: 1px $dark solid;
+          padding: 0.5rem;
+        }
+      }
+    }
+    &__btn {
+    }
+  }
 }
