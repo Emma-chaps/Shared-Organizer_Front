@@ -51,53 +51,55 @@ const WidgetCreationForm = ({
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h2 className="form__title">Create Your Widget</h2>
+    <div className="container-form">
+      <h2 className="container-form__title">Create Your Widget</h2>
+      <form onSubmit={handleSubmit} className="member-form">
+        <Field
+          className="widget-settings__input"
+          name="title"
+          type="text"
+          label="title"
+          value={widgetTitle}
+          onChange={changeField}
+        />
+        <label htmlFor="description">
+          description
+          <textarea
+            placeholder="optional: add a description"
+            value={widgetDescription}
+            onChange={getTextareaValue}
+            name="description"
+            className="settings-text-area"
+          />
+        </label>
+        <div className="form__group">
+          <h3 className="form__group__subtitle form__subtitle">
+            Assign group members
+          </h3>
+          <ul className="form__group__list">
+            {members.map((member) => (
+              <li className="form__group__list--member" key={member.id}>
+                <FaUserAlt />
+                <button type="button" onClick={handleAddMember} id={member.id}>
+                  add {member.firstname}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <Field
-        name="title"
-        type="text"
-        placeholder="add a title"
-        value={widgetTitle}
-        onChange={changeField}
-        className="form__widget form__widget-title"
-      />
-
-      <textarea
-        placeholder="optional: add a description"
-        value={widgetDescription}
-        onChange={getTextareaValue}
-        name="description"
-        className="form__widget form__widget-description"
-      />
-
-      <div className="form__group">
-        <h3 className="form__group__subtitle form__subtitle">
-          Assign group members
-        </h3>
-        <ul className="form__group__list">
-          {members.map((member) => (
-            <li className="form__group__list--member" key={member.id}>
-              <FaUserAlt />
-              <button type="button" onClick={handleAddMember} id={member.id}>
-                add {member.firstname}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="form__submit">
-        <span>{errorMessage}</span>
-        <button
-          type="button"
-          className="form__submit__publish form__submit__button"
-          onClick={handleSubmit}
-        >
-          Publish
-        </button>
-      </div>
-    </form>
+        <div className="form__submit">
+          <span>{errorMessage}</span>
+          <button
+            type="button"
+            className="form__submit__publish form__submit__button"
+            onClick={handleSubmit}
+          >
+            Publish
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
