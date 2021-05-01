@@ -561,7 +561,7 @@ body {
         padding: 2px;
         @media (min-width: 1000px) {
           border-radius: 13px;
-          
+
         }
         .day-number {
           position: absolute;
@@ -583,7 +583,7 @@ body {
           color: $white;
           text-transform: uppercase;
           @include flex;
-          @media (min-width: 1000px) {
+          @media (min-width: 1200px) {
             font-size: 15px;
             width: 20px;
             height: 20px;
@@ -624,9 +624,9 @@ body {
     right: 20px;
   }
   @media (min-width:1000px) {
-    position: sticky;
-    bottom: 5px;
-    left: 95%;
+    position: fixed;
+    top: 120px;
+    left: 88%;
   }
 }
 .widgets {
@@ -647,7 +647,7 @@ body {
     // width: 700px;
   }
   @media (min-width:1000px) {
-    height: 80%;
+    max-height: 70%;
     min-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
