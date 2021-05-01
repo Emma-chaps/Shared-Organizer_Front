@@ -37,9 +37,14 @@ body {
 .calendar-widget-container {
   height: 82vh;
   position: relative;
-  @media (min-width: 1000px) {
-    @include flex();
-    height: 80%;
+  @media (min-width: 1200px) {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 0 30px;
+    width: 100%;
   }
 }
 
@@ -493,6 +498,14 @@ body {
   @media (min-height: 700px) {
     padding: 0 1rem;
   }
+  @media (min-height: 1000px) {
+    margin: auto;
+    width: 700px;
+  }
+  @media (min-height: 1000px) {
+    min-height: 1200px;
+    height: 100%;
+  }
   &__header {
     width: 100%;
     @include flex;
@@ -531,14 +544,21 @@ body {
         // grid-template-rows: minmax(40px, 55px);
         column-gap: 8px;
       }
+      @media (min-height: 1200px) {
+        grid-template-columns: repeat(7, 50px);
+        grid-template-rows: 50px;
+      }
       &__day {
         background-color: $white;
         border-radius: 3px;
-        overflow: scroll;
+        overflow: auto;
         position: relative;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         padding: 2px;
+        @media (min-height: 1200px) {
+      
+        }
         .day-number {
           position: absolute;
           bottom: 1px;
@@ -584,6 +604,10 @@ body {
     bottom: 20px;
     right: 20px;
   }
+  @media (min-width:700px) {
+    bottom: 120px;
+    right: 100px;
+  }
 }
 .widgets {
   position: relative;
@@ -595,10 +619,23 @@ body {
   padding-top: .75rem;
   padding-bottom: 300px;
   margin-top: .5rem;
+  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
+    box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
   @media (min-width:700px) {
     @include flex($align: flex-start, $justify:flex-start);
     flex-wrap: wrap;
+    // width: 700px;
   }
+  @media (min-width:1200px) {
+    min-height: 100%;
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    gap: 20px;
+    grid-auto-flow: dense;
+  }
+
   .widget {
     -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
     box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
@@ -612,6 +649,9 @@ body {
       width: 46%;
       margin: auto;
       margin-bottom: 10px;
+    }
+    @media (min-width:1200px) {
+      width: 100%;
     }
     .visible-collapsed{
       @include flex;
