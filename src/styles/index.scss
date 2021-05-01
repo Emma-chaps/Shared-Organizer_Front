@@ -624,8 +624,9 @@ body {
     right: 20px;
   }
   @media (min-width:1000px) {
-    top: 100px;
-    left: 55%;
+    position: sticky;
+    bottom: 5px;
+    left: 95%;
   }
 }
 .widgets {
