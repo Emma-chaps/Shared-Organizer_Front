@@ -37,8 +37,12 @@ const GroupSettingsFrom = ({
   return (
     <>
       <form onSubmit={onSubmit} className="member-form">
-        <label htmlFor="icon">
+        <div className="member-form__select">
+          <label htmlFor="icon" className="member-form__select__icon">
+            Color
+          </label>
           <select
+            className="form-select"
             name="icon"
             id="icon"
             value={color}
@@ -52,8 +56,8 @@ const GroupSettingsFrom = ({
               </option>
             ))}
           </select>
-        </label>
-        <FaUserAlt className={`icon-container--${color}`} />
+        </div>
+        {/* <FaUserAlt className={`icon-container--${color}`} /> */}
         <Field
           className="settings-input"
           label="firstname"
@@ -77,6 +81,7 @@ const GroupSettingsFrom = ({
         ) : (
           <label htmlFor="role">
             <select
+              className="form-select"
               name="role"
               id="role"
               value={role}

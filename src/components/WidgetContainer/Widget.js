@@ -11,6 +11,7 @@ function Widget({
   showWidgetCreationModal,
   hideWidgetCreationModal,
   displayCreationModal,
+  colorMember,
 }) {
   const [displayEdit, setDisplayEdit] = useState(false);
 
@@ -27,16 +28,18 @@ function Widget({
   return (
     <article className="widget">
       <div className="visible-collapsed">
-        <span className="name-tag ">{widget.author[0]}</span>
+        <span className={`name-tag icon-container--${colorMember?.icon}`}>
+          {widget?.author[0]}
+        </span>
         <header className="widget-header">
-          <h2 className="widget__title">{widget.title}</h2>
-          <p className="widget__author">Added by {widget.author}</p>{' '}
+          <h2 className="widget__title">{widget?.title}</h2>
+          <p className="widget__author">Added by {widget?.author}</p>{' '}
         </header>
         <div className="edit-delete-btns">
           <button
             type="button"
             className="button-change button-edit"
-            id={widget.id}
+            id={widget?.id}
             onClick={handleEdit}
           >
             <FiEdit2 />
@@ -44,18 +47,18 @@ function Widget({
           <button
             type="button"
             className="button-change button-delete"
-            id={widget.id}
+            id={widget?.id}
             onClick={handleDelete}
           >
             <FiTrash2 />
           </button>
         </div>
       </div>
-      <p className="widget__description">{widget.description}</p>
+      <p className="widget__description">{widget?.description}</p>
       <ul className="widget__members">
         {members?.map((member) => (
           <li key={member.id} className="widget__member">
-            <span className={`icon-container--${member.icon}`}>
+            <span className={`icon-container--${member?.icon}`}>
               {member.firstname[0]}
             </span>
           </li>

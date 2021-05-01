@@ -98,7 +98,9 @@ const DashboardMenu = ({
               onClick={handleFilter}
               className="menu__members--btn"
             >
-              <span className="letter">{member.firstname[0]}</span>
+              <span className={`letter icon-container--${member.icon}`}>
+                {member.firstname[0]}
+              </span>
               <span className="member-firstname">{member.firstname}</span>
             </div>
           ))}

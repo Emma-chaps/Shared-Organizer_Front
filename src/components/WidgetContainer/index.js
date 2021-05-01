@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   RangeWidgetFilter,
   MemberWidgetFilter,
 } from 'src/selectors/filterWidgets';
+import { findMemberbyFirstname } from 'src/selectors/findMember';
 import Widget from './Widget';
-import './styles.scss';
 
 function WidgetContainer({
   range,
@@ -27,7 +27,7 @@ function WidgetContainer({
   let filteredWidgets = RangeWidgetFilter(
     dashboardWidgets,
     selectedDateValue,
-    range,
+    range
   );
 
   if (filteredMembers.length === 1) {
@@ -41,6 +41,10 @@ function WidgetContainer({
           key={widgetData.id}
           widget={widgetData}
           editWidget={editWidget}
+          colorMember={findMemberbyFirstname(
+            widgetData?.author,
+            widgetData?.members
+          )}
           deleteWidget={deleteWidget}
           copyWidgetToEdit={copyWidgetToEdit}
           displayCreationModal={displayCreationModal}

@@ -323,7 +323,7 @@ body {
       @include flex($justify: flex-start);
 
       .name-tag {
-        @include name-tag;
+        @include name-tag($background: none);
         margin-right: 1rem;
       }
 
@@ -518,6 +518,14 @@ body {
       }
       .member-form {
         @include flex($direction: column);
+        &__select {
+          display: flex;
+          justify-content: flex-start;
+          &__icon {
+            font-size: 0.7em;
+            font-weight: bold;
+          }
+        }
         &__btns {
           @include flex();
         }
@@ -649,7 +657,11 @@ body {
       margin-left: 1.5rem;
 
       .letter {
-        @include name-tag($size: 1.5rem, $font-size: 0.75rem);
+        @include name-tag(
+          $size: 1.5rem,
+          $font-size: 0.75rem,
+          $background: none
+        );
         margin-right: 0.25rem;
       }
       .member-firstname {
@@ -759,4 +771,18 @@ body {
       }
     }
   }
+}
+
+.form-select {
+  font-size: 0.8em;
+  line-height: 1.3;
+  padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  min-width: 100%;
+  max-width: 100%;
+  border-bottom: 1px solid $dark;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: $white;
+  margin-bottom: 0.3rem;
 }
