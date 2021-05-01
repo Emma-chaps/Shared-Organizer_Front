@@ -19,19 +19,21 @@ body {
 }
 
 .app {
-  height: 100vh;
+  // height: 100vh;
+  height: 100%;
+  overflow: hidden;
   @include flex($direction: column, $justify: flex-start);
   position: relative;
 }
 
 
 .calendar-widget-container {
-  height: 80vh;
+  height: 82vh;
+  position: relative;
   @media (min-width: 1000px) {
     @include flex();
     height: 80%;
   }
-
 }
 
 
@@ -496,6 +498,8 @@ body {
   display: none;
 }
 
+/////////CALENDAR///////////////////////////
+
 .calendar {
   // min-height: 265px;
   width: 100%;
@@ -562,6 +566,8 @@ body {
   }
 }
 
+////////WIDGETS////////////////////////////
+
 // .widgets-add-btn-container {
 //   width: 100%;
 //   position: relative;
@@ -583,15 +589,31 @@ body {
       rgba(139, 198, 220, 1) 57%,
       rgba(255, 255, 255, 1) 100%
       );
-      @include flex;
+    @include flex;
+    @media (min-width:700px) {
+      bottom: 20px;
+      right: 20px;
     }
+  }
   .widgets {
-    height: 110%;
+    height: 265px;
     width: 100%;
     background-color: $white;
     border-radius: 10px;
     overflow: auto;
     padding-top: .75rem;
+    padding-bottom: 300px;
+    margin-top: .5rem;
+    @media (min-width:700px) {
+      // @include flex($justify: stretch);
+      // flex-wrap: wrap;
+      padding: 0;
+      padding: 20px;
+      padding-bottom: 30px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 20px;
+    }
     .widget {
       -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
       box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
@@ -601,6 +623,10 @@ body {
       width: 95%;
       margin: auto;
       margin-bottom: .75rem;
+      @media (min-width:700px) {
+        width: 100%;
+        margin: 0;
+      }
       .visible-collapsed{
         @include flex;
         .name-tag {
