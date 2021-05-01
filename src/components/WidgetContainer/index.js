@@ -50,11 +50,12 @@ function WidgetContainer({
             hideWidgetCreationModal={hideWidgetCreationModal}
           />
         ))}
+        <button type="button" onClick={handleClick} className="add-widget-btn">
+          +
+        </button>
       </div>
-      <button type="button" onClick={handleClick} className="add-widget-btn">
-        +
-      </button>
       {/* </div> */}
+      <br />
     </>
   );
 }
