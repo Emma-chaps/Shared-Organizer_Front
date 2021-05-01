@@ -14,6 +14,7 @@ const Calendar = ({
   date,
   dashboardWidgets,
   setSelectedDateValue,
+  setRange,
 }) => {
   const dailyWidgets = dailyWidgetsFilter(dashboardWidgets, range);
   const selectedDate = formatDate(date);
@@ -56,6 +57,8 @@ const Calendar = ({
                   key={format(day, 'd')}
                   day={day}
                   widgets={dailyWidgets}
+                  setSelectedDateValue={setSelectedDateValue}
+                  setRange={setRange}
                 />
               ))}
             </div>
@@ -99,6 +102,8 @@ const Calendar = ({
                 key={format(day, 'd')}
                 day={day}
                 widgets={dailyWidgets}
+                setSelectedDateValue={setSelectedDateValue}
+                setRange={setRange}
               />
             ))}
           </div>

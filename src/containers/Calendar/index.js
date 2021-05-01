@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Calendar from 'src/components/Calendar';
-import { setSelectedDateValue } from 'src/actions/calendar';
+import { setSelectedDateValue, setRange } from 'src/actions/calendar';
 import { fetchAllWidgets } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setSelectedDateValue: (dateValue) =>
     dispatch(setSelectedDateValue(dateValue)),
+  setRange: (value) => dispatch(setRange(value)),
   fetchAllWidgets: (dateValue) => dispatch(fetchAllWidgets(dateValue)),
 });
 

@@ -6,6 +6,9 @@ import GroupSettings from 'src/containers/pages/GroupSettings';
 import { findMember } from 'src/selectors/findMember';
 import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FiEdit2 } from 'react-icons/fi';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { format } from 'date-fns';
 
 const DashboardMenu = ({
   groupName,
@@ -19,7 +22,7 @@ const DashboardMenu = ({
   const [displayModal, setDisplayModal] = useState(false);
   const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
   const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 1000px)').matches
+    window.matchMedia('(min-width: 1000px)').matches,
   );
   useEffect(() => {
     const handler = (event) => setMatches(event.matches);
@@ -55,8 +58,13 @@ const DashboardMenu = ({
     'hidden-members-modal': displayHiddenMembers,
   });
 
+  const handleCalendar = (date) => {
+    console.log(format(date, 'yyyy-MM-dd'));
+  };
+
   return (
     <div className="menu">
+      <Calendar onChange={handleCalendar} />
       <input
         type="date"
         name="selectedDate"
