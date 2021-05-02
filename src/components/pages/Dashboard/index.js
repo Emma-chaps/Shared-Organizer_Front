@@ -16,6 +16,10 @@ const Dashboard = ({
   reinitializeWidget,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
+  const handleClick = () => {
+    showWidgetCreationModal();
+    reinitializeWidget();
+  };
 
   useEffect(() => {
     getGroupData();
@@ -30,8 +34,14 @@ const Dashboard = ({
         <section className="calendar-widget-container">
           <Calendar />
           <WidgetContainer />
+          <button
+            type="button"
+            onClick={handleClick}
+            className="add-widget-btn"
+          >
+            +
+          </button>
         </section>
-
       </main>
       <Modal
         showModal={displayCreationModal}
