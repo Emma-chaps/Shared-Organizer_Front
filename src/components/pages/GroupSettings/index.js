@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Modal from 'src/components/Modal';
-import Field from 'src/components/forms/Field';
+import FieldPassword from 'src/components/forms/FieldPassword';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import { IoMdLock, IoMdCreate, IoMdTrash } from 'react-icons/io';
+import { MdClose } from 'react-icons/md';
 
 const GroupSettings = ({
   initialGroupName,
@@ -70,6 +71,7 @@ const GroupSettings = ({
   };
 
   const handleUpdatePassword = (event) => {
+    event.preventDefault();
     updatePassword(event.currentTarget.dataset.id);
     setIsOpenedUpdatePasswordModal(false);
   };
@@ -146,43 +148,48 @@ const GroupSettings = ({
                     >
                       <IoMdCreate />
                     </button>
-                    <button
-                      type="button"
-                      onClick={openUpdateMemberModal}
-                      data-id={member.id}
-                      className="icon-btn"
-                    >
-                      <IoMdLock />
-                    </button>
-                    <Modal
-                      showModal={isOpenedUpdatePasswordModal}
-                      hideModal={hideUpdatePasswordModal}
-                    >
-                      <div className="container-password-confirm ">
-                        <h4 className="container-password-confirm__subtitle">
-                          Update password ?
-                        </h4>
-                        <form
-                          onSubmit={handleUpdatePassword}
-                          className="container-password-confirm__form"
+                    <div className="positioned-parent">
+                      <button
+                        type="button"
+                        onClick={openUpdateMemberModal}
+                        data-id={member.id}
+                        className="icon-btn"
+                      >
+                        <IoMdLock />
+                      </button>
+                      {isOpenedUpdatePasswordModal && (
+                        <div
+                          className="container-password-confirm"
+                          id="triangle-up"
                         >
-                          <Field
-                            className="container-password-confirm__form__input"
-                            name="password"
-                            type="password"
-                            value={password}
-                            onChange={changeField}
+                          <h4 className="container-password-confirm__subtitle">
+                            Update password ?
+                          </h4>
+                          <MdClose
+                            className="close"
+                            onClick={hideUpdatePasswordModal}
                           />
-                          <button
-                            className="container-password-confirm__form__btn classic-btn"
-                            type="submit"
+                          <form
                             data-id={member.id}
+                            onSubmit={handleUpdatePassword}
+                            className="container-password-confirm__form"
                           >
-                            Update
-                          </button>
-                        </form>
-                      </div>
-                    </Modal>
+                            <FieldPassword
+                              className="container-password-confirm__form__input"
+                              name="password"
+                              value={password}
+                              onChange={changeField}
+                            />
+                            <button
+                              type="submit"
+                              className="classic-btn container-password-confirm__form__btn"
+                            >
+                              Update
+                            </button>
+                          </form>
+                        </div>
+                      )}
+                    </div>
                     {member.role === 3 ? (
                       <></>
                     ) : (
