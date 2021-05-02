@@ -530,22 +530,32 @@ body {
   padding: .25rem .75rem;
   position: relative;
   z-index: 5;
+  
   // background-color: $dashboard-menu;
   @media (min-width: 1000px) {
     width: calc(100% - 4rem);
+    padding-top: .5rem;
   }
 
 
   .menu__datePicker {
+    color: $dark;
     position: relative;
-    
-    &--icon {
-      font-size: 30px;
+    .date-picker-container {
       cursor: pointer;
       @include transition($time: .1s);
       &:hover {
         transform: scale(1.2);
       }
+      @media (min-width: 1000px) {
+        @include flex;
+      }
+    }
+    
+    &--icon {
+      font-size: 30px;
+      margin: 0 1rem;
+      
     }
     &--calendar {
       position: fixed;
