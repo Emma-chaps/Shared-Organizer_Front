@@ -98,8 +98,8 @@ const AddAMemberForm = ({
             <option value="1">Visitor</option>
           </select>
         </div>
-        <button type="submit" className="color-icon-check icon-btn">
-          <AiOutlineCheckCircle />
+        <button type="submit" className="classic-btn">
+          Save
         </button>
       </form>
     </div>

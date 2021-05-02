@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
@@ -35,6 +36,11 @@ const WidgetCreationForm = ({
     }
   };
 
+  const getInputValue = (event) => {
+    const { value } = event.target;
+    changeField(value);
+  };
+
   const getTextareaValue = (event) => {
     const { value } = event.target;
     changeTextarea(value);
@@ -52,49 +58,58 @@ const WidgetCreationForm = ({
 
   return (
     <div className="container-form">
-      <h2 className="container-form__title">Create Your Widget</h2>
-      <form onSubmit={handleSubmit} className="member-form">
-        <Field
-          className="widget-settings__input"
+      <h2 className="container-form__title">Add A Widget</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="widget-settings__input positioned-parent"
+      >
+        <label htmlFor="title" className="widget-settings__input__title-label">
+          Widget's name
+        </label>
+        <input
           name="title"
           type="text"
           label="title"
           value={widgetTitle}
-          onChange={changeField}
+          onChange={getInputValue}
+          placeholder="Name of your widget"
+          className="widget-settings__input__title-input"
+          required
         />
-        <label htmlFor="description">
-          description
-          <textarea
-            placeholder="optional: add a description"
-            value={widgetDescription}
-            onChange={getTextareaValue}
-            name="description"
-            className="settings-text-area"
-          />
+        <label
+          htmlFor="description"
+          className="widget-settings__input__description-label"
+        >
+          Widget's description
         </label>
-        <div className="form__group">
-          <h3 className="form__group__subtitle form__subtitle">
-            Assign group members
-          </h3>
-          <ul className="form__group__list">
-            {members.map((member) => (
-              <li className="form__group__list--member" key={member.id}>
-                <FaUserAlt />
-                <button type="button" onClick={handleAddMember} id={member.id}>
-                  add {member.firstname}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <textarea
+          placeholder="Optional: Description of your widget"
+          value={widgetDescription}
+          onChange={getTextareaValue}
+          name="description"
+          className="widget-settings__input__description-input"
+        />
+        <h3 className="widget-settings__member-title">
+          Assign group member to the widget
+        </h3>
+        <ul className="widget-settings__members">
+          {members.map((member) => (
+            <li key={member.id}>
+              <button
+                type="button"
+                onClick={handleAddMember}
+                id={member.id}
+                className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
+              >
+                {member.firstname}
+              </button>
+            </li>
+          ))}
+        </ul>
 
         <div className="form__submit">
           <span>{errorMessage}</span>
-          <button
-            type="button"
-            className="form__submit__publish form__submit__button"
-            onClick={handleSubmit}
-          >
+          <button type="submit" className="classic-btn widget-settings__btn">
             Publish
           </button>
         </div>

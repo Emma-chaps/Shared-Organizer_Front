@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
+import FieldPassword from 'src/components/forms/FieldPassword';
 
 const SignUpForm = ({
   email,
@@ -61,13 +62,13 @@ const SignUpForm = ({
           onChange={changeField}
           className="home-input"
         />
-        <Field
+        <FieldPassword
+          className="home-input"
           label="password"
           name="password"
-          type="password"
           value={password}
           onChange={changeField}
-          className="home-input"
+          isRequired="isrequired"
         />
 
         <button className="classic-btn button-sign" type="submit">

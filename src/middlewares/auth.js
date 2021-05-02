@@ -20,6 +20,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case SUBMIT_SIGN_UP: {
+      const icon = 'light-blue';
       const {
         email,
         password,

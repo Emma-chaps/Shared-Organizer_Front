@@ -18,7 +18,6 @@ export default (store) => (next) => (action) => {
         description,
         groupMembers,
       } = store.getState().widget.widgetCreation;
-
       if (id) {
         console.log('groupMembers:', groupMembers);
         console.log('SUBMIT_WIDGET_DATA_CREATION IF');
@@ -39,6 +38,7 @@ export default (store) => (next) => (action) => {
       } else {
         console.log('SUBMIT_WIDGET_DATA_CREATION ELSE');
         const { range, selectedDateValue } = store.getState().calendar;
+
         const formattedISODate = addDays(parseISO(selectedDateValue), 0);
         const year = Number(format(parseISO(selectedDateValue), 'yyyy'));
         let dateNb = null;
