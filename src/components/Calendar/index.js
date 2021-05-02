@@ -4,6 +4,7 @@ import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
 import { MdDateRange } from 'react-icons/md';
 import { dailyWidgetsFilter } from 'src/selectors/filterWidgets';
+import InfoContainer from 'src/containers/InfoContainer';
 import Day from './Day';
 import DaysNames from './DaysNames';
 import DateBrowser from './DateBrowser';
@@ -14,6 +15,8 @@ const Calendar = ({
   date,
   dashboardWidgets,
   setSelectedDateValue,
+  setRange,
+  getDayInfos,
 }) => {
   const dailyWidgets = dailyWidgetsFilter(dashboardWidgets, range);
   const selectedDate = formatDate(date);
@@ -21,6 +24,12 @@ const Calendar = ({
   // calls a function that calls another function
   const month = takeMonth(selectedDate)();
   const week = takeWeek(selectedDate)();
+
+  useEffect(() => {
+    if (range === 'day') {
+      getDayInfos();
+    }
+  });
 
   if (range === 'month') {
     return (
@@ -56,6 +65,8 @@ const Calendar = ({
                   key={format(day, 'd')}
                   day={day}
                   widgets={dailyWidgets}
+                  setSelectedDateValue={setSelectedDateValue}
+                  setRange={setRange}
                 />
               ))}
             </div>
@@ -99,6 +110,8 @@ const Calendar = ({
                 key={format(day, 'd')}
                 day={day}
                 widgets={dailyWidgets}
+                setSelectedDateValue={setSelectedDateValue}
+                setRange={setRange}
               />
             ))}
           </div>
@@ -127,6 +140,7 @@ const Calendar = ({
           />
         </h3>
       </div>
+      <InfoContainer />
     </div>
   );
 };

@@ -27,7 +27,7 @@ function WidgetContainer({
   let filteredWidgets = RangeWidgetFilter(
     dashboardWidgets,
     selectedDateValue,
-    range
+    range,
   );
 
   if (filteredMembers.length === 1) {
@@ -43,10 +43,10 @@ function WidgetContainer({
             key={widgetData.id}
             widget={widgetData}
             editWidget={editWidget}
-  colorMember={findMemberbyFirstname(
-            widgetData?.author,
-            widgetData?.members
-          )}
+            colorMember={findMemberbyFirstname(
+              widgetData?.author,
+              widgetData?.members,
+            )}
             deleteWidget={deleteWidget}
             copyWidgetToEdit={copyWidgetToEdit}
             displayCreationModal={displayCreationModal}
@@ -54,14 +54,13 @@ function WidgetContainer({
             hideWidgetCreationModal={hideWidgetCreationModal}
           />
         ))}
-        <button type="button" onClick={handleClick} className="add-widget-btn">
+        {/* <button type="button" onClick={handleClick} className="add-widget-btn">
           +
-        </button>
+        </button> */}
       </div>
       {/* </div> */}
       <br />
     </>
-
   );
 }
 

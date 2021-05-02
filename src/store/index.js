@@ -4,6 +4,7 @@ import ajaxMiddleware from 'src/middlewares/ajax';
 import authMiddleware from 'src/middlewares/auth';
 import widgetMiddleware from 'src/middlewares/crudWidget';
 import fetchWidgetsMiddleware from 'src/middlewares/fetchWidgets';
+import externalApis from 'src/middlewares/externalApis';
 import reducer from 'src/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -14,6 +15,7 @@ const enhancers = composeEnhancers(
     ajaxMiddleware,
     widgetMiddleware,
     fetchWidgetsMiddleware,
+    externalApis,
   ),
 );
 
