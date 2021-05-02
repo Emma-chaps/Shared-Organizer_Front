@@ -202,11 +202,11 @@ export const cleanPasswordField = () => ({
   type: CLEAN_PASSWORD_FIELD,
 });
 
-export const SET_IS_OPEN_MEMBERS_PASSWORD_MODAL =
-  'SET_IS_OPEN_MEMBERS_PASSWORD_MODAL';
+export const SET_IS_OPEN_MEMBER_PASSWORD_MODAL =
+  'SET_IS_OPEN_MEMBER_PASSWORD_MODAL';
 
-export const setIsOpenedMembersPasswordModal = (id) => ({
-  type: SET_IS_OPEN_MEMBERS_PASSWORD_MODAL,
+export const setIsOpenedMemberPasswordModal = (id) => ({
+  type: SET_IS_OPEN_MEMBER_PASSWORD_MODAL,
   id,
 });
 
@@ -214,4 +214,18 @@ export const CLOSE_MEMBER_PASSWORD_MODAL = 'CLOSE_MEMBER_PASSWORD_MODAL';
 
 export const closeMemberPasswordModal = () => ({
   type: CLOSE_MEMBER_PASSWORD_MODAL,
+});
+
+export const SET_IS_OPEN_MEMBER_DELETE_MODAL =
+  'SET_IS_OPEN_MEMBER_DELETE_MODAL';
+
+export const setIsOpenedMemberDeleteModal = (id) => ({
+  type: SET_IS_OPEN_MEMBER_DELETE_MODAL,
+  id,
+});
+
+export const CLOSE_MEMBER_DELETE_MODAL = 'CLOSE_MEMBER_DELETE_MODAL';
+
+export const closeMemberDeleteModal = () => ({
+  type: CLOSE_MEMBER_DELETE_MODAL,
 });

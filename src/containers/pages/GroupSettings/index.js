@@ -17,8 +17,10 @@ import {
   setMemberToChangeFieldValue,
   updatePassword,
   cleanPasswordField,
-  setIsOpenedMembersPasswordModal,
+  setIsOpenedMemberPasswordModal,
   closeMemberPasswordModal,
+  setIsOpenedMemberDeleteModal,
+  closeMemberDeleteModal,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -29,7 +31,8 @@ const mapStateToProps = (state) => ({
   isOpenedModal: state.settings.openedModal,
   isOpenedModalAlert: state.settings.openedAlertModal,
   password: state.settings.memberToChange.password,
-  isOpenedMembersPasswordModal: state.settings.isOpenedMembersPasswordModal,
+  isOpenedMemberPasswordModal: state.settings.isOpenedMemberPasswordModal,
+  isOpenedMemberDeleteModal: state.settings.isOpenedMemberDeleteModal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -51,9 +54,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setMemberToChangeFieldValue(name, value)),
   updatePassword: (id) => dispatch(updatePassword(id)),
   cleanPasswordField: () => dispatch(cleanPasswordField()),
-  setIsOpenedMembersPasswordModal: (id) =>
-    dispatch(setIsOpenedMembersPasswordModal(id)),
+  setIsOpenedMemberPasswordModal: (id) =>
+    dispatch(setIsOpenedMemberPasswordModal(id)),
   closeMemberPasswordModal: () => dispatch(closeMemberPasswordModal()),
+  setIsOpenedMemberDeleteModal: (id) =>
+    dispatch(setIsOpenedMemberDeleteModal(id)),
+  closeMemberDeleteModal: () => dispatch(closeMemberDeleteModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSettings);

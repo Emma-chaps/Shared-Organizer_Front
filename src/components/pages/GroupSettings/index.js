@@ -32,9 +32,12 @@ const GroupSettings = ({
   updatePassword,
   password,
   cleanPasswordField,
-  isOpenedMembersPasswordModal,
-  setIsOpenedMembersPasswordModal,
+  isOpenedMemberPasswordModal,
+  setIsOpenedMemberPasswordModal,
   closeMemberPasswordModal,
+  isOpenedMemberDeleteModal,
+  setIsOpenedMemberDeleteModal,
+  closeMemberDeleteModal,
 }) => {
   // Rerender component when set_group_data is started
   useEffect(() => {}, [members]);
@@ -55,14 +58,10 @@ const GroupSettings = ({
     updateMember();
   };
 
-  const handleDeleteMember = (event) => {
-    deleteMember(event.currentTarget.dataset.id);
-    hideAlertModal();
-  };
-
   const openUpdateMemberModal = (event) => {
+    closeMemberPasswordModal();
     const { id } = event.currentTarget.dataset;
-    setIsOpenedMembersPasswordModal(id);
+    setIsOpenedMemberPasswordModal(id);
     cleanPasswordField();
   };
 
@@ -70,6 +69,17 @@ const GroupSettings = ({
     event.preventDefault();
     updatePassword(event.currentTarget.dataset.id);
     closeMemberPasswordModal();
+  };
+
+  const handleOpenDeleteMemberModal = (event) => {
+    closeMemberDeleteModal();
+    const { id } = event.currentTarget.dataset;
+    setIsOpenedMemberDeleteModal(id);
+  };
+
+  const handleDeleteMember = (event) => {
+    deleteMember(event.currentTarget.dataset.id);
+    closeMemberDeleteModal();
   };
 
   return (
@@ -153,7 +163,7 @@ const GroupSettings = ({
                       >
                         <IoMdLock />
                       </button>
-                      {isOpenedMembersPasswordModal[member.id] ? (
+                      {isOpenedMemberPasswordModal[member.id] ? (
                         <div
                           className="container-password-confirm"
                           id="triangle-up"
@@ -191,34 +201,40 @@ const GroupSettings = ({
                     {member.role === 3 ? (
                       <></>
                     ) : (
-                      <>
+                      <div className="positioned-parent">
                         <button
                           type="button"
-                          onClick={setIsOpenedAlertModal}
+                          onClick={handleOpenDeleteMemberModal}
                           data-id={member.id}
                           className="icon-btn"
                         >
                           <IoMdTrash />
                         </button>
-                        <Modal
-                          showModal={isOpenedModalAlert}
-                          hideModal={hideAlertModal}
-                        >
-                          <span>
-                            Do you want to delete {member.firstname} ?
-                          </span>
-                          <button type="button" onClick={hideAlertModal}>
-                            No
-                          </button>
-                          <button
-                            type="button"
-                            onClick={handleDeleteMember}
-                            data-id={member.id}
+                        {isOpenedMemberDeleteModal[member.id] ? (
+                          <div
+                            className="container-delete-confirm"
+                            id="triangle-up"
                           >
-                            Yes
-                          </button>
-                        </Modal>
-                      </>
+                            <h4 className="container-delete-confirm__subtitle">
+                              Are you sure you want to delete this member ?
+                            </h4>
+                            <MdClose
+                              className="close"
+                              onClick={closeMemberDeleteModal}
+                            />
+                            <button
+                              type="button"
+                              onClick={handleDeleteMember}
+                              data-id={member.id}
+                              className="classic-btn container-delete-confirm__btn"
+                            >
+                              delete
+                            </button>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
                     )}
                   </div>
                 </>

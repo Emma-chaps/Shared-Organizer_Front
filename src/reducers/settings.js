@@ -23,8 +23,10 @@ import {
   HIDE_ALERT_MODAL,
   SET_IS_OPENED_ALERT_MODAL,
   CLEAN_PASSWORD_FIELD,
-  SET_IS_OPEN_MEMBERS_PASSWORD_MODAL,
+  SET_IS_OPEN_MEMBER_PASSWORD_MODAL,
   CLOSE_MEMBER_PASSWORD_MODAL,
+  SET_IS_OPEN_MEMBER_DELETE_MODAL,
+  CLOSE_MEMBER_DELETE_MODAL,
 } from 'src/actions/settings';
 
 import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
@@ -34,7 +36,8 @@ const initialState = {
   openedModal: false,
   openedAlertModal: false,
   openMembersInput: {},
-  isOpenedMembersPasswordModal: {},
+  isOpenedMemberPasswordModal: {},
+  isOpenedMemberDeleteModal: {},
   group: {
     groupName: '',
     members: [],
@@ -258,11 +261,11 @@ export default (state = initialState, action = {}) => {
         },
       };
     }
-    case SET_IS_OPEN_MEMBERS_PASSWORD_MODAL: {
+    case SET_IS_OPEN_MEMBER_PASSWORD_MODAL: {
       return {
         ...state,
-        isOpenedMembersPasswordModal: {
-          ...state.isOpenedMembersPasswordModal,
+        isOpenedMemberPasswordModal: {
+          ...state.isOpenedMemberPasswordModal,
           [action.id]: true,
         },
       };
@@ -270,7 +273,22 @@ export default (state = initialState, action = {}) => {
     case CLOSE_MEMBER_PASSWORD_MODAL: {
       return {
         ...state,
-        isOpenedMembersPasswordModal: {},
+        isOpenedMemberPasswordModal: {},
+      };
+    }
+    case SET_IS_OPEN_MEMBER_DELETE_MODAL: {
+      return {
+        ...state,
+        isOpenedMemberDeleteModal: {
+          ...state.isOpenedMemberDeleteModal,
+          [action.id]: true,
+        },
+      };
+    }
+    case CLOSE_MEMBER_DELETE_MODAL: {
+      return {
+        ...state,
+        isOpenedMemberDeleteModal: {},
       };
     }
     default:

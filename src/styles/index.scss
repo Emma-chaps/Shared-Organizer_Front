@@ -947,6 +947,11 @@ body {
   }
 }
 
+/////////////// CONFIRM BOX ///////////////////////
+.positioned-parent {
+  position: relative;
+}
+
 .container-password-confirm {
   @include flex($direction: column);
   position: absolute;
@@ -1014,6 +1019,50 @@ body {
   }
 }
 
-.positioned-parent {
-  position: relative;
+.container-delete-confirm {
+  @include flex($direction: column);
+  position: absolute;
+  top: 26px;
+  right: -455%;
+  min-width: 19rem;
+  background-color: $white;
+  text-align: left;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 0.5rem;
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    top: -10px;
+    right: 118px;
+    height: 0;
+    width: 0;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+  }
+
+  .close {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    transition: all 50ms ease-in-out;
+    &:hover {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+  &__subtitle {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &__btn {
+    background-image: none;
+    background-color: #ff003a;
+  }
 }
