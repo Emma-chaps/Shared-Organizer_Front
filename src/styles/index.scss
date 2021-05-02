@@ -537,13 +537,14 @@ body {
 
 
   .menu__datePicker {
-    border: none;
-    height: 23px;
-    width: 54px;
-    font-size: 20px;
-    padding: 0;
-    background-color: transparent;
-    z-index: 1;
+    position: relative;
+    &--icon {
+      font-size: 30px;
+    }
+    &--calendar {
+      position: fixed;
+      z-index: 20;
+    }
   }
 
   .member-filter {
