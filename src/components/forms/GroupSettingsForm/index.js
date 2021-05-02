@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Field from 'src/components/forms/Field';
 import PropTypes from 'prop-types';
-import { FaUserAlt } from 'react-icons/fa';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 
 const GroupSettingsFrom = ({
@@ -57,7 +56,6 @@ const GroupSettingsFrom = ({
             ))}
           </select>
         </div>
-        {/* <FaUserAlt className={`icon-container--${color}`} /> */}
         <Field
           className="settings-input"
           label="firstname"

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
-import { FaUserAlt } from 'react-icons/fa';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 
 const AddAMemberForm = ({
   icon,
@@ -34,60 +34,73 @@ const AddAMemberForm = ({
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="icon">
+    <div className="container-form">
+      <h3 className="container-form__title">Add Member</h3>
+      <form onSubmit={onSubmit} className="member-form">
+        <div className="member-form__select">
+          <label htmlFor="icon" className="member-form__select__icon">
+            Color
+          </label>
           <select
+            className="form-select"
             name="icon"
             id="icon"
             value={icon}
             onChange={handleChangeIcon}
             required
           >
-            <option value="">Choose an icon color</option>
+            <option value="">Select a color</option>
             {colors.map(({ name, value }) => (
               <option value={name} key={name}>
                 {value}
               </option>
             ))}
           </select>
-        </label>
-        <FaUserAlt className={`icon-container--${icon}`} />
+        </div>
         <Field
+          className="settings-input"
           name="firstname"
           type="text"
-          placeholder="Firstname"
+          label="First name"
           value={firstname}
           onChange={changeField}
         />
         <Field
+          className="settings-input"
           name="email"
           type="email"
-          placeholder="Email"
+          label="Email"
           value={email}
           onChange={changeField}
         />
         <Field
+          className="settings-input"
           name="password"
           type="password"
-          placeholder="Password"
+          label="Password"
           value={password}
           onChange={changeField}
         />
-        <label htmlFor="role">
+        <div className="member-form__select">
+          <label htmlFor="role" className="member-form__select__icon">
+            Role
+          </label>
           <select
+            className="form-select"
             name="role"
             id="role"
             value={role}
             onChange={handleChangeRole}
             required
           >
-            <option value="">Choose a role</option>
+            <option value="">Select a role</option>
             <option value="2">Editor</option>
             <option value="1">Visitor</option>
           </select>
-        </label>
-        <button type="submit">Save</button>
+        </div>
+        <button type="submit" className="color-icon-check icon-btn">
+          <AiOutlineCheckCircle />
+        </button>
       </form>
     </div>
   );
