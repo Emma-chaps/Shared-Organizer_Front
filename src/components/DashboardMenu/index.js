@@ -84,10 +84,10 @@ const DashboardMenu = ({
   return (
     <div className="menu">
       <div className="menu__datePicker" ref={calendarRef}>
-        <SiGooglecalendar
-          className="menu__datePicker--icon"
-          onClick={handleDatepickerClick}
-        />
+        <div className="date-picker-container" onClick={handleDatepickerClick}>
+          <SiGooglecalendar className="menu__datePicker--icon" />
+          <p>Pick a date</p>
+        </div>
         {displayDatepicker && (
           <Calendar
             onChange={handleCalendar}
