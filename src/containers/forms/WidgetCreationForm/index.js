@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeField: (value, name) => dispatch(setWidgetFieldValue(name, value)),
+  changeField: (value) => dispatch(setWidgetFieldValue(value)),
   changeTextarea: (value) => dispatch(setWidgetDescriptionValue(value)),
   assignMember: (idMember, members) =>
     dispatch(assignMemberToWidget(idMember, members)),

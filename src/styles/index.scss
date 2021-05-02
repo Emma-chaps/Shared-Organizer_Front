@@ -920,30 +920,72 @@ body {
 
 .widget-settings {
   &__input {
+    @include flex($direction: column);
     width: 100%;
     padding-bottom: 0.5rem;
     text-transform: capitalize;
     text-align: left;
-
-    label {
-      width: 100%;
-      font-size: 0.7em;
+    &__title-label {
+      font-size: 0.8em;
       font-weight: bold;
-      color: $dark;
-      padding-left: 0.5rem;
+      color: $light-blue;
+      padding: 0 0.4rem;
       background-color: $white;
       position: relative;
-      top: -1px;
-
-      input {
-        width: 100%;
-        background-color: transparent;
-        border-bottom: 1px $dark solid;
-        padding: 0.5rem;
-      }
+      top: 5px;
+      left: -95px;
+    }
+    &__title-input {
+      width: 100%;
+      border: 1.5px solid $light-blue;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    &__description-label {
+      font-size: 0.8em;
+      font-weight: bold;
+      color: $light-blue;
+      padding: 0 0.4rem;
+      background-color: $white;
+      position: relative;
+      top: 5px;
+      left: -81px;
+    }
+    &__description-input {
+      width: 100%;
+      min-height: 6rem;
+      border: 1.5px solid $light-blue;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
     }
   }
-  &__text-area {
+  &__member-title {
+    font-size: 1em;
+    text-transform: uppercase;
+    color: $light-blue;
+    font-weight: bold;
+    padding-bottom: 1rem;
+    margin-top: 0.3rem;
+  }
+  &__members {
+    @include flex($align: left, $justify: flex-start);
+    align-content: flex-start;
+    flex-wrap: wrap;
+    &__button-modal-filter {
+      color: $white;
+      border: none;
+      box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 30% 30% 30% 30% / 70% 70% 70% 70%;
+      padding: 0.5rem;
+      margin: 0 0.5rem 1rem 0.5rem;
+      text-transform: capitalize;
+      min-width: 4rem;
+    }
+  }
+  &__btn {
+    margin: 1rem 0 0 0;
   }
 }
 
@@ -973,7 +1015,6 @@ body {
     border-bottom: 10px solid white;
     border-left: 10px solid transparent;
   }
-
   .close {
     display: inline-block;
     width: 1.5rem;
@@ -1042,7 +1083,6 @@ body {
     border-bottom: 10px solid white;
     border-left: 10px solid transparent;
   }
-
   .close {
     display: inline-block;
     width: 1.5rem;

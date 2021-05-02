@@ -30,16 +30,17 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_WIDGET_FIELD_VALUE:
+    case SET_WIDGET_FIELD_VALUE: {
       return {
         ...state,
         widgetCreation: {
           ...state.widgetCreation,
-          [action.name]: action.value,
+          title: action.value,
         },
       };
+    }
 
-    case SET_WIDGET_DESCRIPTION_VALUE:
+    case SET_WIDGET_DESCRIPTION_VALUE: {
       return {
         ...state,
         widgetCreation: {
@@ -47,6 +48,7 @@ export default (state = initialState, action = {}) => {
           description: action.value,
         },
       };
+    }
 
     case SET_ALL_WIDGETS:
       return {

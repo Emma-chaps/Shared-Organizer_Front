@@ -1,8 +1,7 @@
 export const SET_WIDGET_FIELD_VALUE = 'SET_WIDGET_FIELD_VALUE';
 
-export const setWidgetFieldValue = (name, value) => ({
+export const setWidgetFieldValue = (value) => ({
   type: SET_WIDGET_FIELD_VALUE,
-  name,
   value,
 });
 
