@@ -11,3 +11,18 @@ export const setSelectedDateValue = (value) => ({
   type: SET_SELECTED_DATE_VALUE,
   value,
 });
+
+export const GET_DAY_INFOS = 'GET_DAY_INFOS';
+
+export const getDayInfos = () => ({
+  type: GET_DAY_INFOS,
+});
+
+export const UPDATE_DAY_INFOS = 'UPDATE_DAY_INFOS';
+
+export const updateDayInfos = (event, birth, death) => ({
+  type: UPDATE_DAY_INFOS,
+  event,
+  birth,
+  death,
+});
