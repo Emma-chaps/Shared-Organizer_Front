@@ -45,3 +45,7 @@
     background: rgba(#adadad, 0.5);
   }
 }
+
+@mixin transition($time: .5s) {
+  transition: all $time ease-in-out;
+}

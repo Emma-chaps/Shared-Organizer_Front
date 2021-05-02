@@ -67,9 +67,9 @@ const DashboardMenu = ({
   });
 
   const handleCalendar = (event) => {
-    console.log(event);
     setFieldDateValue(format(event, 'yyyy-MM-dd'));
     fetchAllWidgets();
+    setDisplayDatepicker(false);
   };
 
   const handleDatepickerClick = () => {
