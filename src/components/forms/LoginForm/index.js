@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
+import FieldPassword from 'src/components/forms/FieldPassword';
 
 const LoginForm = ({ email, password, changeField, handleLogin }) => {
   const [loginErrors, setLoginErrors] = useState([]);
@@ -32,14 +33,13 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
           isRequired="isrequired"
           className="home-input"
         />
-        <Field
+        <FieldPassword
+          className="home-input"
           label="password"
           name="password"
-          type="password"
           value={password}
           onChange={changeField}
           isRequired="isrequired"
-          className="home-input"
         />
         <button className="classic-btn button-sign" type="submit">
           sign in
