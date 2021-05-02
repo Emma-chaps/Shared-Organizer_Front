@@ -11,14 +11,14 @@
 
 @mixin name-tag(
   $size: 2.5rem,
-  $background: $light-blue,
+  // $background: $light-blue,
   $color: $white,
   $font-size: 1.5rem
 ) {
   color: $color;
   text-transform: capitalize;
   font-size: $font-size;
-  background-color: $background;
+  // background-color: $background;
   height: $size;
   width: $size;
   border-radius: 50%;
@@ -38,3 +38,10 @@
   font-weight: bold;
 }
 
+@mixin blur($blur: 7px) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  @supports not (backdrop-filter: blur()) {
+    background: rgba(#adadad, 0.5);
+  }
+}

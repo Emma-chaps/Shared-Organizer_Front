@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Modal from 'src/components/Modal';
@@ -6,6 +6,11 @@ import GroupSettings from 'src/containers/pages/GroupSettings';
 import { findMember } from 'src/selectors/findMember';
 import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FiEdit2 } from 'react-icons/fi';
+import { SiGooglecalendar } from 'react-icons/si';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { format } from 'date-fns';
+import useOnClickOutside from 'src/hooks/clickOutside';
 
 const DashboardMenu = ({
   groupName,
@@ -18,9 +23,15 @@ const DashboardMenu = ({
 }) => {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
+  const [displayDatepicker, setDisplayDatepicker] = useState(false);
   const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 1000px)').matches
+    window.matchMedia('(min-width: 1000px)').matches,
   );
+  const yearDate = selectedDateValue.split('-')[0];
+  const monthDate = selectedDateValue.split('-')[1];
+  const dayDate = selectedDateValue.split('-')[2];
+  const formattedDateValue = new Date(yearDate, monthDate - 1, dayDate);
+
   useEffect(() => {
     const handler = (event) => setMatches(event.matches);
     window.matchMedia('(min-width: 1000px)').addListener(handler);
@@ -55,15 +66,37 @@ const DashboardMenu = ({
     'hidden-members-modal': displayHiddenMembers,
   });
 
+  const handleCalendar = (event) => {
+    console.log(event);
+    setFieldDateValue(format(event, 'yyyy-MM-dd'));
+    fetchAllWidgets();
+  };
+
+  const handleDatepickerClick = () => {
+    setDisplayDatepicker(!displayDatepicker);
+  };
+
+  const calendarRef = useRef();
+  useOnClickOutside(calendarRef, () => setDisplayDatepicker(false));
+  const memberFilterRef = useRef();
+  useOnClickOutside(memberFilterRef, () => setDisplayHiddenMembers(true));
+
   return (
     <div className="menu">
-      <input
-        type="date"
-        name="selectedDate"
-        className="menu__datePicker"
-        value={selectedDateValue}
-        onChange={handleChange}
-      />
+      <div className="menu__datePicker" ref={calendarRef}>
+        <SiGooglecalendar
+          className="menu__datePicker--icon"
+          onClick={handleDatepickerClick}
+        />
+        {displayDatepicker && (
+          <Calendar
+            onChange={handleCalendar}
+            value={formattedDateValue}
+            onClickMonth={handleCalendar}
+            className="menu__datePicker--calendar"
+          />
+        )}
+      </div>
       <h1 className="group-name">
         <span className="group-name__title">{groupName}</span>
         {isAdmin && (
@@ -114,7 +147,7 @@ const DashboardMenu = ({
           >
             <FaUsers />
           </button>
-          <div className={classes}>
+          <div className={classes} ref={memberFilterRef}>
             <button
               type="button"
               onClick={handleResetFilter}

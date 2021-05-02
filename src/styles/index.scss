@@ -18,11 +18,17 @@ body {
   color: $dark;
   position: relative;
   overflow: hidden;
+  @media (min-width: 1000px) {
+    overflow: auto;
+  }
 }
 
 #root {
   min-height: 100%;
   overflow: hidden;
+  @media (min-width: 1000px) {
+    overflow: auto;
+  }
 }
 
 .app {
@@ -41,6 +47,7 @@ body {
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
     gap: 0 30px;
@@ -56,14 +63,17 @@ body {
   width: 95%;
   max-width: 40rem;
   min-height: 70vh;
+  
+
 
   .home {
     @include flex($direction: column, $justify: space-between);
     width: 100%;
     padding: 2rem 0;
     background: rgba(#404939, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    // backdrop-filter: blur(7px);
+    // -webkit-backdrop-filter: blur(7px);
+    @include blur;
     border-radius: 13px;
     border-bottom-right-radius: 0;
 
@@ -128,8 +138,7 @@ body {
         width: 25%;
         min-width: 7.6rem;
         background: rgba(#404939, 0.1);
-        backdrop-filter: blur(7px);
-        -webkit-backdrop-filter: blur(7px);
+        @include blur;
         border-bottom-left-radius: 13px;
         border-bottom-right-radius: 13px;
         padding: 1rem;
@@ -428,7 +437,7 @@ body {
       border-radius: 5px;
       margin-bottom: 1rem;
       .member-icon {
-        @include name-tag($font-size: 0.75rem, $size: 2rem, $background: none);
+        @include name-tag($font-size: 0.75rem, $size: 2rem);
         margin-bottom: 0.4rem;
       }
       .member-data {
@@ -528,13 +537,14 @@ body {
   }
 
   .menu__datePicker {
-    border: none;
-    height: 23px;
-    width: 54px;
-    font-size: 20px;
-    padding: 0;
-    background-color: transparent;
-    z-index: 1;
+    position: relative;
+    &--icon {
+      font-size: 30px;
+    }
+    &--calendar {
+      position: fixed;
+      z-index: 20;
+    }
   }
 
   .member-filter {
@@ -565,11 +575,10 @@ body {
       padding: 1.25rem 0.75rem 0.75rem 0.75rem;
       z-index: -1;
       background: rgba(#404939, 0.1);
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
+      @include blur;
 
       .button-modal-filter {
-        @include name-tag($font-size: 0.75rem, $size: 2rem, $background: none);
+        @include name-tag($font-size: 0.75rem, $size: 2rem);
         margin: 0.5rem;
       }
     }
@@ -588,8 +597,7 @@ body {
       .letter {
         @include name-tag(
           $size: 1.5rem,
-          $font-size: 0.75rem,
-          $background: none
+          $font-size: 0.75rem
         );
         margin-right: 0.25rem;
       }
@@ -702,6 +710,7 @@ body {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         padding: 2px;
+        cursor: pointer;
         @media (min-width: 1000px) {
           border-radius: 13px;
         }
@@ -779,16 +788,18 @@ body {
   overflow-y: auto;
   padding-top: 0.75rem;
   padding-bottom: 300px;
-  margin-top: 0.5rem;
-  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
-  @media (min-width: 700px) {
-    @include flex($align: flex-start, $justify: flex-start);
+
+  margin-top: .5rem;
+  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
+    box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
+  @media (min-width:700px) {
+    @include flex($align: flex-start, $justify:flex-start);
+    align-content: flex-start;
     flex-wrap: wrap;
     // width: 700px;
   }
-  @media (min-width: 1000px) {
-    max-height: 70%;
+  @media (min-width:1000px) {
+    height: 70%;
     min-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
