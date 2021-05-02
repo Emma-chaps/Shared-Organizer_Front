@@ -32,13 +32,12 @@ const GroupSettings = ({
   updatePassword,
   password,
   cleanPasswordField,
+  isOpenedMembersPasswordModal,
+  setIsOpenedMembersPasswordModal,
+  closeMemberPasswordModal,
 }) => {
   // Rerender component when set_group_data is started
   useEffect(() => {}, [members]);
-  const [
-    isOpenedUpdatePasswordModal,
-    setIsOpenedUpdatePasswordModal,
-  ] = useState(false);
 
   const handleOpenMemberInputView = (event) => {
     closeAllInput();
@@ -61,19 +60,16 @@ const GroupSettings = ({
     hideAlertModal();
   };
 
-  const openUpdateMemberModal = () => {
+  const openUpdateMemberModal = (event) => {
+    const { id } = event.currentTarget.dataset;
+    setIsOpenedMembersPasswordModal(id);
     cleanPasswordField();
-    setIsOpenedUpdatePasswordModal(true);
-  };
-
-  const hideUpdatePasswordModal = () => {
-    setIsOpenedUpdatePasswordModal(false);
   };
 
   const handleUpdatePassword = (event) => {
     event.preventDefault();
     updatePassword(event.currentTarget.dataset.id);
-    setIsOpenedUpdatePasswordModal(false);
+    closeMemberPasswordModal();
   };
 
   return (
@@ -157,7 +153,7 @@ const GroupSettings = ({
                       >
                         <IoMdLock />
                       </button>
-                      {isOpenedUpdatePasswordModal && (
+                      {isOpenedMembersPasswordModal[member.id] ? (
                         <div
                           className="container-password-confirm"
                           id="triangle-up"
@@ -167,7 +163,7 @@ const GroupSettings = ({
                           </h4>
                           <MdClose
                             className="close"
-                            onClick={hideUpdatePasswordModal}
+                            onClick={closeMemberPasswordModal}
                           />
                           <form
                             data-id={member.id}
@@ -188,6 +184,8 @@ const GroupSettings = ({
                             </button>
                           </form>
                         </div>
+                      ) : (
+                        <></>
                       )}
                     </div>
                     {member.role === 3 ? (
@@ -228,18 +226,17 @@ const GroupSettings = ({
             </div>
           ))}
         </div>
-        <div>
-          <button
-            type="button"
-            onClick={handleOpenAddMember}
-            className="classic-btn"
-          >
-            Add member
-          </button>
-          <Modal showModal={isOpenedModal} hideModal={hideModal}>
-            <AddAMemberForm />
-          </Modal>
-        </div>
+
+        <button
+          type="button"
+          onClick={handleOpenAddMember}
+          className="classic-btn settings-container__btn"
+        >
+          Add member
+        </button>
+        <Modal showModal={isOpenedModal} hideModal={hideModal}>
+          <AddAMemberForm />
+        </Modal>
       </div>
     </>
   );

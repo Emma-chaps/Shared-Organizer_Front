@@ -23,6 +23,8 @@ import {
   HIDE_ALERT_MODAL,
   SET_IS_OPENED_ALERT_MODAL,
   CLEAN_PASSWORD_FIELD,
+  SET_IS_OPEN_MEMBERS_PASSWORD_MODAL,
+  CLOSE_MEMBER_PASSWORD_MODAL,
 } from 'src/actions/settings';
 
 import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
@@ -32,6 +34,7 @@ const initialState = {
   openedModal: false,
   openedAlertModal: false,
   openMembersInput: {},
+  isOpenedMembersPasswordModal: {},
   group: {
     groupName: '',
     members: [],
@@ -255,7 +258,21 @@ export default (state = initialState, action = {}) => {
         },
       };
     }
-
+    case SET_IS_OPEN_MEMBERS_PASSWORD_MODAL: {
+      return {
+        ...state,
+        isOpenedMembersPasswordModal: {
+          ...state.isOpenedMembersPasswordModal,
+          [action.id]: true,
+        },
+      };
+    }
+    case CLOSE_MEMBER_PASSWORD_MODAL: {
+      return {
+        ...state,
+        isOpenedMembersPasswordModal: {},
+      };
+    }
     default:
       return state;
   }

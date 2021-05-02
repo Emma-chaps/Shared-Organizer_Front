@@ -201,3 +201,17 @@ export const CLEAN_PASSWORD_FIELD = 'CLEAN_PASSWORD_FIELD';
 export const cleanPasswordField = () => ({
   type: CLEAN_PASSWORD_FIELD,
 });
+
+export const SET_IS_OPEN_MEMBERS_PASSWORD_MODAL =
+  'SET_IS_OPEN_MEMBERS_PASSWORD_MODAL';
+
+export const setIsOpenedMembersPasswordModal = (id) => ({
+  type: SET_IS_OPEN_MEMBERS_PASSWORD_MODAL,
+  id,
+});
+
+export const CLOSE_MEMBER_PASSWORD_MODAL = 'CLOSE_MEMBER_PASSWORD_MODAL';
+
+export const closeMemberPasswordModal = () => ({
+  type: CLOSE_MEMBER_PASSWORD_MODAL,
+});
