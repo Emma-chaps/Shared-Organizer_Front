@@ -1065,6 +1065,7 @@ body {
     }
     &__description {
       padding: 1rem 0.5rem;
+      white-space: pre-line;
     }
     .widget__members {
       @include flex($justify: flex-end);
@@ -1181,6 +1182,7 @@ body {
       border-radius: 5px;
       margin-bottom: 1rem;
       font-family: 'roboto';
+            
     }
   }
   &__member-title {

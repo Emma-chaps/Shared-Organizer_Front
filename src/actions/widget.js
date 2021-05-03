@@ -142,3 +142,10 @@ export const CLEAN_SELECTED_MEMBERS = 'CLEAN_SELECTED_MEMBERS';
 export const cleanSelectedMembers = () => ({
   type: CLEAN_SELECTED_MEMBERS,
 });
+
+export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+
+export const setErrorMessage = (message) => ({
+  type: SET_ERROR_MESSAGE,
+  message,
+});

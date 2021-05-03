@@ -14,6 +14,7 @@ import {
   REMOVE_SELECTED_MEMBER,
   UPDATE_SELECTED_MEMBER,
   CLEAN_SELECTED_MEMBERS,
+  SET_ERROR_MESSAGE,
 } from 'src/actions/widget';
 
 import { findMember, removeGivenMember } from 'src/selectors/findMember';
@@ -26,6 +27,7 @@ const initialState = {
     title: '',
     description: '',
     groupMembers: [],
+    errorMessage: '',
   },
   dashboardWidgets: [],
   filteredMembers: [],
@@ -94,6 +96,10 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         displayCreationModal: false,
+        widgetCreation: {
+          ...state.widgetCreation,
+          errorMessage: action.message,
+        },
       };
     }
     case REINITIALIZE_WIDGET: {
@@ -105,6 +111,15 @@ export default (state = initialState, action = {}) => {
           title: '',
           description: '',
           groupMembers: [],
+        },
+      };
+    }
+    case SET_ERROR_MESSAGE: {
+      return {
+        ...state,
+        widgetCreation: {
+          ...state.widgetCreation,
+          errorMessage: action.message,
         },
       };
     }
