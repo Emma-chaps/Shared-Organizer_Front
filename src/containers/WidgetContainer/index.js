@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   dashboardWidgets: state.widget.dashboardWidgets,
   displayCreationModal: state.widget.displayCreationModal,
   filteredMembers: state.widget.filteredMembers,
+  members: state.settings.group.members,
 });
 
 const mapDispatchToProps = (dispatch) => ({

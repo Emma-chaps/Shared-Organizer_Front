@@ -8,6 +8,13 @@
   font-family: 'Sequel';
   src: url('../assets/fonts/Sequel_Demo.ttf');
 }
+@font-face {
+  font-family: 'Butler-Bold';
+  src: url('../assets/fonts/Butler-Bold.woff2') format('woff2'),
+    url('../assets/fonts/Butler-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -606,6 +613,12 @@ body {
   background-color: #8b8b8b;
 }
 
+.icon-check {
+  position: relative;
+  top: 2px;
+  color: white;
+}
+
 //////////////// DASHBOARD MENU ////////////////
 
 .menu {
@@ -1193,10 +1206,13 @@ body {
       border: none;
       box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
       border-radius: 30% 30% 30% 30% / 70% 70% 70% 70%;
-      padding: 0.5rem;
+      padding: 0.5rem 0.7rem;
       margin: 0 0.5rem 1rem 0.5rem;
       text-transform: capitalize;
-      min-width: 4rem;
+      min-width: 4.5rem;
+      .firstname-selected {
+        font-weight: bold;
+      }
     }
   }
 
