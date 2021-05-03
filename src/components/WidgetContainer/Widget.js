@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
+import { MdClose } from 'react-icons/md';
 
 function Widget({
   widget,
@@ -14,6 +15,9 @@ function Widget({
   colorMember,
   updateSelectedMember,
   cleanSelectedMembers,
+  isOpenedDeleteWidgetModal,
+  openWidgetDeleteModal,
+  closeWidgetDeleteModal,
 }) {
   const [displayEdit, setDisplayEdit] = useState(false);
 
@@ -28,8 +32,15 @@ function Widget({
     setDisplayEdit(true);
   };
 
-  const handleDelete = (event) => {
+  const handleOpenDeleteWidgetModal = (event) => {
+    closeWidgetDeleteModal();
+    console.log(event.currentTarget.id);
+    openWidgetDeleteModal(`id${event.currentTarget.id}`);
+  };
+
+  const handleDeleteWidget = (event) => {
     deleteWidget(event.currentTarget.id);
+    closeWidgetDeleteModal();
   };
 
   return (
@@ -42,7 +53,7 @@ function Widget({
           <h2 className="widget__title">{widget?.title}</h2>
           <p className="widget__author">Added by {widget?.author}</p>{' '}
         </header>
-        <div className="edit-delete-btns">
+        <div className="edit-delete-btns positioned-parent">
           <button
             type="button"
             className="button-change button-edit"
@@ -54,11 +65,29 @@ function Widget({
           <button
             type="button"
             className="button-change button-delete"
-            id={widget?.id}
-            onClick={handleDelete}
+            id={widget.id}
+            onClick={handleOpenDeleteWidgetModal}
           >
             <FiTrash2 />
           </button>
+          {isOpenedDeleteWidgetModal[`id${widget?.id}`] ? (
+            <div className="delete-widget-confirm">
+              <h4 className="delete-widget-confirm__subtitle">
+                Are you sure you want to delete this widget ?
+              </h4>
+              <MdClose className="close" onClick={closeWidgetDeleteModal} />
+              <button
+                type="button"
+                onClick={handleDeleteWidget}
+                id={widget?.id}
+                className="classic-btn container-delete-confirm__btn"
+              >
+                delete
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
       <p className="widget__description">{widget?.description}</p>
