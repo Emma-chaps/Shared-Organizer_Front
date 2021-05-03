@@ -37,7 +37,7 @@ const WidgetCreationForm = ({
       submitWidget();
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned',
+        'A widget must have a title and at least one member assigned'
       );
     }
   };
@@ -104,14 +104,16 @@ const WidgetCreationForm = ({
             <li key={member.id}>
               {isMemberSelected[`id${member.id}`] ? (
                 <>
-                  <AiOutlineCheckCircle />
                   <button
                     type="button"
                     onClick={handleAddMember}
                     id={member.id}
                     className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
                   >
-                    {member.firstname}
+                    <span className="firstname-selected">
+                      <AiOutlineCheckCircle className="icon-check" />{' '}
+                      {member.firstname}
+                    </span>
                   </button>
                 </>
               ) : (

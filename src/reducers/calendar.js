@@ -3,6 +3,7 @@ import {
   UPDATE_DAY_INFOS,
   SET_RANGE,
   SET_SELECTED_DATE_VALUE,
+  RESET_CALENDAR_DATA,
 } from 'src/actions/calendar';
 
 const initialState = {
@@ -39,7 +40,12 @@ export default (state = initialState, action = {}) => {
           death: { ...action.death },
         },
       };
-
+    case RESET_CALENDAR_DATA:
+      return {
+        ...state,
+        range: 'month',
+        selectedDateValue: format(new Date(), 'yyyy-MM-dd'),
+      };
     default:
       return state;
   }

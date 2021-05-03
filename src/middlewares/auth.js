@@ -6,7 +6,10 @@ import {
   SUBMIT_LOGIN,
   login,
   LOGOUT,
+  resetUserData,
 } from 'src/actions/user';
+import { resetCalendarData } from 'src/actions/calendar';
+
 import { setColorToMember, fetchGroupData } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
@@ -73,9 +76,10 @@ export default (store) => (next) => (action) => {
     }
     case LOGOUT: {
       localStorage.removeItem('jwtoken');
+      store.dispatch(resetUserData());
+      store.dispatch(resetCalendarData());
       return next(action);
     }
-
     default:
       return next(action);
   }

@@ -18,6 +18,7 @@ function WidgetContainer({
   displayCreationModal,
   filteredMembers,
   reinitializeWidget,
+  members,
 }) {
   const handleClick = () => {
     showWidgetCreationModal();
@@ -43,10 +44,7 @@ function WidgetContainer({
             key={widgetData.id}
             widget={widgetData}
             editWidget={editWidget}
-            colorMember={findMemberbyFirstname(
-              widgetData?.author,
-              widgetData?.members
-            )}
+            colorMember={findMemberbyFirstname(widgetData?.author, members)}
             deleteWidget={deleteWidget}
             copyWidgetToEdit={copyWidgetToEdit}
             displayCreationModal={displayCreationModal}

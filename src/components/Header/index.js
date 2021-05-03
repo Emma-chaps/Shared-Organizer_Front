@@ -1,26 +1,33 @@
-import React, { useState } from 'react';
+
+
 import jwt_decode from 'jwt-decode';
 
-export default function Header({ logout, setRange }) {
+import React, { useEffect, useState } from 'react';
+
+
+export default function Header({ logout, setRange, range }) {
   const [selectedMonth, setSelectedMonth] = useState('selected-range');
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
 
-  const onChange = (event) => {
-    const value = event.currentTarget.dataset.range;
-    setRange(value);
+  useEffect(() => {
     setSelectedMonth('');
     setSelectedWeek('');
     setSelectedDay('');
-    if (value === 'month') {
+    if (range === 'month') {
       setSelectedMonth('selected-range');
     }
-    if (value === 'week') {
+    if (range === 'week') {
       setSelectedWeek('selected-range');
     }
-    if (value === 'day') {
+    if (range === 'day') {
       setSelectedDay('selected-range');
     }
+  }, [range]);
+
+  const onChange = (event) => {
+    const value = event.currentTarget.dataset.range;
+    setRange(value);
   };
 
   const { firstname } = jwt_decode(localStorage.getItem('jwtoken'));

@@ -15,6 +15,8 @@ import {
   UPDATE_SELECTED_MEMBER,
   CLEAN_SELECTED_MEMBERS,
   SET_ERROR_MESSAGE,
+  OPEN_WIDGET_DELETE_MODAL,
+  CLOSE_WIDGET_DELETE_MODAL,
 } from 'src/actions/widget';
 
 import { findMember, removeGivenMember } from 'src/selectors/findMember';
@@ -33,6 +35,7 @@ const initialState = {
   filteredMembers: [],
   widgetToEdit: {},
   isMemberSelected: {},
+  isOpenedDeleteWidgetModal: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -186,6 +189,20 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isMemberSelected: {},
+      };
+    }
+    case OPEN_WIDGET_DELETE_MODAL: {
+      return {
+        ...state,
+        isOpenedDeleteWidgetModal: {
+          [action.id]: true,
+        },
+      };
+    }
+    case CLOSE_WIDGET_DELETE_MODAL: {
+      return {
+        ...state,
+        isOpenedDeleteWidgetModal: {},
       };
     }
     default:
