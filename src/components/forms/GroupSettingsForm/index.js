@@ -77,7 +77,10 @@ const GroupSettingsFrom = ({
         {role === 3 ? (
           <div className="member-data">Administrator</div>
         ) : (
-          <label htmlFor="role">
+          <div className="member-form__select">
+            <label htmlFor="role" className="member-form__select__icon">
+              Role
+            </label>
             <select
               className="form-select"
               name="role"
@@ -90,18 +93,18 @@ const GroupSettingsFrom = ({
               <option value="2">Editor</option>
               <option value="1">Visitor</option>
             </select>
-          </label>
+          </div>
         )}
         <div className="member-form__btns">
-          <button type="submit" className="color-icon-check icon-btn">
-            <AiOutlineCheckCircle />
+          <button type="submit" className="icon-btn-edit-member--save">
+            Save
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="color-icon-cancel icon-btn"
+            className="icon-btn-edit-member--cancel"
           >
-            <AiOutlineCloseCircle />
+            Cancel
           </button>
         </div>
       </form>
