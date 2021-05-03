@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Modal from 'src/components/Modal';
 import GroupSettings from 'src/containers/pages/GroupSettings';
-import { findMember } from 'src/selectors/findMember';
+import { findMember, removeGivenMember } from 'src/selectors/findMember';
 import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FiEdit2 } from 'react-icons/fi';
 import { SiGooglecalendar } from 'react-icons/si';
@@ -22,15 +22,16 @@ const DashboardMenu = ({
   fetchAllWidgets,
 }) => {
   const [displayModal, setDisplayModal] = useState(false);
-  const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
+  const [hideHiddenMembers, setHideHiddenMembers] = useState(true);
   const [displayDatepicker, setDisplayDatepicker] = useState(false);
-  const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 1000px)').matches,
-  );
   const yearDate = selectedDateValue.split('-')[0];
   const monthDate = selectedDateValue.split('-')[1];
   const dayDate = selectedDateValue.split('-')[2];
   const formattedDateValue = new Date(yearDate, monthDate - 1, dayDate);
+  // const [otherMembers, setOtherMembers] = useState(members);
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 1000px)').matches,
+  );
 
   useEffect(() => {
     const handler = (event) => setMatches(event.matches);
@@ -45,12 +46,30 @@ const DashboardMenu = ({
     fetchAllWidgets();
   };
 
+  const removeSelectedClass = (event) => {
+    const siblingElements = event.currentTarget.parentNode.children;
+    siblingElements.forEach((element) => {
+      if (element.className.includes('selected')) {
+        element.className = 'menu__members--btn';
+      }
+    });
+  };
+
+  const memberRef = useRef();
   const handleFilter = (event) => {
+    if (matches) {
+      removeSelectedClass(event);
+      event.currentTarget.className = 'menu__members--btn selected';
+    }
+    if (!matches) {
+      setHideHiddenMembers(true);
+    }
     const searchedMember = findMember(event.currentTarget.id, members);
     setFilteredMembers([searchedMember]);
   };
 
-  const handleResetFilter = () => {
+  const handleResetFilter = (event) => {
+    removeSelectedClass(event);
     setFilteredMembers(members);
   };
 
@@ -59,11 +78,11 @@ const DashboardMenu = ({
   };
 
   const handleToggleModal = () => {
-    setDisplayHiddenMembers(!displayHiddenMembers);
+    setHideHiddenMembers(!hideHiddenMembers);
   };
 
   const classes = classNames('member-filter__modal', {
-    'hidden-members-modal': displayHiddenMembers,
+    'hidden-members-modal': hideHiddenMembers,
   });
 
   const handleCalendar = (event) => {
@@ -79,7 +98,7 @@ const DashboardMenu = ({
   const calendarRef = useRef();
   useOnClickOutside(calendarRef, () => setDisplayDatepicker(false));
   const memberFilterRef = useRef();
-  useOnClickOutside(memberFilterRef, () => setDisplayHiddenMembers(true));
+  useOnClickOutside(memberFilterRef, () => setHideHiddenMembers(true));
 
   return (
     <div className="menu">
@@ -130,6 +149,7 @@ const DashboardMenu = ({
               id={member.id}
               onClick={handleFilter}
               className="menu__members--btn"
+              ref={memberRef}
             >
               <span className={`letter icon-container--${member.icon}`}>
                 {member.firstname[0]}

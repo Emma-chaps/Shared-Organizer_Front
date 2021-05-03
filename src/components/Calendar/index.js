@@ -67,6 +67,7 @@ const Calendar = ({
                   widgets={dailyWidgets}
                   setSelectedDateValue={setSelectedDateValue}
                   setRange={setRange}
+                  range={range}
                 />
               ))}
             </div>
@@ -106,12 +107,13 @@ const Calendar = ({
           <div className="calendar__content__weeks">
             {week.map((day) => (
               <Day
-                className="calendar__content__weeks__day"
+                className="calendar__content__weeks__day week-display"
                 key={format(day, 'd')}
                 day={day}
                 widgets={dailyWidgets}
                 setSelectedDateValue={setSelectedDateValue}
                 setRange={setRange}
+                range={range}
               />
             ))}
           </div>
