@@ -8,6 +8,13 @@
   font-family: 'Sequel';
   src: url('../assets/fonts/Sequel_Demo.ttf');
 }
+@font-face {
+  font-family: 'Butler-Bold';
+  src: url('../assets/fonts/Butler-Bold.woff2') format('woff2'),
+    url('../assets/fonts/Butler-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -267,6 +274,7 @@ body {
     padding-right: 0.4rem;
     min-width: 23%;
     text-align: right;
+    position: relative;
 
     @media (min-width: 700px) {
       padding-right: 1rem;
@@ -301,6 +309,15 @@ body {
       //   padding: 0.8rem 1.2rem;
       //   font-size: 0.9rem;
       // }
+    }
+    &--firstname {
+      position: absolute;
+      font-size: .7em;
+      right: 10px;    
+      margin-top: 2px;
+      @media (min-width: 700px) {
+        right: 30px;
+      }
     }
   }
 }
@@ -901,8 +918,10 @@ body {
         }
         @media (min-width: 1000px) {
           border-radius: 13px;
+          padding: 5px;
         }
         .day-number {
+          font-family: 'Butler-Bold', 'sans-serif';
           position: absolute;
           bottom: 1px;
           right: 1px;
@@ -928,9 +947,9 @@ body {
             height: 20px;
           }
           @media (min-width: 1400px) {
-            font-size: 20px;
-            width: 26px;
-            height: 26px;
+            // font-size: 20px;
+            // width: 26px;
+            // height: 26px;
           }
         }
       }

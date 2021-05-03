@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import jwt_decode from 'jwt-decode';
 
 export default function Header({ logout, setRange }) {
   const [selectedMonth, setSelectedMonth] = useState('selected-range');
@@ -21,6 +22,9 @@ export default function Header({ logout, setRange }) {
       setSelectedDay('selected-range');
     }
   };
+
+  const { firstname } = jwt_decode(localStorage.getItem('jwtoken'));
+
   return (
     <header className="header">
       <h1 className="header__logo">SO.</h1>
@@ -54,6 +58,7 @@ export default function Header({ logout, setRange }) {
         <button type="button" onClick={logout} className="header__logout__btn">
           Log out
         </button>
+        <div className="header__logout--firstname">Hi {firstname}</div>
       </div>
     </header>
   );
