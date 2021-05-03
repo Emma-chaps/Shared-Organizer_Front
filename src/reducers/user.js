@@ -4,6 +4,7 @@ import {
   LOGIN,
   LOGOUT,
   SET_SELECT_ICON,
+  RESET_USER_DATA,
 } from 'src/actions/user';
 
 import { isAdmin } from 'src/selectors/utils';
@@ -68,6 +69,24 @@ export default (state = initialState, action = {}) => {
           ...state.login,
           isLogged: false,
           isAdmin: false,
+        },
+      };
+    case RESET_USER_DATA:
+      return {
+        ...state,
+        login: {
+          email: '',
+          password: '',
+          token: '',
+          isLogged: false,
+          isAdmin: false,
+        },
+        signup: {
+          email: '',
+          password: '',
+          groupName: '',
+          firstname: '',
+          icon: '',
         },
       };
     default:

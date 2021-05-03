@@ -279,9 +279,9 @@ body {
       border-radius: 5px;
       background-image: linear-gradient(
         90deg,
-        rgba(139, 198, 220, 1) 50%,
-        rgba(196, 226, 237, 1) 90%,
-        rgba(220, 238, 244, 1) 100%
+        rgba(139, 198, 220, 1) 45%,
+        rgba(177, 217, 231, 1) 75%,
+        rgba(184, 217, 230, 1) 100%
       );
       color: $white;
       font-size: 0.7rem;
@@ -350,9 +350,9 @@ body {
 
   background-image: linear-gradient(
     90deg,
-    rgba(139, 198, 220, 1) 40%,
-    rgba(196, 226, 237, 1) 75%,
-    rgba(220, 238, 244, 1) 100%
+    rgba(139, 198, 220, 1) 45%,
+    rgba(177, 217, 231, 1) 75%,
+    rgba(184, 217, 230, 1) 100%
   );
 
   color: $white;
@@ -647,7 +647,6 @@ body {
     }
   }
 
-  
   .member-filter {
     position: relative;
     z-index: 15;
@@ -696,7 +695,7 @@ body {
         border-radius: $border-radius;
 
         margin: 0 1rem;
-        padding: .25rem;
+        padding: 0.25rem;
       }
     }
     .selected {
@@ -705,18 +704,16 @@ body {
         text-decoration: underline;
       }
     }
-    
+
     &--btn {
       cursor: pointer;
       @include flex;
       margin-left: 1.5rem;
 
-      @include transition($time: .1s);
+      @include transition($time: 0.1s);
       &:active {
         transform: scale(1.25);
       }
-  
-      
 
       .letter {
         @include name-tag($size: 1.5rem, $font-size: 0.75rem);
@@ -1007,7 +1004,7 @@ body {
     @media (min-height: 900px) {
       height: 70%;
     }
-    @media (min-height : 1000px) {
+    @media (min-height: 1000px) {
       height: 60%;
     }
   }
@@ -1145,7 +1142,6 @@ body {
       padding: 0rem 10% 0.5rem 10%;
     }
 
-
     &__title-label {
       font-size: 0.8em;
       font-weight: bold;
@@ -1210,11 +1206,9 @@ body {
   // .error-form-message {
   //   color: red;
   // }
-  
-  
+
   &__btn {
     margin: 1rem 0 0 0;
-    
   }
 }
 
@@ -1340,12 +1334,11 @@ body {
   width: 100%;
   @include flex;
   flex-direction: column;
-  
 }
 
 .error-form-message {
   color: #ff003a;
   display: block;
-  font-size: .7em;
+  font-size: 0.7em;
   text-align: center;
 }

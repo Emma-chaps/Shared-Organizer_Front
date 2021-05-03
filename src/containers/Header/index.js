@@ -4,7 +4,9 @@ import Header from 'src/components/Header';
 import { setRange } from 'src/actions/calendar';
 import { logout } from 'src/actions/user';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  range: state.calendar.range,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setRange: (value) => dispatch(setRange(value)),

@@ -51,3 +51,9 @@ export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
 });
+
+export const RESET_USER_DATA = 'RESET_USER_DATA';
+
+export const resetUserData = () => ({
+  type: RESET_USER_DATA,
+});
