@@ -4,7 +4,7 @@ import {
   MemberWidgetFilter,
 } from 'src/selectors/filterWidgets';
 import { findMemberbyFirstname } from 'src/selectors/findMember';
-import Widget from './Widget';
+import Widget from 'src/containers/WidgetContainer/Widget';
 
 function WidgetContainer({
   range,
@@ -27,7 +27,7 @@ function WidgetContainer({
   let filteredWidgets = RangeWidgetFilter(
     dashboardWidgets,
     selectedDateValue,
-    range,
+    range
   );
 
   if (filteredMembers.length === 1) {
@@ -45,7 +45,7 @@ function WidgetContainer({
             editWidget={editWidget}
             colorMember={findMemberbyFirstname(
               widgetData?.author,
-              widgetData?.members,
+              widgetData?.members
             )}
             deleteWidget={deleteWidget}
             copyWidgetToEdit={copyWidgetToEdit}

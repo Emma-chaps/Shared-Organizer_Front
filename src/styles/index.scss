@@ -588,6 +588,13 @@ body {
 
 .icon-container--dark {
   background-color: #2e2e2e;
+  // &::active {
+
+  // }
+}
+
+.icon-container--dark :active {
+  background-color: red;
 }
 
 .icon-container--light-blue {

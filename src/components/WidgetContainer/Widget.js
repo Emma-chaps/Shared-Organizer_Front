@@ -12,6 +12,8 @@ function Widget({
   hideWidgetCreationModal,
   displayCreationModal,
   colorMember,
+  updateSelectedMember,
+  cleanSelectedMembers,
 }) {
   const [displayEdit, setDisplayEdit] = useState(false);
 
@@ -19,8 +21,13 @@ function Widget({
   const handleEdit = () => {
     copyWidgetToEdit(widget, members);
     showWidgetCreationModal();
+    cleanSelectedMembers();
+    members.map((selectedMemberInWidget) => {
+      updateSelectedMember(`id${selectedMemberInWidget.id}`);
+    });
     setDisplayEdit(true);
   };
+
   const handleDelete = (event) => {
     deleteWidget(event.currentTarget.id);
   };

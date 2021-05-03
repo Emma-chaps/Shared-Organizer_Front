@@ -115,3 +115,30 @@ export const setWidgetToEdit = (widget) => ({
   type: SET_WIDGET_TO_EDIT,
   widget,
 });
+
+export const SET_IS_SELECTED_MEMBER = 'SET_IS_SELECTED_MEMBER';
+
+export const setIsSelectedMember = (id) => ({
+  type: SET_IS_SELECTED_MEMBER,
+  id,
+});
+
+export const REMOVE_SELECTED_MEMBER = 'REMOVE_SELECTED_MEMBER';
+
+export const removeSelectedMember = (id) => ({
+  type: REMOVE_SELECTED_MEMBER,
+  id,
+});
+
+export const UPDATE_SELECTED_MEMBER = 'UPDATE_SELECTED_MEMBER';
+
+export const updateSelectedMember = (id) => ({
+  type: UPDATE_SELECTED_MEMBER,
+  id,
+});
+
+export const CLEAN_SELECTED_MEMBERS = 'CLEAN_SELECTED_MEMBERS';
+
+export const cleanSelectedMembers = () => ({
+  type: CLEAN_SELECTED_MEMBERS,
+});
