@@ -40,7 +40,6 @@ body {
   bottom: 0;
 }
 
-
 .calendar-widget-container {
   height: 82vh;
   position: relative;
@@ -56,7 +55,6 @@ body {
   }
 }
 
-
 //////////////// HOME ////////////////
 
 .home-container {
@@ -65,8 +63,6 @@ body {
   width: 95%;
   max-width: 40rem;
   min-height: 70vh;
-  
-
 
   .home {
     @include flex($direction: column, $justify: space-between);
@@ -235,15 +231,15 @@ body {
         rgba(139, 198, 220, 1) 20%
       );
     }
-    @media (min-width: 1500px) {
-      font-size: 2.5em;
-      background-image: linear-gradient(
-        90deg,
-        rgba(220, 238, 244, 1) 0%,
-        rgba(196, 226, 237, 1) 5%,
-        rgba(139, 198, 220, 1) 9%
-      );
-    }
+    // @media (min-width: 1500px) {
+    //   font-size: 2.5em;
+    //   background-image: linear-gradient(
+    //     90deg,
+    //     rgba(220, 238, 244, 1) 0%,
+    //     rgba(196, 226, 237, 1) 5%,
+    //     rgba(139, 198, 220, 1) 9%
+    //   );
+    // }
   }
   &__range-menu {
     &__range-btn {
@@ -261,10 +257,10 @@ body {
         min-width: 6rem;
         font-size: 0.9rem;
       }
-      @media (min-width: 1500px) {
-        min-width: 7rem;
-        font-size: 1rem;
-      }
+      // @media (min-width: 1500px) {
+      //   min-width: 7rem;
+      //   font-size: 1rem;
+      // }
     }
   }
   &__logout {
@@ -300,11 +296,11 @@ body {
         padding: 0.7rem 1rem;
         font-size: 0.8rem;
       }
-      @media (min-width: 1500px) {
-        min-width: 6.5rem;
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-      }
+      // @media (min-width: 1500px) {
+      //   min-width: 6.5rem;
+      //   padding: 0.8rem 1.2rem;
+      //   font-size: 0.9rem;
+      // }
     }
   }
 }
@@ -376,7 +372,6 @@ body {
     height: 100%;
     @include flex($direction: column, $justify: space-around);
     max-width: 1600px;
-
   }
 }
 
@@ -409,7 +404,6 @@ body {
     overflow: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     pointer-events: auto;
-
 
     @media (min-width: 500px) {
       min-width: 80vw;
@@ -611,23 +605,22 @@ body {
 //////////////// DASHBOARD MENU ////////////////
 .menu {
   @include flex($justify: space-between);
-  padding: .25rem .75rem;
+  padding: 0.25rem 0.75rem;
   position: relative;
   z-index: 5;
-  
+
   // background-color: $dashboard-menu;
   @media (min-width: 1000px) {
     width: calc(100% - 4rem);
-    padding-top: .5rem;
+    padding-top: 0.5rem;
   }
-
 
   .menu__datePicker {
     color: $dark;
     position: relative;
     .date-picker-container {
       cursor: pointer;
-      @include transition($time: .1s);
+      @include transition($time: 0.1s);
       &:hover {
         transform: scale(1.2);
       }
@@ -635,11 +628,10 @@ body {
         @include flex;
       }
     }
-    
+
     &--icon {
       font-size: 30px;
       margin: 0 1rem;
-      
     }
     &--calendar {
       position: fixed;
@@ -650,7 +642,7 @@ body {
   .member-filter {
     position: relative;
     z-index: 15;
- 
+
     &__btn {
       @include flex($direction: column);
       border-radius: 50%;
@@ -688,30 +680,27 @@ body {
     @include flex($justify: flex-end);
     flex-wrap: wrap;
     max-width: 40%;
-    
+
     @media (min-width: 1000px) {
       @media (max-height: 600px) {
         @include blur;
         background: rgba(#404939, 0.2);
         border-radius: $border-radius;
         padding: 0 1rem;
-    }
+      }
     }
 
     &--btn {
       cursor: pointer;
       @include flex;
       margin-left: 1.5rem;
-      @include transition($time: .1s);
+      @include transition($time: 0.1s);
       &:hover {
         transform: scale(1.1);
       }
 
       .letter {
-        @include name-tag(
-          $size: 1.5rem,
-          $font-size: 0.75rem
-        );
+        @include name-tag($size: 1.5rem, $font-size: 0.75rem);
         margin-right: 0.25rem;
       }
       .member-firstname {
@@ -736,10 +725,10 @@ body {
     &__edit {
       background-color: transparent;
       border: none;
-      @include transition($time: .1s);
-        &:hover {
-          transform: scale(1.4);
-        }
+      @include transition($time: 0.1s);
+      &:hover {
+        transform: scale(1.4);
+      }
     }
 
     @media (min-width: 1200px) {
@@ -750,11 +739,10 @@ body {
 }
 .member-filter--all {
   @include pill;
-  @include transition($time: .1s);
+  @include transition($time: 0.1s);
   &:hover {
     transform: scale(1.1);
   }
-  
 
   &-modal {
     border: white;
@@ -788,17 +776,17 @@ body {
     color: $dark;
     &__title {
       button {
-          background-color: transparent;
-          border: none;
-          font-weight: bold;
-          font-size: 1rem;
-          color: $dark;
-        }
-        span {
-          color: $dark;
-          font-weight: bold;
-          text-transform: uppercase;
-        }
+        background-color: transparent;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        color: $dark;
+      }
+      span {
+        color: $dark;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
     }
   }
 
@@ -816,12 +804,12 @@ body {
       height: 100%;
       margin-top: 2rem;
       padding: 0 2rem;
-      @include flex($direction: column, $justify:space-evenly);
-     }
-    @media (min-height : 600px) {
+      @include flex($direction: column, $justify: space-evenly);
+    }
+    @media (min-height: 600px) {
       min-height: 500px;
     }
-    @media (min-height : 500px) {
+    @media (min-height: 500px) {
       min-height: 400px;
     }
 
@@ -831,7 +819,7 @@ body {
       padding: 5px;
       color: $dark-green;
       @media (min-width: 700px) {
-       padding-top: 20px;
+        padding-top: 20px;
       }
     }
     &__info {
@@ -842,7 +830,7 @@ body {
         }
       }
       .info-link {
-        font-size: .9em;
+        font-size: 0.9em;
         text-align: right;
         &:hover {
           color: $light-blue;
@@ -872,7 +860,7 @@ body {
       grid-template-rows: minmax(30px, 40px);
       column-gap: 4px;
       @media (min-width: 1000px) {
-        grid-template-rows: minmax(60px,70px);
+        grid-template-rows: minmax(60px, 70px);
         column-gap: 10px;
       }
       @media (min-width: 1200px) {
@@ -888,13 +876,12 @@ body {
         grid-template-columns: repeat(3, 1fr);
         padding: 2px;
         cursor: pointer;
-        @include transition($time: .1s);
+        @include transition($time: 0.1s);
         &:hover {
           transform: scale(1.1);
         }
         @media (min-width: 1000px) {
           border-radius: 13px;
-
         }
         .day-number {
           position: absolute;
@@ -904,7 +891,7 @@ body {
           @media (min-width: 1000px) {
             bottom: 5px;
             right: 5px;
-            font-size: 25px;    
+            font-size: 25px;
           }
         }
         .calendar-members-concerned {
@@ -934,7 +921,6 @@ body {
 
 ////////WIDGETS////////////////////////////
 
-
 .add-widget-btn {
   position: fixed;
   bottom: 10px;
@@ -950,17 +936,17 @@ body {
     30deg,
     rgba(139, 198, 220, 1) 57%,
     rgba(255, 255, 255, 1) 100%
-    );
+  );
   @include flex;
-  @include transition($time: .1s);
+  @include transition($time: 0.1s);
   &:hover {
     transform: scale(1.2);
   }
-  @media (min-width:700px) {
+  @media (min-width: 700px) {
     bottom: 20px;
     right: 20px;
   }
-  @media (min-width:1000px) {
+  @media (min-width: 1000px) {
     position: absolute;
     top: 10px;
     right: 30px;
@@ -973,19 +959,19 @@ body {
   background-color: $white;
   border-radius: 10px;
   overflow-y: auto;
-  padding-top: .75rem;
+  padding-top: 0.75rem;
   padding-bottom: 300px;
-  margin-top: .5rem;
-  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
-  box-shadow: inset 0px 0px 15px -3px rgba(0,0,0,0.4);
+  margin-top: 0.5rem;
+  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
   @include transition;
-    @media (min-width:700px) {
-    @include flex($align: flex-start, $justify:flex-start);
+  @media (min-width: 700px) {
+    @include flex($align: flex-start, $justify: flex-start);
     align-content: flex-start;
     flex-wrap: wrap;
     // width: 700px;
   }
-  @media (min-width:1000px) {
+  @media (min-width: 1000px) {
     height: 100%;
     min-width: 100%;
     display: grid;
@@ -993,53 +979,53 @@ body {
     padding: 20px;
     gap: 20px;
     grid-auto-flow: dense;
-    @media (min-height : 700px) {
+    @media (min-height: 700px) {
       height: 90%;
     }
-    @media (min-height : 800px) {
+    @media (min-height: 800px) {
       height: 80%;
     }
-    @media (min-height : 900px) {
+    @media (min-height: 900px) {
       height: 70%;
     }
   }
 
   .widget {
-    -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
-    box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
     border-radius: $border-radius;
-    padding: 0 .5rem;
-    padding-bottom: .75rem;
+    padding: 0 0.5rem;
+    padding-bottom: 0.75rem;
     width: 95%;
     margin: auto;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
 
-    @media (min-width:700px) {
+    @media (min-width: 700px) {
       width: 46%;
       margin: auto;
       margin-bottom: 10px;
     }
-    @media (min-width:1000px) {
+    @media (min-width: 1000px) {
       width: 100%;
       min-width: 230px;
     }
-    .visible-collapsed{
+    .visible-collapsed {
       @include flex;
       .name-tag {
         @include name-tag;
         margin-right: 1rem;
       }
       .widget-header {
-        padding: .75rem 0;
+        padding: 0.75rem 0;
         .widget__title {
           font-weight: bold;
           font-size: 1.2em;
           text-transform: capitalize;
-          padding-bottom: .25rem;
+          padding-bottom: 0.25rem;
         }
         .widget__author {
           font-style: italic;
-          font-size: .8em;
+          font-size: 0.8em;
         }
       }
       .edit-delete-btns {
@@ -1048,32 +1034,31 @@ body {
           border: none;
           background: transparent;
           font-size: 1.1em;
-          @include transition($time: .1s);
+          @include transition($time: 0.1s);
           &:hover {
-          transform: scale(1.2);
-        }
+            transform: scale(1.2);
+          }
         }
       }
-    }              
+    }
     &__description {
-      padding: 1rem .5rem;
+      padding: 1rem 0.5rem;
     }
     .widget__members {
-      @include flex($justify: flex-end); 
+      @include flex($justify: flex-end);
       margin-right: 50px;
-      @media (min-width:1000px) {
+      @media (min-width: 1000px) {
         margin: 0;
       }
       .widget__member {
         span {
-          @include name-tag($size: 1.5rem, $font-size: .75rem);
-          margin-left: .3rem;
+          @include name-tag($size: 1.5rem, $font-size: 0.75rem);
+          margin-left: 0.3rem;
         }
       }
     }
   }
 }
-
 
 /////////////// FORMS ///////////////////////
 .container-form {
