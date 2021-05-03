@@ -14,9 +14,11 @@ const Dashboard = ({
   hideWidgetCreationModal,
   fetchAllWidgets,
   reinitializeWidget,
+  cleanSelectedMembers,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
   const handleClick = () => {
+    cleanSelectedMembers();
     showWidgetCreationModal();
     reinitializeWidget();
   };

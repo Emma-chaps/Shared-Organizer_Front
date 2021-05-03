@@ -65,7 +65,7 @@ const WidgetCreationForm = ({
 
   return (
     <div className="container-form">
-      <h2 className="container-form__title">Add A Widget</h2>
+      <h2 className="container-form__title">Widget</h2>
       <form
         onSubmit={handleSubmit}
         className="widget-settings__input positioned-parent"

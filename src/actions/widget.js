@@ -129,3 +129,16 @@ export const removeSelectedMember = (id) => ({
   type: REMOVE_SELECTED_MEMBER,
   id,
 });
+
+export const UPDATE_SELECTED_MEMBER = 'UPDATE_SELECTED_MEMBER';
+
+export const updateSelectedMember = (id) => ({
+  type: UPDATE_SELECTED_MEMBER,
+  id,
+});
+
+export const CLEAN_SELECTED_MEMBERS = 'CLEAN_SELECTED_MEMBERS';
+
+export const cleanSelectedMembers = () => ({
+  type: CLEAN_SELECTED_MEMBERS,
+});

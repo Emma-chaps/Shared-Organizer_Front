@@ -6,6 +6,7 @@ import {
   hideWidgetCreationModal,
   fetchAllWidgets,
   reinitializeWidget,
+  cleanSelectedMembers,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
   hideWidgetCreationModal: () => dispatch(hideWidgetCreationModal()),
   fetchAllWidgets: () => dispatch(fetchAllWidgets()),
   reinitializeWidget: () => dispatch(reinitializeWidget()),
+  cleanSelectedMembers: () => dispatch(cleanSelectedMembers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

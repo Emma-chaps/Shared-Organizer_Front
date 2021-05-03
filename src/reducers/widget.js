@@ -12,6 +12,8 @@ import {
   REMOVE_MEMBER_FROM_WIDGET,
   SET_IS_SELECTED_MEMBER,
   REMOVE_SELECTED_MEMBER,
+  UPDATE_SELECTED_MEMBER,
+  CLEAN_SELECTED_MEMBERS,
 } from 'src/actions/widget';
 
 import { findMember, removeGivenMember } from 'src/selectors/findMember';
@@ -154,6 +156,21 @@ export default (state = initialState, action = {}) => {
           ...state.isMemberSelected,
           [action.id]: false,
         },
+      };
+    }
+    case UPDATE_SELECTED_MEMBER: {
+      return {
+        ...state,
+        isMemberSelected: {
+          ...state.isMemberSelected,
+          [action.id]: true,
+        },
+      };
+    }
+    case CLEAN_SELECTED_MEMBERS: {
+      return {
+        ...state,
+        isMemberSelected: {},
       };
     }
     default:
