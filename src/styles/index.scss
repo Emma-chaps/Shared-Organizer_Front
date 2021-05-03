@@ -69,7 +69,7 @@ body {
   margin: auto;
   width: 95%;
   max-width: 40rem;
-  min-height: 70vh;
+  height: 100vh;
 
   .home {
     @include flex($direction: column, $justify: space-between);
@@ -81,6 +81,7 @@ body {
     @include blur;
     border-radius: 13px;
     border-bottom-right-radius: 0;
+    min-height: 70vh;
 
     &__header {
       @include flex($direction: column);
@@ -594,37 +595,7 @@ body {
   width: 100%;
 }
 
-//////////////// COLOR ICONS ////////////////
-.color-icon-check {
-  color: green;
-}
 
-.color-icon-cancel {
-  color: red;
-}
-
-.icon-container--dark {
-  background-color: #2e2e2e;
-  // &::active {
-
-  // }
-}
-
-.icon-container--dark :active {
-  background-color: red;
-}
-
-.icon-container--light-blue {
-  background-color: #8bc6dc;
-}
-
-.icon-container--green {
-  background-color: #5a7247;
-}
-
-.icon-container--light-grey {
-  background-color: #8b8b8b;
-}
 
 //////////////// DASHBOARD MENU ////////////////
 
@@ -692,7 +663,7 @@ body {
       right: 50%;
       padding: 1.25rem 0.75rem 0.75rem 0.75rem;
       z-index: -1;
-      background: rgba(#404939, 0.1);
+      background: rgba(#ffffff, 0.3);
       @include blur;
 
       .button-modal-filter {
@@ -707,14 +678,14 @@ body {
     flex-wrap: wrap;
     max-width: 40%;
     @media (min-width: 1000px) {
-      @media (max-height: 600px) {
+      // @media (max-height: 600px) {
         @include blur;
-        background: rgba(#404939, 0.2);
+        background: rgba(#ffffff, 0.3);
         border-radius: $border-radius;
 
         margin: 0 1rem;
         padding: .25rem;
-      }
+      // }
     }
     .selected {
       transform: scale(1.25);
@@ -774,14 +745,15 @@ body {
   }
 }
 .member-filter--all {
-  @include pill;
+  @include pill($color: $dark);
   @include transition($time: 0.1s);
+  color: $dark;
   &:hover {
     transform: scale(1.1);
   }
 
   &-modal {
-    border: white;
+    border: $dark;
   }
 }
 
@@ -833,6 +805,7 @@ body {
     border-radius: 10px;
     color: $dark;
     width: 100%;
+
     @include transition;
     @media (min-width: 1000px) {
       width: 90%;
@@ -841,12 +814,12 @@ body {
       margin-top: 2rem;
       padding: 0 2rem;
       @include flex($direction: column, $justify: space-evenly);
-    }
-    @media (min-height: 600px) {
-      min-height: 500px;
-    }
-    @media (min-height: 500px) {
-      min-height: 400px;
+      @media (min-height: 600px) {
+        min-height: 500px;
+      }
+      @media (min-height: 500px) {
+        min-height: 400px;
+      }
     }
 
     &__title {
@@ -937,7 +910,7 @@ body {
           width: 13px;
           height: 13px;
           border-radius: 50%;
-          background-color: $dark-green;
+          // background-color: $dark-green;
           color: $white;
           text-transform: uppercase;
           @include flex;
@@ -1369,4 +1342,36 @@ body {
   display: block;
   font-size: .7em;
   text-align: center;
+}
+
+//////////////// COLOR ICONS ////////////////
+.color-icon-check {
+  color: green;
+}
+
+.color-icon-cancel {
+  color: red;
+}
+
+.icon-container--dark {
+  background-color: #2e2e2e;
+  // &::active {
+
+  // }
+}
+
+.icon-container--dark :active {
+  background-color: red;
+}
+
+.icon-container--light-blue {
+  background-color: #8bc6dc;
+}
+
+.icon-container--green {
+  background-color: #5a7247;
+}
+
+.icon-container--light-grey {
+  background-color: #8b8b8b;
 }
