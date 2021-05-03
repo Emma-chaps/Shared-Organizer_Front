@@ -31,15 +31,12 @@ export default (store) => (next) => (action) => {
           const event = selectRandomInArray(
             dateData.find((data) => data.events)?.events,
           );
-          console.log('event:', event);
           const birth = selectRandomInArray(
             dateData.find((data) => data.births)?.births,
           );
-          console.log('birth:', birth);
           const death = selectRandomInArray(
             dateData.find((data) => data.deaths)?.deaths,
           );
-          console.log('death:', death);
           store.dispatch(updateDayInfos(event, birth, death));
         });
       return next(action);

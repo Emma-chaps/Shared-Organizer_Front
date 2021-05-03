@@ -10,6 +10,7 @@ import {
   setWidgetToEdit,
   setIsSelectedMember,
   removeSelectedMember,
+  setErrorMessage,
 } from 'src/actions/widget';
 
 const mapStateToProps = (state) => ({
@@ -17,6 +18,7 @@ const mapStateToProps = (state) => ({
   widgetDescription: state.widget.widgetCreation.description,
   members: state.settings.group.members,
   membersToAdd: state.widget.widgetCreation.groupMembers,
+  errorMessage: state.widget.widgetCreation.errorMessage,
   widgetToEdit: state.widget.widgetToEdit,
   isMemberSelected: state.widget.isMemberSelected,
 });
@@ -33,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
   setWidgetToEdit: () => dispatch(setWidgetToEdit()),
   setIsSelectedMember: (id) => dispatch(setIsSelectedMember(id)),
   removeSelectedMember: (id) => dispatch(removeSelectedMember(id)),
+  setErrorMessage: (message) => dispatch(setErrorMessage(message)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WidgetCreationForm);

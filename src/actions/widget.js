@@ -143,6 +143,12 @@ export const cleanSelectedMembers = () => ({
   type: CLEAN_SELECTED_MEMBERS,
 });
 
+export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+
+export const setErrorMessage = (message) => ({
+  type: SET_ERROR_MESSAGE,
+  message,
+
 export const OPEN_WIDGET_DELETE_MODAL = 'OPEN_WIDGET_DELETE_MODAL';
 
 export const openWidgetDeleteModal = (id) => ({

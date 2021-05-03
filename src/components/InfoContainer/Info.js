@@ -1,9 +1,6 @@
 import React from 'react';
 
 function Info({ info }) {
-  if (info?.wikipedia?.length) {
-    console.log(info.wikipedia[0]);
-  }
   return (
     <div className="info-container__info">
       <p className="info-description">

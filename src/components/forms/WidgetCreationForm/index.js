@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
@@ -16,16 +16,18 @@ const WidgetCreationForm = ({
   membersToAdd,
   submitWidget,
   hideWidgetCreationModal,
-  widget,
   removeMember,
-  setWidgetToEdit,
-  widgetToEdit,
   isMemberSelected,
   setIsSelectedMember,
   removeSelectedMember,
+  errorMessage,
+  setErrorMessage,
 }) => {
-  const [errorMessage, setErrorMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
   // const [selectedWidget, setSelectedWidget] = useState(widget);
+  useEffect(() => {
+    setErrorMessage('');
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -53,11 +55,9 @@ const WidgetCreationForm = ({
   const handleAddMember = (event) => {
     setIsSelectedMember(`id${event.currentTarget.id}`);
     if (!findMember(event.currentTarget.id, membersToAdd)) {
-      console.log('IF');
       setIsSelectedMember(`id${event.currentTarget.id}`);
       assignMember(event.currentTarget.id, members);
     } else {
-      console.log('ELSE');
       removeSelectedMember(`id${event.currentTarget.id}`);
       removeMember(event.currentTarget.id, membersToAdd);
     }

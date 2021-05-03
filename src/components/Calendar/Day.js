@@ -1,5 +1,6 @@
 import React from 'react';
 import { format, getDayOfYear, getYear } from 'date-fns';
+import filterUniqueMembers from 'src/selectors/uniqueMembers';
 
 function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
   const widgetsOfSpecificDay = widgets?.filter((widget) => {
@@ -8,15 +9,7 @@ function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
     }
   });
 
-  const arrayOfDisplayedLetters = widgetsOfSpecificDay?.map((widget) =>
-    widget.members.map((member) => member.firstname[0])
-  );
-  const duplicatesLetters = [];
-  const displayedLetters = arrayOfDisplayedLetters?.forEach((array) =>
-    duplicatesLetters.push(...array)
-  );
-  const uniqueLetters = new Set(duplicatesLetters);
-  const uniqueLettersArray = [...uniqueLetters];
+  const uniqueMembers = filterUniqueMembers(widgetsOfSpecificDay);
 
   const handleClick = (event) => {
     setSelectedDateValue(format(day, 'yyyy-MM-dd'));
@@ -26,9 +19,12 @@ function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
   return (
     <div className={className} onClick={handleClick}>
       <span className="day-number">{format(day, 'dd')}</span>
-      {uniqueLettersArray?.map((letter) => (
-        <div className="calendar-members-concerned" key={letter}>
-          <span>{letter}</span>
+      {uniqueMembers?.map((member) => (
+        <div
+          className={`calendar-members-concerned icon-container--${member.icon}`}
+          key={member.id}
+        >
+          <span>{member.firstname[0]}</span>
         </div>
       ))}
     </div>

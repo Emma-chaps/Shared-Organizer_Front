@@ -14,6 +14,7 @@ import {
   REMOVE_SELECTED_MEMBER,
   UPDATE_SELECTED_MEMBER,
   CLEAN_SELECTED_MEMBERS,
+  SET_ERROR_MESSAGE,
   OPEN_WIDGET_DELETE_MODAL,
   CLOSE_WIDGET_DELETE_MODAL,
 } from 'src/actions/widget';
@@ -28,6 +29,7 @@ const initialState = {
     title: '',
     description: '',
     groupMembers: [],
+    errorMessage: '',
   },
   dashboardWidgets: [],
   filteredMembers: [],
@@ -97,6 +99,10 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         displayCreationModal: false,
+        widgetCreation: {
+          ...state.widgetCreation,
+          errorMessage: action.message,
+        },
       };
     }
     case REINITIALIZE_WIDGET: {
@@ -108,6 +114,15 @@ export default (state = initialState, action = {}) => {
           title: '',
           description: '',
           groupMembers: [],
+        },
+      };
+    }
+    case SET_ERROR_MESSAGE: {
+      return {
+        ...state,
+        widgetCreation: {
+          ...state.widgetCreation,
+          errorMessage: action.message,
         },
       };
     }
