@@ -198,23 +198,20 @@ const GroupSettings = ({
                         <></>
                       )}
                     </div>
-                    {member.role === 3 ? (
+                    {member?.role === 3 ? (
                       <></>
                     ) : (
                       <div className="positioned-parent">
                         <button
                           type="button"
                           onClick={handleOpenDeleteMemberModal}
-                          data-id={member.id}
+                          data-id={member?.id}
                           className="icon-btn"
                         >
                           <IoMdTrash />
                         </button>
-                        {isOpenedMemberDeleteModal[member.id] ? (
-                          <div
-                            className="container-delete-confirm"
-                            id="triangle-up"
-                          >
+                        {isOpenedMemberDeleteModal[member?.id] ? (
+                          <div className="container-delete-confirm">
                             <h4 className="container-delete-confirm__subtitle">
                               Are you sure you want to delete this member ?
                             </h4>
@@ -225,7 +222,7 @@ const GroupSettings = ({
                             <button
                               type="button"
                               onClick={handleDeleteMember}
-                              data-id={member.id}
+                              data-id={member?.id}
                               className="classic-btn container-delete-confirm__btn"
                             >
                               delete

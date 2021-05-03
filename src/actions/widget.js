@@ -142,3 +142,16 @@ export const CLEAN_SELECTED_MEMBERS = 'CLEAN_SELECTED_MEMBERS';
 export const cleanSelectedMembers = () => ({
   type: CLEAN_SELECTED_MEMBERS,
 });
+
+export const OPEN_WIDGET_DELETE_MODAL = 'OPEN_WIDGET_DELETE_MODAL';
+
+export const openWidgetDeleteModal = (id) => ({
+  type: OPEN_WIDGET_DELETE_MODAL,
+  id,
+});
+
+export const CLOSE_WIDGET_DELETE_MODAL = 'CLOSE_WIDGET_DELETE_MODAL';
+
+export const closeWidgetDeleteModal = () => ({
+  type: CLOSE_WIDGET_DELETE_MODAL,
+});

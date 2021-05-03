@@ -7,12 +7,13 @@ function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
       return widget;
     }
   });
+
   const arrayOfDisplayedLetters = widgetsOfSpecificDay?.map((widget) =>
-    widget.members.map((member) => member.firstname[0]),
+    widget.members.map((member) => member.firstname[0])
   );
   const duplicatesLetters = [];
   const displayedLetters = arrayOfDisplayedLetters?.forEach((array) =>
-    duplicatesLetters.push(...array),
+    duplicatesLetters.push(...array)
   );
   const uniqueLetters = new Set(duplicatesLetters);
   const uniqueLettersArray = [...uniqueLetters];

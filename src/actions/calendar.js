@@ -26,3 +26,9 @@ export const updateDayInfos = (event, birth, death) => ({
   birth,
   death,
 });
+
+export const RESET_CALENDAR_DATA = 'RESET_CALENDAR_DATA';
+
+export const resetCalendarData = () => ({
+  type: RESET_CALENDAR_DATA,
+});

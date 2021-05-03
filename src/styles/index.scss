@@ -8,6 +8,13 @@
   font-family: 'Sequel';
   src: url('../assets/fonts/Sequel_Demo.ttf');
 }
+@font-face {
+  font-family: 'Butler-Bold';
+  src: url('../assets/fonts/Butler-Bold.woff2') format('woff2'),
+    url('../assets/fonts/Butler-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -279,9 +286,9 @@ body {
       border-radius: 5px;
       background-image: linear-gradient(
         90deg,
-        rgba(139, 198, 220, 1) 50%,
-        rgba(196, 226, 237, 1) 90%,
-        rgba(220, 238, 244, 1) 100%
+        rgba(139, 198, 220, 1) 45%,
+        rgba(177, 217, 231, 1) 75%,
+        rgba(184, 217, 230, 1) 100%
       );
       color: $white;
       font-size: 0.7rem;
@@ -350,9 +357,9 @@ body {
 
   background-image: linear-gradient(
     90deg,
-    rgba(139, 198, 220, 1) 40%,
-    rgba(196, 226, 237, 1) 75%,
-    rgba(220, 238, 244, 1) 100%
+    rgba(139, 198, 220, 1) 45%,
+    rgba(177, 217, 231, 1) 75%,
+    rgba(184, 217, 230, 1) 100%
   );
 
   color: $white;
@@ -586,15 +593,12 @@ body {
   color: red;
 }
 
-.icon-container--dark {
-  background-color: #2e2e2e;
-  // &::active {
-
-  // }
+.icon-container--undefined {
+  background-color: $light-blue;
 }
 
-.icon-container--dark :active {
-  background-color: red;
+.icon-container--dark {
+  background-color: #2e2e2e;
 }
 
 .icon-container--light-blue {
@@ -607,6 +611,12 @@ body {
 
 .icon-container--light-grey {
   background-color: #8b8b8b;
+}
+
+.icon-check {
+  position: relative;
+  top: 2px;
+  color: white;
 }
 
 //////////////// DASHBOARD MENU ////////////////
@@ -647,7 +657,6 @@ body {
     }
   }
 
-  
   .member-filter {
     position: relative;
     z-index: 15;
@@ -696,7 +705,7 @@ body {
         border-radius: $border-radius;
 
         margin: 0 1rem;
-        padding: .25rem;
+        padding: 0.25rem;
       }
     }
     .selected {
@@ -705,18 +714,16 @@ body {
         text-decoration: underline;
       }
     }
-    
+
     &--btn {
       cursor: pointer;
       @include flex;
       margin-left: 1.5rem;
 
-      @include transition($time: .1s);
+      @include transition($time: 0.1s);
       &:active {
         transform: scale(1.25);
       }
-  
-      
 
       .letter {
         @include name-tag($size: 1.5rem, $font-size: 0.75rem);
@@ -1007,7 +1014,7 @@ body {
     @media (min-height: 900px) {
       height: 70%;
     }
-    @media (min-height : 1000px) {
+    @media (min-height: 1000px) {
       height: 60%;
     }
   }
@@ -1145,7 +1152,6 @@ body {
       padding: 0rem 10% 0.5rem 10%;
     }
 
-
     &__title-label {
       font-size: 0.8em;
       font-weight: bold;
@@ -1200,21 +1206,22 @@ body {
       border: none;
       box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
       border-radius: 30% 30% 30% 30% / 70% 70% 70% 70%;
-      padding: 0.5rem;
+      padding: 0.5rem 0.7rem;
       margin: 0 0.5rem 1rem 0.5rem;
       text-transform: capitalize;
-      min-width: 4rem;
+      min-width: 4.5rem;
+      .firstname-selected {
+        font-weight: bold;
+      }
     }
   }
 
   // .error-form-message {
   //   color: red;
   // }
-  
-  
+
   &__btn {
     margin: 1rem 0 0 0;
-    
   }
 }
 
@@ -1336,16 +1343,61 @@ body {
   }
 }
 
+.delete-widget-confirm {
+  @include flex($direction: column);
+  position: absolute;
+  top: 28px;
+  right: 0px;
+  min-width: 19rem;
+  background-color: $white;
+  text-align: left;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 0.5rem;
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    top: -7px;
+    right: 5px;
+    height: 0;
+    width: 0;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+  }
+  .close {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    transition: all 50ms ease-in-out;
+    &:hover {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+  &__subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &__btn {
+    background-image: none;
+    background-color: #ff003a;
+  }
+}
+
 .form__submit {
   width: 100%;
   @include flex;
   flex-direction: column;
-  
 }
 
 .error-form-message {
   color: #ff003a;
   display: block;
-  font-size: .7em;
+  font-size: 0.7em;
   text-align: center;
 }
