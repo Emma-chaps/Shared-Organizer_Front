@@ -27,7 +27,7 @@ function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
       <span className="day-number">{format(day, 'dd')}</span>
       {uniqueLettersArray?.map((letter) => (
         <div className="calendar-members-concerned" key={letter}>
-          {letter}
+          <span>{letter}</span>
         </div>
       ))}
     </div>

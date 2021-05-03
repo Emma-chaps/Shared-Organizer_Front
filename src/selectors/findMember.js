@@ -11,7 +11,7 @@ export const removeGivenMember = (id = null, memberArray = []) => {
 
 export const findMemberbyFirstname = (firstName = null, memberArray = []) => {
   const searchedMember = memberArray.find(
-    (member) => member.firstname === firstName
+    (member) => member.firstname === firstName,
   );
   return searchedMember;
 };
