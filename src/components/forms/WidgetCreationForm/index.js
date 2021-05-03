@@ -31,7 +31,7 @@ const WidgetCreationForm = ({
       submitWidget();
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned'
+        'A widget must have a title and at least one member assigned',
       );
     }
   };
@@ -108,7 +108,7 @@ const WidgetCreationForm = ({
         </ul>
 
         <div className="form__submit">
-          <span>{errorMessage}</span>
+          <span className="error-form-message">{errorMessage}</span>
           <button type="submit" className="classic-btn widget-settings__btn">
             Publish
           </button>
