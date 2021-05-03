@@ -22,8 +22,7 @@ const DashboardMenu = ({
   fetchAllWidgets,
 }) => {
   const [displayModal, setDisplayModal] = useState(false);
-  const [displayHiddenMembers, setDisplayHiddenMembers] = useState(true);
-  console.log('displayHiddenMembers:', displayHiddenMembers);
+  const [hideHiddenMembers, setHideHiddenMembers] = useState(true);
   const [displayDatepicker, setDisplayDatepicker] = useState(false);
   const yearDate = selectedDateValue.split('-')[0];
   const monthDate = selectedDateValue.split('-')[1];
@@ -63,8 +62,7 @@ const DashboardMenu = ({
       event.currentTarget.className = 'menu__members--btn selected';
     }
     if (!matches) {
-      console.log('XXXXXXXXXX');
-      setDisplayHiddenMembers(true);
+      setHideHiddenMembers(true);
     }
     const searchedMember = findMember(event.currentTarget.id, members);
     setFilteredMembers([searchedMember]);
@@ -80,11 +78,11 @@ const DashboardMenu = ({
   };
 
   const handleToggleModal = () => {
-    setDisplayHiddenMembers(!displayHiddenMembers);
+    setHideHiddenMembers(!hideHiddenMembers);
   };
 
   const classes = classNames('member-filter__modal', {
-    'hidden-members-modal': displayHiddenMembers,
+    'hidden-members-modal': hideHiddenMembers,
   });
 
   const handleCalendar = (event) => {
@@ -100,7 +98,7 @@ const DashboardMenu = ({
   const calendarRef = useRef();
   useOnClickOutside(calendarRef, () => setDisplayDatepicker(false));
   const memberFilterRef = useRef();
-  useOnClickOutside(memberFilterRef, () => setDisplayHiddenMembers(true));
+  useOnClickOutside(memberFilterRef, () => setHideHiddenMembers(true));
 
   return (
     <div className="menu">
