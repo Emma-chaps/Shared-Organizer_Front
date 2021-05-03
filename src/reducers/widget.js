@@ -10,6 +10,8 @@ import {
   SET_FILTERED_MEMBERS,
   COPY_WIDGET_TO_EDIT,
   REMOVE_MEMBER_FROM_WIDGET,
+  SET_IS_SELECTED_MEMBER,
+  REMOVE_SELECTED_MEMBER,
 } from 'src/actions/widget';
 
 import { findMember, removeGivenMember } from 'src/selectors/findMember';
@@ -26,6 +28,7 @@ const initialState = {
   dashboardWidgets: [],
   filteredMembers: [],
   widgetToEdit: {},
+  isMemberSelected: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -135,7 +138,24 @@ export default (state = initialState, action = {}) => {
         },
       };
     }
-
+    case SET_IS_SELECTED_MEMBER: {
+      return {
+        ...state,
+        isMemberSelected: {
+          ...state.isMemberSelected,
+          [action.id]: true,
+        },
+      };
+    }
+    case REMOVE_SELECTED_MEMBER: {
+      return {
+        ...state,
+        isMemberSelected: {
+          ...state.isMemberSelected,
+          [action.id]: false,
+        },
+      };
+    }
     default:
       return state;
   }

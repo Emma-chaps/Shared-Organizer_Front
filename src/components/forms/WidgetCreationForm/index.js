@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import { FaUserAlt } from 'react-icons/fa';
 import { findMember } from 'src/selectors/findMember';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const WidgetCreationForm = ({
   changeField,
@@ -19,6 +20,9 @@ const WidgetCreationForm = ({
   removeMember,
   setWidgetToEdit,
   widgetToEdit,
+  isMemberSelected,
+  setIsSelectedMember,
+  removeSelectedMember,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
   // const [selectedWidget, setSelectedWidget] = useState(widget);
@@ -47,11 +51,14 @@ const WidgetCreationForm = ({
   };
 
   const handleAddMember = (event) => {
+    setIsSelectedMember(`id${event.currentTarget.id}`);
     if (!findMember(event.currentTarget.id, membersToAdd)) {
       console.log('IF');
+      setIsSelectedMember(`id${event.currentTarget.id}`);
       assignMember(event.currentTarget.id, members);
     } else {
       console.log('ELSE');
+      removeSelectedMember(`id${event.currentTarget.id}`);
       removeMember(event.currentTarget.id, membersToAdd);
     }
   };
@@ -95,14 +102,28 @@ const WidgetCreationForm = ({
         <ul className="widget-settings__members">
           {members.map((member) => (
             <li key={member.id}>
-              <button
-                type="button"
-                onClick={handleAddMember}
-                id={member.id}
-                className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
-              >
-                {member.firstname}
-              </button>
+              {isMemberSelected[`id${member.id}`] ? (
+                <>
+                  <AiOutlineCheckCircle />
+                  <button
+                    type="button"
+                    onClick={handleAddMember}
+                    id={member.id}
+                    className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
+                  >
+                    {member.firstname}
+                  </button>
+                </>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleAddMember}
+                  id={member.id}
+                  className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
+                >
+                  {member.firstname}
+                </button>
+              )}
             </li>
           ))}
         </ul>
