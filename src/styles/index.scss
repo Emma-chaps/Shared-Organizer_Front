@@ -86,7 +86,6 @@ body {
       min-height: 450px;
     }
 
-
     &__header {
       @include flex($direction: column);
       padding-bottom: 1rem;
@@ -386,7 +385,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-  @include transition($time: .05s);
+  @include transition($time: 0.05s);
   &:hover {
     transform: scale(1.05);
   }
@@ -573,8 +572,7 @@ body {
           padding-top: 1rem;
         }
         // .input-password {
-         
-          
+
         //   svg {
         //     background-color: red;
         //     position: absolute;
@@ -582,7 +580,6 @@ body {
         //     right: 6px;
         //   }
         // }
-      
       }
     }
   }
@@ -596,7 +593,7 @@ body {
   padding-bottom: 0.5rem;
   text-transform: capitalize;
   text-align: left;
-  
+
   label {
     width: 100%;
     font-size: 0.7em;
@@ -757,11 +754,11 @@ body {
     max-width: 40%;
     @media (min-width: 1000px) {
       // @media (max-height: 600px) {
-        @include blur;
-        background: rgba(#ffffff, 0.3);
-        border-radius: $border-radius;
-        margin: 0 1rem;
-        padding: .25rem .75rem;
+      @include blur;
+      background: rgba(#ffffff, 0.3);
+      border-radius: $border-radius;
+      margin: 0 1rem;
+      padding: 0.25rem 0.75rem;
 
       // }
     }
@@ -961,8 +958,8 @@ body {
         // grid-template-rows: 50px;
       }
       &__day {
-        -webkit-box-shadow:  0px 0px 15px -3px rgba(0, 0, 0, 0.4);
-        box-shadow:  0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
         background-color: $white;
         border-radius: 3px;
         overflow: auto;
@@ -1332,9 +1329,8 @@ body {
   .password-eye-icon {
     font-size: 22px;
     // transform: translateY(-4px);
-    @include transition($time: .05s);
+    @include transition($time: 0.05s);
     &:hover {
-
       transform: scale(1.1);
     }
   }

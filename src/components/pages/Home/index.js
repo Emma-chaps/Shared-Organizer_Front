@@ -44,7 +44,7 @@ const Home = ({ isLogged, isAdmin }) => {
       <div className="home">
         <div className="home__header">
           <h1 className="home__header__title">Shared Organizer.</h1>
-          <h2 className="home__header__subtitle">How does it work ?</h2>
+          {/* <h2 className="home__header__subtitle">How does it work ?</h2> */}
         </div>
         <div className="home__main">
           {selectedButtonSignUp ? <SignUpForm /> : <LoginForm />}
