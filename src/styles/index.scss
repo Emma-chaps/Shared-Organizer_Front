@@ -75,13 +75,16 @@ body {
     @include flex($direction: column, $justify: space-between);
     width: 100%;
     padding: 2rem 0;
-    background: rgba(#404939, 0.1);
+    background: rgba(#ffffff, 0.3);
     // backdrop-filter: blur(7px);
     // -webkit-backdrop-filter: blur(7px);
     @include blur;
     border-radius: 13px;
     border-bottom-right-radius: 0;
     min-height: 70vh;
+    @media (min-height: 650px) {
+      min-height: 450px;
+    }
 
     &__header {
       @include flex($direction: column);
@@ -89,7 +92,7 @@ body {
 
       &__title {
         text-align: center;
-        color: $white;
+        color: $dark;
         font-size: 2.5em;
         padding: 0.5rem;
         text-transform: uppercase;
@@ -138,12 +141,12 @@ body {
         position: relative;
         top: -1px;
         border: none;
-        color: $white;
+        color: $dark;
         text-transform: uppercase;
         margin-left: 1rem;
         width: 25%;
         min-width: 7.6rem;
-        background: rgba(#404939, 0.1);
+        background: rgba(#ffffff, 0.3);
         @include blur;
         border-bottom-left-radius: 13px;
         border-bottom-right-radius: 13px;
@@ -153,7 +156,8 @@ body {
         font-weight: bold;
 
         &-unselected {
-          background: rgba(#262b22, 0.5);
+          background: rgba($dark-green, 0.3);
+          color: $white;
           font-weight: normal;
         }
       }
@@ -257,13 +261,16 @@ body {
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
       font-size: 0.8rem;
+      &:hover {
+        transform: scale(1.05);
+      }
       @media (min-width: 700px) {
         min-width: 5rem;
         border: 1px solid $light-blue;
-      }
-      @media (min-width: 1000px) {
-        min-width: 6rem;
-        font-size: 0.9rem;
+        @media (min-width: 1000px) {
+          min-width: 6rem;
+          font-size: 0.9rem;
+        }
       }
       // @media (min-width: 1500px) {
       //   min-width: 7rem;
@@ -297,6 +304,9 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
       text-transform: uppercase;
+      &:hover {
+        transform: scale(1.05);
+      }
       @media (min-width: 700px) {
         padding: 0.5rem 0.8rem;
       }
@@ -362,22 +372,23 @@ body {
   min-width: 6.5rem;
   padding: 0.8rem 1.2rem;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
-
   border: none;
   border-radius: 5px;
-
   background-image: linear-gradient(
     90deg,
     rgba(139, 198, 220, 1) 45%,
     rgba(177, 217, 231, 1) 75%,
     rgba(184, 217, 230, 1) 100%
   );
-
   color: $white;
   font-size: 0.75rem;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
+  @include transition($time: .05s);
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 //////////////// CALENDAR WIDGET ////////////////
@@ -686,10 +697,9 @@ body {
         @include blur;
         background: rgba(#ffffff, 0.3);
         border-radius: $border-radius;
-
         margin: 0 1rem;
-
-        padding: .25rem;
+        padding: .25rem .75rem;
+        
       // }
     }
     .selected {
@@ -716,6 +726,9 @@ body {
       .member-firstname {
         font-size: 0.9em;
         font-weight: bold;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -786,6 +799,11 @@ body {
     @include flex;
     color: $dark;
     &__title {
+      &:hover {
+        button {
+          transform: scale(1.5);
+        }
+      }
       button {
         background-color: transparent;
         border: none;
@@ -880,6 +898,8 @@ body {
         // grid-template-rows: 50px;
       }
       &__day {
+        -webkit-box-shadow:  0px 0px 15px -3px rgba(0, 0, 0, 0.4);
+        box-shadow:  0px 0px 15px -3px rgba(0, 0, 0, 0.4);
         background-color: $white;
         border-radius: 3px;
         overflow: auto;
@@ -895,6 +915,17 @@ body {
         @media (min-width: 1000px) {
           border-radius: 13px;
           padding: 5px;
+        }
+        @media (min-width: 1200px) {
+          @include transition($time: 0.1s);
+          &:hover {
+            .calendar-members-concerned {
+              @include transition($time: 0.1s);
+              div {
+                transform: translateY(-1px);
+              }
+            }
+          }
         }
         .day-number {
           font-family: 'Butler-Bold', 'sans-serif';
@@ -913,7 +944,6 @@ body {
           width: 13px;
           height: 13px;
           border-radius: 50%;
-          // background-color: $dark-green;
           color: $white;
           text-transform: uppercase;
           @include flex;
@@ -922,10 +952,10 @@ body {
             width: 20px;
             height: 20px;
           }
-          @media (min-width: 1400px) {
-            // font-size: 20px;
-            // width: 26px;
-            // height: 26px;
+          div {
+            @media (min-width: 1200px) {
+              @include flex;
+            }
           }
         }
       }
@@ -991,6 +1021,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 20px;
+    padding-bottom: 30px;
     gap: 20px;
     grid-auto-flow: dense;
     @media (min-height: 700px) {
@@ -1200,6 +1231,9 @@ body {
       margin: 0 0.5rem 1rem 0.5rem;
       text-transform: capitalize;
       min-width: 4.5rem;
+      &:hover {
+        transform: scale(1.05);
+      }
       .firstname-selected {
         font-weight: bold;
       }
@@ -1212,12 +1246,24 @@ body {
 
   &__btn {
     margin: 1rem 0 0 0;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
 /////////////// CONFIRM BOX ///////////////////////
 .positioned-parent {
   position: relative;
+  .password-eye-icon {
+    font-size: 22px;
+    // transform: translateY(-4px);
+    @include transition($time: .05s);
+    &:hover {
+
+      transform: scale(1.1);
+    }
+  }
 }
 
 .container-password-confirm {
