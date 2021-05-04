@@ -5,6 +5,7 @@ import { setUserFieldLoginValue, submitLogin } from 'src/actions/user';
 const mapStateToProps = (state) => ({
   email: state.user.login.email,
   password: state.user.login.password,
+  backError: state.user.login.backError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

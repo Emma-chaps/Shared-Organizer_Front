@@ -7,9 +7,10 @@ import {
   login,
   LOGOUT,
   resetUserData,
+  setSignupErrorMessage,
+  setLoginErrorMessage,
 } from 'src/actions/user';
 import { resetCalendarData } from 'src/actions/calendar';
-
 import { setColorToMember, fetchGroupData } from 'src/actions/settings';
 
 export default (store) => (next) => (action) => {
@@ -46,7 +47,7 @@ export default (store) => (next) => (action) => {
             store.dispatch(fetchGroupData());
           }
           if (error) {
-            console.log(error);
+            store.dispatch(setSignupErrorMessage(error));
           }
         })
         .catch((error) => {
@@ -62,13 +63,14 @@ export default (store) => (next) => (action) => {
           password,
         })
         .then((result) => result.data)
-        .then((value) => {
-          if (value.connected) {
-            localStorage.setItem('jwtoken', value.token);
-            store.dispatch(login(value.token));
+        .then(({ connected, token, error }) => {
+          if (connected) {
+            localStorage.setItem('jwtoken', token);
+            store.dispatch(login(token));
             store.dispatch(fetchGroupData());
-          } else {
-            console.log(value);
+          }
+          if (error) {
+            store.dispatch(setLoginErrorMessage(error));
           }
         })
         .catch((error) => console.error(error.error));

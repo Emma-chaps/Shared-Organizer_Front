@@ -10,6 +10,7 @@ const SignUpForm = ({
   firstname,
   changeField,
   handleSignUp,
+  backError,
 }) => {
   const [signUpErrors, setSignUpErrors] = useState([]);
   const handleSubmit = (event) => {
@@ -81,6 +82,7 @@ const SignUpForm = ({
             *{error}
           </div>
         ))}
+        {backError && <div className="errors__message">*{backError}</div>}
       </div>
     </>
   );

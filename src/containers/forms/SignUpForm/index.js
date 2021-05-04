@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   password: state.user.signup.password,
   groupName: state.user.signup.groupName,
   firstname: state.user.signup.firstname,
+  backError: state.user.signup.backError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
