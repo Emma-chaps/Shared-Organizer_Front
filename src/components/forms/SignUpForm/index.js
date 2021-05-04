@@ -46,6 +46,7 @@ const SignUpForm = ({
           onChange={changeField}
           className="home-input"
           maxLength="30"
+          required={true}
         />
         <Field
           label="first name"
@@ -54,6 +55,7 @@ const SignUpForm = ({
           value={firstname}
           onChange={changeField}
           className="home-input"
+          required={true}
         />
         <Field
           label="email"
@@ -62,6 +64,7 @@ const SignUpForm = ({
           value={email}
           onChange={changeField}
           className="home-input"
+          required={true}
         />
         <FieldPassword
           className="home-input"
@@ -69,7 +72,7 @@ const SignUpForm = ({
           name="password"
           value={password}
           onChange={changeField}
-          isRequired="isrequired"
+          required={true}
         />
 
         <button className="classic-btn button-sign" type="submit">

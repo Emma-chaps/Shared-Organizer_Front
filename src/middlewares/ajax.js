@@ -12,7 +12,9 @@ import {
   closeAllInput,
   DELETE_MEMBER,
   UPDATE_PASSWORD,
-  // setSuccessMessage,
+  setUptateUserErrorMessage,
+  setAddUserErrorMessage,
+  hideModal,
 } from 'src/actions/settings';
 import { setFilteredMembers } from 'src/actions/widget';
 
@@ -68,10 +70,13 @@ export default (store) => (next) => (action) => {
           role: Number(role),
         })
         .then((result) => result.data)
-        .then(({ success }) => {
+        .then(({ success, userError }) => {
           if (success) {
             store.dispatch(fetchGroupData());
             store.dispatch(closeAllInput());
+          }
+          if (userError) {
+            store.dispatch(setUptateUserErrorMessage(userError));
           }
         });
       return next(action);
@@ -93,9 +98,13 @@ export default (store) => (next) => (action) => {
           role: Number(role),
         })
         .then((result) => result.data)
-        .then(({ success }) => {
+        .then(({ success, userError }) => {
           if (success) {
             store.dispatch(fetchGroupData());
+            store.dispatch(hideModal());
+          }
+          if (userError) {
+            store.dispatch(setAddUserErrorMessage(userError));
           }
         });
       return next(action);

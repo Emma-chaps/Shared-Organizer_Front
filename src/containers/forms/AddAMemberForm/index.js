@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   password: state.settings.newMember.password,
   role: state.settings.newMember.role,
   colors: state.settings.usableColors,
+  userError: state.settings.newMember.userError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

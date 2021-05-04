@@ -27,6 +27,8 @@ import {
   CLOSE_MEMBER_PASSWORD_MODAL,
   SET_IS_OPEN_MEMBER_DELETE_MODAL,
   CLOSE_MEMBER_DELETE_MODAL,
+  SET_UPDATE_USER_ERROR_MESSAGE,
+  SET_ADD_USER_ERROR_MESSAGE,
 } from 'src/actions/settings';
 
 import { deleteColor, updateColors, closeInput } from 'src/selectors/utils';
@@ -50,6 +52,7 @@ const initialState = {
     password: '',
     icon: '',
     role: 0,
+    userError: '',
   },
   newMember: {
     email: '',
@@ -57,6 +60,7 @@ const initialState = {
     password: '',
     icon: '',
     role: 0,
+    userError: '',
   },
   colors: [
     { name: 'dark', value: 'Dark' },
@@ -87,7 +91,11 @@ export default (state = initialState, action = {}) => {
     case COPY_MEMBER: {
       return {
         ...state,
-        memberToChange: action.member,
+        memberToChange: {
+          ...state.memberToChange,
+          ...action.member,
+          userError: '',
+        },
       };
     }
     case SET_GROUP_NAME: {
@@ -179,6 +187,7 @@ export default (state = initialState, action = {}) => {
           password: '',
           icon: '',
           role: '',
+          userError: '',
         },
       };
     }
@@ -194,7 +203,7 @@ export default (state = initialState, action = {}) => {
         usableColors: updateColors(
           state.group.members,
           state.colors,
-          state.memberToChange.icon
+          state.memberToChange.icon,
         ),
       };
     }
@@ -237,7 +246,7 @@ export default (state = initialState, action = {}) => {
         usableColors: updateColors(
           state.group.members,
           state.colors,
-          state.newMember.icon
+          state.newMember.icon,
         ),
       };
     }
@@ -257,6 +266,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         memberToChange: {
+          ...state.memberToChange,
           password: '',
         },
       };
@@ -289,6 +299,24 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isOpenedMemberDeleteModal: {},
+      };
+    }
+    case SET_UPDATE_USER_ERROR_MESSAGE: {
+      return {
+        ...state,
+        memberToChange: {
+          ...state.memberToChange,
+          userError: action.error,
+        },
+      };
+    }
+    case SET_ADD_USER_ERROR_MESSAGE: {
+      return {
+        ...state,
+        newMember: {
+          ...state.newMember,
+          userError: action.error,
+        },
       };
     }
     default:
