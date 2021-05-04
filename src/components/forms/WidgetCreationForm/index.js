@@ -81,6 +81,7 @@ const WidgetCreationForm = ({
           onChange={getInputValue}
           placeholder="Name of your widget"
           className="widget-settings__input__title-input"
+          maxLength={20}
           required
         />
         <label
