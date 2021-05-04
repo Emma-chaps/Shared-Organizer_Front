@@ -24,7 +24,7 @@ function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
           className={`calendar-members-concerned icon-container--${member.icon}`}
           key={member.id}
         >
-          <span>{member.firstname[0]}</span>
+          <div>{member.firstname[0]}</div>
         </div>
       ))}
     </div>
