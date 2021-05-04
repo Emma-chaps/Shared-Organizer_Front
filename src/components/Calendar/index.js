@@ -118,6 +118,7 @@ const Calendar = ({
             ))}
           </div>
         </div>
+        <div className="week-placeholder"></div>
       </div>
     );
   }
