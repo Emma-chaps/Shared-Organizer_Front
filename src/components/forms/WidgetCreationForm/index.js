@@ -37,7 +37,7 @@ const WidgetCreationForm = ({
       submitWidget();
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned'
+        'A widget must have a title and at least one member assigned',
       );
     }
   };
@@ -71,7 +71,7 @@ const WidgetCreationForm = ({
         className="widget-settings__input positioned-parent"
       >
         <label htmlFor="title" className="widget-settings__input__title-label">
-          Widget's name
+          Widget name
         </label>
         <input
           name="title"
@@ -87,7 +87,7 @@ const WidgetCreationForm = ({
           htmlFor="description"
           className="widget-settings__input__description-label"
         >
-          Widget's description
+          Widget description
         </label>
         <textarea
           placeholder="Optional: Description of your widget"
@@ -97,7 +97,7 @@ const WidgetCreationForm = ({
           className="widget-settings__input__description-input"
         />
         <h3 className="widget-settings__member-title">
-          Assign group member to the widget
+          Assign group members to the widget
         </h3>
         <ul className="widget-settings__members">
           {members.map((member) => (

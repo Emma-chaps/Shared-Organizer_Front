@@ -652,7 +652,7 @@ body {
   color: $white;
   font-family: 'roboto';
   font-weight: bold;
-  background-color: red;
+  background-color: rgb(216, 18, 18);
 }
 .icon-btn-edit-member--save {
   border: none;
@@ -1023,6 +1023,16 @@ body {
         }
       }
     }
+  }
+}
+.calendar-weeks {
+  @media (min-width: 1000px) {
+    .week-placeholder {
+      height: 45vh;
+    }
+    // &:after {
+    //   content: '';
+    // }
   }
 }
 
@@ -1439,7 +1449,7 @@ body {
   }
   &__btn {
     background-image: none;
-    background-color: #ff003a;
+    background-color: rgb(216, 18, 18);
   }
 }
 
