@@ -10,6 +10,7 @@ const FieldPassword = ({
   onChange,
   className,
   maxLength,
+  required,
 }) => {
   const [seePassword, setSeePassword] = useState(false);
   const [inputType, setInputType] = useState('password');
@@ -39,6 +40,7 @@ const FieldPassword = ({
           value={value}
           onChange={handleChange}
           maxLength={maxLength}
+          required={required}
         />
         {seePassword ? (
           <BsEye onClick={changeSeePassword} className="password-eye-icon" />

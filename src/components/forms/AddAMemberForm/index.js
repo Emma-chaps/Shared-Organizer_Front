@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
+import FieldPassword from 'src/components/forms/FieldPassword';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 
 const AddAMemberForm = ({
@@ -15,12 +16,11 @@ const AddAMemberForm = ({
   setIconToNewMember,
   changeField,
   setRoleToNewMember,
-  hideModal,
+  userError,
 }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     addNewMember();
-    hideModal();
   };
 
   const handleChangeIcon = (event) => {
@@ -64,6 +64,7 @@ const AddAMemberForm = ({
           label="First name"
           value={firstname}
           onChange={changeField}
+          required={true}
         />
         <Field
           className="settings-input"
@@ -72,14 +73,15 @@ const AddAMemberForm = ({
           label="Email"
           value={email}
           onChange={changeField}
+          required={true}
         />
-        <Field
-          className="settings-input"
+        <FieldPassword
+          className="settings-input input-password"
           name="password"
-          type="password"
           label="Password"
           value={password}
           onChange={changeField}
+          required={true}
         />
         <div className="member-form__select">
           <label htmlFor="role" className="member-form__select__icon">
@@ -101,6 +103,9 @@ const AddAMemberForm = ({
         <button type="submit" className="classic-btn">
           Save
         </button>
+        {userError && (
+          <div className="errors__message--settings">*{userError}</div>
+        )}
       </form>
     </div>
   );

@@ -567,6 +567,22 @@ body {
         &__btns {
           @include flex();
         }
+        .errors__message--settings {
+          font-size: 0.8em;
+          color: rgb(216, 18, 18);
+          padding-top: 1rem;
+        }
+        // .input-password {
+         
+          
+        //   svg {
+        //     background-color: red;
+        //     position: absolute;
+        //     top: 22px;
+        //     right: 6px;
+        //   }
+        // }
+      
       }
     }
   }
@@ -580,12 +596,13 @@ body {
   padding-bottom: 0.5rem;
   text-transform: capitalize;
   text-align: left;
-
+  
   label {
     width: 100%;
     font-size: 0.7em;
     font-weight: bold;
     color: $dark;
+    position: relative;
 
     input {
       width: 100%;
@@ -593,6 +610,12 @@ body {
       border: none;
       border-bottom: 1px $dark solid;
       padding: 0.5rem;
+    }
+    svg {
+      // background-color: red;
+      position: absolute;
+      top: 22px;
+      right: 6px;
     }
   }
 }
@@ -1509,4 +1532,10 @@ body {
 
 .icon-container--light-grey {
   background-color: #8b8b8b;
+}
+
+.errors__message--settings {
+  font-size: 0.8em;
+  color: rgb(216, 18, 18);
+  padding-top: 1rem;
 }

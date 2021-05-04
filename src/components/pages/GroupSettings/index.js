@@ -185,6 +185,7 @@ const GroupSettings = ({
                               name="password"
                               value={password}
                               onChange={changeField}
+                              required={true}
                             />
                             <button
                               type="submit"

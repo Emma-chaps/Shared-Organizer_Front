@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   role: state.settings.memberToChange.role,
   color: state.settings.memberToChange.icon,
   colors: state.settings.usableColors,
+  userError: state.settings.memberToChange.userError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

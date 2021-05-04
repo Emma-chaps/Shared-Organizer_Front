@@ -16,6 +16,7 @@ const GroupSettingsFrom = ({
   colors,
   copyMember,
   setUsableColors,
+  userError,
 }) => {
   useEffect(() => {
     copyMember(member);
@@ -106,6 +107,9 @@ const GroupSettingsFrom = ({
             Cancel
           </button>
         </div>
+        {userError && (
+          <div className="errors__message--settings">*{userError}</div>
+        )}
       </form>
     </>
   );

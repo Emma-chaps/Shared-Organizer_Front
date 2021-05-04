@@ -229,3 +229,17 @@ export const CLOSE_MEMBER_DELETE_MODAL = 'CLOSE_MEMBER_DELETE_MODAL';
 export const closeMemberDeleteModal = () => ({
   type: CLOSE_MEMBER_DELETE_MODAL,
 });
+
+export const SET_UPDATE_USER_ERROR_MESSAGE = 'SET_UPDATE_USER_ERROR_MESSAGE';
+
+export const setUptateUserErrorMessage = (error) => ({
+  type: SET_UPDATE_USER_ERROR_MESSAGE,
+  error,
+});
+
+export const SET_ADD_USER_ERROR_MESSAGE = 'SET_ADD_USER_ERROR_MESSAGE';
+
+export const setAddUserErrorMessage = (error) => ({
+  type: SET_ADD_USER_ERROR_MESSAGE,
+  error,
+});

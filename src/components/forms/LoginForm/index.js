@@ -36,8 +36,9 @@ const LoginForm = ({
           type="email"
           value={email}
           onChange={changeField}
-          isRequired="isrequired"
+          required="true"
           className="home-input"
+          required={true}
         />
         <FieldPassword
           className="home-input"
@@ -45,7 +46,7 @@ const LoginForm = ({
           name="password"
           value={password}
           onChange={changeField}
-          isRequired="isrequired"
+          required={true}
         />
         <button className="classic-btn button-sign" type="submit">
           sign in
