@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import FieldPassword from 'src/components/forms/FieldPassword';
 
-const LoginForm = ({ email, password, changeField, handleLogin }) => {
+const LoginForm = ({
+  email,
+  password,
+  changeField,
+  handleLogin,
+  backError,
+}) => {
   const [loginErrors, setLoginErrors] = useState([]);
 
   const handleSubmit = (event) => {
@@ -25,7 +31,7 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
     <>
       <form onSubmit={handleSubmit} className="form-login">
         <Field
-          label="first name"
+          label="Email"
           name="email"
           type="email"
           value={email}
@@ -35,7 +41,7 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
         />
         <FieldPassword
           className="home-input"
-          label="password"
+          label="Password"
           name="password"
           value={password}
           onChange={changeField}
@@ -51,6 +57,7 @@ const LoginForm = ({ email, password, changeField, handleLogin }) => {
             *{error}
           </div>
         ))}
+        {backError && <div className="errors__message">*{backError}</div>}
       </div>
     </>
   );
