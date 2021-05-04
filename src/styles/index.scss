@@ -72,7 +72,7 @@ body {
   height: 100vh;
 
   .home {
-    @include flex($direction: column, $justify: space-between);
+    @include flex($direction: column, $justify: space-evenly);
     width: 100%;
     padding: 2rem 0;
     background: rgba(#ffffff, 0.3);
@@ -85,6 +85,7 @@ body {
     @media (min-height: 650px) {
       min-height: 450px;
     }
+
 
     &__header {
       @include flex($direction: column);
@@ -323,8 +324,8 @@ body {
     }
     &--firstname {
       position: absolute;
-      font-size: .7em;
-      right: 10px;    
+      font-size: 0.7em;
+      right: 10px;
       margin-top: 2px;
       @media (min-width: 700px) {
         right: 30px;
@@ -602,10 +603,49 @@ body {
   background-color: transparent;
 }
 
+// .icon-btn-edit-member {
+//   border: none;
+//   background: linear-gradient(
+//     90deg,
+//     rgba(139, 198, 220, 1) 45%,
+//     rgba(177, 217, 231, 1) 75%,
+//     rgba(184, 217, 230, 1) 100%
+//   );
+//   padding: 0.3rem 0.5rem;
+//   min-width: 3.6rem;
+//   margin: 0px 0.7rem;
+//   border-radius: 5px;
+//   color: $white;
+//   font-family: 'roboto';
+//   font-weight: bold;
+// }
+
+.icon-btn-edit-member--cancel {
+  border: none;
+  padding: 0.3rem 0.5rem;
+  min-width: 3.6rem;
+  margin: 0px 0.7rem;
+  border-radius: 5px;
+  color: $white;
+  font-family: 'roboto';
+  font-weight: bold;
+  background-color: red;
+}
+.icon-btn-edit-member--save {
+  border: none;
+  padding: 0.3rem 0.5rem;
+  min-width: 3.6rem;
+  margin: 0px 0.7rem;
+  border-radius: 5px;
+  color: $white;
+  font-family: 'roboto';
+  font-weight: bold;
+  background-color: green;
+}
+
 .icon {
   width: 100%;
 }
-
 
 .icon-check {
   position: relative;
@@ -699,7 +739,7 @@ body {
         border-radius: $border-radius;
         margin: 0 1rem;
         padding: .25rem .75rem;
-        
+
       // }
     }
     .selected {
@@ -1128,6 +1168,7 @@ body {
 }
 
 .form-select {
+  margin-top: 0.6rem;
   font-size: 0.8em;
   line-height: 1.3;
   padding: 0.3rem 0.4rem 0.3rem 0.4rem;
@@ -1150,6 +1191,7 @@ body {
     text-align: left;
     justify-content: flex-start;
     &__icon {
+      position: absolute;
       font-size: 0.7em;
       font-weight: bold;
     }
@@ -1207,7 +1249,6 @@ body {
       border-radius: 5px;
       margin-bottom: 1rem;
       font-family: 'roboto';
-            
     }
   }
   &__member-title {
@@ -1469,4 +1510,3 @@ body {
 .icon-container--light-grey {
   background-color: #8b8b8b;
 }
-

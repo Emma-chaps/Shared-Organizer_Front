@@ -185,7 +185,7 @@ export default (state = initialState, action = {}) => {
     case SET_COLOR_TO_MEMBER: {
       return {
         ...state,
-        colors: deleteColor(state.colors, action.color),
+        usableColors: deleteColor(state.colors, action.color),
       };
     }
     case SET_USABLE_COLORS: {
