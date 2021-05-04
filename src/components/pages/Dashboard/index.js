@@ -36,6 +36,7 @@ const Dashboard = ({
         <section className="calendar-widget-container">
           <Calendar />
           <WidgetContainer />
+          {}
           <button
             type="button"
             onClick={handleClick}
