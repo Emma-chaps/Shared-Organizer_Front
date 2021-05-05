@@ -15,6 +15,8 @@ const Dashboard = ({
   fetchAllWidgets,
   reinitializeWidget,
   cleanSelectedMembers,
+  isAdmin,
+  isEditor,
 }) => {
   // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
   const handleClick = () => {
@@ -36,14 +38,15 @@ const Dashboard = ({
         <section className="calendar-widget-container">
           <Calendar />
           <WidgetContainer />
-          {}
-          <button
-            type="button"
-            onClick={handleClick}
-            className="add-widget-btn"
-          >
-            +
-          </button>
+          {(isAdmin || isEditor) && (
+            <button
+              type="button"
+              onClick={handleClick}
+              className="add-widget-btn"
+            >
+              +
+            </button>
+          )}
         </section>
       </main>
       <Modal

@@ -9,6 +9,8 @@ import {
 
 const mapStateToProps = (state) => ({
   isOpenedDeleteWidgetModal: state.widget.isOpenedDeleteWidgetModal,
+  isAdmin: state.user.login.isAdmin,
+  isEditor: state.user.login.isEditor,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -9,7 +9,7 @@ import {
   SET_LOGIN_ERROR_MESSAGE,
 } from 'src/actions/user';
 
-import { isAdmin } from 'src/selectors/utils';
+import { isAdmin, isEditor } from 'src/selectors/utils';
 
 const initialState = {
   login: {
@@ -18,6 +18,7 @@ const initialState = {
     token: '',
     isLogged: false,
     isAdmin: false,
+    isEditor: false,
     backError: '',
   },
   signup: {
@@ -56,6 +57,7 @@ export default (state = initialState, action = {}) => {
           token: action.token,
           isLogged: true,
           isAdmin: isAdmin(action.token),
+          isEditor: isEditor(action.token),
         },
       };
     case SET_SELECT_ICON:

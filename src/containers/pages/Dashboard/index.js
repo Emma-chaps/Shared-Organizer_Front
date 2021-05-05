@@ -11,6 +11,8 @@ import {
 
 const mapStateToProps = (state) => ({
   displayCreationModal: state.widget.displayCreationModal,
+  isAdmin: state.user.login.isAdmin,
+  isEditor: state.user.login.isEditor,
 });
 
 const mapDispatchToProps = (dispatch) => ({
