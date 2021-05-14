@@ -571,15 +571,6 @@ body {
           color: rgb(216, 18, 18);
           padding-top: 1rem;
         }
-        // .input-password {
-
-        //   svg {
-        //     background-color: red;
-        //     position: absolute;
-        //     top: 22px;
-        //     right: 6px;
-        //   }
-        // }
       }
     }
   }
@@ -622,23 +613,6 @@ body {
   border: none;
   background-color: transparent;
 }
-
-// .icon-btn-edit-member {
-//   border: none;
-//   background: linear-gradient(
-//     90deg,
-//     rgba(139, 198, 220, 1) 45%,
-//     rgba(177, 217, 231, 1) 75%,
-//     rgba(184, 217, 230, 1) 100%
-//   );
-//   padding: 0.3rem 0.5rem;
-//   min-width: 3.6rem;
-//   margin: 0px 0.7rem;
-//   border-radius: 5px;
-//   color: $white;
-//   font-family: 'roboto';
-//   font-weight: bold;
-// }
 
 .icon-btn-edit-member--cancel {
   border: none;
@@ -1519,13 +1493,6 @@ body {
 
 .icon-container--dark {
   background-color: #2e2e2e;
-  // &::active {
-
-  // }
-}
-
-.icon-container--dark :active {
-  background-color: red;
 }
 
 .icon-container--light-blue {
