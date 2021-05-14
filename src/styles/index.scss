@@ -462,6 +462,8 @@ body {
     }
 
     &__header {
+      position: sticky;
+      top: 0;
       box-sizing: content-box;
       width: 100%;
       .close {
@@ -597,7 +599,7 @@ body {
       background-color: transparent;
       border: none;
       border-bottom: 1px $dark solid;
-      padding: 0.5rem;
+      padding: 0.5rem 0.75rem;
     }
     svg {
       // background-color: red;
@@ -1001,9 +1003,6 @@ body {
     .week-placeholder {
       height: 45vh;
     }
-    // &:after {
-    //   content: '';
-    // }
   }
 }
 
@@ -1175,7 +1174,7 @@ body {
   margin-top: 0.6rem;
   font-size: 0.8em;
   line-height: 1.3;
-  padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  padding: 0.5rem;
   min-width: 100%;
   max-width: 100%;
   border-bottom: 1px solid $dark;
@@ -1284,10 +1283,6 @@ body {
       }
     }
   }
-
-  // .error-form-message {
-  //   color: red;
-  // }
 
   &__btn {
     margin: 1rem 0 0 0;
@@ -1413,7 +1408,6 @@ body {
     }
   }
   &__subtitle {
-    margin: 0.5rem 0;
     font-size: 1rem;
     font-weight: 700;
   }
