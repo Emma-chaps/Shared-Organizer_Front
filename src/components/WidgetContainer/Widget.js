@@ -18,6 +18,8 @@ function Widget({
   isOpenedDeleteWidgetModal,
   openWidgetDeleteModal,
   closeWidgetDeleteModal,
+  isAdmin,
+  isEditor,
 }) {
   const [displayEdit, setDisplayEdit] = useState(false);
 
@@ -54,39 +56,43 @@ function Widget({
           <p className="widget__author">Added by {widget?.author}</p>{' '}
         </header>
         <div className="edit-delete-btns positioned-parent">
-          <button
-            type="button"
-            className="button-change button-edit"
-            id={widget?.id}
-            onClick={handleEdit}
-          >
-            <FiEdit2 />
-          </button>
-          <button
-            type="button"
-            className="button-change button-delete"
-            id={widget.id}
-            onClick={handleOpenDeleteWidgetModal}
-          >
-            <FiTrash2 />
-          </button>
-          {isOpenedDeleteWidgetModal[`id${widget?.id}`] ? (
-            <div className="delete-widget-confirm">
-              <h4 className="delete-widget-confirm__subtitle">
-                Are you sure you want to delete this widget ?
-              </h4>
-              <MdClose className="close" onClick={closeWidgetDeleteModal} />
+          {(isAdmin || isEditor) && (
+            <>
               <button
                 type="button"
-                onClick={handleDeleteWidget}
+                className="button-change button-edit"
                 id={widget?.id}
-                className="classic-btn container-delete-confirm__btn"
+                onClick={handleEdit}
               >
-                delete
+                <FiEdit2 />
               </button>
-            </div>
-          ) : (
-            <></>
+              <button
+                type="button"
+                className="button-change button-delete"
+                id={widget.id}
+                onClick={handleOpenDeleteWidgetModal}
+              >
+                <FiTrash2 />
+              </button>
+              {isOpenedDeleteWidgetModal[`id${widget?.id}`] ? (
+                <div className="delete-widget-confirm">
+                  <h4 className="delete-widget-confirm__subtitle">
+                    Are you sure you want to delete this widget ?
+                  </h4>
+                  <MdClose className="close" onClick={closeWidgetDeleteModal} />
+                  <button
+                    type="button"
+                    onClick={handleDeleteWidget}
+                    id={widget?.id}
+                    className="classic-btn container-delete-confirm__btn"
+                  >
+                    delete
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
           )}
         </div>
       </div>
