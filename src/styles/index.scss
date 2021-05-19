@@ -76,8 +76,6 @@ body {
     width: 100%;
     padding: 2rem 0;
     background: rgba(#ffffff, 0.3);
-    // backdrop-filter: blur(7px);
-    // -webkit-backdrop-filter: blur(7px);
     @include blur;
     border-radius: 13px;
     border-bottom-right-radius: 0;
@@ -156,7 +154,7 @@ body {
         font-weight: bold;
 
         &-unselected {
-          background: rgba($dark-green, 0.3);
+          @include background-blur;
           color: $white;
           font-weight: normal;
         }
@@ -243,15 +241,6 @@ body {
         rgba(139, 198, 220, 1) 20%
       );
     }
-    // @media (min-width: 1500px) {
-    //   font-size: 2.5em;
-    //   background-image: linear-gradient(
-    //     90deg,
-    //     rgba(220, 238, 244, 1) 0%,
-    //     rgba(196, 226, 237, 1) 5%,
-    //     rgba(139, 198, 220, 1) 9%
-    //   );
-    // }
   }
   &__range-menu {
     &__range-btn {
@@ -272,10 +261,6 @@ body {
           font-size: 0.9rem;
         }
       }
-      // @media (min-width: 1500px) {
-      //   min-width: 7rem;
-      //   font-size: 1rem;
-      // }
     }
   }
   &__logout {
@@ -315,11 +300,6 @@ body {
         padding: 0.7rem 1rem;
         font-size: 0.8rem;
       }
-      // @media (min-width: 1500px) {
-      //   min-width: 6.5rem;
-      //   padding: 0.8rem 1.2rem;
-      //   font-size: 0.9rem;
-      // }
     }
     &--firstname {
       position: absolute;

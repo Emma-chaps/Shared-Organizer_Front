@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Modal from 'src/components/Modal';
@@ -6,7 +6,7 @@ import FieldPassword from 'src/components/forms/FieldPassword';
 import GroupNameForm from 'src/containers/forms/GroupNameForm';
 import GroupSettingsForm from 'src/containers/forms/GroupSettingsForm';
 import AddAMemberForm from 'src/containers/forms/AddAMemberForm';
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { IoMdLock, IoMdCreate, IoMdTrash } from 'react-icons/io';
 import { MdClose } from 'react-icons/md';
 
@@ -181,7 +181,7 @@ const GroupSettings = ({
                             className="container-password-confirm__form"
                           >
                             <FieldPassword
-                              className="container-password-confirm__form__input"
+                              className="container-password-confirm__form__input positioned-parent"
                               name="password"
                               value={password}
                               onChange={changeField}

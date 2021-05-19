@@ -31,7 +31,7 @@ const FieldPassword = ({
 
   return (
     <div className={className}>
-      <label htmlFor={name} className="positioned-parent">
+      <label htmlFor={name} className="">
         {label}
         <input
           id={name}

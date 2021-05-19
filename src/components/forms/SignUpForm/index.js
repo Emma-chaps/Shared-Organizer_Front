@@ -67,7 +67,7 @@ const SignUpForm = ({
           required={true}
         />
         <FieldPassword
-          className="home-input"
+          className="home-input positioned-parent"
           label="password"
           name="password"
           value={password}
