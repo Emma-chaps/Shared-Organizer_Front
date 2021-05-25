@@ -76,7 +76,7 @@ const AddAMemberForm = ({
           required={true}
         />
         <FieldPassword
-          className="settings-input input-password"
+          className="settings-input input-password positioned-parent"
           name="password"
           label="Password"
           value={password}

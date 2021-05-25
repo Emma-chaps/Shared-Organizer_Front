@@ -41,7 +41,7 @@ const LoginForm = ({
           required={true}
         />
         <FieldPassword
-          className="home-input"
+          className="home-input positioned-parent"
           label="Password"
           name="password"
           value={password}
