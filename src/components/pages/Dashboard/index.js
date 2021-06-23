@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
@@ -57,6 +58,18 @@ const Dashboard = ({
       </Modal>
     </>
   );
+};
+
+Dashboard.propTypes = {
+  getGroupData: PropTypes.func.isRequired,
+  displayCreationModal: PropTypes.bool.isRequired,
+  showWidgetCreationModal: PropTypes.func.isRequired,
+  hideWidgetCreationModal: PropTypes.func.isRequired,
+  fetchAllWidgets: PropTypes.func.isRequired,
+  reinitializeWidget: PropTypes.func.isRequired,
+  cleanSelectedMembers: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  isEditor: PropTypes.bool.isRequired,
 };
 
 export default withRouter(Dashboard);

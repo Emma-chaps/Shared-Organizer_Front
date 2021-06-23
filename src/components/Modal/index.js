@@ -22,10 +22,12 @@ const Modal = ({ showModal, children, hideModal }) => {
 Modal.propTypes = {
   showModal: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  hideModal: PropTypes.func,
 };
 
 Modal.defaultProps = {
   showModal: false,
+  hideModal: () => {},
 };
 
 export default Modal;

@@ -40,11 +40,19 @@ Field.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  className: PropTypes.string,
+  maxLength: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 Field.defaultProps = {
   placeholder: '',
   value: '',
+  label: '',
+  className: '',
+  maxLength: '',
+  required: false,
 };
 
 export default Field;

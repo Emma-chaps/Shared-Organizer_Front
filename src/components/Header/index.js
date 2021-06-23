@@ -1,8 +1,9 @@
 import jwt_decode from 'jwt-decode';
+import PropTypes from 'prop-types';
 
 import React, { useEffect, useState } from 'react';
 
-export default function Header({ logout, setRange, range }) {
+const Header = ({ logout, setRange, range, isLogged, activeRange }) => {
   const [selectedMonth, setSelectedMonth] = useState('selected-range');
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
@@ -66,4 +67,16 @@ export default function Header({ logout, setRange, range }) {
       </div>
     </header>
   );
-}
+};
+
+Header.propTypes = {
+  logout: PropTypes.func.isRequired,
+  setRange: PropTypes.func.isRequired,
+  range: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  activeRange: PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {};
+
+export default Header;
