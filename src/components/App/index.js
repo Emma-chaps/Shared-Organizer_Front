@@ -1,12 +1,12 @@
 // == Import npm
-import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import ProtectedRoute from 'src/components/ProtectedRoute';
-import PropTypes from 'prop-types';
-import Home from 'src/containers/pages/Home';
-import Dashboard from 'src/containers/pages/Dashboard';
-import Footer from 'src/components/Footer';
-import NotFound from 'src/components/pages/NotFound';
+import React, { useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
+import ProtectedRoute from "src/components/ProtectedRoute";
+import PropTypes from "prop-types";
+import Home from "src/containers/pages/Home";
+import Dashboard from "src/containers/pages/Dashboard";
+import Footer from "src/components/Footer";
+import NotFound from "src/components/pages/NotFound";
 
 // == Composant
 const App = ({ rehydrate, isLogged }) => {
@@ -22,6 +22,7 @@ const App = ({ rehydrate, isLogged }) => {
         </Route>
         <ProtectedRoute
           path="/dashboard"
+          exact
           component={Dashboard}
           isAuth={isLogged}
         />

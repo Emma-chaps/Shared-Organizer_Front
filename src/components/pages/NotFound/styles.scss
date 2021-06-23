@@ -1,1 +1,21 @@
+@import "src/styles/vars";
+@import "src/styles/mixins";
 
+.container-404 {
+  margin-top: 30vh;
+  padding: 3rem;
+  transform: translateY(-30%);
+  background: rgba(#ececec, 0.8);
+  border-radius: 13px;
+  text-align: center;
+  &__title {
+    font-size: 10em;
+    color: $dark;
+    padding-bottom: 1rem;
+  }
+  &__content {
+    font-size: 5em;
+    color: $dark;
+    padding-bottom: 2rem;
+  }
+}

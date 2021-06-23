@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import './styles.scss';
+import "./styles.scss";
 
 const NotFound = () => {
   return (
-    <div className="error" title="Erreur">
-      <h1 className="error__title">"Ah ! Une erreur s'est produite."</h1>
+    <div className="container-404">
+      <h1 className="container-404__title">404</h1>
+      <h2 className="container-404__content">Page not found</h2>
+      <Link to="/">
+        <button type="button" className="classic-btn">
+          Go back
+        </button>
+      </Link>
     </div>
   );
 };

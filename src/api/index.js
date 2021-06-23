@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const baseURL =
-  process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api';
+  process.env.NODE_ENV === "production" ? "/api" : "http://localhost:3005/api";
 
 const api = axios.create({
   baseURL,
@@ -10,7 +10,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('jwtoken');
+    const token = localStorage.getItem("jwtoken");
     if (token) {
       config.headers.authorization = `Bearer ${token}`;
     }
