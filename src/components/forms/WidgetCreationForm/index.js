@@ -37,7 +37,7 @@ const WidgetCreationForm = ({
       submitWidget();
     } else {
       setErrorMessage(
-        'A widget must have a title and at least one member assigned',
+        'A widget must have a title and at least one member assigned'
       );
     }
   };
@@ -145,21 +145,28 @@ const WidgetCreationForm = ({
 WidgetCreationForm.propTypes = {
   members: PropTypes.array,
   widgetDescription: PropTypes.string,
-  date: PropTypes.string,
-  range: PropTypes.string,
   widgetTitle: PropTypes.string,
   changeField: PropTypes.func,
   changeTextarea: PropTypes.func,
+  assignMember: PropTypes.func.isRequired,
+  membersToAdd: PropTypes.array.isRequired,
+  submitWidget: PropTypes.func.isRequired,
+  hideWidgetCreationModal: PropTypes.func.isRequired,
+  removeMember: PropTypes.func.isRequired,
+  isMemberSelected: PropTypes.object.isRequired,
+  setIsSelectedMember: PropTypes.func.isRequired,
+  removeSelectedMember: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+  setErrorMessage: PropTypes.func.isRequired,
 };
 
 WidgetCreationForm.defaultProps = {
   members: [],
   widgetDescription: '',
-  date: '',
-  range: '',
   widgetTitle: '',
   changeField: () => {},
   changeTextarea: () => {},
+  errorMessage: '',
 };
 
 export default WidgetCreationForm;

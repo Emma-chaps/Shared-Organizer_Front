@@ -114,26 +114,30 @@ const GroupSettingsFrom = ({
     </>
   );
 };
+
 GroupSettingsFrom.propTypes = {
   member: PropTypes.object,
   firstname: PropTypes.string,
   email: PropTypes.string,
-  role: PropTypes.number,
+  role: PropTypes.number.isRequired,
   color: PropTypes.string,
-  changeField: PropTypes.func,
-  copyMember: PropTypes.func,
+  changeField: PropTypes.func.isRequired,
+  copyMember: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  setSelectedIcon: PropTypes.func.isRequired,
+  setSelectedRole: PropTypes.func.isRequired,
+  colors: PropTypes.array,
+  setUsableColors: PropTypes.func.isRequired,
+  userError: PropTypes.string.isRequired,
 };
 
 GroupSettingsFrom.defaultProps = {
   member: {},
   firstname: '',
   email: '',
-  role: 0,
   color: '',
-  changeField: () => {},
-  copyMember: () => {},
-  updateMember: () => {},
-  assignMemberToCloseInputView: () => {},
+  colors: [],
 };
 
 export default GroupSettingsFrom;

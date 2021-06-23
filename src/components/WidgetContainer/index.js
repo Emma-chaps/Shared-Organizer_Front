@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   RangeWidgetFilter,
   MemberWidgetFilter,
@@ -61,5 +62,22 @@ function WidgetContainer({
     </>
   );
 }
+
+WidgetContainer.propTypes = {
+  range: PropTypes.string.isRequired,
+  selectedDateValue: PropTypes.string.isRequired,
+  dashboardWidgets: PropTypes.array.isRequired,
+  editWidget: PropTypes.func.isRequired,
+  deleteWidget: PropTypes.func.isRequired,
+  copyWidgetToEdit: PropTypes.func.isRequired,
+  hideWidgetCreationModal: PropTypes.func.isRequired,
+  showWidgetCreationModal: PropTypes.func.isRequired,
+  displayCreationModal: PropTypes.bool.isRequired,
+  filteredMembers: PropTypes.array.isRequired,
+  reinitializeWidget: PropTypes.func.isRequired,
+  members: PropTypes.array.isRequired,
+};
+
+WidgetContainer.defaultProps = {};
 
 export default WidgetContainer;

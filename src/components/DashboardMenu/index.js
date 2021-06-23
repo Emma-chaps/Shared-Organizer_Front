@@ -30,7 +30,7 @@ const DashboardMenu = ({
   const formattedDateValue = new Date(yearDate, monthDate - 1, dayDate);
   // const [otherMembers, setOtherMembers] = useState(members);
   const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 1000px)').matches,
+    window.matchMedia('(min-width: 1000px)').matches
   );
 
   useEffect(() => {
@@ -193,6 +193,16 @@ const DashboardMenu = ({
   );
 };
 
-DashboardMenu.propTypes = {};
+DashboardMenu.propTypes = {
+  groupName: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  selectedDateValue: PropTypes.string.isRequired,
+  setFieldDateValue: PropTypes.func.isRequired,
+  members: PropTypes.array.isRequired,
+  setFilteredMembers: PropTypes.func.isRequired,
+  fetchAllWidgets: PropTypes.func.isRequired,
+};
+
+DashboardMenu.defaultProps = {};
 
 export default DashboardMenu;

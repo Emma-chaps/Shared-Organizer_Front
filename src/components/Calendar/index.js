@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { format, startOfWeek, endOfWeek } from 'date-fns';
 import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
 import './styles.scss';
@@ -147,5 +148,17 @@ const Calendar = ({
     </div>
   );
 };
+
+Calendar.propTypes = {
+  date: PropTypes.string.isRequired,
+  fetchAllWidgets: PropTypes.func.isRequired,
+  range: PropTypes.string.isRequired,
+  dashboardWidgets: PropTypes.array.isRequired,
+  setSelectedDateValue: PropTypes.func.isRequired,
+  setRange: PropTypes.func.isRequired,
+  getDayInfos: PropTypes.func.isRequired,
+};
+
+Calendar.defaultProps = {};
 
 export default Calendar;

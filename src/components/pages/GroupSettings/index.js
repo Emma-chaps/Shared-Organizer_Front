@@ -257,30 +257,31 @@ const GroupSettings = ({
 };
 
 GroupSettings.propTypes = {
-  // initialGroupName,
-  // members,
-  // openedGroupNameInput,
-  // setGroupNameInputState,
-  // openMembersInput,
-  // assignMemberToOpenInputView,
-  // setIsOpenedModal,
-  // hideModal,
-  // isOpenedModal,
-  // updateMember,
-  // closeAllInput,
-  // cleanNewMemberFields,
-  // setUsableColorsToAddMember,
-  // deleteMember,
-  // setIsOpenedAlertModal,
-  // isOpenedModalAlert,
-  // hideAlertModal,
-  // changeField,
-  // updatePassword,
-  // password,
-  // cleanPasswordField,
+  initialGroupName: PropTypes.string.isRequired,
+  members: PropTypes.array.isRequired,
+  openedGroupNameInput: PropTypes.bool.isRequired,
+  setGroupNameInputState: PropTypes.func.isRequired,
+  openMembersInput: PropTypes.object.isRequired,
+  assignMemberToOpenInputView: PropTypes.func.isRequired,
+  setIsOpenedModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func,
+  isOpenedModal: PropTypes.bool.isRequired,
+  updateMember: PropTypes.func.isRequired,
+  closeAllInput: PropTypes.func.isRequired,
+  cleanNewMemberFields: PropTypes.func.isRequired,
+  setUsableColorsToAddMember: PropTypes.func.isRequired,
+  deleteMember: PropTypes.func.isRequired,
+  setIsOpenedAlertModal: PropTypes.func.isRequired,
+  isOpenedModalAlert: PropTypes.bool.isRequired,
+  hideAlertModal: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
+  updatePassword: PropTypes.func.isRequired,
+  password: PropTypes.string.isRequired,
+  cleanPasswordField: PropTypes.func.isRequired,
 };
+
 GroupSettings.defaultProps = {
-  updateMember: () => {},
+  hideModal: () => {},
 };
 
 export default withRouter(GroupSettings);

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   format,
   addMonths,
@@ -57,5 +59,18 @@ function DateBrowser({
     </button>
   );
 }
+
+DateBrowser.propTypes = {
+  fetchAllWidgets: PropTypes.func.isRequired,
+  content: PropTypes.string,
+  range: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  setSelectedDateValue: PropTypes.func.isRequired,
+};
+
+DateBrowser.defaultProps = {
+  content: '',
+  range: '',
+};
 
 export default DateBrowser;

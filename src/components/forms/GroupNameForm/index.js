@@ -40,13 +40,17 @@ const GroupSettingsForm = ({
 };
 
 GroupSettingsForm.propTypes = {
-  groupName: PropTypes.string,
-  changeField: PropTypes.func,
+  initialGroupName: PropTypes.string,
+  newGroupName: PropTypes.string,
+  copyGroupName: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
+  updateGroupName: PropTypes.func.isRequired,
+  setGroupNameInputState: PropTypes.func.isRequired,
 };
 
 GroupSettingsForm.defaultProps = {
-  groupName: '',
-  changeField: () => {},
+  initialGroupName: '',
+  newGroupName: '',
 };
 
 export default GroupSettingsForm;
