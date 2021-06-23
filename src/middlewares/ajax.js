@@ -22,7 +22,7 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_GROUP_DATA: {
       api
-        .get('/group-infos')
+        .get('/group')
         .then((result) => result.data.group)
         .then(({ members, name }) => {
           store.dispatch(setGroupData(members, name));
@@ -42,7 +42,7 @@ export default (store) => (next) => (action) => {
     case UPDATE_GROUP_NAME: {
       const { groupNameToChange } = store.getState().settings;
       api
-        .patch('/group-settings/group', { groupName: groupNameToChange })
+        .patch('/group', { groupName: groupNameToChange })
         .then((result) => result.data)
         .then(({ updated }) => {
           if (updated) {
@@ -52,20 +52,12 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_MEMBER: {
-      const {
-        id,
-        firstname,
-        email,
-        password,
-        icon,
-        role,
-      } = store.getState().settings.memberToChange;
+      const { id, firstname, email, icon, role } =
+        store.getState().settings.memberToChange;
       api
-        .patch('/group-settings/members', {
-          id,
+        .patch(`/member/${id}`, {
           firstname,
           email,
-          password,
           icon,
           role: Number(role),
         })
@@ -82,15 +74,10 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case ADD_NEW_MEMBER: {
-      const {
-        firstname,
-        email,
-        password,
-        icon,
-        role,
-      } = store.getState().settings.newMember;
+      const { firstname, email, password, icon, role } =
+        store.getState().settings.newMember;
       api
-        .post('/group-settings', {
+        .post('/member', {
           firstname,
           email,
           password,
@@ -112,7 +99,7 @@ export default (store) => (next) => (action) => {
 
     case DELETE_MEMBER: {
       api
-        .delete(`/group-settings/member/delete/${action.id}`)
+        .delete(`/member/${action.id}`)
         .then((result) => result.data)
         .then(({ success }) => {
           if (success) {
@@ -124,8 +111,7 @@ export default (store) => (next) => (action) => {
     case UPDATE_PASSWORD: {
       const { password } = store.getState().settings.memberToChange;
       api
-        .patch('/group-settings/member/password', {
-          id: action.id,
+        .patch(`/member/${action.id}`, {
           password,
         })
         .then((result) => result.data)
