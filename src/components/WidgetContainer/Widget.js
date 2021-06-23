@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
@@ -115,5 +117,29 @@ function Widget({
     </article>
   );
 }
+
+Widget.propTypes = {
+  widget: PropTypes.object.isRequired,
+  colorMember: PropTypes.shape({
+    icon: PropTypes.string,
+  }),
+  editWidget: PropTypes.func.isRequired,
+  deleteWidget: PropTypes.func.isRequired,
+  copyWidgetToEdit: PropTypes.func.isRequired,
+  showWidgetCreationModal: PropTypes.func.isRequired,
+  hideWidgetCreationModal: PropTypes.func.isRequired,
+  displayCreationModal: PropTypes.bool.isRequired,
+  updateSelectedMember: PropTypes.func.isRequired,
+  cleanSelectedMembers: PropTypes.func.isRequired,
+  isOpenedDeleteWidgetModal: PropTypes.object.isRequired,
+  openWidgetDeleteModal: PropTypes.func.isRequired,
+  closeWidgetDeleteModal: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  isEditor: PropTypes.bool.isRequired,
+};
+
+Widget.defaultProps = {
+  colorMember: {},
+};
 
 export default Widget;

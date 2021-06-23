@@ -1,12 +1,12 @@
 // == Import npm
-import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
-import ProtectedRoute from "src/components/ProtectedRoute";
-import PropTypes from "prop-types";
-import Home from "src/containers/pages/Home";
-import Dashboard from "src/containers/pages/Dashboard";
-import Footer from "src/components/Footer";
-import NotFound from "src/components/pages/NotFound";
+import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import ProtectedRoute from 'src/components/ProtectedRoute';
+import PropTypes from 'prop-types';
+import Home from 'src/containers/pages/Home';
+import Dashboard from 'src/containers/pages/Dashboard';
+import Footer from 'src/components/Footer';
+import NotFound from 'src/components/pages/NotFound';
 
 // == Composant
 const App = ({ rehydrate, isLogged }) => {
@@ -35,11 +35,8 @@ const App = ({ rehydrate, isLogged }) => {
 };
 
 App.propTypes = {
-  rehydrate: PropTypes.func,
-};
-
-App.defaultProps = {
-  rehydrate: () => {},
+  rehydrate: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 // == Export

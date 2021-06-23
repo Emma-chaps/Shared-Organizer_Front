@@ -2,6 +2,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable no-else-return */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({ isAuth: isAuth, component: Component, ...rest }) => {
@@ -20,5 +21,12 @@ const ProtectedRoute = ({ isAuth: isAuth, component: Component, ...rest }) => {
     />
   );
 };
+
+ProtectedRoute.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
+  component: PropTypes.elementType.isRequired,
+};
+
+ProtectedRoute.defaultProps = {};
 
 export default ProtectedRoute;

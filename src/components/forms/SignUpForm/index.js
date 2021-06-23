@@ -98,13 +98,13 @@ SignUpForm.propTypes = {
   firstname: PropTypes.string.isRequired,
   changeField: PropTypes.func,
   handleSignUp: PropTypes.func,
-  setSelectedIcon: PropTypes.func,
+  backError: PropTypes.string,
 };
 
 SignUpForm.defaultProps = {
   changeField: () => {},
   handleSignUp: () => {},
-  setSelectedIcon: () => {},
+  backError: undefined,
 };
 
 export default SignUpForm;

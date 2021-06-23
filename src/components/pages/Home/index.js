@@ -72,10 +72,11 @@ const Home = ({ isLogged, isAdmin }) => {
 
 Home.propTypes = {
   isLogged: PropTypes.bool,
+  isAdmin: PropTypes.bool,
 };
 
 Home.defaultProps = {
   isLogged: false,
+  isAdmin: false,
 };
-
 export default Home;

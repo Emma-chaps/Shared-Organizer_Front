@@ -69,11 +69,13 @@ LoginForm.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func,
   handleLogin: PropTypes.func,
+  backError: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
   changeField: () => {},
   handleLogin: () => {},
+  backError: undefined,
 };
 
 export default LoginForm;

@@ -111,4 +111,22 @@ const AddAMemberForm = ({
   );
 };
 
+AddAMemberForm.propTypes = {
+  icon: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  colors: PropTypes.array.isRequired,
+  addNewMember: PropTypes.func.isRequired,
+  setIconToNewMember: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
+  setRoleToNewMember: PropTypes.func.isRequired,
+  userError: PropTypes.string,
+};
+
+AddAMemberForm.defaultProps = {
+  userError: undefined,
+};
+
 export default AddAMemberForm;
