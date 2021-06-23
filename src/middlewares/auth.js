@@ -25,12 +25,8 @@ export default (store) => (next) => (action) => {
     }
     case SUBMIT_SIGN_UP: {
       const icon = 'light-blue';
-      const {
-        email,
-        password,
-        firstname,
-        groupName,
-      } = store.getState().user.signup;
+      const { email, password, firstname, groupName } =
+        store.getState().user.signup;
       api
         .post('/signup', {
           email,

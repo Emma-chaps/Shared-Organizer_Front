@@ -12,17 +12,13 @@ import {
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_WIDGET_DATA_CREATION: {
-      const {
-        id,
-        title,
-        description,
-        groupMembers,
-      } = store.getState().widget.widgetCreation;
+      const { id, title, description, groupMembers } =
+        store.getState().widget.widgetCreation;
       if (id) {
         console.log('groupMembers:', groupMembers);
         console.log('SUBMIT_WIDGET_DATA_CREATION IF');
         api
-          .patch(`update-widget/${id}`, {
+          .patch(`widget/${id}`, {
             title,
             description,
             groupMembers,
@@ -61,7 +57,7 @@ export default (store) => (next) => (action) => {
         }
 
         api
-          .post('/dashboard/widgets/create', {
+          .post('/widget', {
             title,
             description,
             range,
@@ -84,13 +80,10 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case EDIT_WIDGET: {
-      const {
-        title,
-        description,
-        groupMembers,
-      } = store.getState().widget.widgetCreation;
+      const { title, description, groupMembers } =
+        store.getState().widget.widgetCreation;
       const { id } = action.widget.id;
-      api.patch(`update-widget/${id}`, {
+      api.patch(`widget/${id}`, {
         title,
         description,
         groupMembers,
@@ -100,7 +93,7 @@ export default (store) => (next) => (action) => {
     }
     case DELETE_WIDGET: {
       api
-        .delete(`/delete-widget/${action.id}`)
+        .delete(`/widget/${action.id}`)
         .then((value) => value.data)
         .then(({ success }) => {
           if (success) {
