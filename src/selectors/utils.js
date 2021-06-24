@@ -34,8 +34,8 @@ export const updateColors = (
 ) => {
   let newColors = colors;
   members.forEach((member) => {
-    if (member.icon !== memberToChangeColor) {
-      newColors = newColors.filter((color) => color.name !== member.icon);
+    if (member.color !== memberToChangeColor) {
+      newColors = newColors.filter((color) => color.name !== member.color);
     }
   });
   return newColors;

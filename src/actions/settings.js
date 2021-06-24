@@ -99,11 +99,11 @@ export const addNewMember = () => ({
   type: ADD_NEW_MEMBER,
 });
 
-export const SET_SELECTED_ICON = 'SET_SELECTED_ICON';
+export const SET_SELECTED_COLOR = 'SET_SELECTED_COLOR';
 
-export const setSelectedIcon = (icon) => ({
-  type: SET_SELECTED_ICON,
-  icon,
+export const setSelectedColor = (color) => ({
+  type: SET_SELECTED_COLOR,
+  color,
 });
 
 export const SET_SELECTED_ROLE = 'SET_SELECTED_ROLE';
@@ -140,11 +140,11 @@ export const closeAllInput = () => ({
   type: CLOSE_ALL_INPUT,
 });
 
-export const SET_ICON_TO_NEW_MEMBER = 'SET_ICON_TO_NEW_MEMBER';
+export const SET_COLOR_TO_NEW_MEMBER = 'SET_COLOR_TO_NEW_MEMBER';
 
-export const setIconToNewMember = (icon) => ({
-  type: SET_ICON_TO_NEW_MEMBER,
-  icon,
+export const setColorToNewMember = (color) => ({
+  type: SET_COLOR_TO_NEW_MEMBER,
+  color,
 });
 
 export const SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE =

@@ -109,7 +109,7 @@ const WidgetCreationForm = ({
                     type="button"
                     onClick={handleAddMember}
                     id={member.id}
-                    className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
+                    className={`widget-settings__members__button-modal-filter color-container--${member.color}`}
                   >
                     <span className="firstname-selected">
                       <AiOutlineCheckCircle className="icon-check" />{' '}
@@ -122,7 +122,7 @@ const WidgetCreationForm = ({
                   type="button"
                   onClick={handleAddMember}
                   id={member.id}
-                  className={`widget-settings__members__button-modal-filter icon-container--${member.icon}`}
+                  className={`widget-settings__members__button-modal-filter color-container--${member.color}`}
                 >
                   {member.firstname}
                 </button>

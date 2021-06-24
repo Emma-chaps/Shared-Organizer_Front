@@ -24,7 +24,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case SUBMIT_SIGN_UP: {
-      const icon = 'light-blue';
+      const color = 'light-blue';
       const { email, password, firstname, groupName } =
         store.getState().user.signup;
       api
@@ -39,7 +39,7 @@ export default (store) => (next) => (action) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
-            store.dispatch(setColorToMember(icon));
+            store.dispatch(setColorToMember(color));
             store.dispatch(fetchGroupData());
           }
           if (error) {

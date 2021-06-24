@@ -6,14 +6,14 @@ import FieldPassword from 'src/components/forms/FieldPassword';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 
 const AddAMemberForm = ({
-  icon,
+  color,
   firstname,
   email,
   password,
   role,
   colors,
   addNewMember,
-  setIconToNewMember,
+  setColorToNewMember,
   changeField,
   setRoleToNewMember,
   userError,
@@ -23,9 +23,9 @@ const AddAMemberForm = ({
     addNewMember();
   };
 
-  const handleChangeIcon = (event) => {
-    const selectedIcon = event.target.value;
-    setIconToNewMember(selectedIcon);
+  const handleChangeColor = (event) => {
+    const selectedColor = event.target.value;
+    setColorToNewMember(selectedColor);
   };
 
   const handleChangeRole = (event) => {
@@ -38,15 +38,15 @@ const AddAMemberForm = ({
       <h3 className="container-form__title">Add Member</h3>
       <form onSubmit={onSubmit} className="member-form">
         <div className="member-form__select">
-          <label htmlFor="icon" className="member-form__select__icon">
+          <label htmlFor="color" className="member-form__select__icon">
             Color
           </label>
           <select
             className="form-select"
-            name="icon"
-            id="icon"
-            value={icon}
-            onChange={handleChangeIcon}
+            name="color"
+            id="color"
+            value={color}
+            onChange={handleChangeColor}
             required
           >
             <option value="">Select a color</option>
@@ -112,14 +112,14 @@ const AddAMemberForm = ({
 };
 
 AddAMemberForm.propTypes = {
-  icon: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   colors: PropTypes.array.isRequired,
   addNewMember: PropTypes.func.isRequired,
-  setIconToNewMember: PropTypes.func.isRequired,
+  setColorToNewMember: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   setRoleToNewMember: PropTypes.func.isRequired,
   userError: PropTypes.string,

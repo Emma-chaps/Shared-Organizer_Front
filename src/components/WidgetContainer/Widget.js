@@ -50,7 +50,7 @@ function Widget({
   return (
     <article className="widget">
       <div className="visible-collapsed">
-        <span className={`name-tag icon-container--${colorMember?.icon}`}>
+        <span className={`name-tag color-container--${colorMember?.color}`}>
           {widget?.author[0]}
         </span>
         <header className="widget-header">
@@ -102,7 +102,7 @@ function Widget({
       <ul className="widget__members">
         {members?.map((member) => (
           <li key={member.id} className="widget__member">
-            <span className={`icon-container--${member?.icon}`}>
+            <span className={`color-container--${member?.color}`}>
               {member.firstname[0]}
             </span>
           </li>
@@ -121,7 +121,7 @@ function Widget({
 Widget.propTypes = {
   widget: PropTypes.object.isRequired,
   colorMember: PropTypes.shape({
-    icon: PropTypes.string,
+    color: PropTypes.string,
   }),
   editWidget: PropTypes.func.isRequired,
   deleteWidget: PropTypes.func.isRequired,

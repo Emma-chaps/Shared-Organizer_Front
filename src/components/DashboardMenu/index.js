@@ -151,7 +151,7 @@ const DashboardMenu = ({
               className="menu__members--btn"
               ref={memberRef}
             >
-              <span className={`letter icon-container--${member.icon}`}>
+              <span className={`letter color-container--${member.color}`}>
                 {member.firstname[0]}
               </span>
               <span className="member-firstname">{member.firstname}</span>
@@ -181,7 +181,7 @@ const DashboardMenu = ({
                 key={member.id}
                 id={member.id}
                 onClick={handleFilter}
-                className={`button-modal-filter icon-container--${member.icon}`}
+                className={`button-modal-filter color-container--${member.color}`}
               >
                 {member.firstname[0]}
               </button>

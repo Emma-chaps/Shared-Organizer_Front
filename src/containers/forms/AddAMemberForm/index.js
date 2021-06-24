@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import AddAMemberForm from 'src/components/forms/AddAMemberForm';
 import {
   addNewMember,
-  setIconToNewMember,
+  setColorToNewMember,
   setNewMemberToChangeFieldValue,
   setRoleToNewMember,
   hideModal,
 } from 'src/actions/settings';
 
 const mapStateToProps = (state) => ({
-  icon: state.settings.newMember.icon,
+  color: state.settings.newMember.color,
   firstname: state.settings.newMember.firstname,
   email: state.settings.newMember.email,
   password: state.settings.newMember.password,
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addNewMember: () => dispatch(addNewMember()),
-  setIconToNewMember: (icon) => dispatch(setIconToNewMember(icon)),
+  setColorToNewMember: (color) => dispatch(setColorToNewMember(color)),
   changeField: (value, name) =>
     dispatch(setNewMemberToChangeFieldValue(name, value)),
   setRoleToNewMember: (role) => dispatch(setRoleToNewMember(role)),

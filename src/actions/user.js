@@ -39,10 +39,10 @@ export const login = (token) => ({
   token,
 });
 
-export const SET_SELECT_ICON = 'SET_SELECT_ICON';
+export const SET_SELECT_COLOR = 'SET_SELECT_COLOR';
 
-export const setSelectedIcon = (name) => ({
-  type: SET_SELECT_ICON,
+export const setSelectedColor = (name) => ({
+  type: SET_SELECT_COLOR,
   name,
 });
 

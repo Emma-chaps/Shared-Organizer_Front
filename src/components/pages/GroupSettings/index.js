@@ -131,7 +131,9 @@ const GroupSettings = ({
                 </>
               ) : (
                 <>
-                  <div className={`member-icon icon-container--${member.icon}`}>
+                  <div
+                    className={`member-icon color-container--${member.color}`}
+                  >
                     {member.firstname[0]}
                   </div>
                   <div className="member-data">{member.firstname}</div>

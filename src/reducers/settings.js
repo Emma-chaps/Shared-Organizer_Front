@@ -10,13 +10,13 @@ import {
   SET_MEMBERS_TO_EDIT,
   HIDE_MODAL,
   SET_IS_OPENED_MODAL,
-  SET_SELECTED_ICON,
+  SET_SELECTED_COLOR,
   SET_SELECTED_ROLE,
   CLEAN_NEW_MEMBER_FIELDS,
   SET_COLOR_TO_MEMBER,
   SET_USABLE_COLORS,
   CLOSE_ALL_INPUT,
-  SET_ICON_TO_NEW_MEMBER,
+  SET_COLOR_TO_NEW_MEMBER,
   SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE,
   SET_ROLE_TO_NEW_MEMBER,
   SET_USABLE_COLORS_TO_ADD_MEMBER,
@@ -50,7 +50,7 @@ const initialState = {
     email: '',
     firstname: '',
     password: '',
-    icon: '',
+    color: '',
     role: 0,
     userError: '',
   },
@@ -58,7 +58,7 @@ const initialState = {
     email: '',
     firstname: '',
     password: '',
-    icon: '',
+    color: '',
     role: 0,
     userError: '',
   },
@@ -159,12 +159,12 @@ export default (state = initialState, action = {}) => {
         openedModal: false,
       };
     }
-    case SET_SELECTED_ICON: {
+    case SET_SELECTED_COLOR: {
       return {
         ...state,
         memberToChange: {
           ...state.memberToChange,
-          icon: action.icon,
+          color: action.color,
         },
       };
     }
@@ -185,7 +185,7 @@ export default (state = initialState, action = {}) => {
           email: '',
           firstname: '',
           password: '',
-          icon: '',
+          color: '',
           role: '',
           userError: '',
         },
@@ -203,7 +203,7 @@ export default (state = initialState, action = {}) => {
         usableColors: updateColors(
           state.group.members,
           state.colors,
-          state.memberToChange.icon,
+          state.memberToChange.color
         ),
       };
     }
@@ -213,12 +213,12 @@ export default (state = initialState, action = {}) => {
         openMembersInput: closeInput(state.group.members),
       };
     }
-    case SET_ICON_TO_NEW_MEMBER: {
+    case SET_COLOR_TO_NEW_MEMBER: {
       return {
         ...state,
         newMember: {
           ...state.newMember,
-          icon: action.icon,
+          color: action.color,
         },
       };
     }
@@ -246,7 +246,7 @@ export default (state = initialState, action = {}) => {
         usableColors: updateColors(
           state.group.members,
           state.colors,
-          state.newMember.icon,
+          state.newMember.color
         ),
       };
     }

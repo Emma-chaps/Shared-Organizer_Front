@@ -22,7 +22,7 @@ function Day({ className, day, widgets, setSelectedDateValue, setRange }) {
       <span className="day-number">{format(day, 'dd')}</span>
       {uniqueMembers?.map((member) => (
         <div
-          className={`calendar-members-concerned icon-container--${member.icon}`}
+          className={`calendar-members-concerned color-container--${member.color}`}
           key={member.id}
         >
           <div>{member.firstname[0]}</div>

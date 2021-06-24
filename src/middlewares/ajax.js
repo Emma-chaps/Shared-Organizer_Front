@@ -52,13 +52,13 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_MEMBER: {
-      const { id, firstname, email, icon, role } =
+      const { id, firstname, email, color, role } =
         store.getState().settings.memberToChange;
       api
         .patch(`/member/${id}`, {
           firstname,
           email,
-          icon,
+          color,
           role: Number(role),
         })
         .then((result) => result.data)
@@ -74,14 +74,14 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case ADD_NEW_MEMBER: {
-      const { firstname, email, password, icon, role } =
+      const { firstname, email, password, color, role } =
         store.getState().settings.newMember;
       api
         .post('/member', {
           firstname,
           email,
           password,
-          icon,
+          color,
           role: Number(role),
         })
         .then((result) => result.data)

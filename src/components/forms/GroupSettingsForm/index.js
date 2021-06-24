@@ -11,7 +11,7 @@ const GroupSettingsFrom = ({
   changeField,
   onSubmit,
   onClose,
-  setSelectedIcon,
+  setSelectedColor,
   setSelectedRole,
   colors,
   copyMember,
@@ -23,9 +23,9 @@ const GroupSettingsFrom = ({
     setUsableColors();
   }, [member]);
 
-  const handleChangeIcon = (event) => {
-    const selectedIcon = event.target.value;
-    setSelectedIcon(selectedIcon);
+  const handleChangeColor = (event) => {
+    const selectedColor = event.target.value;
+    setSelectedColor(selectedColor);
   };
 
   const handleChangeRole = (event) => {
@@ -37,15 +37,15 @@ const GroupSettingsFrom = ({
     <>
       <form onSubmit={onSubmit} className="member-form">
         <div className="member-form__select">
-          <label htmlFor="icon" className="member-form__select__icon">
+          <label htmlFor="color" className="member-form__select__icon">
             Color
           </label>
           <select
             className="form-select"
-            name="icon"
-            id="icon"
+            name="color"
+            id="color"
             value={color}
-            onChange={handleChangeIcon}
+            onChange={handleChangeColor}
             required
           >
             <option value="">Choose a color</option>
@@ -125,7 +125,7 @@ GroupSettingsFrom.propTypes = {
   copyMember: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  setSelectedIcon: PropTypes.func.isRequired,
+  setSelectedColor: PropTypes.func.isRequired,
   setSelectedRole: PropTypes.func.isRequired,
   colors: PropTypes.array,
   setUsableColors: PropTypes.func.isRequired,

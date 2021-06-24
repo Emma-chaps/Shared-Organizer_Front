@@ -3,7 +3,7 @@ import {
   SET_USER_FIELD_SIGN_UP_VALUE,
   LOGIN,
   LOGOUT,
-  SET_SELECT_ICON,
+  SET_SELECT_COLOR,
   RESET_USER_DATA,
   SET_SIGNUP_ERROR_MESSAGE,
   SET_LOGIN_ERROR_MESSAGE,
@@ -26,7 +26,7 @@ const initialState = {
     password: '',
     groupName: '',
     firstname: '',
-    icon: '',
+    color: '',
     backError: '',
   },
 };
@@ -60,12 +60,12 @@ export default (state = initialState, action = {}) => {
           isEditor: isEditor(action.token),
         },
       };
-    case SET_SELECT_ICON:
+    case SET_SELECT_COLOR:
       return {
         ...state,
         signup: {
           ...state.signup,
-          icon: action.name,
+          color: action.name,
         },
       };
     case LOGOUT:
@@ -92,7 +92,7 @@ export default (state = initialState, action = {}) => {
           password: '',
           groupName: '',
           firstname: '',
-          icon: '',
+          color: '',
         },
       };
     case SET_SIGNUP_ERROR_MESSAGE:

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   setMemberToChangeFieldValue,
-  setSelectedIcon,
+  setSelectedColor,
   setSelectedRole,
   copyMember,
   setUsableColors,
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   email: state.settings.memberToChange.email,
   password: state.settings.memberToChange.password,
   role: state.settings.memberToChange.role,
-  color: state.settings.memberToChange.icon,
+  color: state.settings.memberToChange.color,
   colors: state.settings.usableColors,
   userError: state.settings.memberToChange.userError,
 });
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) =>
     dispatch(setMemberToChangeFieldValue(name, value)),
-  setSelectedIcon: (icon) => dispatch(setSelectedIcon(icon)),
+  setSelectedColor: (color) => dispatch(setSelectedColor(color)),
   setSelectedRole: (role) => dispatch(setSelectedRole(role)),
   copyMember: (member) => dispatch(copyMember(member)),
   setUsableColors: () => dispatch(setUsableColors()),
