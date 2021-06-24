@@ -8,7 +8,7 @@ export default (store) => (next) => (action) => {
       const year = selectedDateValue.split('-')[0];
       const month = selectedDateValue.split('-')[1];
       api
-        .get(`/all-widgets/${year}/${month}`)
+        .get(`/widgets/${year}/${month}`)
         .then((result) => result.data)
         .then(({ success, widgets }) => {
           if (success) {

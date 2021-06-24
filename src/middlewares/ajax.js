@@ -111,7 +111,7 @@ export default (store) => (next) => (action) => {
     case UPDATE_PASSWORD: {
       const { password } = store.getState().settings.memberToChange;
       api
-        .patch(`/member/${action.id}`, {
+        .patch(`/password/${action.id}`, {
           password,
         })
         .then((result) => result.data)
