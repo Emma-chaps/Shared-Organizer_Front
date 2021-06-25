@@ -1,9 +1,8 @@
-import jwt_decode from 'jwt-decode';
 import PropTypes from 'prop-types';
 
 import React, { useEffect, useState } from 'react';
 
-const Header = ({ logout, setRange, range, isLogged, activeRange }) => {
+const Header = ({ logout, setRange, range }) => {
   const [selectedMonth, setSelectedMonth] = useState('selected-range');
   const [selectedWeek, setSelectedWeek] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
@@ -12,14 +11,15 @@ const Header = ({ logout, setRange, range, isLogged, activeRange }) => {
     setSelectedMonth('');
     setSelectedWeek('');
     setSelectedDay('');
-    if (range === 'month') {
-      setSelectedMonth('selected-range');
-    }
-    if (range === 'week') {
-      setSelectedWeek('selected-range');
-    }
-    if (range === 'day') {
-      setSelectedDay('selected-range');
+    switch (range) {
+      case 'week':
+        setSelectedWeek('selected-range');
+        break;
+      case 'day':
+        setSelectedDay('selected-range');
+        break;
+      default:
+        setSelectedMonth('selected-range');
     }
   }, [range]);
 
@@ -27,8 +27,6 @@ const Header = ({ logout, setRange, range, isLogged, activeRange }) => {
     const value = event.currentTarget.dataset.range;
     setRange(value);
   };
-
-  const { firstname } = jwt_decode(localStorage.getItem('jwtoken'));
 
   return (
     <header className="header">
@@ -63,7 +61,6 @@ const Header = ({ logout, setRange, range, isLogged, activeRange }) => {
         <button type="button" onClick={logout} className="header__logout__btn">
           Log out
         </button>
-        {/* <div className="header__logout--firstname">Hi {firstname}</div> */}
       </div>
     </header>
   );
@@ -73,10 +70,6 @@ Header.propTypes = {
   logout: PropTypes.func.isRequired,
   setRange: PropTypes.func.isRequired,
   range: PropTypes.string.isRequired,
-  isLogged: PropTypes.bool.isRequired,
-  activeRange: PropTypes.bool.isRequired,
 };
-
-Header.defaultProps = {};
 
 export default Header;

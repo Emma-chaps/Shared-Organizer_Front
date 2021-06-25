@@ -1,4 +1,6 @@
 import api from 'src/api';
+import jwt_decode from 'jwt-decode';
+import { formatDate } from 'src/modules/calendar';
 
 import {
   REHYDRATE,
@@ -18,8 +20,13 @@ export default (store) => (next) => (action) => {
     case REHYDRATE: {
       const token = localStorage.getItem('jwtoken');
       if (token) {
-        store.dispatch(login(token));
-        store.dispatch(fetchGroupData());
+        const decodeToken = jwt_decode(token);
+        const expiryDate = new Date(decodeToken.exp);
+        const currentDate = new Date();
+        if (expiryDate > currentDate) {
+          store.dispatch(login(token));
+          store.dispatch(fetchGroupData());
+        }
       }
       return next(action);
     }
@@ -52,6 +59,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case SUBMIT_LOGIN: {
+      console.log('login');
       const { email, password } = store.getState().user.login;
       api
         .post('/login', {
