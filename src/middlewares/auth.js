@@ -23,7 +23,7 @@ export default (store) => (next) => (action) => {
         const decodeToken = jwt_decode(token);
         const expiryDate = new Date(decodeToken.exp);
         const currentDate = new Date();
-        if (expiryDate > currentDate) {
+        if (expiryDate < currentDate) {
           store.dispatch(login(token));
           store.dispatch(fetchGroupData());
         }
