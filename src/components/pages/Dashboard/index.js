@@ -5,7 +5,7 @@ import Calendar from 'src/containers/Calendar';
 import DashboardMenu from 'src/containers/DashboardMenu';
 import Modal from 'src/components/Modal';
 import WidgetCreationForm from 'src/containers/forms/WidgetCreationForm';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import WidgetContainer from 'src/containers/WidgetContainer';
 
 const Dashboard = ({
@@ -19,11 +19,10 @@ const Dashboard = ({
   isAdmin,
   isEditor,
 }) => {
-  // const [hideWidgetCreationModal, setHideWidgetCreationModal] = useState(true);
   const handleClick = () => {
     cleanSelectedMembers();
-    showWidgetCreationModal();
     reinitializeWidget();
+    showWidgetCreationModal();
   };
 
   useEffect(() => {

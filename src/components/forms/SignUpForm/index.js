@@ -20,16 +20,16 @@ const SignUpForm = ({
     } else {
       const errors = [];
       if (!firstname) {
-        errors.push('Firstname is required');
+        errors.push({ id: 1, message: 'Firstname is required' });
       }
       if (!groupName) {
-        errors.push('Group name is required');
+        errors.push({ id: 2, message: 'Group name is required' });
       }
       if (!email) {
-        errors.push('Email is required');
+        errors.push({ id: 3, message: 'Email is required' });
       }
       if (!password) {
-        errors.push('Password is required');
+        errors.push({ id: 4, message: 'Password is required' });
       }
       setSignUpErrors(errors);
     }
@@ -46,7 +46,7 @@ const SignUpForm = ({
           onChange={changeField}
           className="home-input"
           maxLength="30"
-          required={true}
+          required
         />
         <Field
           label="first name"
@@ -55,7 +55,7 @@ const SignUpForm = ({
           value={firstname}
           onChange={changeField}
           className="home-input"
-          required={true}
+          required
         />
         <Field
           label="email"
@@ -64,7 +64,7 @@ const SignUpForm = ({
           value={email}
           onChange={changeField}
           className="home-input"
-          required={true}
+          required
         />
         <FieldPassword
           className="home-input positioned-parent"
@@ -72,7 +72,7 @@ const SignUpForm = ({
           name="password"
           value={password}
           onChange={changeField}
-          required={true}
+          required
         />
 
         <button className="classic-btn button-sign" type="submit">
@@ -80,12 +80,12 @@ const SignUpForm = ({
         </button>
       </form>
       <div className="errors">
-        {signUpErrors.map((error) => (
-          <div key={error} className="errors__message">
-            *{error}
-          </div>
+        {signUpErrors?.map((error) => (
+          <p key={error.id} className="errors__message">
+            *{error.message}
+          </p>
         ))}
-        {backError && <div className="errors__message">*{backError}</div>}
+        {backError && <p className="errors__message">*{backError}</p>}
       </div>
     </>
   );

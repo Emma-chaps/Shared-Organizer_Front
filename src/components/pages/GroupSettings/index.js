@@ -25,9 +25,6 @@ const GroupSettings = ({
   cleanNewMemberFields,
   setUsableColorsToAddMember,
   deleteMember,
-  setIsOpenedAlertModal,
-  isOpenedModalAlert,
-  hideAlertModal,
   changeField,
   updatePassword,
   password,
@@ -44,7 +41,7 @@ const GroupSettings = ({
 
   const handleOpenMemberInputView = (event) => {
     closeAllInput();
-    assignMemberToOpenInputView(`id${event.currentTarget.dataset.id}`);
+    assignMemberToOpenInputView(event.currentTarget.dataset.id);
   };
 
   const handleOpenAddMember = () => {
@@ -118,40 +115,38 @@ const GroupSettings = ({
           </h2>
           {members?.map((member) => (
             <div
-              key={member.id}
+              key={member?.id}
               className="settings-container__group-members__member"
             >
-              {openMembersInput[`id${member.id}`] ? (
-                <>
-                  <GroupSettingsForm
-                    member={member}
-                    onSubmit={handleSubmitUpdateMember}
-                    onClose={closeAllInput}
-                  />
-                </>
+              {openMembersInput[member?.id] ? (
+                <GroupSettingsForm
+                  member={member}
+                  onSubmit={handleSubmitUpdateMember}
+                  onClose={closeAllInput}
+                />
               ) : (
                 <>
                   <div
-                    className={`member-icon color-container--${member.color}`}
+                    className={`member-icon color-container--${member?.color}`}
                   >
-                    {member.firstname[0]}
+                    {member?.firstname[0]}
                   </div>
-                  <div className="member-data">{member.firstname}</div>
-                  <div className="member-data">{member.email}</div>
-                  {member.role === 3 && (
+                  <div className="member-data">{member?.firstname}</div>
+                  <div className="member-data">{member?.email}</div>
+                  {member?.role === 3 && (
                     <div className="member-data">Administrator</div>
                   )}
-                  {member.role === 2 && (
+                  {member?.role === 2 && (
                     <div className="member-data">Editor</div>
                   )}
-                  {member.role === 1 && (
+                  {member?.role === 1 && (
                     <div className="member-data">Visitor</div>
                   )}
                   <div className="member-icons">
                     <button
                       type="button"
                       onClick={handleOpenMemberInputView}
-                      data-id={member.id}
+                      data-id={member?.id}
                       className="icon-btn"
                     >
                       <IoMdCreate />
@@ -160,12 +155,12 @@ const GroupSettings = ({
                       <button
                         type="button"
                         onClick={openUpdateMemberModal}
-                        data-id={member.id}
+                        data-id={member?.id}
                         className="icon-btn"
                       >
                         <IoMdLock />
                       </button>
-                      {isOpenedMemberPasswordModal[member.id] ? (
+                      {isOpenedMemberPasswordModal[member?.id] ? (
                         <div
                           className="container-password-confirm"
                           id="triangle-up"
@@ -178,7 +173,7 @@ const GroupSettings = ({
                             onClick={closeMemberPasswordModal}
                           />
                           <form
-                            data-id={member.id}
+                            data-id={member?.id}
                             onSubmit={handleUpdatePassword}
                             className="container-password-confirm__form"
                           >
@@ -187,7 +182,7 @@ const GroupSettings = ({
                               name="password"
                               value={password}
                               onChange={changeField}
-                              required={true}
+                              required
                             />
                             <button
                               type="submit"
@@ -273,9 +268,6 @@ GroupSettings.propTypes = {
   cleanNewMemberFields: PropTypes.func.isRequired,
   setUsableColorsToAddMember: PropTypes.func.isRequired,
   deleteMember: PropTypes.func.isRequired,
-  setIsOpenedAlertModal: PropTypes.func.isRequired,
-  isOpenedModalAlert: PropTypes.bool.isRequired,
-  hideAlertModal: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,

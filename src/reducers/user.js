@@ -15,7 +15,6 @@ const initialState = {
   login: {
     email: '',
     password: '',
-    token: '',
     isLogged: false,
     isAdmin: false,
     isEditor: false,
@@ -54,7 +53,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         login: {
           ...state.login,
-          token: action.token,
           isLogged: true,
           isAdmin: isAdmin(action.token),
           isEditor: isEditor(action.token),

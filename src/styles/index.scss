@@ -1091,7 +1091,6 @@ body {
         .widget__title {
           font-weight: bold;
           font-size: 1.2em;
-          text-transform: capitalize;
           padding-bottom: 0.25rem;
         }
         .widget__author {
@@ -1191,7 +1190,6 @@ body {
     @include flex($direction: column);
     width: 100%;
     padding-bottom: 0.5rem;
-    text-transform: capitalize;
     text-align: left;
     @media (min-width: 500px) {
       padding: 0rem 10% 0.5rem 10%;
@@ -1339,8 +1337,8 @@ body {
         }
         .password-eye-icon {
           position: absolute;
-          top: 3px;
-          right: 20px;
+          top: 5px;
+          right: 21px;
         }
       }
     }

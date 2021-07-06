@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { format, startOfWeek, endOfWeek } from 'date-fns';
+import {
+  format,
+  startOfWeek,
+  endOfWeek,
+  getWeek,
+  getDayOfYear,
+} from 'date-fns';
 import { formatDate, takeMonth, takeWeek } from 'src/modules/calendar';
-import './styles.scss';
-import { MdDateRange } from 'react-icons/md';
 import { dailyWidgetsFilter } from 'src/selectors/filterWidgets';
 import InfoContainer from 'src/containers/InfoContainer';
 import Day from './Day';
@@ -58,12 +62,15 @@ const Calendar = ({
         </div>
         <div className="calendar__content">
           <DaysNames />
-          {month.map((weeks, index) => (
-            <div key={index} className="calendar__content__weeks">
-              {weeks.map((day) => (
+          {month.map((weekMonth) => (
+            <div
+              key={getWeek(weekMonth[0])}
+              className="calendar__content__weeks"
+            >
+              {weekMonth.map((day) => (
                 <Day
                   className="calendar__content__weeks__day"
-                  key={format(day, 'd')}
+                  key={getDayOfYear(day)}
                   day={day}
                   widgets={dailyWidgets}
                   setSelectedDateValue={setSelectedDateValue}
@@ -109,7 +116,7 @@ const Calendar = ({
             {week.map((day) => (
               <Day
                 className="calendar__content__weeks__day week-display"
-                key={format(day, 'd')}
+                key={getDayOfYear(day)}
                 day={day}
                 widgets={dailyWidgets}
                 setSelectedDateValue={setSelectedDateValue}

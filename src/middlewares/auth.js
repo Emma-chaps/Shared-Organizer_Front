@@ -1,6 +1,5 @@
 import api from 'src/api';
-import jwt_decode from 'jwt-decode';
-import { formatDate } from 'src/modules/calendar';
+import jwtDecode from 'jwt-decode';
 
 import {
   REHYDRATE,
@@ -20,10 +19,11 @@ export default (store) => (next) => (action) => {
     case REHYDRATE: {
       const token = localStorage.getItem('jwtoken');
       if (token) {
-        const decodeToken = jwt_decode(token);
-        const expiryDate = new Date(decodeToken.exp);
+        const decodeToken = jwtDecode(token);
+        const expiryDate = new Date(decodeToken.exp * 1000);
+        console.log(expiryDate);
         const currentDate = new Date();
-        if (expiryDate < currentDate) {
+        if (expiryDate > currentDate) {
           store.dispatch(login(token));
           store.dispatch(fetchGroupData());
         }
@@ -40,26 +40,25 @@ export default (store) => (next) => (action) => {
           password,
           firstname,
           groupName,
+          color,
         })
         .then((result) => result.data)
-        .then(({ connected, token, error }) => {
+        .then(({ connected, token }) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
             store.dispatch(setColorToMember(color));
             store.dispatch(fetchGroupData());
           }
-          if (error) {
-            store.dispatch(setSignupErrorMessage(error));
-          }
         })
         .catch((error) => {
-          console.log('hey', error);
+          if (error.response) {
+            store.dispatch(setSignupErrorMessage(error.response.data.error));
+          }
         });
       return next(action);
     }
     case SUBMIT_LOGIN: {
-      console.log('login');
       const { email, password } = store.getState().user.login;
       api
         .post('/login', {
@@ -67,17 +66,18 @@ export default (store) => (next) => (action) => {
           password,
         })
         .then((result) => result.data)
-        .then(({ connected, token, error }) => {
+        .then(({ connected, token }) => {
           if (connected) {
             localStorage.setItem('jwtoken', token);
             store.dispatch(login(token));
             store.dispatch(fetchGroupData());
           }
-          if (error) {
-            store.dispatch(setLoginErrorMessage(error));
-          }
         })
-        .catch((error) => console.error(error.error));
+        .catch((error) => {
+          if (error.response) {
+            store.dispatch(setLoginErrorMessage(error.response.data.error));
+          }
+        });
       return next(action);
     }
     case LOGOUT: {

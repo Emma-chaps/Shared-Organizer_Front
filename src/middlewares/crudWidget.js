@@ -15,8 +15,6 @@ export default (store) => (next) => (action) => {
       const { id, title, description, groupMembers } =
         store.getState().widget.widgetCreation;
       if (id) {
-        console.log('groupMembers:', groupMembers);
-        console.log('SUBMIT_WIDGET_DATA_CREATION IF');
         api
           .patch(`widget/${id}`, {
             title,
@@ -32,7 +30,6 @@ export default (store) => (next) => (action) => {
             }
           });
       } else {
-        console.log('SUBMIT_WIDGET_DATA_CREATION ELSE');
         const { range, selectedDateValue } = store.getState().calendar;
 
         const formattedISODate = addDays(parseISO(selectedDateValue), 0);
@@ -66,15 +63,14 @@ export default (store) => (next) => (action) => {
             groupMembers,
           })
           .then((result) => result.data)
-          .then(({ success, widget }) => {
+          .then(({ success }) => {
             if (success) {
-              // store.dispatch(setWidgetToState(widget));
               store.dispatch(fetchAllWidgets());
               store.dispatch(reinitializeWidget());
             }
           })
           .catch((error) => {
-            console.error(error);
+            console.error(error.response);
           });
       }
       return next(action);

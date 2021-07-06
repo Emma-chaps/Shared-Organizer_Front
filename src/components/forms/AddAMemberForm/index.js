@@ -1,9 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import FieldPassword from 'src/components/forms/FieldPassword';
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 
 const AddAMemberForm = ({
   color,
@@ -18,7 +18,7 @@ const AddAMemberForm = ({
   setRoleToNewMember,
   userError,
 }) => {
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     addNewMember();
   };
@@ -36,7 +36,7 @@ const AddAMemberForm = ({
   return (
     <div className="container-form">
       <h3 className="container-form__title">Add Member</h3>
-      <form onSubmit={onSubmit} className="member-form">
+      <form onSubmit={handleSubmit} className="member-form">
         <div className="member-form__select">
           <label htmlFor="color" className="member-form__select__icon">
             Color
@@ -64,7 +64,7 @@ const AddAMemberForm = ({
           label="First name"
           value={firstname}
           onChange={changeField}
-          required={true}
+          required
         />
         <Field
           className="settings-input"
@@ -73,7 +73,7 @@ const AddAMemberForm = ({
           label="Email"
           value={email}
           onChange={changeField}
-          required={true}
+          required
         />
         <FieldPassword
           className="settings-input input-password positioned-parent"
@@ -81,7 +81,7 @@ const AddAMemberForm = ({
           label="Password"
           value={password}
           onChange={changeField}
-          required={true}
+          required
         />
         <div className="member-form__select">
           <label htmlFor="role" className="member-form__select__icon">

@@ -51,7 +51,7 @@ const initialState = {
     firstname: '',
     password: '',
     color: '',
-    role: 0,
+    role: '',
     userError: '',
   },
   newMember: {
@@ -59,7 +59,7 @@ const initialState = {
     firstname: '',
     password: '',
     color: '',
-    role: 0,
+    role: '',
     userError: '',
   },
   colors: [

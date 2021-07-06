@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Field from 'src/components/forms/Field';
-import { FaUserAlt } from 'react-icons/fa';
 import { findMember } from 'src/selectors/findMember';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
@@ -23,8 +21,6 @@ const WidgetCreationForm = ({
   errorMessage,
   setErrorMessage,
 }) => {
-  // const [errorMessage, setErrorMessage] = useState('');
-  // const [selectedWidget, setSelectedWidget] = useState(widget);
   useEffect(() => {
     setErrorMessage('');
   }, []);

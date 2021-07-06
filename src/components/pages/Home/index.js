@@ -4,7 +4,6 @@ import { Redirect, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import SignUpForm from 'src/containers/forms/SignUpForm';
 import LoginForm from 'src/containers/forms/LoginForm';
-import Footer from 'src/components/Footer';
 
 const Home = ({ isLogged, isAdmin }) => {
   //  changes the display of the form according to the selected button

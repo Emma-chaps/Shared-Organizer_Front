@@ -4,7 +4,6 @@ import {
   setGroupData,
   UPDATE_GROUP_NAME,
   setGroupName,
-  setMembersToEdit,
   UPDATE_MEMBER,
   ADD_NEW_MEMBER,
   fetchGroupData,
@@ -23,19 +22,13 @@ export default (store) => (next) => (action) => {
     case FETCH_GROUP_DATA: {
       api
         .get('/group')
-        .then((result) => result.data.group)
-        .then(({ members, name }) => {
-          store.dispatch(setGroupData(members, name));
-          if (members) {
-            for (const member of members) {
-              store.dispatch(setMembersToEdit(`id${member.id}`));
-            }
+        .then((result) => result.data)
+        .then(({ success, group }) => {
+          if (success) {
+            store.dispatch(setGroupData(group.members, group.name));
             store.dispatch(setUsableColors());
+            store.dispatch(setFilteredMembers(group.members));
           }
-          return members;
-        })
-        .then((members) => {
-          store.dispatch(setFilteredMembers(members));
         });
       return next(action);
     }
@@ -62,13 +55,17 @@ export default (store) => (next) => (action) => {
           role: Number(role),
         })
         .then((result) => result.data)
-        .then(({ success, userError }) => {
+        .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
             store.dispatch(closeAllInput());
           }
-          if (userError) {
-            store.dispatch(setUptateUserErrorMessage(userError));
+        })
+        .catch((error) => {
+          if (error.response) {
+            store.dispatch(
+              setUptateUserErrorMessage(error.response.data.userError)
+            );
           }
         });
       return next(action);
@@ -85,13 +82,18 @@ export default (store) => (next) => (action) => {
           role: Number(role),
         })
         .then((result) => result.data)
-        .then(({ success, userError }) => {
+        .then(({ success }) => {
           if (success) {
             store.dispatch(fetchGroupData());
+            // close add a member modale
             store.dispatch(hideModal());
           }
-          if (userError) {
-            store.dispatch(setAddUserErrorMessage(userError));
+        })
+        .catch((error) => {
+          if (error.response) {
+            store.dispatch(
+              setAddUserErrorMessage(error.response.data.userError)
+            );
           }
         });
       return next(action);

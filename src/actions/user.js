@@ -22,6 +22,11 @@ export const setUserFieldSignUpValue = (name, value) => ({
 
 export const LOGIN = 'LOGIN';
 
+export const login = (token) => ({
+  type: LOGIN,
+  token,
+});
+
 export const SUBMIT_SIGN_UP = 'SUBMIT_SIGN_UP';
 
 export const submitSignUp = () => ({
@@ -32,11 +37,6 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 
 export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
-});
-
-export const login = (token) => ({
-  type: LOGIN,
-  token,
 });
 
 export const SET_SELECT_COLOR = 'SET_SELECT_COLOR';
