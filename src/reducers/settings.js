@@ -16,9 +16,6 @@ import {
   SET_COLOR_TO_MEMBER,
   SET_USABLE_COLORS,
   CLOSE_ALL_INPUT,
-  SET_COLOR_TO_NEW_MEMBER,
-  SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE,
-  SET_ROLE_TO_NEW_MEMBER,
   SET_USABLE_COLORS_TO_ADD_MEMBER,
   HIDE_ALERT_MODAL,
   SET_IS_OPENED_ALERT_MODAL,
@@ -211,33 +208,6 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         openMembersInput: closeInput(state.group.members),
-      };
-    }
-    case SET_COLOR_TO_NEW_MEMBER: {
-      return {
-        ...state,
-        newMember: {
-          ...state.newMember,
-          color: action.color,
-        },
-      };
-    }
-    case SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE: {
-      return {
-        ...state,
-        newMember: {
-          ...state.newMember,
-          [action.name]: action.value,
-        },
-      };
-    }
-    case SET_ROLE_TO_NEW_MEMBER: {
-      return {
-        ...state,
-        newMember: {
-          ...state.newMember,
-          role: action.role,
-        },
       };
     }
     case SET_USABLE_COLORS_TO_ADD_MEMBER: {

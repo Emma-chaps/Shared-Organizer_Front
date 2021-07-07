@@ -95,8 +95,9 @@ export const setIsOpenedModal = () => ({
 
 export const ADD_NEW_MEMBER = 'ADD_NEW_MEMBER';
 
-export const addNewMember = () => ({
+export const addNewMember = (data) => ({
   type: ADD_NEW_MEMBER,
+  data,
 });
 
 export const SET_SELECTED_COLOR = 'SET_SELECTED_COLOR';
@@ -138,29 +139,6 @@ export const CLOSE_ALL_INPUT = 'CLOSE_ALL_INPUT';
 
 export const closeAllInput = () => ({
   type: CLOSE_ALL_INPUT,
-});
-
-export const SET_COLOR_TO_NEW_MEMBER = 'SET_COLOR_TO_NEW_MEMBER';
-
-export const setColorToNewMember = (color) => ({
-  type: SET_COLOR_TO_NEW_MEMBER,
-  color,
-});
-
-export const SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE =
-  'SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE';
-
-export const setNewMemberToChangeFieldValue = (name, value) => ({
-  type: SET_NEW_MEMBER_TO_CHANGE_FIELD_VALUE,
-  name,
-  value,
-});
-
-export const SET_ROLE_TO_NEW_MEMBER = 'SET_ROLE_TO_NEW_MEMBER';
-
-export const setRoleToNewMember = (role) => ({
-  type: SET_ROLE_TO_NEW_MEMBER,
-  role,
 });
 
 export const SET_USABLE_COLORS_TO_ADD_MEMBER =

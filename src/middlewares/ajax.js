@@ -71,8 +71,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case ADD_NEW_MEMBER: {
-      const { firstname, email, password, color, role } =
-        store.getState().settings.newMember;
+      const { firstname, email, password, color, role } = action.data;
       api
         .post('/member', {
           firstname,

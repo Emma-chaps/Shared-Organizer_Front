@@ -272,6 +272,12 @@ GroupSettings.propTypes = {
   updatePassword: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,
   cleanPasswordField: PropTypes.func.isRequired,
+  isOpenedMemberPasswordModal: PropTypes.object.isRequired,
+  setIsOpenedMemberPasswordModal: PropTypes.func.isRequired,
+  closeMemberPasswordModal: PropTypes.func.isRequired,
+  isOpenedMemberDeleteModal: PropTypes.object.isRequired,
+  setIsOpenedMemberDeleteModal: PropTypes.func.isRequired,
+  closeMemberDeleteModal: PropTypes.func.isRequired,
 };
 
 GroupSettings.defaultProps = {

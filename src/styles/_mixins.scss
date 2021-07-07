@@ -20,7 +20,7 @@
   font-size: $font-size;
   // background-color: $background;
   height: $size;
-  width: $size;
+  min-width: $size;
   border-radius: 50%;
   border: none;
   @include flex;

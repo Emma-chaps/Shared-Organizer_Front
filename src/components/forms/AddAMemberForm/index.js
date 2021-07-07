@@ -1,36 +1,37 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/forms/Field';
 import FieldPassword from 'src/components/forms/FieldPassword';
 
-const AddAMemberForm = ({
-  color,
-  firstname,
-  email,
-  password,
-  role,
-  colors,
-  addNewMember,
-  setColorToNewMember,
-  changeField,
-  setRoleToNewMember,
-  userError,
-}) => {
+const AddAMemberForm = ({ colors, addNewMember, userError }) => {
+  const [color, setColor] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+
+  const dataUser = {
+    color,
+    firstname,
+    email,
+    password,
+    role,
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
-    addNewMember();
+    addNewMember(dataUser);
   };
 
   const handleChangeColor = (event) => {
     const selectedColor = event.target.value;
-    setColorToNewMember(selectedColor);
+    setColor(selectedColor);
   };
 
   const handleChangeRole = (event) => {
     const selectedRole = event.target.value;
-    setRoleToNewMember(selectedRole);
+    setRole(selectedRole);
   };
 
   return (
@@ -63,7 +64,7 @@ const AddAMemberForm = ({
           type="text"
           label="First name"
           value={firstname}
-          onChange={changeField}
+          onChange={setFirstname}
           required
         />
         <Field
@@ -72,7 +73,7 @@ const AddAMemberForm = ({
           type="email"
           label="Email"
           value={email}
-          onChange={changeField}
+          onChange={setEmail}
           required
         />
         <FieldPassword
@@ -80,7 +81,7 @@ const AddAMemberForm = ({
           name="password"
           label="Password"
           value={password}
-          onChange={changeField}
+          onChange={setPassword}
           required
         />
         <div className="member-form__select">
@@ -112,16 +113,8 @@ const AddAMemberForm = ({
 };
 
 AddAMemberForm.propTypes = {
-  color: PropTypes.string.isRequired,
-  firstname: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
   colors: PropTypes.array.isRequired,
   addNewMember: PropTypes.func.isRequired,
-  setColorToNewMember: PropTypes.func.isRequired,
-  changeField: PropTypes.func.isRequired,
-  setRoleToNewMember: PropTypes.func.isRequired,
   userError: PropTypes.string,
 };
 
