@@ -13,13 +13,13 @@ export const RangeWidgetFilter = (widgets, date, range) => {
 
   if (range === 'month') {
     const monthlyWidgets = rangeFilteredWidgets.filter(
-      (widget) => widget.date_nb === Number(month),
+      (widget) => widget.date_nb === Number(month)
     );
     return monthlyWidgets;
   }
   if (range === 'week') {
     const weeklyWidgets = rangeFilteredWidgets.filter(
-      (widget) => widget.date_nb === Number(week),
+      (widget) => widget.date_nb === Number(week)
     );
     return weeklyWidgets;
   }
@@ -66,4 +66,9 @@ export const MemberWidgetFilter = (members = [], widgets = []) => {
     array = [...widgetsArray];
   });
   return array;
+};
+
+export const OrderWidgetById = (widgets = []) => {
+  const orderedWidgets = widgets.sort((a, b) => a.id - b.id);
+  return orderedWidgets;
 };

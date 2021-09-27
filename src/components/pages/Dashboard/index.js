@@ -24,7 +24,7 @@ const Dashboard = ({
     reinitializeWidget();
     showWidgetCreationModal();
   };
-
+  
   useEffect(() => {
     getGroupData();
     fetchAllWidgets();

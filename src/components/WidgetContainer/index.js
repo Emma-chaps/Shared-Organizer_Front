@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   RangeWidgetFilter,
   MemberWidgetFilter,
+  OrderWidgetById,
 } from 'src/selectors/filterWidgets';
 import { findMemberbyFirstname } from 'src/selectors/findMember';
 import Widget from 'src/containers/WidgetContainer/Widget';
@@ -29,6 +30,9 @@ function WidgetContainer({
   if (filteredMembers.length === 1) {
     filteredWidgets = MemberWidgetFilter(filteredMembers, filteredWidgets);
   }
+
+  filteredWidgets = OrderWidgetById(filteredWidgets);
+  console.log({ filteredWidgets });
 
   return (
     <>
